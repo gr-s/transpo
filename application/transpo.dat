@@ -1,0 +1,14 @@
+fmod
+/begin header
+1.1
+28.08.2013 20:13:40
+/end header
+/begin data
+MyClass app_sett
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+}
+/end data
