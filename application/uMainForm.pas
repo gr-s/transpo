@@ -4,11 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes;
+  Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
+  StdCtrls, ExtCtrls;
 
 type
   TForm1 = class(TForm)
     spMainForm: TSpTBXTitleBar;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,13 +53,20 @@ begin
   cls1.CopyClass(app_sett,cls1,False,True);
 
   ati_service:= TATI.Create(Self);
-  ati_service.Init;
+  ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
+                    app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
+  InsertControl(ati_service.wb);
 end;
 
 destructor TForm1.Destroy;
 begin
   app_sett.Save;
   inherited;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  ati_service.login();
 end;
 
 end.
