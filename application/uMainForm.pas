@@ -5,22 +5,25 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
-  StdCtrls, ExtCtrls;
+  StdCtrls, ExtCtrls, uSelectWizard1;
 
 type
-  TForm1 = class(TForm)
+  TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
     Button1: TButton;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
+    procedure DoATIAutorizCode(var Code:String);
+
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
   end;
 
 var
-  Form1: TForm1;
+  MainForm: TMainForm;
 
 implementation
 
@@ -28,7 +31,7 @@ implementation
 
 { TForm1 }
 
-constructor TForm1.Create(AOwner: TComponent);
+constructor TMainForm.Create(AOwner: TComponent);
 var cls1:TFMClass;
 begin
   inherited;
@@ -53,20 +56,29 @@ begin
   cls1.CopyClass(app_sett,cls1,False,True);
 
   ati_service:= TATI.Create(Self);
+  ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
   InsertControl(ati_service.wb);
 end;
 
-destructor TForm1.Destroy;
+destructor TMainForm.Destroy;
 begin
   app_sett.Save;
   inherited;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMainForm.Button1Click(Sender: TObject);
 begin
-  ati_service.login();
+  ati_service.GetTickets();
+end;
+
+procedure TMainForm.DoATIAutorizCode(var Code: String);
+begin
+  if SelectWizard1.Execute('Код проверки') = mrOk then
+  begin
+    Code:= SelectWizard1.SpTBXEdit1.Text;
+  end;
 end;
 
 end.
