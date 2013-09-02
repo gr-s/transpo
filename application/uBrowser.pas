@@ -26,7 +26,7 @@ var
   Browser: TBrowser;
 
 implementation
-uses uMainForm;              
+uses uMainForm;
 {$R *.dfm}
 
 { TBrowser }
@@ -34,7 +34,6 @@ uses uMainForm;
 constructor TBrowser.Create(AOwner: TComponent);
 begin
   inherited;
-
 end;
 
 destructor TBrowser.Destroy;
