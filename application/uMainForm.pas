@@ -67,6 +67,7 @@ begin
   ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.OnCaptcha:= DoATICaptcha;
   ati_service.OnEndGetTickets:= DoEndGetTickets;
+  
 
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
