@@ -15,5 +15,7 @@ begin
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TSelectWizard1, SelectWizard1);
   Application.CreateForm(TBrowser, Browser);
+
+  MainForm.Run;
   Application.Run;
 end.

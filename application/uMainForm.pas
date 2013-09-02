@@ -15,12 +15,16 @@ type
     SpTBXButton1: TSpTBXButton;
     SpTBXButton2: TSpTBXButton;
     SpTBXButton3: TSpTBXButton;
+    Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
+    procedure Run;
+
     procedure DoATIAutorizCode(var Code:String);
     procedure DoATICaptcha(oper_code:Integer);
     procedure DoEndGetTickets(Sender: TObject);
@@ -115,6 +119,18 @@ end;
 procedure TMainForm.DoEndGetTickets(Sender: TObject);
 begin
   ShowMessage('DoEndGetTickets');
+end;
+
+procedure TMainForm.Timer1Timer(Sender: TObject);
+begin
+  Timer1.Enabled:= False;
+  Browser.Show;
+  Browser.Hide;
+end;
+
+procedure TMainForm.Run;
+begin
+  Timer1.Enabled:= True;
 end;
 
 end.

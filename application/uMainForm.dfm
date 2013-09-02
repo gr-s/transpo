@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 205
-  Top = 55
+  Left = 197
+  Top = 108
   Width = 870
   Height = 640
   Caption = 'MainForm'
@@ -87,5 +87,12 @@ object MainForm: TMainForm
         OnClick = SpTBXButton3Click
       end
     end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 216
+    Top = 152
   end
 end
