@@ -122,7 +122,7 @@ begin
   DecodeDate(option.DateEnd,Year,Month,Day);
   Result:= Result + '&FirstDate2=' + IntToStr(Year) + '-' + IntToStr(Month) + '-' + IntToStr(Day);
 
-  Result:= Result + '&qdsv=-1&ExactFromGeos=true&ExactToGeos=true&SortingType=2&PageSize=100';
+  Result:= Result + '&qdsv=-1&SortingType=2&PageSize=100';
 end;
 
 destructor TATI.Destroy;
@@ -174,8 +174,9 @@ procedure TATI.Init;
 begin
   login_s:= a_login;
   passw_s:= a_passw;
-  wb:= TEmbeddedWB.Create(Self); 
-  //wb.Width:= 0; wb.Height:= 0;
+  wb:= TEmbeddedWB.Create(Self);
+  //wb.Width:= 700; wb.Height:= 500; 
+  wb.Width:= 0; wb.Height:= 0;
   wb.OnDocumentComplete:= wbDocumentComplete;
 end;
 
@@ -339,27 +340,36 @@ begin
   begin
     if params.task = 'GetTickets2' then
     begin
+      oo.operation:= _GetTickets;
+      oo.task:= 'GetTickets3';
+      PushOperStack(oo);
+      load_document('http://ati.su');
+    end;
+    if params.task = 'GetTickets3' then
+    begin
       GetTickOption:= GetTickOptionDefault;
       GetTickOption.FromGeo:= 'Нижний Новгород';
       GetTickOption.ToGeo:= 'Москва';
-      GetTickOption.FromGeo:= '';
-      GetTickOption.ToGeo:= '';
       GetTickOption.WeightEnd:= 5;
       GetTickOption.VolumeEnd:= 35;
-      GetTickOption.DateBegin:= StrToDateTime('30.08.2013');
-      GetTickOption.DateEnd:= StrToDateTime('31.08.2013');
+      GetTickOption.DateBegin:= StrToDateTime('4.09.2013');
+      GetTickOption.DateEnd:= StrToDateTime('4.09.2013');
       s:= CreateGetTickUrl(GetTickOption);
       MainForm.Memo1.Text:= s;
       if Length(s) > 0 then
       begin
         oo.operation:= _GetTickets;
-        oo.task:= 'GetTickets3';
+        oo.task:= 'GetTickets4';
         PushOperStack(oo);
         load_document(s);
       end
       else
         if Assigned(OnEndGetTickets) then
           OnEndGetTickets(Self);
+    end;
+    if params.task = 'GetTickets4' then
+    begin
+      ShowMessage('ok');
     end;
   end
   else
