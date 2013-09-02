@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-02.09.2013 19:03:22
+02.09.2013 22:50:24
 /end header
 /begin data
 MyClass TopInstance
@@ -38,8 +38,9 @@ MyClass TopInstance
 			char PriceDesc = /B$&V//E$&V/
 			char Price1 = /B$&V//E$&V/
 			char Controller = /B$&V//E$&V/
-			char ControllerATI_ID = /B$&V//E$&V/
+			char ControllerInfo = /B$&V//E$&V/
 			char DateDesc = /B$&V//E$&V/
+			char Note = /B$&V//E$&V/
 			/end public
 			/begin classes
 				MyClass controller_contacts
@@ -56,7 +57,7 @@ MyClass TopInstance
 			/begin private
 			/end private
 			/begin public
-			char Phone = /B$&V//E$&V/
+			char Str1 = /B$&V//E$&V/
 			/end public
 		}
 	/end classes

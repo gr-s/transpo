@@ -181,8 +181,6 @@ begin
   login_s:= a_login;
   passw_s:= a_passw;
   wb:= TEmbeddedWB.Create(Self);
-  wb.Width:= 700; wb.Height:= 500; 
-  //wb.Width:= 0; wb.Height:= 0;
   wb.OnDocumentComplete:= wbDocumentComplete;
 end;
 
@@ -335,7 +333,7 @@ var s,s1,s2,s3:String;
     elm,elm1,elm2,elm3,elm4,elm5:IHTMLElement2;
     elm_,elm_2,elm_3,elm_4,elm_5:IHTMLElement;
     i,k,n:Integer;
-    cls1:TFMClass;
+    cls1,cls2:TFMClass;
     Tags: IHTMLElementCollection;
     f1:Single;
 begin
@@ -407,6 +405,7 @@ begin
         begin
           elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
           if not Assigned(elm) then break;
+
           cls1:= GetTickResult.CreateClassItem('','');
           cls_templates.CopyClass(cls1,cls_templates.FindClassByName('ticket'),False,True);
 
@@ -558,6 +557,46 @@ begin
             s:= IHTMLElement(elm2).innerText;
             s:= ReplaceSymb(s,' ','озвуч.ставка');
             cls1.FindPropertyByName('PriceDesc').ValueS:= s;
+          end;
+
+          elm:= IHTMLElement2(GetElementById('item_r2_'+IntToStr(i)));
+          if Assigned(elm) then
+          begin
+            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblNote_' + IntToStr(i),elm));
+            if Assigned(elm2) then
+            begin
+              s:= IHTMLElement(elm2).innerText;
+              s:= ReplaceSymb(s,' ','Примечание:');
+              cls1.FindPropertyByName('Note').ValueS:= s;
+            end;
+
+            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblFirm_' + IntToStr(i),elm));
+            if Assigned(elm2) then
+            begin
+              s:= IHTMLElement(elm2).innerText;
+              cls1.FindPropertyByName('ControllerInfo').ValueS:= s;
+            end;
+
+            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts_' + IntToStr(i),elm));
+            if Assigned(elm2) then
+            begin
+              k:= 1;
+              while True do
+              begin
+                if k = 1 then
+                  elm3:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContactsData_' + IntToStr(i),elm2))
+                else
+                  elm3:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts' + IntToStr(k) + 'Data_' + IntToStr(i),elm2));
+                if not Assigned(elm3) then Break;
+
+                s:= IHTMLElement(elm3).innerText;
+                cls2:= cls1.FindClassByName('controller_contacts').CreateClassItem('controller_contacts','');
+                cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
+                cls2.FindPropertyByName('Str1').ValueS:= s;
+                
+                Inc(k);
+              end;
+            end;
           end;
 
           Inc(i);

@@ -5,13 +5,17 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
-  StdCtrls, ExtCtrls, uSelectWizard1;
+  StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls;
 
 type
   TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
     Button1: TButton;
+    SpTBXPanel1: TSpTBXPanel;
+    SpTBXButton1: TSpTBXButton;
+    SpTBXButton2: TSpTBXButton;
     procedure Button1Click(Sender: TObject);
+    procedure SpTBXButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,7 +64,10 @@ begin
   ati_service.OnCaptcha:= DoATICaptcha;
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
-  InsertControl(ati_service.wb);
+  spMainForm.InsertControl(ati_service.wb);
+  ati_service.wb.Align:= alNone;
+  ati_service.wb.Width:= 0;
+  ati_service.wb.Height:= 0;
 end;
 
 destructor TMainForm.Destroy;
@@ -84,7 +91,12 @@ end;
 
 procedure TMainForm.DoATICaptcha(oper_code: Integer);
 begin
-  ShowMessage('Нужна каптча ...');
+  Browser.Show;
+end;
+
+procedure TMainForm.SpTBXButton1Click(Sender: TObject);
+begin
+  Browser.Show;
 end;
 
 end.
