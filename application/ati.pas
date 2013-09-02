@@ -19,6 +19,7 @@ type
   end;
 
   TOnAutorizCode = procedure(var Code:String) of object;
+  TOnCaptcha = procedure(oper_code:Integer) of object;
 
   TGetTickOption = record
     FromGeo:String;
@@ -35,8 +36,10 @@ type
   private
     FOnAutorizCode: TOnAutorizCode;
     FOnEndGetTickets: TNotifyEvent;
+    FOnCaptcha: TOnCaptcha;
     procedure SetOnAutorizCode(const Value: TOnAutorizCode);
     procedure SetOnEndGetTickets(const Value: TNotifyEvent);
+    procedure SetOnCaptcha(const Value: TOnCaptcha);
 
   protected
     OperStack: array of TOperationObject;
@@ -48,6 +51,7 @@ type
     procedure _GetTickets(params:TOperParams);
 
     function GetElementById(const Id: string): IDispatch;
+    function GetElementById2(const Id: string; elm:IHTMLElement2): IDispatch;
   public
     wb:TEmbeddedWB;
 
@@ -60,6 +64,7 @@ type
 
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
     property OnEndGetTickets:TNotifyEvent read FOnEndGetTickets write SetOnEndGetTickets;
+    property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
 
     procedure init(a_login,a_passw:String);
     procedure login(params:TOperParams);
@@ -100,6 +105,7 @@ begin
   
   FOnAutorizCode:= nil;
   FOnEndGetTickets:= nil;
+  FOnCaptcha:= nil;
 
   Setlength(OperStack,0);
 end;
@@ -175,8 +181,8 @@ begin
   login_s:= a_login;
   passw_s:= a_passw;
   wb:= TEmbeddedWB.Create(Self);
-  //wb.Width:= 700; wb.Height:= 500; 
-  wb.Width:= 0; wb.Height:= 0;
+  wb.Width:= 700; wb.Height:= 500; 
+  //wb.Width:= 0; wb.Height:= 0;
   wb.OnDocumentComplete:= wbDocumentComplete;
 end;
 
@@ -323,9 +329,15 @@ begin
 end;
 
 procedure TATI._GetTickets(params:TOperParams);
-var s:String;
+var s,s1,s2,s3:String;
     oo:TOperationObject;
     op:TOperParams;
+    elm,elm1,elm2,elm3,elm4,elm5:IHTMLElement2;
+    elm_,elm_2,elm_3,elm_4,elm_5:IHTMLElement;
+    i,k,n:Integer;
+    cls1:TFMClass;
+    Tags: IHTMLElementCollection;
+    f1:Single;
 begin
   if params.task = 'GetTickets1' then
   begin
@@ -355,7 +367,6 @@ begin
       GetTickOption.DateBegin:= StrToDateTime('4.09.2013');
       GetTickOption.DateEnd:= StrToDateTime('4.09.2013');
       s:= CreateGetTickUrl(GetTickOption);
-      MainForm.Memo1.Text:= s;
       if Length(s) > 0 then
       begin
         oo.operation:= _GetTickets;
@@ -367,14 +378,234 @@ begin
         if Assigned(OnEndGetTickets) then
           OnEndGetTickets(Self);
     end;
+    
     if params.task = 'GetTickets4' then
     begin
-      ShowMessage('ok');
+      elm:= IHTMLElement2(GetElementById('lblSearchPrompt'));
+      if Assigned(elm) then
+      begin
+        if AnsiUpperCase(IHTMLElement(elm).innerText) = AnsiUpperCase('Для продолжения поиска введите символы, изображенные на картинке слева') then
+        begin
+          if Assigned(OnCaptcha) then
+            OnCaptcha(10);
+        end
+        else
+          params.task:= 'GetTickets5';
+      end
+      else
+        params.task:= 'GetTickets5';
+    end;
+
+    if params.task = 'GetTickets5' then
+    begin
+      elm:= IHTMLElement2(GetElementById('pnlTable'));
+      if Assigned(elm) then
+      begin
+        i:= 0;
+        GetTickResult:= TFMClass.Create(nil);
+        while True do
+        begin
+          elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
+          if not Assigned(elm) then break;
+          cls1:= GetTickResult.CreateClassItem('','');
+          cls_templates.CopyClass(cls1,cls_templates.FindClassByName('ticket'),False,True);
+
+          elm2:= IHTMLElement2(GetElementById2('item_itGeoDir_' + IntToStr(i) + '_hlkDistance_'+IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            s:= IHTMLElement(elm2).innerText;
+            cls1.FindPropertyByName('Dist').ValueS:= s;
+            k:= GetFirstUnDigitalChar(s,1,s2);
+            if TryStrToInt(s2,n) then
+              cls1.FindPropertyByName('DistI').ValueI:= n;
+          end;
+
+          s:= '';
+          elm2:= IHTMLElement2(GetElementById2('item_itTruckDetails_' + IntToStr(i) + '_lblLoadCarTypes_'+IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            s:= IHTMLElement(elm2).innerText;
+          end;
+          elm2:= IHTMLElement2(GetElementById2('item_itTruckDetails_' + IntToStr(i) + '_lblLoadingTypes_'+IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            s:= s + ' (' + IHTMLElement(elm2).innerText + ')';
+          end;
+          cls1.FindPropertyByName('TruckType').ValueS:= s;
+
+          elm2:= IHTMLElement2(GetElementById2('item_pWeight_' + IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            s:= '';
+            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(0,EmptyParam), IHTMLElement, elm1);
+
+            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(0,EmptyParam), IHTMLElement, elm2);
+            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(0,EmptyParam), IHTMLElement, elm2);
+
+            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(1,EmptyParam), IHTMLElement, elm3);
+            if AnsiUpperCase(IHTMLElement(elm3).tagName) = 'B' then
+            begin
+              s:= s + IHTMLElement(elm3).innerText;
+              s2:= DelAllSpace(IHTMLElement(elm3).innerText);
+              if TryStrToFloat(s2,f1) then
+                cls1.FindPropertyByName('Weight').ValueF:= f1;
+            end;
+
+            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(2,EmptyParam), IHTMLElement, elm3);
+            if AnsiUpperCase(IHTMLElement(elm3).tagName) = 'B' then
+            begin
+              s:= s + ' / ' + IHTMLElement(elm3).innerText;
+              s2:= DelAllSpace(IHTMLElement(elm3).innerText);
+              if TryStrToFloat(s2,f1) then
+                cls1.FindPropertyByName('Volume').ValueF:= f1;
+            end;
+
+            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(2,EmptyParam), IHTMLElement, elm3);
+            if Length(IHTMLElement(elm3).innerText) > 0 then
+              s:= s + ' (' + IHTMLElement(elm3).innerText + ')';
+            cls1.FindPropertyByName('CargoName').ValueS:= IHTMLElement(elm3).innerText;
+
+            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(5,EmptyParam), IHTMLElement, elm3);
+            if Assigned(elm3) then
+            begin
+              if Length(IHTMLElement(elm3).innerText) > 0 then
+                s:= s + ' (' + IHTMLElement(elm3).innerText + ')';
+              cls1.FindPropertyByName('CargoNote').ValueS:= IHTMLElement(elm3).innerText;
+            end;
+
+            cls1.FindPropertyByName('CargoDesc').ValueS:= s;
+          end;
+
+          elm2:= IHTMLElement2(GetElementById2('item_itLoading_' + IntToStr(i) + '_pnlLoad_' + IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            elm3:= IHTMLElement2(GetElementById2('item_itLoading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_lblFrom_0',elm2));
+            if Assigned(elm3) then
+            begin
+              cls1.FindPropertyByName('FromGeo').ValueS:= IHTMLElement(elm3).innerText;
+            end;
+
+            s:= IHTMLElement(elm2).innerText;
+
+            cls1.FindPropertyByName('FromGeoDesc1').ValueS:= s;
+
+            k:= GetFirstChar(s,#$A,Length(s),True,s2);
+            s1:= s2;
+            n:= GetFirstChar(s2,':',1,False,s3);
+            if n > 0 then
+            begin
+              s1:= DelAllSpace(s1);
+              k:= GetFirstChar(s,#$A,k-2,True,s2);
+              s1:= s2 + ' (' + s1 + ')';
+            end;
+            cls1.FindPropertyByName('DateDesc').ValueS:= s1;
+          end;
+
+          elm2:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_pnlLoad_' + IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            elm3:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_divTo_',elm2));
+            if Assigned(elm3) then
+            begin
+              cls1.FindPropertyByName('ToGeo').ValueS:= IHTMLElement(elm3).innerText;
+            end;
+
+            s:= IHTMLElement(elm2).innerText;
+            cls1.FindPropertyByName('ToGeoDesc1').ValueS:= s;
+          end;
+
+          elm2:= IHTMLElement2(GetElementById2('item_pRate_' + IntToStr(i),elm));
+          if Assigned(elm2) then
+          begin
+            elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPrice_' + IntToStr(i),elm2));
+            if Assigned(elm3) then
+            begin
+              s:= IHTMLElement(elm3).innerText;
+
+              k:= GetFirstChar(s,' ',1,False,s2);
+              if k > 0 then
+              begin
+                s:= Copy(s,1,k-1);
+                s:= DelAllSpace(s);
+              end;
+
+              if Length(s) = 0 then
+              begin
+                elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPriceWithNDS_' + IntToStr(i),elm2));
+                if Assigned(elm3) then
+                begin
+                  s:= IHTMLElement(elm3).innerText;
+                  k:= GetFirstChar(s,' ',1,False,s2);
+                  s:= Copy(s,1,k-1);
+                  s:= DelAllSpace(s);
+                end;
+              end;
+              if Length(s) = 0 then
+              begin
+                elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPriceWithoutNDS_' + IntToStr(i),elm2));
+                if Assigned(elm3) then
+                begin
+                  s:= IHTMLElement(elm3).innerText;
+                  k:= GetFirstChar(s,' ',1,False,s2);
+                  s:= Copy(s,1,k-1);
+                  s:= DelAllSpace(s);
+                end;
+              end;
+
+              cls1.FindPropertyByName('Price1').ValueS:= s ;
+            end;
+
+            s:= IHTMLElement(elm2).innerText;
+            s:= ReplaceSymb(s,' ','озвуч.ставка');
+            cls1.FindPropertyByName('PriceDesc').ValueS:= s;
+          end;
+
+          Inc(i);
+        end;
+      end;
+      GetTickResult.FileName:= 'c:\tmp1.dat';
+      GetTickResult.Save;
+      if Assigned(OnEndGetTickets) then
+        OnEndGetTickets(Self);
     end;
   end
   else
     if Assigned(OnEndGetTickets) then
       OnEndGetTickets(Self);
+end;
+
+function TATI.GetElementById2(const Id: string;
+  elm: IHTMLElement2): IDispatch;
+var
+  Document: IHTMLDocument2;     // IHTMLDocument2 interface of Doc
+  Body: IHTMLElement2;          // document body element
+  Tags: IHTMLElementCollection; // all tags in document body
+  Tag: IHTMLElement;            // a tag in document body
+  I: Integer;                   // loops thru tags in document body
+begin
+  Result := nil;
+  if not Supports(elm, IHTMLElement2, Body) then
+    raise Exception.Create('Can''t find <body> element');
+  Tags := Body.getElementsByTagName('*');
+  // Scan through all tags in body
+  for I := 0 to Pred(Tags.length) do
+  begin
+    // Get reference to a tag
+    Tag := Tags.item(I, EmptyParam) as IHTMLElement;
+    // Check tag's id and return it if id matches
+    if AnsiSameText(Tag.id, Id) then
+    begin
+      Result := Tag;
+      Break;
+    end;
+    Result:= GetElementById2(Id,IHTMLElement2(Tag));
+    if Assigned(Result) then Break;
+  end;
+end;
+
+procedure TATI.SetOnCaptcha(const Value: TOnCaptcha);
+begin
+  FOnCaptcha := Value;
 end;
 
 end.

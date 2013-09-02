@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-28.08.2013 16:07:07
+02.09.2013 19:03:22
 /end header
 /begin data
 MyClass TopInstance
@@ -16,6 +16,47 @@ MyClass TopInstance
 			/begin private
 			/end private
 			/begin public
+			/end public
+		}
+		MyClass ticket
+		{
+			/begin private
+			/end private
+			/begin public
+			char FromGeo = /B$&V//E$&V/
+			char FromGeoDesc1 = /B$&V//E$&V/
+			char ToGeo = /B$&V//E$&V/
+			char ToGeoDesc1 = /B$&V//E$&V/
+			char Dist = /B$&V//E$&V/
+			int DistI = /B$&V/-1/E$&V/
+			char TruckType = /B$&V//E$&V/
+			char CargoDesc = /B$&V//E$&V/
+			char CargoName = /B$&V//E$&V/
+			char CargoNote = /B$&V//E$&V/
+			float Weight = /B$&V/-1/E$&V/
+			float Volume = /B$&V/-1/E$&V/
+			char PriceDesc = /B$&V//E$&V/
+			char Price1 = /B$&V//E$&V/
+			char Controller = /B$&V//E$&V/
+			char ControllerATI_ID = /B$&V//E$&V/
+			char DateDesc = /B$&V//E$&V/
+			/end public
+			/begin classes
+				MyClass controller_contacts
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass controller_contact
+		{
+			/begin private
+			/end private
+			/begin public
+			char Phone = /B$&V//E$&V/
 			/end public
 		}
 	/end classes

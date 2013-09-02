@@ -11,12 +11,12 @@ type
   TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
     Button1: TButton;
-    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
     procedure DoATIAutorizCode(var Code:String);
+    procedure DoATICaptcha(oper_code:Integer);
 
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
@@ -57,6 +57,7 @@ begin
 
   ati_service:= TATI.Create(Self);
   ati_service.OnAutorizCode:= DoATIAutorizCode;
+  ati_service.OnCaptcha:= DoATICaptcha;
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
   InsertControl(ati_service.wb);
@@ -79,6 +80,11 @@ begin
   begin
     Code:= SelectWizard1.SpTBXEdit1.Text;
   end;
+end;
+
+procedure TMainForm.DoATICaptcha(oper_code: Integer);
+begin
+  ShowMessage('Нужна каптча ...');
 end;
 
 end.

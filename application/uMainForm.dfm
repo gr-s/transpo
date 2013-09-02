@@ -30,14 +30,5 @@ object MainForm: TMainForm
       TabOrder = 1
       OnClick = Button1Click
     end
-    object Memo1: TMemo
-      Left = 520
-      Top = 504
-      Width = 289
-      Height = 65
-      Lines.Strings = (
-        'Memo1')
-      TabOrder = 2
-    end
   end
 end
