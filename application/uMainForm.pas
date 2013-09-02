@@ -14,13 +14,16 @@ type
     SpTBXPanel1: TSpTBXPanel;
     SpTBXButton1: TSpTBXButton;
     SpTBXButton2: TSpTBXButton;
+    SpTBXButton3: TSpTBXButton;
     procedure Button1Click(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);
+    procedure SpTBXButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
     procedure DoATIAutorizCode(var Code:String);
     procedure DoATICaptcha(oper_code:Integer);
+    procedure DoEndGetTickets(Sender: TObject);
 
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
@@ -63,6 +66,8 @@ begin
   ati_service:= TATI.Create(Self);
   ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.OnCaptcha:= DoATICaptcha;
+  ati_service.OnEndGetTickets:= DoEndGetTickets;
+
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
   spMainForm.InsertControl(ati_service.wb);
@@ -98,6 +103,16 @@ end;
 procedure TMainForm.SpTBXButton1Click(Sender: TObject);
 begin
   Browser.Show;
+end;
+
+procedure TMainForm.SpTBXButton3Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TMainForm.DoEndGetTickets(Sender: TObject);
+begin
+  ShowMessage('DoEndGetTickets');
 end;
 
 end.

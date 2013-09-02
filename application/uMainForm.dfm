@@ -39,7 +39,7 @@ object MainForm: TMainForm
       Align = alBottom
       TabOrder = 2
       object SpTBXButton1: TSpTBXButton
-        Left = 752
+        Left = 668
         Top = 2
         Width = 84
         Height = 54
@@ -69,6 +69,22 @@ object MainForm: TMainForm
         ParentFont = False
         TabOrder = 1
         OnClick = SpTBXButton1Click
+      end
+      object SpTBXButton3: TSpTBXButton
+        Left = 752
+        Top = 2
+        Width = 84
+        Height = 54
+        Caption = #1047#1072#1082#1088#1099#1090#1100
+        Align = alRight
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = SpTBXButton3Click
       end
     end
   end
