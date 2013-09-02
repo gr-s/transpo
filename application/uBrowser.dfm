@@ -1,6 +1,6 @@
 object Browser: TBrowser
-  Left = 271
-  Top = 123
+  Left = 282
+  Top = 125
   Width = 880
   Height = 544
   Color = clBtnFace
@@ -22,5 +22,24 @@ object Browser: TBrowser
     Height = 506
     FixedSize = True
     Options.Minimize = False
+    object SpTBXPanel1: TSpTBXPanel
+      Left = 8
+      Top = 30
+      Width = 848
+      Height = 35
+      Caption = 'SpTBXPanel1'
+      Align = alTop
+      TabOrder = 1
+      object SpTBXButton1: TSpTBXButton
+        Left = 771
+        Top = 2
+        Width = 75
+        Height = 31
+        Caption = #1047#1072#1082#1088#1099#1090#1100
+        Align = alRight
+        TabOrder = 0
+        OnClick = SpTBXButton1Click
+      end
+    end
   end
 end

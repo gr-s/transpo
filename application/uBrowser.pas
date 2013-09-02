@@ -4,13 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, SpTBXItem, ati, transpo_classes;
+  Dialogs, SpTBXItem, ati, transpo_classes, SpTBXControls;
 
 type
   TBrowser = class(TForm)
     spMainForm: TSpTBXTitleBar;
+    SpTBXPanel1: TSpTBXPanel;
+    SpTBXButton1: TSpTBXButton;
     procedure FormShow(Sender: TObject);
     procedure FormHide(Sender: TObject);
+    procedure SpTBXButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,6 +57,11 @@ begin
   ati_service.wb.Align:= alNone;
   ati_service.wb.Width:= 0;
   ati_service.wb.Height:= 0;
+end;
+
+procedure TBrowser.SpTBXButton1Click(Sender: TObject);
+begin
+  Hide;
 end;
 
 end.
