@@ -55,6 +55,7 @@ begin
   app_sett:= TFMClass.Create(Self);
   app_sett.FileName:= AppDir + 'transpo.dat';
   app_sett.Open;
+  app_sett.FileType:= ftFullText;
 
   cls1:= cls_templates.FindClassByName('app_sett');
   cls1.CopyClass(app_sett,cls1,False,True);
