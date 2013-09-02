@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 197
-  Top = 108
+  Left = 289
+  Top = 107
   Width = 870
   Height = 640
   Caption = 'MainForm'
@@ -85,6 +85,86 @@ object MainForm: TMainForm
         ParentFont = False
         TabOrder = 2
         OnClick = SpTBXButton3Click
+      end
+    end
+    object SpTBXPanel2: TSpTBXPanel
+      Left = 8
+      Top = 30
+      Width = 838
+      Height = 41
+      Caption = 'SpTBXPanel2'
+      Color = clWhite
+      SkinType = sknNone
+      Align = alTop
+      TabOrder = 3
+      Visible = False
+      Borders = False
+      BorderType = pbrRaised
+      object SpTBXPanel3: TSpTBXPanel
+        Left = 488
+        Top = 2
+        Width = 348
+        Height = 37
+        Caption = 'SpTBXPanel3'
+        Align = alRight
+        TabOrder = 0
+        Borders = False
+        object SpTBXLabel1: TSpTBXLabel
+          Left = 10
+          Top = 5
+          Width = 63
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object SpTBXLabel2: TSpTBXLabel
+          Left = 82
+          Top = 5
+          Width = 263
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SpTBXLabel3: TSpTBXLabel
+          Left = 10
+          Top = 19
+          Width = 63
+          Height = 13
+          Caption = #1064#1072#1075':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Alignment = taRightJustify
+        end
+        object SpTBXLabel4: TSpTBXLabel
+          Left = 81
+          Top = 19
+          Width = 264
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
       end
     end
   end

@@ -16,6 +16,12 @@ type
     SpTBXButton2: TSpTBXButton;
     SpTBXButton3: TSpTBXButton;
     Timer1: TTimer;
+    SpTBXPanel2: TSpTBXPanel;
+    SpTBXPanel3: TSpTBXPanel;
+    SpTBXLabel1: TSpTBXLabel;
+    SpTBXLabel2: TSpTBXLabel;
+    SpTBXLabel3: TSpTBXLabel;
+    SpTBXLabel4: TSpTBXLabel;
     procedure Button1Click(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
@@ -28,6 +34,7 @@ type
     procedure DoATIAutorizCode(var Code:String);
     procedure DoATICaptcha(oper_code:Integer);
     procedure DoEndGetTickets(Sender: TObject);
+    procedure DoOperProgress(Stage1,Stage2:String);
 
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
@@ -71,6 +78,7 @@ begin
   ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.OnCaptcha:= DoATICaptcha;
   ati_service.OnEndGetTickets:= DoEndGetTickets;
+  ati_service.OnOperProgress:= DoOperProgress;
 
   
 
@@ -118,6 +126,7 @@ end;
 
 procedure TMainForm.DoEndGetTickets(Sender: TObject);
 begin
+  DoOperProgress('','');
   ShowMessage('DoEndGetTickets');
 end;
 
@@ -131,6 +140,29 @@ end;
 procedure TMainForm.Run;
 begin
   Timer1.Enabled:= True;
+end;
+
+procedure TMainForm.DoOperProgress(Stage1, Stage2: String);
+begin
+  //LockWindowUpdate(Handle);
+
+  if (Length(Stage1) = 0) and (Length(Stage2) = 0) then
+  begin
+    SpTBXPanel2.Hide;
+  end
+  else
+  begin
+    if not SpTBXPanel2.Visible then
+      SpTBXPanel2.Show;
+
+    if Length(Stage1) > 0 then
+      SpTBXLabel2.Caption:= Stage1;
+
+    SpTBXLabel4.Caption:= Stage2;
+  end;
+
+  //LockWindowUpdate(0);
+  Application.ProcessMessages;
 end;
 
 end.

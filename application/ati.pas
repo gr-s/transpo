@@ -20,6 +20,7 @@ type
 
   TOnAutorizCode = procedure(var Code:String) of object;
   TOnCaptcha = procedure(oper_code:Integer) of object;
+  TOnOperProgress = procedure(Stage1,Stage2:String) of object;
 
   TGetTickOption = record
     FromGeo:String;
@@ -37,9 +38,11 @@ type
     FOnAutorizCode: TOnAutorizCode;
     FOnEndGetTickets: TNotifyEvent;
     FOnCaptcha: TOnCaptcha;
+    FOnOperProgress: TOnOperProgress;
     procedure SetOnAutorizCode(const Value: TOnAutorizCode);
     procedure SetOnEndGetTickets(const Value: TNotifyEvent);
     procedure SetOnCaptcha(const Value: TOnCaptcha);
+    procedure SetOnOperProgress(const Value: TOnOperProgress);
 
   protected
     OperStack: array of TOperationObject;
@@ -49,6 +52,8 @@ type
 
     function CreateGetTickUrl(option:TGetTickOption):String;
     procedure _GetTickets(params:TOperParams);
+
+    procedure _OperProgress(Stage1,Stage2:String);
 
     function GetElementById(const Id: string): IDispatch;
     function GetElementById2(const Id: string; elm:IHTMLElement2): IDispatch;
@@ -65,6 +70,7 @@ type
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
     property OnEndGetTickets:TNotifyEvent read FOnEndGetTickets write SetOnEndGetTickets;
     property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
+    property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
 
     procedure init(a_login,a_passw:String);
     procedure login(params:TOperParams);
@@ -106,6 +112,7 @@ begin
   FOnAutorizCode:= nil;
   FOnEndGetTickets:= nil;
   FOnCaptcha:= nil;
+  FOnOperProgress:= nil;
 
   Setlength(OperStack,0);
 end;
@@ -198,6 +205,7 @@ begin
 
   if Length(params.task) = 0 then
   begin
+    _OperProgress('Авторизация ati.su','Страница авторизации ati.su');
     oo.operation:= login;
     oo.task:= 'login_1';
     PushOperStack(oo);
@@ -225,6 +233,8 @@ begin
         oo.operation:= login;
         oo.task:= 'login_2';
         PushOperStack(oo);
+
+        _OperProgress('','Запрос ...');
 
         elm.click;
         Exit;
@@ -350,6 +360,7 @@ begin
   begin
     if params.task = 'GetTickets2' then
     begin
+      _OperProgress('Сканирование ati.su','Страница костыль ati.su');
       oo.operation:= _GetTickets;
       oo.task:= 'GetTickets3';
       PushOperStack(oo);
@@ -358,8 +369,8 @@ begin
     if params.task = 'GetTickets3' then
     begin
       GetTickOption:= GetTickOptionDefault;
-      GetTickOption.FromGeo:= 'Нижний Новгород';
-      GetTickOption.ToGeo:= 'Москва';
+      GetTickOption.FromGeo:= 'Москва';
+      GetTickOption.ToGeo:= '';
       GetTickOption.WeightEnd:= 5;
       GetTickOption.VolumeEnd:= 35;
       GetTickOption.DateBegin:= StrToDateTime('4.09.2013');
@@ -370,6 +381,7 @@ begin
         oo.operation:= _GetTickets;
         oo.task:= 'GetTickets4';
         PushOperStack(oo);
+        _OperProgress('','Получение таблицы');
         load_document(s);
       end
       else
@@ -403,6 +415,8 @@ begin
         GetTickResult:= TFMClass.Create(nil);
         while True do
         begin
+          _OperProgress('','Обработка таблицы, заявка № ' + IntToStr(i));
+
           elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
           if not Assigned(elm) then break;
 
@@ -645,6 +659,17 @@ end;
 procedure TATI.SetOnCaptcha(const Value: TOnCaptcha);
 begin
   FOnCaptcha := Value;
+end;
+
+procedure TATI.SetOnOperProgress(const Value: TOnOperProgress);
+begin
+  FOnOperProgress := Value;
+end;
+
+procedure TATI._OperProgress(Stage1, Stage2: String);
+begin
+  if Assigned(OnOperProgress) then
+    OnOperProgress(Stage1,Stage2);
 end;
 
 end.
