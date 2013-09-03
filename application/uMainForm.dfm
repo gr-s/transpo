@@ -763,7 +763,6 @@ object MainForm: TMainForm
             Constraints.MinWidth = 100
             TabOrder = 0
             TabStop = True
-            OnMouseMove = tblATIGeosMouseMove
             FixedColShow = False
             AlwaysFixedColShow = True
             TemplateFileAppDir = False

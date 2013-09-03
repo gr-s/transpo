@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-03.09.2013 20:39:05
+04.09.2013 0:27:25
 /end header
 /begin data
 MyClass EmptyClass
@@ -10,5 +10,119 @@ MyClass EmptyClass
 	/end private
 	/begin public
 	/end public
+	/begin classes
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+		MyClass SDFSDF
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/SDFSDF/E$&V/
+			/end public
+		}
+	/end classes
 }
 /end data
