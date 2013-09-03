@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
-  SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors;
+  SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard;
 
 type
   TMainForm = class(TForm)
@@ -105,6 +105,8 @@ type
     procedure SpTBXButton13Click(Sender: TObject);
     procedure SpTBXButton10Click(Sender: TObject);
     procedure SpTBXButton15Click(Sender: TObject);
+    procedure SpTBXButton23Click(Sender: TObject);
+    procedure SpTBXButton25Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -392,10 +394,10 @@ procedure TMainForm.tblATIGeosAfterCellEdit(aCell: TRRCell);
 begin
   if aCell.MyTag = 'geo' then
   begin
-    TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS:= AnsiUpperCase(aCell.TextString);
+    {TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS:= AnsiUpperCase(aCell.TextString);
     curr_sel_cell_value:= TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS;
     TblUpdateGeos(tblATIGeos,cls_geos);
-    cls_geos.Save;
+    cls_geos.Save;}
   end;
 end;
 
@@ -624,6 +626,18 @@ begin
   ati_service.GetTickOption.ToGeo:= tblATIToGeo.Cell[1,_ToGeoIndex].TextString;
   DoOperSub1Progress(ati_service.GetTickOption.FromGeo + ' - ' + ati_service.GetTickOption.ToGeo,'');
   ati_service.GetTickets;
+end;
+
+procedure TMainForm.SpTBXButton23Click(Sender: TObject);
+begin
+  if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
+    SpTBXEdit6.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.SpTBXButton25Click(Sender: TObject);
+begin
+  if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
+    SpTBXEdit7.Text:= DateToStr(CalendarWizard.Result);
 end;
 
 end.

@@ -1020,6 +1020,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1091#1089#1090
             TabOrder = 15
+            OnClick = SpTBXButton23Click
           end
           object SpTBXLabel10: TSpTBXLabel
             Left = 11
@@ -1057,6 +1058,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1091#1089#1090
             TabOrder = 19
+            OnClick = SpTBXButton25Click
           end
         end
         object SpTBXPanel7: TSpTBXPanel
