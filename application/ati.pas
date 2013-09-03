@@ -59,6 +59,7 @@ type
     function GetElementById2(const Id: string; elm:IHTMLElement2): IDispatch;
   public
     wb:TEmbeddedWB;
+    DOM_Index:Integer;
 
     login_s:String;
     passw_s:String;
@@ -80,6 +81,7 @@ type
     procedure ThrowError(code:Integer;text:String);
     procedure PushOperStack(OperationObject:TOperationObject);
     procedure PopOperStack;
+    procedure ClearOperStack;
 
     constructor Create(AOwner: TComponent);
     destructor Destroy;override;
@@ -150,7 +152,7 @@ var
   Body: IHTMLElement2;          // document body element
   Tags: IHTMLElementCollection; // all tags in document body
   Tag: IHTMLElement;            // a tag in document body
-  I: Integer;                   // loops thru tags in document body
+  I,n,n1,n2: Integer;                   // loops thru tags in document body
 begin
   Result := nil;
   // Check for valid document: require IHTMLDocument2 interface to it
@@ -162,16 +164,33 @@ begin
   // Get all tags in body element ('*' => any tag name)
   Tags := Body.getElementsByTagName('*');
   // Scan through all tags in body
-  for I := 0 to Pred(Tags.length) do
+  for n:= 1 to 2 do
   begin
-    // Get reference to a tag
-    Tag := Tags.item(I, EmptyParam) as IHTMLElement;
-    // Check tag's id and return it if id matches
-    if AnsiSameText(Tag.id, Id) then
-    begin
-      Result := Tag;
-      Break;
+    case n of
+      1:
+      begin
+        n1:= DOM_Index;
+        n2:= Pred(Tags.length);
+      end;
+      2:
+      begin
+        n1:= 0;
+        n2:= n1;
+      end;
     end;
+    for I := n1 to n2 do
+    begin
+      // Get reference to a tag
+      Tag := Tags.item(I, EmptyParam) as IHTMLElement;
+      // Check tag's id and return it if id matches
+      if AnsiSameText(Tag.id, Id) then
+      begin
+        Result := Tag;
+        Break;
+      end;
+    end;
+    DOM_Index:= I;
+    if Assigned(Result) then Break;
   end;
 end;
 
@@ -323,16 +342,14 @@ var load_result:Integer;
 begin
   load_result:= 0;
   Application.ProcessMessages;
-//  ShowMessage(URL);
   if Assigned(wb.Document) then
     load_result:= 1;
+  DOM_Index:= 0;
   PopOperStack;
 end;
 
 procedure TATI.load_document(url: String);
-var w_url:WideString;
 begin
-  w_url:= WideString(url);
   wb.Go(url);
 end;
 
@@ -396,6 +413,8 @@ begin
       begin
         if AnsiUpperCase(IHTMLElement(elm).innerText) = AnsiUpperCase('Для продолжения поиска введите символы, изображенные на картинке слева') then
         begin
+          _OperProgress('','');
+          ClearOperStack;
           if Assigned(OnCaptcha) then
             OnCaptcha(10);
         end
@@ -419,6 +438,7 @@ begin
 
           elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
           if not Assigned(elm) then break;
+
 
           cls1:= GetTickResult.CreateClassItem('','');
           cls_templates.CopyClass(cls1,cls_templates.FindClassByName('ticket'),False,True);
@@ -607,7 +627,7 @@ begin
                 cls2:= cls1.FindClassByName('controller_contacts').CreateClassItem('controller_contacts','');
                 cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
                 cls2.FindPropertyByName('Str1').ValueS:= s;
-                
+
                 Inc(k);
               end;
             end;
@@ -636,6 +656,8 @@ var
   Tag: IHTMLElement;            // a tag in document body
   I: Integer;                   // loops thru tags in document body
 begin
+  Result:= GetElementById(Id);
+  Exit;
   Result := nil;
   if not Supports(elm, IHTMLElement2, Body) then
     raise Exception.Create('Can''t find <body> element');
@@ -672,4 +694,10 @@ begin
     OnOperProgress(Stage1,Stage2);
 end;
 
+procedure TATI.ClearOperStack;
+begin
+  SetLength(OperStack,0);
+end;
+
 end.
+
