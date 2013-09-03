@@ -491,6 +491,15 @@ object MainForm: TMainForm
             DesignModeEnabled = False
             HideSelection = True
             SelectComboAutoDropDown = False
+            object Memo1: TMemo
+              Left = 24
+              Top = 8
+              Width = 217
+              Height = 97
+              Lines.Strings = (
+                'Memo1')
+              TabOrder = 0
+            end
           end
           object SpTBXButton6: TSpTBXButton
             Left = 104
@@ -754,6 +763,9 @@ object MainForm: TMainForm
             Constraints.MinWidth = 100
             TabOrder = 0
             TabStop = True
+            OnMouseDown = tblATIGeosMouseDown
+            OnMouseMove = tblATIGeosMouseMove
+            OnMouseUp = tblATIGeosMouseUp
             FixedColShow = False
             AlwaysFixedColShow = True
             TemplateFileAppDir = False
