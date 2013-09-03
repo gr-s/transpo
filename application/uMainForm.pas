@@ -70,12 +70,19 @@ type
     SpTBXEdit7: TSpTBXEdit;
     SpTBXButton24: TSpTBXButton;
     SpTBXButton25: TSpTBXButton;
+    SpTBXPanel7: TSpTBXPanel;
+    SpTBXButton26: TSpTBXButton;
+    SpTBXTabItem1: TSpTBXTabItem;
+    SpTBXTabSheet1: TSpTBXTabSheet;
+    SpTBXButton27: TSpTBXButton;
+    SpTBXButton28: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure SpTBXButton2Click(Sender: TObject);
     procedure SpTBXButton4Click(Sender: TObject);
     procedure SpTBXButton5Click(Sender: TObject);
+    procedure SpTBXButton27Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -239,13 +246,22 @@ begin
     tcClient.ActiveTabIndex:= 0;
   end;
 
+  if op_code = op_ati then
+  begin
+    tcLeft.Show;
+    tcSplitterLeft.Show;
+    tcLeft.ActiveTabIndex:= 0;
+    tcClient.Show;
+    tcClient.ActiveTabIndex:= 1;
+  end;
+
   LockWindowUpdate(0);
 
 end;
 
 procedure TMainForm.SpTBXButton2Click(Sender: TObject);
 begin
-  ToggleOperation(op_ati_get_ticks);
+  ToggleOperation(op_ati);
 end;
 
 procedure TMainForm.SpTBXButton4Click(Sender: TObject);
@@ -268,6 +284,11 @@ begin
     SpTBXButton5.Color:= clRed
   else
     SpTBXButton5.Color:= clNone;
+end;
+
+procedure TMainForm.SpTBXButton27Click(Sender: TObject);
+begin
+  ToggleOperation(op_ati_get_ticks);  
 end;
 
 end.

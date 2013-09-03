@@ -10,7 +10,8 @@ var
 
 const
   op_none:Integer = 0;
-  op_ati_get_ticks:Integer = 10;
+  op_ati:Integer = 10;
+  op_ati_get_ticks:Integer = 20;
 
 implementation
 
