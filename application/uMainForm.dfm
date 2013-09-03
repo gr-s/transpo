@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 289
-  Top = 107
-  Width = 870
-  Height = 640
+  Left = 154
+  Top = 124
+  Width = 1102
+  Height = 646
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,34 +12,26 @@ object MainForm: TMainForm
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object spMainForm: TSpTBXTitleBar
     Left = 0
     Top = 0
-    Width = 854
-    Height = 602
+    Width = 1086
+    Height = 608
     Caption = 'TRANSPO'
     FixedSize = True
-    object Button1: TButton
-      Left = 152
-      Top = 256
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 1
-      OnClick = Button1Click
-    end
     object SpTBXPanel1: TSpTBXPanel
       Left = 8
-      Top = 536
-      Width = 838
+      Top = 542
+      Width = 1070
       Height = 58
       Caption = 'SpTBXPanel1'
       Align = alBottom
-      TabOrder = 2
+      TabOrder = 1
       object SpTBXButton1: TSpTBXButton
-        Left = 668
+        Left = 900
         Top = 2
         Width = 84
         Height = 54
@@ -57,9 +49,9 @@ object MainForm: TMainForm
       object SpTBXButton2: TSpTBXButton
         Left = 2
         Top = 2
-        Width = 84
+        Width = 95
         Height = 54
-        Caption = #1055#1086#1080#1089#1082
+        Caption = #1055#1086#1080#1089#1082' (ATI)'
         Align = alLeft
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -68,10 +60,10 @@ object MainForm: TMainForm
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 1
-        OnClick = SpTBXButton1Click
+        OnClick = SpTBXButton2Click
       end
       object SpTBXButton3: TSpTBXButton
-        Left = 752
+        Left = 984
         Top = 2
         Width = 84
         Height = 54
@@ -90,18 +82,18 @@ object MainForm: TMainForm
     object SpTBXPanel2: TSpTBXPanel
       Left = 8
       Top = 30
-      Width = 838
+      Width = 1070
       Height = 41
       Caption = 'SpTBXPanel2'
       Color = clWhite
       SkinType = sknNone
       Align = alTop
-      TabOrder = 3
+      TabOrder = 2
       Visible = False
       Borders = False
       BorderType = pbrRaised
       object SpTBXPanel3: TSpTBXPanel
-        Left = 488
+        Left = 720
         Top = 2
         Width = 348
         Height = 37
@@ -164,6 +156,107 @@ object MainForm: TMainForm
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
+        end
+      end
+    end
+    object tcSplitterLeft: TSpTBXSplitter
+      Left = 297
+      Top = 71
+      Width = 15
+      Height = 471
+      Cursor = crSizeWE
+    end
+    object tcLeft: TSpTBXTabControl
+      Left = 8
+      Top = 71
+      Width = 289
+      Height = 471
+      Align = alLeft
+      ActiveTabIndex = 0
+      TabVisible = False
+      HiddenItems = <>
+      object SpTBXTabItem2: TSpTBXTabItem
+        Caption = 'f_tcks'
+        Checked = True
+      end
+      object SpTBXTabSheet2: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 289
+        Height = 446
+        ImageIndex = -1
+        TabVisible = False
+        TabItem = ''
+      end
+    end
+    object tcClient: TSpTBXTabControl
+      Left = 312
+      Top = 71
+      Width = 766
+      Height = 471
+      Align = alClient
+      ActiveTabIndex = 0
+      TabVisible = False
+      HiddenItems = <>
+      object SpTBXTabItem3: TSpTBXTabItem
+        Caption = 'f_ati'
+        Checked = True
+      end
+      object SpTBXTabSheet3: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 766
+        Height = 446
+        Caption = 'f_ati'
+        ImageIndex = -1
+        TabItem = 'SpTBXTabItem3'
+        object SpTBXPanel4: TSpTBXPanel
+          Left = 2
+          Top = 0
+          Width = 119
+          Height = 442
+          Caption = 'SpTBXPanel4'
+          Align = alLeft
+          TabOrder = 0
+          Borders = False
+          object SpTBXButton4: TSpTBXButton
+            Left = 16
+            Top = 24
+            Width = 89
+            Height = 33
+            Caption = #1047#1072#1075#1088#1091#1079#1082#1072
+            TabOrder = 0
+            OnClick = SpTBXButton4Click
+          end
+          object SpTBXButton5: TSpTBXButton
+            Left = 16
+            Top = 136
+            Width = 89
+            Height = 33
+            Caption = #1056#1072#1079#1075#1088#1091#1079#1082#1072
+            TabOrder = 1
+            OnClick = SpTBXButton5Click
+          end
+        end
+        object SpTBXPanel5: TSpTBXPanel
+          Left = 121
+          Top = 0
+          Width = 327
+          Height = 442
+          Caption = 'SpTBXPanel4'
+          Align = alClient
+          TabOrder = 1
+          Borders = False
+        end
+        object SpTBXPanel6: TSpTBXPanel
+          Left = 448
+          Top = 0
+          Width = 314
+          Height = 442
+          Caption = 'SpTBXPanel4'
+          Align = alRight
+          TabOrder = 2
+          Borders = False
         end
       end
     end

@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
-  StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls;
+  StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
+  SpTBXDkPanels, TB2Item;
 
 type
   TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
-    Button1: TButton;
     SpTBXPanel1: TSpTBXPanel;
     SpTBXButton1: TSpTBXButton;
     SpTBXButton2: TSpTBXButton;
@@ -22,10 +22,24 @@ type
     SpTBXLabel2: TSpTBXLabel;
     SpTBXLabel3: TSpTBXLabel;
     SpTBXLabel4: TSpTBXLabel;
-    procedure Button1Click(Sender: TObject);
+    tcSplitterLeft: TSpTBXSplitter;
+    tcLeft: TSpTBXTabControl;
+    SpTBXTabItem2: TSpTBXTabItem;
+    SpTBXTabSheet2: TSpTBXTabSheet;
+    tcClient: TSpTBXTabControl;
+    SpTBXTabItem3: TSpTBXTabItem;
+    SpTBXTabSheet3: TSpTBXTabSheet;
+    SpTBXPanel4: TSpTBXPanel;
+    SpTBXButton4: TSpTBXButton;
+    SpTBXButton5: TSpTBXButton;
+    SpTBXPanel5: TSpTBXPanel;
+    SpTBXPanel6: TSpTBXPanel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure SpTBXButton2Click(Sender: TObject);
+    procedure SpTBXButton4Click(Sender: TObject);
+    procedure SpTBXButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +49,8 @@ type
     procedure DoATICaptcha(oper_code:Integer);
     procedure DoEndGetTickets(Sender: TObject);
     procedure DoOperProgress(Stage1,Stage2:String);
+
+    procedure ToggleOperation(op_code:Integer);
 
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
@@ -74,6 +90,8 @@ begin
   cls1:= cls_templates.FindClassByName('app_sett');
   cls1.CopyClass(app_sett,cls1,False,True);
 
+  ToggleOperation(op_none);
+
   ati_service:= TATI.Create(Self);
   ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.OnCaptcha:= DoATICaptcha;
@@ -94,11 +112,6 @@ destructor TMainForm.Destroy;
 begin
   app_sett.Save;
   inherited;
-end;
-
-procedure TMainForm.Button1Click(Sender: TObject);
-begin
-  ati_service.GetTickets();
 end;
 
 procedure TMainForm.DoATIAutorizCode(var Code: String);
@@ -160,6 +173,58 @@ begin
   end;
 
   Application.ProcessMessages;
+end;
+
+procedure TMainForm.ToggleOperation(op_code: Integer);
+begin
+
+  LockWindowUpdate(Handle);
+
+  if op_code = op_none then
+  begin
+    tcLeft.Hide;
+    tcSplitterLeft.Hide;
+    tcClient.Hide;
+  end;
+
+  if op_code = op_ati_get_ticks then
+  begin
+    tcSplitterLeft.Show;
+    tcLeft.Show;
+    tcLeft.ActiveTabIndex:= 0;
+    tcClient.Show;
+    tcClient.ActiveTabIndex:= 0;
+  end;
+
+  LockWindowUpdate(0);
+
+end;
+
+procedure TMainForm.SpTBXButton2Click(Sender: TObject);
+begin
+  ToggleOperation(op_ati_get_ticks);
+end;
+
+procedure TMainForm.SpTBXButton4Click(Sender: TObject);
+begin
+  if SpTBXButton5.Checked then SpTBXButton5Click(SpTBXButton5);
+
+  SpTBXButton4.Checked:= not SpTBXButton4.Checked;
+  if SpTBXButton4.Checked then
+    SpTBXButton4.Color:= clRed
+  else
+    SpTBXButton4.Color:= clNone;
+end;
+
+procedure TMainForm.SpTBXButton5Click(Sender: TObject);
+begin
+  if SpTBXButton4.Checked then SpTBXButton4Click(SpTBXButton5);
+
+  SpTBXButton5.Checked:= not SpTBXButton5.Checked;
+  if SpTBXButton5.Checked then
+    SpTBXButton5.Color:= clRed
+  else
+    SpTBXButton5.Color:= clNone;
 end;
 
 end.

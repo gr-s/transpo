@@ -45,6 +45,7 @@ type
     procedure SetOnOperProgress(const Value: TOnOperProgress);
 
   protected
+    curr_page:Integer;
     OperStack: array of TOperationObject;
 
     procedure load_document(url:String);
@@ -131,13 +132,19 @@ begin
   Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
   Result:= Result + '&Volume2=' + IntToStr(option.VolumeEnd);
 
-  DecodeDate(option.DateBegin,Year,Month,Day);
-  Result:= Result + '&FirstDate=' + IntToStr(Year) + '-' + IntToStr(Month) + '-' + IntToStr(Day);
+  if option.DateBegin <> 0 then
+  begin
+    DecodeDate(option.DateBegin,Year,Month,Day);
+    Result:= Result + '&FirstDate=' + IntToStr(Year) + '-' + IntToStr(Month) + '-' + IntToStr(Day);
+  end;
 
-  DecodeDate(option.DateEnd,Year,Month,Day);
-  Result:= Result + '&FirstDate2=' + IntToStr(Year) + '-' + IntToStr(Month) + '-' + IntToStr(Day);
+  if option.DateEnd <> 0 then
+  begin
+    DecodeDate(option.DateEnd,Year,Month,Day);
+    Result:= Result + '&FirstDate2=' + IntToStr(Year) + '-' + IntToStr(Month) + '-' + IntToStr(Day);
+  end;
 
-  Result:= Result + '&qdsv=-1&SortingType=2&PageSize=100';
+  Result:= Result + '&ExactFromGeos=true&ExactToGeos=true&qdsv=-1&SortingType=2&PageSize=100';
 end;
 
 destructor TATI.Destroy;
@@ -198,6 +205,7 @@ procedure TATI.GetTickets;
 var op:TOperParams;
 begin
   FreeAndNil(GetTickResult);
+  GetTickResult:= TFMClass.Create(nil);
   op.task:= 'GetTickets1';
   _GetTickets(op);
 end;
@@ -363,6 +371,7 @@ var s,s1,s2,s3:String;
     cls1,cls2:TFMClass;
     Tags: IHTMLElementCollection;
     f1:Single;
+    page_count:Integer;
 begin
   if params.task = 'GetTickets1' then
   begin
@@ -381,24 +390,25 @@ begin
       oo.operation:= _GetTickets;
       oo.task:= 'GetTickets3';
       PushOperStack(oo);
+      curr_page:= 1;
       load_document('http://ati.su');
     end;
     if params.task = 'GetTickets3' then
     begin
-      GetTickOption:= GetTickOptionDefault;
-      GetTickOption.FromGeo:= 'Москва';
-      GetTickOption.ToGeo:= '';
+      {GetTickOption:= GetTickOptionDefault;
+      GetTickOption.FromGeo:= 'Нижний Новгород';
+      GetTickOption.ToGeo:= 'Москва';
       GetTickOption.WeightEnd:= 5;
       GetTickOption.VolumeEnd:= 35;
-      GetTickOption.DateBegin:= StrToDateTime('4.09.2013');
-      GetTickOption.DateEnd:= StrToDateTime('4.09.2013');
-      s:= CreateGetTickUrl(GetTickOption);
+      GetTickOption.DateBegin:= StrToDateTime('03.09.2013');
+      GetTickOption.DateEnd:= StrToDateTime('03.09.2013');}
+      s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
       if Length(s) > 0 then
       begin
         oo.operation:= _GetTickets;
         oo.task:= 'GetTickets4';
         PushOperStack(oo);
-        _OperProgress('','Получение таблицы');
+        _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ')');
         load_document(s);
       end
       else
@@ -427,14 +437,21 @@ begin
 
     if params.task = 'GetTickets5' then
     begin
+      page_count:= 1;
+
+      elm:= IHTMLElement2(GetElementById('cphMain_hlpTop_pnlPager'));
+      if Assigned(elm) then
+      begin
+        page_count:= IHTMLElementCollection(IHTMLElement(elm).children).length-2;
+      end;
+
       elm:= IHTMLElement2(GetElementById('pnlTable'));
       if Assigned(elm) then
       begin
         i:= 0;
-        GetTickResult:= TFMClass.Create(nil);
         while True do
         begin
-          _OperProgress('','Обработка таблицы, заявка № ' + IntToStr(i));
+          _OperProgress('Страница ' + IntToStr(curr_page) + ' из ' + IntToStr(page_count),'Обработка таблицы, заявка № ' + IntToStr(i));
 
           elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
           if not Assigned(elm) then break;
@@ -537,7 +554,7 @@ begin
           elm2:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_pnlLoad_' + IntToStr(i),elm));
           if Assigned(elm2) then
           begin
-            elm3:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_divTo_',elm2));
+            elm3:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_divTo_0',elm2));
             if Assigned(elm3) then
             begin
               cls1.FindPropertyByName('ToGeo').ValueS:= IHTMLElement(elm3).innerText;
@@ -636,11 +653,27 @@ begin
           Inc(i);
         end;
       end;
+
+      Inc(curr_page);
+      if curr_page <= page_count then
+      begin
+        op.task:= 'GetTickets3';
+        _GetTickets(op);
+      end
+      else
+      begin
+        params.task:= 'GetTickets6';
+      end;
+    end;
+
+    if params.task = 'GetTickets6' then
+    begin
       GetTickResult.FileName:= 'c:\tmp1.dat';
       GetTickResult.Save;
       if Assigned(OnEndGetTickets) then
         OnEndGetTickets(Self);
     end;
+
   end
   else
     if Assigned(OnEndGetTickets) then
