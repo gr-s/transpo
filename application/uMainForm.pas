@@ -108,6 +108,8 @@ type
     procedure SpTBXButton15Click(Sender: TObject);
     procedure SpTBXButton23Click(Sender: TObject);
     procedure SpTBXButton25Click(Sender: TObject);
+    procedure tblATIGeosMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
   public
@@ -639,6 +641,12 @@ procedure TMainForm.SpTBXButton25Click(Sender: TObject);
 begin
   if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
     SpTBXEdit7.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.tblATIGeosMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Memo1.Lines.Add(IntToStr(Random(100)));
 end;
 
 end.
