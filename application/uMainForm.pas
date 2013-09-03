@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
-  SpTBXDkPanels, TB2Item;
+  SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors;
 
 type
   TMainForm = class(TForm)
@@ -34,6 +34,42 @@ type
     SpTBXButton5: TSpTBXButton;
     SpTBXPanel5: TSpTBXPanel;
     SpTBXPanel6: TSpTBXPanel;
+    tblATIFromGeo: TRRAdvTable;
+    SpTBXButton6: TSpTBXButton;
+    SpTBXButton7: TSpTBXButton;
+    SpTBXButton8: TSpTBXButton;
+    SpTBXLabel5: TSpTBXLabel;
+    SpTBXEdit1: TSpTBXEdit;
+    SpTBXButton9: TSpTBXButton;
+    SpTBXButton10: TSpTBXButton;
+    tblATIToGeo: TRRAdvTable;
+    SpTBXButton11: TSpTBXButton;
+    SpTBXButton12: TSpTBXButton;
+    SpTBXButton13: TSpTBXButton;
+    SpTBXLabel6: TSpTBXLabel;
+    SpTBXEdit2: TSpTBXEdit;
+    SpTBXButton14: TSpTBXButton;
+    SpTBXButton15: TSpTBXButton;
+    tblATIGeos: TRRAdvTable;
+    SpTBXButton16: TSpTBXButton;
+    SpTBXButton17: TSpTBXButton;
+    SpTBXButton18: TSpTBXButton;
+    SpTBXEdit3: TSpTBXEdit;
+    SpTBXButton19: TSpTBXButton;
+    SpTBXLabel7: TSpTBXLabel;
+    SpTBXEdit4: TSpTBXEdit;
+    SpTBXButton20: TSpTBXButton;
+    SpTBXLabel8: TSpTBXLabel;
+    SpTBXEdit5: TSpTBXEdit;
+    SpTBXButton21: TSpTBXButton;
+    SpTBXLabel9: TSpTBXLabel;
+    SpTBXEdit6: TSpTBXEdit;
+    SpTBXButton22: TSpTBXButton;
+    SpTBXButton23: TSpTBXButton;
+    SpTBXLabel10: TSpTBXLabel;
+    SpTBXEdit7: TSpTBXEdit;
+    SpTBXButton24: TSpTBXButton;
+    SpTBXButton25: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -91,6 +127,13 @@ begin
   cls1.CopyClass(app_sett,cls1,False,True);
 
   ToggleOperation(op_none);
+
+  tblATIFromGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIFromGeo.Open;
+  tblATIToGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIToGeo.Open;
+  tblATIGeos.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIGeos.Open;
 
   ati_service:= TATI.Create(Self);
   ati_service.OnAutorizCode:= DoATIAutorizCode;
@@ -189,8 +232,8 @@ begin
 
   if op_code = op_ati_get_ticks then
   begin
-    tcSplitterLeft.Show;
     tcLeft.Show;
+    tcSplitterLeft.Show;
     tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 0;
