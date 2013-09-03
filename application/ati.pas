@@ -668,8 +668,8 @@ begin
 
     if params.task = 'GetTickets6' then
     begin
-      GetTickResult.FileName:= 'c:\tmp1.dat';
-      GetTickResult.Save;
+      //GetTickResult.FileName:= 'c:\tmp1.dat';
+      //GetTickResult.Save;
       if Assigned(OnEndGetTickets) then
         OnEndGetTickets(Self);
     end;

@@ -1,0 +1,144 @@
+fmod
+/begin header
+1.1
+03.09.2013 18:14:58
+/end header
+/begin data
+MyClass EmptyClass
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass ASDASD
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ASDASD/E$&V/
+			/end public
+		}
+		MyClass À
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/À/E$&V/
+			/end public
+		}
+		MyClass ÌÎÑÊÂÀ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÌÎÑÊÂÀ/E$&V/
+			/end public
+		}
+		MyClass ÍÈÆÍÈÉÍÂÎÃÎĞÎÄ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÍÈÆÍÈÉ ÍÎÂÃÎĞÎÄ/E$&V/
+			/end public
+		}
+		MyClass ×
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/×/E$&V/
+			/end public
+		}
+		MyClass ß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßß/E$&V/
+			/end public
+		}
+		MyClass ßßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßßß/E$&V/
+			/end public
+		}
+		MyClass ßßßßßßßßßßßß
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ßßßßßßßßßßßß/E$&V/
+			/end public
+		}
+	/end classes
+}
+/end data

@@ -8,6 +8,8 @@ var
   app_sett:TFMClass;
   cls_templates:TFMClass;
 
+  cls_geos:TFMClass;
+
 const
   op_none:Integer = 0;
   op_ati:Integer = 10;

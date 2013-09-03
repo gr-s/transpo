@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 178
-  Top = 49
+  Left = 167
+  Top = 101
   Width = 1062
   Height = 669
   Caption = 'MainForm'
@@ -42,7 +42,7 @@ object MainForm: TMainForm
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 1
         OnClick = SpTBXButton1Click
       end
       object SpTBXButton2: TSpTBXButton
@@ -58,7 +58,7 @@ object MainForm: TMainForm
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 0
         OnClick = SpTBXButton2Click
       end
       object SpTBXButton3: TSpTBXButton
@@ -157,6 +157,72 @@ object MainForm: TMainForm
           ParentFont = False
         end
       end
+      object SpTBXPanel8: TSpTBXPanel
+        Left = 332
+        Top = 2
+        Width = 348
+        Height = 37
+        Caption = 'SpTBXPanel3'
+        Align = alRight
+        TabOrder = 1
+        Borders = False
+        object SpTBXLabel11: TSpTBXLabel
+          Left = 10
+          Top = 5
+          Width = 63
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object SpTBXLabel12: TSpTBXLabel
+          Left = 82
+          Top = 5
+          Width = 263
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SpTBXLabel13: TSpTBXLabel
+          Left = 10
+          Top = 19
+          Width = 63
+          Height = 13
+          Caption = #1064#1072#1075':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Alignment = taRightJustify
+        end
+        object SpTBXLabel14: TSpTBXLabel
+          Left = 81
+          Top = 19
+          Width = 264
+          Height = 13
+          Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+      end
     end
     object tcSplitterLeft: TSpTBXSplitter
       Left = 297
@@ -194,15 +260,58 @@ object MainForm: TMainForm
       Width = 726
       Height = 494
       Align = alClient
-      ActiveTabIndex = 1
+      ActiveTabIndex = 0
       TabVisible = False
       HiddenItems = <>
       object SpTBXTabItem3: TSpTBXTabItem
         Caption = 'f_ati_par'
+        Checked = True
       end
       object SpTBXTabItem1: TSpTBXTabItem
         Caption = 'f_ati'
-        Checked = True
+      end
+      object SpTBXTabSheet1: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 726
+        Height = 469
+        Caption = 'f_ati'
+        ImageIndex = -1
+        DesignSize = (
+          726
+          469)
+        TabItem = 'SpTBXTabItem1'
+        object SpTBXButton27: TSpTBXButton
+          Left = 49
+          Top = 40
+          Width = 640
+          Height = 65
+          Caption = #1056#1091#1095#1085#1086#1081' '#1087#1086#1080#1089#1082
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnClick = SpTBXButton27Click
+        end
+        object SpTBXButton28: TSpTBXButton
+          Left = 49
+          Top = 128
+          Width = 640
+          Height = 65
+          Caption = #1059#1084#1085#1099#1081' '#1087#1086#1080#1089#1082
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
       end
       object SpTBXTabSheet3: TSpTBXTabSheet
         Left = 0
@@ -347,6 +456,7 @@ object MainForm: TMainForm
             Options.EmptyPromtFont.Height = -11
             Options.EmptyPromtFont.Name = 'MS Sans Serif'
             Options.EmptyPromtFont.Style = []
+            Options.EmptyPromtCaption = 'No items ...'
             Options.CellHorzLineVisible = True
             Options.CellVertLineVisible = True
             Options.SelFrameMainVisible = False
@@ -383,20 +493,13 @@ object MainForm: TMainForm
             SelectComboAutoDropDown = False
           end
           object SpTBXButton6: TSpTBXButton
-            Left = 96
+            Left = 104
             Top = 8
             Width = 89
             Height = 27
             Caption = #1091#1076#1072#1083
             TabOrder = 1
-          end
-          object SpTBXButton7: TSpTBXButton
-            Left = 1
-            Top = 8
-            Width = 89
-            Height = 27
-            Caption = #1076#1086#1073#1072#1074
-            TabOrder = 2
+            OnClick = SpTBXButton6Click
           end
           object SpTBXButton8: TSpTBXButton
             Left = 199
@@ -404,7 +507,8 @@ object MainForm: TMainForm
             Width = 65
             Height = 27
             Caption = #1086#1095#1080#1089#1090
-            TabOrder = 3
+            TabOrder = 2
+            OnClick = SpTBXButton8Click
           end
           object SpTBXLabel5: TSpTBXLabel
             Left = 11
@@ -424,7 +528,7 @@ object MainForm: TMainForm
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             ParentFont = False
-            TabOrder = 5
+            TabOrder = 4
           end
           object SpTBXButton9: TSpTBXButton
             Left = 176
@@ -432,7 +536,8 @@ object MainForm: TMainForm
             Width = 40
             Height = 27
             Caption = #1086#1095#1080#1089#1090
-            TabOrder = 6
+            TabOrder = 5
+            OnClick = SpTBXButton9Click
           end
           object SpTBXButton10: TSpTBXButton
             Left = 220
@@ -440,7 +545,8 @@ object MainForm: TMainForm
             Width = 40
             Height = 27
             Caption = #1091#1089#1090
-            TabOrder = 7
+            TabOrder = 6
+            OnClick = SpTBXButton10Click
           end
           object tblATIToGeo: TRRAdvTable
             Left = 1
@@ -450,7 +556,7 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             Color = clWhite
             Constraints.MinWidth = 100
-            TabOrder = 8
+            TabOrder = 7
             TabStop = True
             FixedColShow = False
             AlwaysFixedColShow = True
@@ -574,20 +680,13 @@ object MainForm: TMainForm
             SelectComboAutoDropDown = False
           end
           object SpTBXButton11: TSpTBXButton
-            Left = 96
+            Left = 104
             Top = 232
             Width = 89
             Height = 27
             Caption = #1091#1076#1072#1083
-            TabOrder = 9
-          end
-          object SpTBXButton12: TSpTBXButton
-            Left = 1
-            Top = 232
-            Width = 89
-            Height = 27
-            Caption = #1076#1086#1073#1072#1074
-            TabOrder = 10
+            TabOrder = 8
+            OnClick = SpTBXButton11Click
           end
           object SpTBXButton13: TSpTBXButton
             Left = 199
@@ -595,7 +694,8 @@ object MainForm: TMainForm
             Width = 65
             Height = 27
             Caption = #1086#1095#1080#1089#1090
-            TabOrder = 11
+            TabOrder = 9
+            OnClick = SpTBXButton13Click
           end
           object SpTBXLabel6: TSpTBXLabel
             Left = 11
@@ -615,7 +715,7 @@ object MainForm: TMainForm
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             ParentFont = False
-            TabOrder = 13
+            TabOrder = 11
           end
           object SpTBXButton14: TSpTBXButton
             Left = 176
@@ -623,7 +723,8 @@ object MainForm: TMainForm
             Width = 40
             Height = 27
             Caption = #1086#1095#1080#1089#1090
-            TabOrder = 14
+            TabOrder = 12
+            OnClick = SpTBXButton14Click
           end
           object SpTBXButton15: TSpTBXButton
             Left = 220
@@ -631,7 +732,8 @@ object MainForm: TMainForm
             Width = 40
             Height = 27
             Caption = #1091#1089#1090
-            TabOrder = 15
+            TabOrder = 13
+            OnClick = SpTBXButton15Click
           end
         end
         object SpTBXPanel6: TSpTBXPanel
@@ -749,12 +851,12 @@ object MainForm: TMainForm
             Options.WantEditor = False
             Options.WantCuttingText = True
             Options.WantShowEditorWhenIReadOnly = False
-            Options.WantDirectBoolChange = False
+            Options.WantDirectBoolChange = True
             Options.CuttingText = '....'
             Options.ScrollBars = ssBoth
             Options.UseDesignerSettingsOpenning = False
             Options.MultiSelecting = False
-            Options.ChessPaintMode = False
+            Options.ChessPaintMode = True
             Options.ChessPaintModeIncludeImageCell = True
             TestDraw = False
             MinCellHeight = 16
@@ -770,8 +872,10 @@ object MainForm: TMainForm
             ServiceButtonText = 'F1'
             ReadOnly = False
             DesignModeEnabled = False
-            HideSelection = True
+            HideSelection = False
             SelectComboAutoDropDown = False
+            OnAfterCellEdit = tblATIGeosAfterCellEdit
+            OnChangeSelectedCell = tblATIGeosChangeSelectedCell
           end
           object SpTBXButton16: TSpTBXButton
             Left = 216
@@ -780,6 +884,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1091#1076#1072#1083
             TabOrder = 1
+            OnClick = SpTBXButton16Click
           end
           object SpTBXButton17: TSpTBXButton
             Left = 121
@@ -788,6 +893,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1076#1086#1073#1072#1074
             TabOrder = 2
+            OnClick = SpTBXButton17Click
           end
           object SpTBXButton18: TSpTBXButton
             Left = 1
@@ -796,6 +902,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = '<<<<<'
             TabOrder = 3
+            OnClick = SpTBXButton18Click
           end
           object SpTBXEdit3: TSpTBXEdit
             Left = 3
@@ -817,6 +924,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1086#1095#1080#1089#1090
             TabOrder = 5
+            OnClick = SpTBXButton19Click
           end
           object SpTBXLabel7: TSpTBXLabel
             Left = 11
@@ -845,6 +953,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1086#1095#1080#1089#1090
             TabOrder = 8
+            OnClick = SpTBXButton20Click
           end
           object SpTBXLabel8: TSpTBXLabel
             Left = 163
@@ -873,6 +982,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1086#1095#1080#1089#1090
             TabOrder = 11
+            OnClick = SpTBXButton21Click
           end
           object SpTBXLabel9: TSpTBXLabel
             Left = 11
@@ -901,6 +1011,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1086#1095#1080#1089#1090
             TabOrder = 14
+            OnClick = SpTBXButton22Click
           end
           object SpTBXButton23: TSpTBXButton
             Left = 236
@@ -937,6 +1048,7 @@ object MainForm: TMainForm
             Height = 27
             Caption = #1086#1095#1080#1089#1090
             TabOrder = 18
+            OnClick = SpTBXButton24Click
           end
           object SpTBXButton25: TSpTBXButton
             Left = 236
@@ -964,50 +1076,8 @@ object MainForm: TMainForm
             Caption = #1057' '#1058' '#1040' '#1056' '#1058
             Align = alClient
             TabOrder = 0
+            OnClick = SpTBXButton26Click
           end
-        end
-      end
-      object SpTBXTabSheet1: TSpTBXTabSheet
-        Left = 0
-        Top = 25
-        Width = 726
-        Height = 469
-        Caption = 'f_ati'
-        ImageIndex = -1
-        DesignSize = (
-          726
-          469)
-        TabItem = 'SpTBXTabItem1'
-        object SpTBXButton27: TSpTBXButton
-          Left = 49
-          Top = 40
-          Width = 640
-          Height = 65
-          Caption = #1056#1091#1095#1085#1086#1081' '#1087#1086#1080#1089#1082
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          OnClick = SpTBXButton27Click
-        end
-        object SpTBXButton28: TSpTBXButton
-          Left = 49
-          Top = 128
-          Width = 640
-          Height = 65
-          Caption = #1059#1084#1085#1099#1081' '#1087#1086#1080#1089#1082
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
         end
       end
     end
