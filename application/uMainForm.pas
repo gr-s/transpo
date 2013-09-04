@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
-  SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard;
+  SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
+  GRFormPanel;
 
 type
   TMainForm = class(TForm)
@@ -80,6 +81,7 @@ type
     SpTBXLabel13: TSpTBXLabel;
     SpTBXLabel14: TSpTBXLabel;
     Memo1: TMemo;
+    GRFormPanel1: TGRFormPanel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
