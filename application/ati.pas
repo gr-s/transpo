@@ -48,6 +48,8 @@ type
     curr_page:Integer;
     OperStack: array of TOperationObject;
 
+    function StringToByteString(str:String):String;
+
     procedure load_document(url:String);
     procedure wbDocumentComplete(ASender: TObject;const pDisp: IDispatch; var URL: OleVariant);
 
@@ -212,6 +214,7 @@ var op:TOperParams;
 begin
   FreeAndNil(GetTickResult);
   GetTickResult:= TFMClass.Create(nil);
+  GetTickResult.CreateClassItem('items','');
   op.task:= 'GetTickets1';
   _GetTickets(op);
 end;
@@ -479,7 +482,7 @@ begin
           if not Assigned(elm) then break;
 
 
-          cls1:= GetTickResult.CreateClassItem('','');
+          cls1:= GetTickResult.FindClassByName('items').CreateClassItem('','');
           cls_templates.CopyClass(cls1,cls_templates.FindClassByName('ticket'),False,True);
 
           elm2:= IHTMLElement2(GetElementById2('item_itGeoDir_' + IntToStr(i) + '_hlkDistance_'+IntToStr(i),elm));
@@ -624,7 +627,7 @@ begin
                 end;
               end;
 
-              cls1.FindPropertyByName('Price1').ValueS:= s ;
+              cls1.FindPropertyByName('Price1').ValueS:= s;
             end;
 
             s:= IHTMLElement(elm2).innerText;
@@ -671,6 +674,10 @@ begin
               end;
             end;
           end;
+
+          s:= StringToByteString(cls1.FindPropertyByName('FromGeo').ValueS + cls1.FindPropertyByName('ToGeo').ValueS
+                + cls1.FindPropertyByName('CargoDesc').ValueS + cls1.FindPropertyByName('Price1').ValueS);
+          cls1.FindPropertyByName('ID').ValueS:= s;
 
           Inc(i);
         end;
@@ -752,6 +759,14 @@ end;
 procedure TATI.ClearOperStack;
 begin
   SetLength(OperStack,0);
+end;
+
+function TATI.StringToByteString(str: String): String;
+var i:Integer;
+begin
+  Result:= '';
+  for i:= 1 to Length(str) do
+    Result:= Result + IntToStr(Ord(str[i]));
 end;
 
 end.

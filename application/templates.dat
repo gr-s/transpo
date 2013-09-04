@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.09.2013 13:18:13
+04.09.2013 20:59:29
 /end header
 /begin data
 MyClass TopInstance
@@ -63,6 +63,7 @@ MyClass TopInstance
 			/begin private
 			/end private
 			/begin public
+			char ID = /B$&V//E$&V/
 			char FromGeo = /B$&V//E$&V/
 			char FromGeoDesc1 = /B$&V//E$&V/
 			char ToGeo = /B$&V//E$&V/
@@ -81,6 +82,7 @@ MyClass TopInstance
 			char ControllerInfo = /B$&V//E$&V/
 			char DateDesc = /B$&V//E$&V/
 			char Note = /B$&V//E$&V/
+			bool _checked = /B$&V/False/E$&V/
 			/end public
 			/begin classes
 				MyClass controller_contacts
@@ -114,6 +116,40 @@ MyClass TopInstance
 			/begin public
 			char Caption = /B$&V//E$&V/
 			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass data_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass blocks
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass finded
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+					/end classes
+				}
+			/end classes
+		}
+		MyClass data_block
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V//E$&V/
+			char Date = /B$&V//E$&V/
 			/end public
 		}
 	/end classes

@@ -89,6 +89,25 @@ type
     SpTBXTabSheet6: TSpTBXTabSheet;
     SpTBXTabItem6: TSpTBXTabItem;
     SpTBXTabSheet7: TSpTBXTabSheet;
+    tblFinded: TRRAdvTable;
+    SpTBXPanel9: TSpTBXPanel;
+    SpTBXPanel10: TSpTBXPanel;
+    SpTBXButton12: TSpTBXButton;
+    SpTBXButton29: TSpTBXButton;
+    SpTBXButton30: TSpTBXButton;
+    SpTBXButton31: TSpTBXButton;
+    SpTBXButton32: TSpTBXButton;
+    SpTBXLabel15: TSpTBXLabel;
+    SpTBXTabItem7: TSpTBXTabItem;
+    SpTBXTabSheet8: TSpTBXTabSheet;
+    tblFindedTickets: TRRAdvTable;
+    SpTBXPanel11: TSpTBXPanel;
+    SpTBXButton33: TSpTBXButton;
+    SpTBXButton34: TSpTBXButton;
+    SpTBXLabel16: TSpTBXLabel;
+    SpTBXLabel17: TSpTBXLabel;
+    SpTBXLabel18: TSpTBXLabel;
+    SpTBXLabel19: TSpTBXLabel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -120,12 +139,21 @@ type
     procedure SpTBXButton7Click(Sender: TObject);
     procedure tblATIFromGeoAfterCellEdit(aCell: TRRCell);
     procedure tblATIToGeoAfterCellEdit(aCell: TRRCell);
+    procedure SpTBXButton12Click(Sender: TObject);
+    procedure SpTBXButton29Click(Sender: TObject);
+    procedure SpTBXButton30Click(Sender: TObject);
+    procedure SpTBXButton31Click(Sender: TObject);
+    procedure SpTBXButton32Click(Sender: TObject);
+    procedure tblFindedChangeSelectedCell(Sender: TObject);
+    procedure SpTBXButton33Click(Sender: TObject);
   private
     { Private declarations }
   public
     curr_sel_cell_value:String;
     _FromGeoIndex:Integer;
     _ToGeoIndex:Integer;
+
+    LockAllEventChangeSelCell:Boolean;
 
     procedure Run;
 
@@ -138,6 +166,11 @@ type
     procedure ToggleOperation(op_code:Integer);
 
     procedure TblUpdateGeos(aTable:TRRAdvTable; aClass:TFMClass);
+    procedure TblUpdateBlocks(aTable:TRRAdvTable; aClass:TFMClass);
+    procedure TblUpdateTickets(aTable:TRRAdvTable; aClass:TFMClass);
+
+    procedure TblCheckUnCheck(aTable:TRRAdvTable; Value:Boolean);
+    procedure TblCheckWVolume(aTable:TRRAdvTable);
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
@@ -169,6 +202,7 @@ begin
   SkinManager.SetSkin('Xito');
 
   curr_sel_cell_value:= '';
+  LockAllEventChangeSelCell:= False;
 
   cls_templates:= TFMClass.Create(Self);
   cls_templates.FileName:= AppDir + 'templates.dat';
@@ -188,6 +222,14 @@ begin
   cls_geos.FileType:= ftFullText;
   cls_geos.ClassSortType:= stAlpha;
 
+  cls_data:= TFMClass.Create(Self);
+  cls_data.FileName:= AppDir + 'data\data.dat';
+  cls_data.Open;
+  cls_data.FileType:= ftFullText;
+
+  cls1:= cls_templates.FindClassByName('data_file');
+  cls1.CopyClass(cls_data,cls1,False,True);
+
   ToggleOperation(op_none);
 
   tblATIFromGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
@@ -197,8 +239,17 @@ begin
   tblATIGeos.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
   tblATIGeos.Open;
 
+  tblFinded.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
+  tblFinded.Options.ForceNullSelecting:= False;
+  tblFinded.Open;
+
+  tblFindedTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
+  tblFindedTickets.Options.ForceNullSelecting:= False;
+  tblFindedTickets.Open;
+
 
   TblUpdateGeos(tblATIGeos,cls_geos);
+  TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
   UpdateATI_f_Params;
   
 
@@ -249,7 +300,19 @@ begin
 end;
 
 procedure TMainForm.DoEndGetTickets(Sender: TObject);
+var cls1,cls2:TFMClass;
+    s:String;
 begin
+  cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
+  cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
+  cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+  s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
+  cls1.FindPropertyByName('Caption').ValueS:= s;
+  cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin); 
+  cls1.AddClass(cls2);
+  cls_data.Save;
+  TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+  Application.ProcessMessages;
   ATIGetTickets(-1,-1);
 end;
 
@@ -281,6 +344,8 @@ end;
 procedure TMainForm.ToggleOperation(op_code: Integer);
 begin
 
+  LockAllEventChangeSelCell:= True;
+
   LockWindowUpdate(Handle);
 
   if op_code = op_none then
@@ -309,7 +374,14 @@ begin
     SpTBXButton4Click(SpTBXButton4);
   end;
 
+  if op_code = op_finded_ticks then
+  begin
+    tcClient.ActiveTabIndex:= 2;
+  end;
+
   LockWindowUpdate(0);
+
+  LockAllEventChangeSelCell:= False;
 
 end;
 
@@ -352,8 +424,10 @@ begin
   aTable.BeginUpdate;
   aTable.ClearRows;
 
+  aTable.LockEventChangeSelCell:= True;
+
   sel_cell:= nil;
-  
+
   for i:= 0 to aClass.MyClassCount - 1 do
   begin
     aTable.CreateRowBlock(0);
@@ -373,6 +447,8 @@ begin
 
   if Assigned(sel_cell) then
     aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row);
+
+  aTable.LockEventChangeSelCell:= False;
 end;
 
 procedure TMainForm.SpTBXButton17Click(Sender: TObject);
@@ -705,6 +781,213 @@ begin
     TblUpdateGeos(tblATIToGeo,TFMClass(aCell.Data1).ParentClass);
     app_sett.Save;
   end;
+end;
+
+procedure TMainForm.TblUpdateBlocks(aTable: TRRAdvTable; aClass: TFMClass);
+var i:Integer;
+    sel_cell:TRRCell;
+begin
+  aTable.BeginUpdate;
+  aTable.ClearRows;
+
+  aTable.LockEventChangeSelCell:= True;
+
+  sel_cell:= nil;
+
+  for i:= 0 to aClass.MyClassCount - 1 do
+  begin
+    aTable.CreateRowBlock(0);
+    aTable.Cell[0,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Caption').ValueS);
+    aTable.Cell[0,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Date').ValueS);
+    aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
+  end;
+
+  aTable.EndUpdate;
+
+  Application.ProcessMessages;
+
+  if Assigned(sel_cell) then
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
+  else
+    aTable.SetSelectedCell(-1,-1);
+
+  aTable.LockEventChangeSelCell:= False;
+end;
+
+procedure TMainForm.SpTBXButton12Click(Sender: TObject);
+begin
+  SpTBXTabControl1.ActiveTabIndex:= 0;
+end;
+
+procedure TMainForm.SpTBXButton29Click(Sender: TObject);
+begin
+  SpTBXTabControl1.ActiveTabIndex:= 1;
+end;
+
+procedure TMainForm.SpTBXButton30Click(Sender: TObject);
+begin
+  SpTBXTabControl1.ActiveTabIndex:= 2;
+end;
+
+procedure TMainForm.SpTBXButton31Click(Sender: TObject);
+begin
+  if Assigned(tblFinded.SelectedCell) then
+  begin
+    if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
+    begin
+      TFMClass(tblFinded.SelectedCell.Data1).ParentClass.Close;
+      cls_data.Save;
+      TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+    end;
+  end;
+end;
+
+procedure TMainForm.SpTBXButton32Click(Sender: TObject);
+begin
+  TFMClass(tblFinded.SelectedCell.Data1).ParentClass.DeleteClassItem(TFMClass(tblFinded.SelectedCell.Data1));
+  tblFinded.DelRow(tblFinded.SelectedCell.Row);
+  cls_data.Save;
+end;
+
+procedure TMainForm.tblFindedChangeSelectedCell(Sender: TObject);
+begin
+  if LockAllEventChangeSelCell then Exit;
+  if Assigned(tblFinded.SelectedCell) then
+  begin
+    ToggleOperation(op_finded_ticks);
+    Application.ProcessMessages;
+    TblUpdateTickets(tblFindedTickets,TFMClass(tblFinded.SelectedCell.Data1));
+  end;
+end;
+
+procedure TMainForm.TblUpdateTickets(aTable: TRRAdvTable;
+  aClass: TFMClass);
+var i,n:Integer;
+    sel_cell:TRRCell;
+    cls1,cls2:TFMClass;
+    b:Boolean;
+    ds:Char;
+    s1,s2:String;
+begin
+  ds:= DecimalSeparator;
+  DecimalSeparator:= '.';
+
+  aTable.BeginUpdate;
+  aTable.ClearRows;
+
+  aTable.LockEventChangeSelCell:= True;
+
+  sel_cell:= nil;
+
+
+  cls1:= aClass.FindClassByName('items');
+
+  for n:= 1 to 2 do
+  begin
+    for i:= 0 to cls1.MyClassCount - 1 do
+    begin
+      b:= True;
+      if n = 1 then
+        b:= AnsiUpperCase(cls1.MyClass[i].FindPropertyByName('Price1').ValueS) <> 'ЗАПРОС';
+      if n = 2 then
+        b:= cls1.MyClass[i].Tag <> 10;
+      if b then
+      begin
+        cls1.MyClass[i].Tag:= 10;
+        aTable.CreateRowBlock(0);
+        aTable.Cell[0,aTable.RowCount-2].Data1:= cls1.MyClass[i];
+
+        if Assigned(cls1.MyClass[i].FindPropertyByName('_checked')) then
+          if cls1.MyClass[i].FindPropertyByName('_checked').ValueB then
+            aTable.Cell[0,aTable.RowCount-1].TextString:= '1';
+
+        aTable.Cell[1,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('Price1').ValueS;
+
+        s1:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('Weight').ValueF,fffixed,10,1);
+        s1:= DelSymb(s1,'.0');
+
+        if cls1.MyClass[i].FindPropertyByName('Volume').ValueF > 0 then
+        begin
+          s2:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('Volume').ValueF,fffixed,10,1);
+          s2:= DelSymb(s2,'.0');
+        end
+        else
+          s2:= '--';
+
+        aTable.Cell[2,aTable.RowCount-2].TextString:= s1 + ' / ' + s2;
+
+        aTable.Cell[3,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('DateDesc').ValueS;
+        aTable.Cell[4,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('FromGeo').ValueS;
+        aTable.Cell[5,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('ToGeo').ValueS;
+        aTable.Cell[6,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('CargoName').ValueS;
+      end;
+    end;
+  end;
+
+  aTable.EndUpdate;
+
+  DecimalSeparator:= ds;
+
+  Application.ProcessMessages;
+
+  if Assigned(sel_cell) then
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
+  else
+    aTable.SetSelectedCell(-1,-1);
+
+  aTable.LockEventChangeSelCell:= False;
+end;
+
+procedure TMainForm.SpTBXButton33Click(Sender: TObject);
+begin
+  TblCheckUnCheck(tblFindedTickets,False);
+end;
+
+procedure TMainForm.TblCheckUnCheck(aTable: TRRAdvTable; Value: Boolean);
+var i:Integer;
+    sel_cell:TRRCell;
+begin
+  aTable.BeginUpdate;
+
+  aTable.LockEventChangeSelCell:= True;
+
+  sel_cell:= nil;
+
+  for i:= 0 to aTable.RowCount-1 do
+  begin
+    if Value then
+      aTable.Cell[0,i].TextString:= '1'
+    else
+      aTable.Cell[0,i].TextString:= '';
+  end;
+
+  aTable.EndUpdate;
+
+  Application.ProcessMessages;
+
+  if Assigned(sel_cell) then
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
+  else
+    aTable.SetSelectedCell(-1,-1);
+
+  aTable.LockEventChangeSelCell:= False;
+end;
+
+procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
+var f1,f2:Single;
+begin
+  f1:= 0; f2:= 0;
+  
+  i:= 0;
+  while i <= aTable.RowCount-1 do
+  begin
+    if TFMClass(aTable.Cell[0,i]).FindPropertyByName('_checked').ValueB then
+    begin
+      
+    end;
+    Inc(i,2);
+  end;
+  
 end;
 
 end.
