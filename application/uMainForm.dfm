@@ -23,15 +23,15 @@ object MainForm: TMainForm
     Active = False
     FixedSize = True
     object SpTBXPanel1: TSpTBXPanel
-      Left = 8
-      Top = 565
-      Width = 1030
+      Left = 0
+      Top = 573
+      Width = 1046
       Height = 58
       Caption = 'SpTBXPanel1'
       Align = alBottom
       TabOrder = 1
       object SpTBXButton1: TSpTBXButton
-        Left = 860
+        Left = 876
         Top = 2
         Width = 84
         Height = 54
@@ -63,7 +63,7 @@ object MainForm: TMainForm
         OnClick = SpTBXButton2Click
       end
       object SpTBXButton3: TSpTBXButton
-        Left = 944
+        Left = 960
         Top = 2
         Width = 84
         Height = 54
@@ -80,9 +80,9 @@ object MainForm: TMainForm
       end
     end
     object SpTBXPanel2: TSpTBXPanel
-      Left = 8
-      Top = 30
-      Width = 1030
+      Left = 0
+      Top = 22
+      Width = 1046
       Height = 41
       Caption = 'SpTBXPanel2'
       Color = clWhite
@@ -93,7 +93,7 @@ object MainForm: TMainForm
       Borders = False
       BorderType = pbrRaised
       object SpTBXPanel3: TSpTBXPanel
-        Left = 680
+        Left = 696
         Top = 2
         Width = 348
         Height = 37
@@ -159,7 +159,7 @@ object MainForm: TMainForm
         end
       end
       object SpTBXPanel8: TSpTBXPanel
-        Left = 332
+        Left = 348
         Top = 2
         Width = 348
         Height = 37
@@ -226,40 +226,62 @@ object MainForm: TMainForm
       end
     end
     object tcSplitterLeft: TSpTBXSplitter
-      Left = 297
-      Top = 71
+      Left = 289
+      Top = 63
       Width = 15
-      Height = 494
+      Height = 510
       Cursor = crSizeWE
     end
     object tcLeft: TSpTBXTabControl
-      Left = 8
-      Top = 71
+      Left = 0
+      Top = 63
       Width = 289
-      Height = 494
+      Height = 510
       Align = alLeft
-      ActiveTabIndex = 0
+      ActiveTabIndex = 1
       TabVisible = False
       HiddenItems = <>
       object SpTBXTabItem2: TSpTBXTabItem
         Caption = 'f_tcks'
+      end
+      object SpTBXTabItem4: TSpTBXTabItem
+        Caption = 'sdfsdf'
         Checked = True
       end
       object SpTBXTabSheet2: TSpTBXTabSheet
         Left = 0
         Top = 25
         Width = 289
-        Height = 469
+        Height = 485
         ImageIndex = -1
         TabVisible = False
         TabItem = ''
       end
+      object SpTBXTabSheet4: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 289
+        Height = 485
+        Caption = 'sdfsdf'
+        ImageIndex = -1
+        TabItem = 'SpTBXTabItem4'
+        object Memo1: TMemo
+          Left = 16
+          Top = 16
+          Width = 265
+          Height = 449
+          Lines.Strings = (
+            'Memo1')
+          ScrollBars = ssBoth
+          TabOrder = 0
+        end
+      end
     end
     object tcClient: TSpTBXTabControl
-      Left = 312
-      Top = 71
-      Width = 726
-      Height = 494
+      Left = 304
+      Top = 63
+      Width = 742
+      Height = 510
       Align = alClient
       ActiveTabIndex = 0
       TabVisible = False
@@ -274,18 +296,18 @@ object MainForm: TMainForm
       object SpTBXTabSheet1: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 726
-        Height = 469
+        Width = 742
+        Height = 485
         Caption = 'f_ati'
         ImageIndex = -1
         DesignSize = (
-          726
-          469)
+          742
+          485)
         TabItem = 'SpTBXTabItem1'
         object SpTBXButton27: TSpTBXButton
           Left = 49
           Top = 40
-          Width = 640
+          Width = 656
           Height = 65
           Caption = #1056#1091#1095#1085#1086#1081' '#1087#1086#1080#1089#1082
           Anchors = [akLeft, akTop, akRight]
@@ -301,7 +323,7 @@ object MainForm: TMainForm
         object SpTBXButton28: TSpTBXButton
           Left = 49
           Top = 128
-          Width = 640
+          Width = 656
           Height = 65
           Caption = #1059#1084#1085#1099#1081' '#1087#1086#1080#1089#1082
           Anchors = [akLeft, akTop, akRight]
@@ -317,8 +339,8 @@ object MainForm: TMainForm
       object SpTBXTabSheet3: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 726
-        Height = 469
+        Width = 742
+        Height = 485
         Caption = 'f_ati_par'
         ImageIndex = -1
         TabItem = 'SpTBXTabItem3'
@@ -326,7 +348,7 @@ object MainForm: TMainForm
           Left = 2
           Top = 0
           Width = 119
-          Height = 424
+          Height = 440
           Caption = 'SpTBXPanel4'
           Align = alLeft
           TabOrder = 0
@@ -354,14 +376,14 @@ object MainForm: TMainForm
           Left = 121
           Top = 0
           Width = 288
-          Height = 424
+          Height = 440
           Caption = 'SpTBXPanel4'
           Align = alLeft
           TabOrder = 1
           Borders = False
           DesignSize = (
             288
-            424)
+            440)
           object tblATIFromGeo: TRRAdvTable
             Left = 1
             Top = 45
@@ -740,8 +762,8 @@ object MainForm: TMainForm
         object SpTBXPanel6: TSpTBXPanel
           Left = 409
           Top = 0
-          Width = 313
-          Height = 424
+          Width = 329
+          Height = 440
           Caption = 'SpTBXPanel4'
           Align = alClient
           TabOrder = 2
@@ -1060,12 +1082,13 @@ object MainForm: TMainForm
             SelectComboAutoDropDown = False
             OnAfterCellEdit = tblATIGeosAfterCellEdit
             OnChangeSelectedCell = tblATIGeosChangeSelectedCell
+            OnBeforeSortOrFilterChangeState = tblATIGeosBeforeSortOrFilterChangeState
           end
         end
         object SpTBXPanel7: TSpTBXPanel
           Left = 2
-          Top = 424
-          Width = 720
+          Top = 440
+          Width = 736
           Height = 41
           Caption = 'SpTBXPanel7'
           Align = alBottom
@@ -1074,7 +1097,7 @@ object MainForm: TMainForm
           object SpTBXButton26: TSpTBXButton
             Left = 2
             Top = 2
-            Width = 716
+            Width = 732
             Height = 37
             Caption = #1057' '#1058' '#1040' '#1056' '#1058
             Align = alClient
