@@ -293,7 +293,7 @@ begin
   begin
     tcLeft.Show;
     tcSplitterLeft.Show;
-    tcLeft.ActiveTabIndex:= 1;
+    tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 0;
     SpTBXButton4Click(SpTBXButton4);
