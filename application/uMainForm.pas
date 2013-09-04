@@ -87,14 +87,11 @@ type
     SpTBXTabSheet5: TSpTBXTabSheet;
     SpTBXTabItem5: TSpTBXTabItem;
     SpTBXTabSheet6: TSpTBXTabSheet;
-    SpTBXTabItem6: TSpTBXTabItem;
-    SpTBXTabSheet7: TSpTBXTabSheet;
     tblFinded: TRRAdvTable;
     SpTBXPanel9: TSpTBXPanel;
     SpTBXPanel10: TSpTBXPanel;
     SpTBXButton12: TSpTBXButton;
     SpTBXButton29: TSpTBXButton;
-    SpTBXButton30: TSpTBXButton;
     SpTBXButton31: TSpTBXButton;
     SpTBXButton32: TSpTBXButton;
     SpTBXLabel15: TSpTBXLabel;
@@ -103,7 +100,6 @@ type
     tblFindedTickets: TRRAdvTable;
     SpTBXPanel11: TSpTBXPanel;
     SpTBXButton33: TSpTBXButton;
-    SpTBXButton34: TSpTBXButton;
     SpTBXLabel16: TSpTBXLabel;
     SpTBXLabel17: TSpTBXLabel;
     SpTBXLabel18: TSpTBXLabel;
@@ -975,6 +971,7 @@ end;
 
 procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
 var f1,f2:Single;
+    i:Integer;
 begin
   f1:= 0; f2:= 0;
   

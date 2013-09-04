@@ -276,36 +276,15 @@ object MainForm: TMainForm
           Width = 259
           Height = 424
           Align = alClient
-          ActiveTabIndex = 0
+          ActiveTabIndex = 1
           TabVisible = False
           HiddenItems = <>
           object SpTBXTabItem2: TSpTBXTabItem
             Caption = #1055#1086#1080#1089#1082
-            Checked = True
           end
           object SpTBXTabItem5: TSpTBXTabItem
             Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
-          end
-          object SpTBXTabItem6: TSpTBXTabItem
-            Caption = #1052#1072#1096#1080#1085#1072
-          end
-          object SpTBXTabSheet7: TSpTBXTabSheet
-            Left = 0
-            Top = 25
-            Width = 259
-            Height = 399
-            Caption = #1052#1072#1096#1080#1085#1072
-            ImageIndex = -1
-            TabItem = 'SpTBXTabItem6'
-          end
-          object SpTBXTabSheet6: TSpTBXTabSheet
-            Left = 0
-            Top = 25
-            Width = 259
-            Height = 399
-            Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
-            ImageIndex = -1
-            TabItem = 'SpTBXTabItem5'
+            Checked = True
           end
           object SpTBXTabSheet5: TSpTBXTabSheet
             Left = 0
@@ -490,6 +469,15 @@ object MainForm: TMainForm
               end
             end
           end
+          object SpTBXTabSheet6: TSpTBXTabSheet
+            Left = 0
+            Top = 25
+            Width = 259
+            Height = 399
+            Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
+            ImageIndex = -1
+            TabItem = 'SpTBXTabItem5'
+          end
         end
         object SpTBXPanel10: TSpTBXPanel
           Left = 2
@@ -517,15 +505,6 @@ object MainForm: TMainForm
             Caption = #1048#1079#1073#1088
             TabOrder = 1
             OnClick = SpTBXButton29Click
-          end
-          object SpTBXButton30: TSpTBXButton
-            Left = 173
-            Top = 8
-            Width = 75
-            Height = 27
-            Caption = #1052#1072#1096#1080#1085#1072
-            TabOrder = 2
-            OnClick = SpTBXButton30Click
           end
         end
       end
@@ -1381,7 +1360,7 @@ object MainForm: TMainForm
           Constraints.MinWidth = 100
           TabOrder = 0
           TabStop = True
-          FixedColShow = True
+          FixedColShow = False
           AlwaysFixedColShow = True
           TemplateFileAppDir = False
           TemplateFileExceptions = True
@@ -1522,17 +1501,8 @@ object MainForm: TMainForm
             TabOrder = 0
             OnClick = SpTBXButton33Click
           end
-          object SpTBXButton34: TSpTBXButton
-            Left = 97
-            Top = 14
-            Width = 76
-            Height = 30
-            Caption = #1057#1082#1088#1099#1090#1099#1077
-            TabOrder = 1
-            Checked = True
-          end
           object SpTBXLabel16: TSpTBXLabel
-            Left = 186
+            Left = 106
             Top = 13
             Width = 63
             Height = 13
@@ -1547,7 +1517,7 @@ object MainForm: TMainForm
             Alignment = taRightJustify
           end
           object SpTBXLabel17: TSpTBXLabel
-            Left = 258
+            Left = 178
             Top = 13
             Width = 71
             Height = 13
@@ -1561,7 +1531,7 @@ object MainForm: TMainForm
             ParentFont = False
           end
           object SpTBXLabel18: TSpTBXLabel
-            Left = 186
+            Left = 106
             Top = 27
             Width = 63
             Height = 13
@@ -1576,7 +1546,7 @@ object MainForm: TMainForm
             Alignment = taRightJustify
           end
           object SpTBXLabel19: TSpTBXLabel
-            Left = 257
+            Left = 177
             Top = 27
             Width = 72
             Height = 13
