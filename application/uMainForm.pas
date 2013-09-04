@@ -25,7 +25,6 @@ type
     SpTBXLabel4: TSpTBXLabel;
     tcSplitterLeft: TSpTBXSplitter;
     tcLeft: TSpTBXTabControl;
-    SpTBXTabItem2: TSpTBXTabItem;
     SpTBXTabSheet2: TSpTBXTabSheet;
     tcClient: TSpTBXTabControl;
     SpTBXTabItem3: TSpTBXTabItem;
@@ -82,6 +81,14 @@ type
     tblATIGeos: TRRAdvTable;
     SpTBXTabItem4: TSpTBXTabItem;
     SpTBXTabSheet4: TSpTBXTabSheet;
+    SpTBXButton7: TSpTBXButton;
+    SpTBXTabControl1: TSpTBXTabControl;
+    SpTBXTabItem2: TSpTBXTabItem;
+    SpTBXTabSheet5: TSpTBXTabSheet;
+    SpTBXTabItem5: TSpTBXTabItem;
+    SpTBXTabSheet6: TSpTBXTabSheet;
+    SpTBXTabItem6: TSpTBXTabItem;
+    SpTBXTabSheet7: TSpTBXTabSheet;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -110,6 +117,9 @@ type
     procedure SpTBXButton15Click(Sender: TObject);
     procedure SpTBXButton23Click(Sender: TObject);
     procedure SpTBXButton25Click(Sender: TObject);
+    procedure SpTBXButton7Click(Sender: TObject);
+    procedure tblATIFromGeoAfterCellEdit(aCell: TRRCell);
+    procedure tblATIToGeoAfterCellEdit(aCell: TRRCell);
   private
     { Private declarations }
   public
@@ -347,7 +357,11 @@ begin
   for i:= 0 to aClass.MyClassCount - 1 do
   begin
     aTable.CreateRowBlock(0);
+    if Assigned(aClass.MyClass[i].FindPropertyByName('Enabled')) then
+      if aClass.MyClass[i].FindPropertyByName('Enabled').ValueB then
+        aTable.Cell[0,aTable.RowCount-1].TextString:= '1';
     aTable.Cell[1,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('Caption').ValueS;
+    aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
     aTable.Cell[1,aTable.RowCount-1].Data1:= aClass.MyClass[i];
     if aTable.Cell[1,aTable.RowCount-1].TextString = curr_sel_cell_value then
       sel_cell:= aTable.Cell[1,aTable.RowCount-1];
@@ -369,7 +383,7 @@ begin
   cls1:= cls_geos.CreateClassItem(s,'');
   cls_templates.CopyClass(cls1,cls_templates.FindClassByName('geo'),False,True);
   cls1.SysName:= s;
-  cls1.FindPropertyByName('Caption').ValueS:= s;
+  cls1.FindPropertyByName('Caption').ValueS:= AnsiUpperCase(SpTBXEdit3.Text);
   cls_geos.Save;
   curr_sel_cell_value:= s;
   TblUpdateGeos(tblATIGeos,cls_geos);
@@ -401,6 +415,13 @@ begin
     curr_sel_cell_value:= TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS;
     TblUpdateGeos(tblATIGeos,cls_geos);
     cls_geos.Save;}
+  end;
+  if aCell.MyTag = 'enabled' then
+  begin
+    TFMClass(aCell.Data1).FindPropertyByName('Enabled').ValueB:= aCell.TextString = '1';
+    curr_sel_cell_value:= TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS;
+    TblUpdateGeos(tblATIGeos,TFMClass(aCell.Data1).ParentClass);
+    cls_geos.Save;
   end;
 end;
 
@@ -618,13 +639,28 @@ begin
       _FromGeoIndex:= 0;
       Inc(_ToGeoIndex);
     end;
-    if (_ToGeoIndex > tblATIToGeo.RowCount - 1) or (tblATIFromGeo.RowCount = 0) then
-    begin
-      SpTBXButton26.Enabled:= True;
-      DoOperSub1Progress('','');
-      Exit;
-    end;
   end;
+
+  if (_ToGeoIndex > tblATIToGeo.RowCount - 1) then
+  begin
+    SpTBXButton26.Enabled:= True;
+    DoOperSub1Progress('','');
+    Exit;
+  end;
+
+  if tblATIFromGeo.Cell[0,_FromGeoIndex].TextString <> '1' then
+  begin
+    ATIGetTickets(-1,-1);
+    Exit;
+  end;
+
+  if tblATIToGeo.Cell[0,_ToGeoIndex].TextString <> '1' then
+  begin
+    Inc(_ToGeoIndex);
+    ATIGetTickets(_FromGeoIndex,_ToGeoIndex);
+    Exit;
+  end;
+  
   ati_service.GetTickOption.FromGeo:= tblATIFromGeo.Cell[1,_FromGeoIndex].TextString;
   ati_service.GetTickOption.ToGeo:= tblATIToGeo.Cell[1,_ToGeoIndex].TextString;
   DoOperSub1Progress(ati_service.GetTickOption.FromGeo + ' - ' + ati_service.GetTickOption.ToGeo,'');
@@ -641,6 +677,34 @@ procedure TMainForm.SpTBXButton25Click(Sender: TObject);
 begin
   if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
     SpTBXEdit7.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.SpTBXButton7Click(Sender: TObject);
+begin
+  ati_service.StopFlag:= True;
+  Application.ProcessMessages; 
+end;
+
+procedure TMainForm.tblATIFromGeoAfterCellEdit(aCell: TRRCell);
+begin
+  if aCell.MyTag = 'enabled' then
+  begin
+    TFMClass(aCell.Data1).FindPropertyByName('Enabled').ValueB:= aCell.TextString = '1';
+    curr_sel_cell_value:= TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS;
+    TblUpdateGeos(tblATIFromGeo,TFMClass(aCell.Data1).ParentClass);
+    app_sett.Save;
+  end;
+end;
+
+procedure TMainForm.tblATIToGeoAfterCellEdit(aCell: TRRCell);
+begin
+  if aCell.MyTag = 'enabled' then
+  begin
+    TFMClass(aCell.Data1).FindPropertyByName('Enabled').ValueB:= aCell.TextString = '1';
+    curr_sel_cell_value:= TFMClass(aCell.Data1).FindPropertyByName('Caption').ValueS;
+    TblUpdateGeos(tblATIToGeo,TFMClass(aCell.Data1).ParentClass);
+    app_sett.Save;
+  end;
 end;
 
 end.

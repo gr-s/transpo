@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-03.09.2013 18:44:19
+04.09.2013 13:18:13
 /end header
 /begin data
 MyClass TopInstance
@@ -113,6 +113,7 @@ MyClass TopInstance
 			/end private
 			/begin public
 			char Caption = /B$&V//E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
 	/end classes

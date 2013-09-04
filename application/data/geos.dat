@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.09.2013 12:44:59
+04.09.2013 13:52:25
 /end header
 /begin data
 MyClass EmptyClass
@@ -11,196 +11,58 @@ MyClass EmptyClass
 	/begin public
 	/end public
 	/begin classes
-		MyClass 123123
+		MyClass ¬ŒÀ√Œ√–¿ƒ
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/123123/E$&V/
+			char Caption = /B$&V/¬ŒÀ√Œ√–¿ƒ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
-		MyClass 234234234
+		MyClass  ¿«¿Õ‹
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/234234234/E$&V/
+			char Caption = /B$&V/ ¿«¿Õ‹/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
-		MyClass 234234234
+		MyClass ÃŒ— ¬¿
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/234234234/E$&V/
+			char Caption = /B$&V/ÃŒ— ¬¿/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
-		MyClass 234234DFSFSDFSDF4
+		MyClass Õ»∆Õ»…ÕŒ¬√Œ–Œƒ
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/234234DFSFSDFSDF4/E$&V/
+			char Caption = /B$&V/Õ»∆Õ»… ÕŒ¬√Œ–Œƒ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
-		MyClass 32323
+		MyClass œ≈–Ã‹
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/32323/E$&V/
+			char Caption = /B$&V/œ≈–Ã‹/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
-		MyClass 546456EGEGERG
+		MyClass –Œ——»ﬂ
 		{
 			/begin private
 			/end private
 			/begin public
-			char Caption = /B$&V/546456EGEGERG/E$&V/
-			/end public
-		}
-		MyClass ASDASD
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/ASDASD/E$&V/
-			/end public
-		}
-		MyClass ASXCVXCV
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/ASXCVXCV/E$&V/
-			/end public
-		}
-		MyClass BVDGDFG
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/BVDGDFG/E$&V/
-			/end public
-		}
-		MyClass CSF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/CSF/E$&V/
-			/end public
-		}
-		MyClass DFSDF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/DFSDF/E$&V/
-			/end public
-		}
-		MyClass S324234234
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/S324234234/E$&V/
-			/end public
-		}
-		MyClass SDDSDFDSF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDDSDFDSF/E$&V/
-			/end public
-		}
-		MyClass SDFSDF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDFSDF/E$&V/
-			/end public
-		}
-		MyClass SDFSDF23234
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDFSDF23234/E$&V/
-			/end public
-		}
-		MyClass SDFSDF23323
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDFSDF23323/E$&V/
-			/end public
-		}
-		MyClass SDFSDF2334234
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDFSDF2334234/E$&V/
-			/end public
-		}
-		MyClass SDFSDFSDF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDFSDFSDF/E$&V/
-			/end public
-		}
-		MyClass SDSDFSDFSDF
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDSDFSDFSDF/E$&V/
-			/end public
-		}
-		MyClass SDSWER
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/SDSWER/E$&V/
-			/end public
-		}
-		MyClass WERWERR22223
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/WERWERR22223/E$&V/
-			/end public
-		}
-		MyClass WERWERWER
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/WERWERWER/E$&V/
-			/end public
-		}
-		MyClass XCVXCVXCV
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/XCVXCVXCV/E$&V/
-			/end public
-		}
-		MyClass XCVXCVXCVWERWER
-		{
-			/begin private
-			/end private
-			/begin public
-			char Caption = /B$&V/XCVXCVXCVWERWER/E$&V/
+			char Caption = /B$&V/–Œ——»ﬂ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
 	/end classes

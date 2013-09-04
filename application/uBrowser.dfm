@@ -40,6 +40,22 @@ object Browser: TBrowser
         TabOrder = 0
         OnClick = SpTBXButton1Click
       end
+      object SpTBXEdit1: TSpTBXEdit
+        Left = 16
+        Top = 8
+        Width = 585
+        Height = 21
+        TabOrder = 1
+      end
+      object SpTBXButton2: TSpTBXButton
+        Left = 608
+        Top = 5
+        Width = 97
+        Height = 25
+        Caption = 'GetUrl'
+        TabOrder = 2
+        OnClick = SpTBXButton2Click
+      end
     end
   end
 end

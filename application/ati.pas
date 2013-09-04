@@ -69,6 +69,8 @@ type
     GetTickOption:TGetTickOption;
     GetTickResult:TFMClass;
 
+    StopFlag: Boolean;
+
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
     property OnEndGetTickets:TNotifyEvent read FOnEndGetTickets write SetOnEndGetTickets;
     property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
@@ -117,6 +119,8 @@ begin
   FOnCaptcha:= nil;
   FOnOperProgress:= nil;
 
+  StopFlag:= False;
+
   Setlength(OperStack,0);
 end;
 
@@ -129,8 +133,10 @@ begin
   Result:= Result + '&FromGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&ToGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&CarType=115&LoadType=4';
-  Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
-  Result:= Result + '&Volume2=' + IntToStr(option.VolumeEnd);
+  if option.WeightEnd > 0 then
+    Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
+  if option.VolumeEnd > 0 then
+    Result:= Result + '&Volume2=' + IntToStr(option.VolumeEnd);
 
   if option.DateBegin <> 0 then
   begin
@@ -395,16 +401,16 @@ begin
     end;
     if params.task = 'GetTickets3' then
     begin
-      {GetTickOption:= GetTickOptionDefault;
-      GetTickOption.FromGeo:= 'Нижний Новгород';
-      GetTickOption.ToGeo:= 'Москва';
-      GetTickOption.WeightEnd:= 5;
-      GetTickOption.VolumeEnd:= 35;
-      GetTickOption.DateBegin:= StrToDateTime('03.09.2013');
-      GetTickOption.DateEnd:= StrToDateTime('03.09.2013');}
       s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
       if Length(s) > 0 then
       begin
+        if StopFlag then
+        begin
+          if Assigned(OnEndGetTickets) then
+            OnEndGetTickets(Self);
+          StopFlag:= False;
+          Exit;
+        end;
         oo.operation:= _GetTickets;
         oo.task:= 'GetTickets4';
         PushOperStack(oo);
@@ -415,7 +421,7 @@ begin
         if Assigned(OnEndGetTickets) then
           OnEndGetTickets(Self);
     end;
-    
+
     if params.task = 'GetTickets4' then
     begin
       elm:= IHTMLElement2(GetElementById('lblSearchPrompt'));
@@ -439,6 +445,14 @@ begin
     begin
       page_count:= 1;
 
+      if StopFlag then
+      begin
+        if Assigned(OnEndGetTickets) then
+          OnEndGetTickets(Self);
+        StopFlag:= False;
+        Exit;
+      end;
+      
       elm:= IHTMLElement2(GetElementById('cphMain_hlpTop_pnlPager'));
       if Assigned(elm) then
       begin
@@ -451,6 +465,14 @@ begin
         i:= 0;
         while True do
         begin
+          if StopFlag then
+          begin
+            if Assigned(OnEndGetTickets) then
+              OnEndGetTickets(Self);
+            StopFlag:= False;
+            Exit;
+          end;
+
           _OperProgress('Страница ' + IntToStr(curr_page) + ' из ' + IntToStr(page_count),'Обработка таблицы, заявка № ' + IntToStr(i));
 
           elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
