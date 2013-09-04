@@ -20,6 +20,7 @@ object MainForm: TMainForm
     Width = 1046
     Height = 631
     Caption = 'TRANSPO'
+    Active = False
     FixedSize = True
     object SpTBXPanel1: TSpTBXPanel
       Left = 8
