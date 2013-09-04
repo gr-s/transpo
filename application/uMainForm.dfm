@@ -491,15 +491,6 @@ object MainForm: TMainForm
             DesignModeEnabled = False
             HideSelection = True
             SelectComboAutoDropDown = False
-            object Memo1: TMemo
-              Left = 24
-              Top = 8
-              Width = 217
-              Height = 97
-              Lines.Strings = (
-                'Memo1')
-              TabOrder = 0
-            end
           end
           object SpTBXButton6: TSpTBXButton
             Left = 104
@@ -744,54 +735,6 @@ object MainForm: TMainForm
             TabOrder = 13
             OnClick = SpTBXButton15Click
           end
-          object GRFormPanel1: TGRFormPanel
-            Left = 16
-            Top = 208
-            Width = 257
-            Height = 177
-            Caption = 'GRFormPanel1'
-            TabOrder = 14
-            CaptionPosition = dpTop
-            CaptionFont.Charset = DEFAULT_CHARSET
-            CaptionFont.Color = clWhite
-            CaptionFont.Height = -9
-            CaptionFont.Name = 'Tahoma'
-            CaptionFont.Style = [fsBold]
-            CaptionColor = clBlack
-            CaptionOffsetX = 5
-            CaptionOffsetY = 5
-            CaptionTextOffsetX = 5
-            CaptionTextOffsetY = 2
-            CaptionHeight = 20
-            PanelCaptionVisible = False
-            CaptionBlockVisible = True
-            GradientEnabled = True
-            GradientStyle = grHorizontal
-            GradientStartColor = clBlue
-            GradientEndColor = clBlack
-            GradientSteps = 100
-            ButtonCloseVisible = False
-            ButtonCloseTransparent = True
-            ButtonCloseFlat = True
-            ButtonCloseFont.Charset = DEFAULT_CHARSET
-            ButtonCloseFont.Color = clWindowText
-            ButtonCloseFont.Height = -11
-            ButtonCloseFont.Name = 'MS Sans Serif'
-            ButtonCloseFont.Style = []
-            ButtonCloseCaption = 'x'
-            ButtonMaximizeVisible = False
-            ButtonMaximizeTransparent = False
-            ButtonMaximizeFlat = False
-            ButtonMaximizeFont.Charset = DEFAULT_CHARSET
-            ButtonMaximizeFont.Color = clWindowText
-            ButtonMaximizeFont.Height = -11
-            ButtonMaximizeFont.Name = 'MS Sans Serif'
-            ButtonMaximizeFont.Style = []
-            ButtonMaximizeCaption = '[]'
-            Resizable = True
-            Static = False
-            PanelBehavior = pbFormPanel
-          end
         end
         object SpTBXPanel6: TSpTBXPanel
           Left = 409
@@ -811,7 +754,6 @@ object MainForm: TMainForm
             Constraints.MinWidth = 100
             TabOrder = 0
             TabStop = True
-            OnMouseMove = tblATIGeosMouseMove
             FixedColShow = False
             AlwaysFixedColShow = True
             TemplateFileAppDir = False
