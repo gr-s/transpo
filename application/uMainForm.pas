@@ -82,7 +82,6 @@ type
     tblATIGeos: TRRAdvTable;
     SpTBXTabItem4: TSpTBXTabItem;
     SpTBXTabSheet4: TSpTBXTabSheet;
-    Memo1: TMemo;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -111,8 +110,6 @@ type
     procedure SpTBXButton15Click(Sender: TObject);
     procedure SpTBXButton23Click(Sender: TObject);
     procedure SpTBXButton25Click(Sender: TObject);
-    procedure tblATIGeosBeforeSortOrFilterChangeState(aCell: TRRCell;
-      SortOrFilter: Integer; var OffOtherStates: Boolean);
   private
     { Private declarations }
   public
@@ -644,12 +641,6 @@ procedure TMainForm.SpTBXButton25Click(Sender: TObject);
 begin
   if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
     SpTBXEdit7.Text:= DateToStr(CalendarWizard.Result);
-end;
-
-procedure TMainForm.tblATIGeosBeforeSortOrFilterChangeState(aCell: TRRCell;
-  SortOrFilter: Integer; var OffOtherStates: Boolean);
-begin
-  Memo1.Lines.Add(IntToStr(SortOrFilter));
 end;
 
 end.

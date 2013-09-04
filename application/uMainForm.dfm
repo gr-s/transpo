@@ -20,7 +20,6 @@ object MainForm: TMainForm
     Width = 1046
     Height = 631
     Caption = 'TRANSPO'
-    Active = False
     FixedSize = True
     object SpTBXPanel1: TSpTBXPanel
       Left = 0
@@ -265,16 +264,6 @@ object MainForm: TMainForm
         Caption = 'sdfsdf'
         ImageIndex = -1
         TabItem = 'SpTBXTabItem4'
-        object Memo1: TMemo
-          Left = 16
-          Top = 16
-          Width = 265
-          Height = 449
-          Lines.Strings = (
-            'Memo1')
-          ScrollBars = ssBoth
-          TabOrder = 0
-        end
       end
     end
     object tcClient: TSpTBXTabControl
@@ -1082,7 +1071,6 @@ object MainForm: TMainForm
             SelectComboAutoDropDown = False
             OnAfterCellEdit = tblATIGeosAfterCellEdit
             OnChangeSelectedCell = tblATIGeosChangeSelectedCell
-            OnBeforeSortOrFilterChangeState = tblATIGeosBeforeSortOrFilterChangeState
           end
         end
         object SpTBXPanel7: TSpTBXPanel
