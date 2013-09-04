@@ -79,7 +79,6 @@ type
     SpTBXLabel12: TSpTBXLabel;
     SpTBXLabel13: TSpTBXLabel;
     SpTBXLabel14: TSpTBXLabel;
-    GRFormPanel1: TGRFormPanel;
     tblATIGeos: TRRAdvTable;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
