@@ -135,7 +135,7 @@ begin
   Result:= Result + '&FromGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&ToGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&CarType=115&LoadType=4';
-  if option.WeightEnd > 0 then
+  if option.WeightEnd > 0 then 
     Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
   if option.VolumeEnd > 0 then
     Result:= Result + '&Volume2=' + IntToStr(option.VolumeEnd);

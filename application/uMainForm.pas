@@ -104,6 +104,13 @@ type
     SpTBXLabel17: TSpTBXLabel;
     SpTBXLabel18: TSpTBXLabel;
     SpTBXLabel19: TSpTBXLabel;
+    SpTBXTabItem6: TSpTBXTabItem;
+    SpTBXTabSheet7: TSpTBXTabSheet;
+    SpTBXButton30: TSpTBXButton;
+    SpTBXLabel20: TSpTBXLabel;
+    SpTBXLabel21: TSpTBXLabel;
+    SpTBXPanel12: TSpTBXPanel;
+    SpTBXLabel22: TSpTBXLabel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -137,11 +144,12 @@ type
     procedure tblATIToGeoAfterCellEdit(aCell: TRRCell);
     procedure SpTBXButton12Click(Sender: TObject);
     procedure SpTBXButton29Click(Sender: TObject);
-    procedure SpTBXButton30Click(Sender: TObject);
     procedure SpTBXButton31Click(Sender: TObject);
     procedure SpTBXButton32Click(Sender: TObject);
     procedure tblFindedChangeSelectedCell(Sender: TObject);
     procedure SpTBXButton33Click(Sender: TObject);
+    procedure SpTBXButton30Click(Sender: TObject);
+    procedure tblFindedTicketsAfterCellEdit(aCell: TRRCell);
   private
     { Private declarations }
   public
@@ -159,8 +167,6 @@ type
     procedure DoOperProgress(Stage1,Stage2:String);
     procedure DoOperSub1Progress(Stage1,Stage2:String);
 
-    procedure ToggleOperation(op_code:Integer);
-
     procedure TblUpdateGeos(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateBlocks(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateTickets(aTable:TRRAdvTable; aClass:TFMClass);
@@ -170,6 +176,8 @@ type
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
+
+    procedure ToggleOperation(op_code:Integer);
 
     constructor Create(AOwner: TComponent);override;
     destructor  Destroy;override;
@@ -820,11 +828,6 @@ begin
   SpTBXTabControl1.ActiveTabIndex:= 1;
 end;
 
-procedure TMainForm.SpTBXButton30Click(Sender: TObject);
-begin
-  SpTBXTabControl1.ActiveTabIndex:= 2;
-end;
-
 procedure TMainForm.SpTBXButton31Click(Sender: TObject);
 begin
   if Assigned(tblFinded.SelectedCell) then
@@ -858,7 +861,7 @@ end;
 
 procedure TMainForm.TblUpdateTickets(aTable: TRRAdvTable;
   aClass: TFMClass);
-var i,n:Integer;
+var i,n,k,k1:Integer;
     sel_cell:TRRCell;
     cls1,cls2:TFMClass;
     b:Boolean;
@@ -878,6 +881,7 @@ begin
 
   cls1:= aClass.FindClassByName('items');
 
+  k:= -1;
   for n:= 1 to 2 do
   begin
     for i:= 0 to cls1.MyClassCount - 1 do
@@ -891,13 +895,19 @@ begin
       begin
         cls1.MyClass[i].Tag:= 10;
         aTable.CreateRowBlock(0);
-        aTable.Cell[0,aTable.RowCount-2].Data1:= cls1.MyClass[i];
+        Inc(k,2);
+
+        aTable.Cell[0,k-1].Data1:= cls1.MyClass[i];
 
         if Assigned(cls1.MyClass[i].FindPropertyByName('_checked')) then
           if cls1.MyClass[i].FindPropertyByName('_checked').ValueB then
-            aTable.Cell[0,aTable.RowCount-1].TextString:= '1';
+            aTable.Cell[0,k-1].TextString:= '1';
 
-        aTable.Cell[1,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('Price1').ValueS;
+        aTable.Cell[1,k-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('DistI').ValueI) + ' κμ';
+
+        aTable.Cell[2,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('Price1').ValueS;
+        if TryStrToInt(aTable.Cell[2,k-1].TextString,k1) then
+          aTable.Cell[2,k-1].TextString:= aTable.Cell[2,k-1].TextString + ' π';
 
         s1:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('Weight').ValueF,fffixed,10,1);
         s1:= DelSymb(s1,'.0');
@@ -910,12 +920,12 @@ begin
         else
           s2:= '--';
 
-        aTable.Cell[2,aTable.RowCount-2].TextString:= s1 + ' / ' + s2;
+        aTable.Cell[3,k-1].TextString:= s1 + ' / ' + s2;
 
-        aTable.Cell[3,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('DateDesc').ValueS;
-        aTable.Cell[4,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('FromGeo').ValueS;
-        aTable.Cell[5,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('ToGeo').ValueS;
-        aTable.Cell[6,aTable.RowCount-2].TextString:= cls1.MyClass[i].FindPropertyByName('CargoName').ValueS;
+        aTable.Cell[4,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('DateDesc').ValueS;
+        aTable.Cell[5,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('FromGeo').ValueS;
+        aTable.Cell[6,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('ToGeo').ValueS;
+        aTable.Cell[7,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('CargoName').ValueS;
       end;
     end;
   end;
@@ -932,6 +942,12 @@ begin
     aTable.SetSelectedCell(-1,-1);
 
   aTable.LockEventChangeSelCell:= False;
+
+  if aTable = tblFindedTickets then
+  begin
+    TblCheckWVolume(aTable);
+    SpTBXLabel22.Caption:= IntToStr(aTable.RowCount div 2) + ' ηΰοθρει';
+  end;
 end;
 
 procedure TMainForm.SpTBXButton33Click(Sender: TObject);
@@ -949,12 +965,20 @@ begin
 
   sel_cell:= nil;
 
-  for i:= 0 to aTable.RowCount-1 do
+  i:= 0;
+  while i <= aTable.RowCount-1 do
   begin
     if Value then
+    begin
+      TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= True;
       aTable.Cell[0,i].TextString:= '1'
+    end
     else
+    begin
+      TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= False;
       aTable.Cell[0,i].TextString:= '';
+    end;
+    Inc(i,2);
   end;
 
   aTable.EndUpdate;
@@ -967,24 +991,64 @@ begin
     aTable.SetSelectedCell(-1,-1);
 
   aTable.LockEventChangeSelCell:= False;
+
+  if aTable = tblFindedTickets then
+  begin
+    TblCheckWVolume(aTable);
+  end;
+
+  cls_data.Save;
 end;
 
 procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
-var f1,f2:Single;
+var f1,f2,f3,f4:Single;
     i:Integer;
+    ds:Char;
 begin
-  f1:= 0; f2:= 0;
-  
+  f1:= 0; f2:= 0; f3:= 0;
+  ds:= DecimalSeparator;
+  DecimalSeparator:= '.';
+
   i:= 0;
   while i <= aTable.RowCount-1 do
   begin
-    if TFMClass(aTable.Cell[0,i]).FindPropertyByName('_checked').ValueB then
+    if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB then
     begin
-      
+      if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Weight').ValueF > 0 then
+        f1:= f1 + TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Weight').ValueF;
+      if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Volume').ValueF > 0 then
+        f2:= f2 + TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Volume').ValueF;
+      if TryStrToFloat(TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Price1').ValueS,f4) then
+        f3:= f3 + f4;
     end;
     Inc(i,2);
   end;
-  
+
+  if aTable = tblFindedTickets then
+  begin
+    SpTBXLabel17.Caption:= FloatToStrF(f1,fffixed,10,1) + ' ς';
+    SpTBXLabel17.Caption:= DelSymb(SpTBXLabel17.Caption,'.0');
+    SpTBXLabel19.Caption:= FloatToStrF(f2,fffixed,10,1) + ' μ3';
+    SpTBXLabel19.Caption:= DelSymb(SpTBXLabel19.Caption,'.0');
+    SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
+  end;
+
+  DecimalSeparator:= ds;
+end;
+
+procedure TMainForm.SpTBXButton30Click(Sender: TObject);
+begin
+  SpTBXTabControl1.ActiveTabIndex:= 2;
+end;
+
+procedure TMainForm.tblFindedTicketsAfterCellEdit(aCell: TRRCell);
+begin
+  if aCell.MyTag = 'enabled' then
+  begin
+    TFMClass(aCell.Data1).FindPropertyByName('_checked').ValueB:= aCell.TextString = '1';
+    cls_data.Save;
+    TblCheckWVolume(tblFindedTickets);
+  end;
 end;
 
 end.

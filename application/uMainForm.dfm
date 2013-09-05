@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 180
-  Top = 143
+  Left = 130
+  Top = 62
   Width = 1079
   Height = 669
   Caption = 'MainForm'
@@ -276,15 +276,36 @@ object MainForm: TMainForm
           Width = 259
           Height = 424
           Align = alClient
-          ActiveTabIndex = 1
+          ActiveTabIndex = 0
           TabVisible = False
           HiddenItems = <>
           object SpTBXTabItem2: TSpTBXTabItem
             Caption = #1055#1086#1080#1089#1082
+            Checked = True
           end
           object SpTBXTabItem5: TSpTBXTabItem
             Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
-            Checked = True
+          end
+          object SpTBXTabItem6: TSpTBXTabItem
+            Caption = #1056#1077#1081#1089
+          end
+          object SpTBXTabSheet7: TSpTBXTabSheet
+            Left = 0
+            Top = 25
+            Width = 259
+            Height = 399
+            Caption = #1056#1077#1081#1089
+            ImageIndex = -1
+            TabItem = 'SpTBXTabItem6'
+          end
+          object SpTBXTabSheet6: TSpTBXTabSheet
+            Left = 0
+            Top = 25
+            Width = 259
+            Height = 399
+            Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
+            ImageIndex = -1
+            TabItem = 'SpTBXTabItem5'
           end
           object SpTBXTabSheet5: TSpTBXTabSheet
             Left = 0
@@ -376,7 +397,7 @@ object MainForm: TMainForm
               Painter.ChessPaintModeColor = 16250357
               Painter.ChessPaintModeCellMainColor = clWhite
               Options.AllowVertLineSplit = True
-              Options.AllowHorzLineSplit = True
+              Options.AllowHorzLineSplit = False
               Options.TechZoneVisible = False
               Options.TechZoneAlwaysVisible = False
               Options.TechZoneCursorRowVisible = False
@@ -469,15 +490,6 @@ object MainForm: TMainForm
               end
             end
           end
-          object SpTBXTabSheet6: TSpTBXTabSheet
-            Left = 0
-            Top = 25
-            Width = 259
-            Height = 399
-            Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
-            ImageIndex = -1
-            TabItem = 'SpTBXTabItem5'
-          end
         end
         object SpTBXPanel10: TSpTBXPanel
           Left = 2
@@ -505,6 +517,15 @@ object MainForm: TMainForm
             Caption = #1048#1079#1073#1088
             TabOrder = 1
             OnClick = SpTBXButton29Click
+          end
+          object SpTBXButton30: TSpTBXButton
+            Left = 175
+            Top = 8
+            Width = 75
+            Height = 27
+            Caption = #1056#1077#1081#1089
+            TabOrder = 2
+            OnClick = SpTBXButton30Click
           end
         end
       end
@@ -1480,8 +1501,7 @@ object MainForm: TMainForm
           DesignModeEnabled = False
           HideSelection = False
           SelectComboAutoDropDown = False
-          OnAfterCellEdit = tblATIGeosAfterCellEdit
-          OnChangeSelectedCell = tblATIGeosChangeSelectedCell
+          OnAfterCellEdit = tblFindedTicketsAfterCellEdit
         end
         object SpTBXPanel11: TSpTBXPanel
           Left = 2
@@ -1519,12 +1539,12 @@ object MainForm: TMainForm
           object SpTBXLabel17: TSpTBXLabel
             Left = 178
             Top = 13
-            Width = 71
+            Width = 47
             Height = 13
             Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
             AutoSize = False
             Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
+            Font.Color = clNavy
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
             Font.Style = []
@@ -1548,16 +1568,70 @@ object MainForm: TMainForm
           object SpTBXLabel19: TSpTBXLabel
             Left = 177
             Top = 27
-            Width = 72
+            Width = 48
             Height = 13
             Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpTBXLabel20: TSpTBXLabel
+            Left = 242
+            Top = 13
+            Width = 47
+            Height = 13
+            Caption = #1057#1091#1084#1084#1072':'
             AutoSize = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel21: TSpTBXLabel
+            Left = 298
+            Top = 13
+            Width = 47
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
             Font.Style = []
             ParentFont = False
+          end
+          object SpTBXPanel12: TSpTBXPanel
+            Left = 659
+            Top = 2
+            Width = 100
+            Height = 45
+            Caption = 'SpTBXPanel12'
+            Align = alRight
+            TabOrder = 7
+            Borders = False
+            object SpTBXLabel22: TSpTBXLabel
+              Left = 8
+              Top = 21
+              Width = 84
+              Height = 13
+              Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+              Alignment = taRightJustify
+            end
           end
         end
       end

@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.09.2013 20:59:29
+05.09.2013 10:49:30
 /end header
 /begin data
 MyClass TopInstance
@@ -63,6 +63,7 @@ MyClass TopInstance
 			/begin private
 			/end private
 			/begin public
+			int _type = /B$&V/10/E$&V/
 			char ID = /B$&V//E$&V/
 			char FromGeo = /B$&V//E$&V/
 			char FromGeoDesc1 = /B$&V//E$&V/
