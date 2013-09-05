@@ -16,6 +16,7 @@ const
   op_ati:Integer = 10;
   op_ati_get_ticks:Integer = 20;
   op_finded_ticks:Integer = 30;
+  op_favor_ticks:Integer = 40;
 
 implementation
 

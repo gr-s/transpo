@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-05.09.2013 10:49:30
+05.09.2013 14:50:23
 /end header
 /begin data
 MyClass TopInstance
@@ -134,6 +134,13 @@ MyClass TopInstance
 					/end public
 					/begin classes
 						MyClass finded
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+						MyClass favor
 						{
 							/begin private
 							/end private

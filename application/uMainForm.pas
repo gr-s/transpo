@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel;
+  GRFormPanel, uInfoTimerForm;
 
 type
   TMainForm = class(TForm)
@@ -111,6 +111,33 @@ type
     SpTBXLabel21: TSpTBXLabel;
     SpTBXPanel12: TSpTBXPanel;
     SpTBXLabel22: TSpTBXLabel;
+    SpTBXPanel13: TSpTBXPanel;
+    SpTBXButton34: TSpTBXButton;
+    SpTBXButton35: TSpTBXButton;
+    SpTBXLabel23: TSpTBXLabel;
+    tblFavor: TRRAdvTable;
+    SpTBXButton36: TSpTBXButton;
+    SpTBXLabel24: TSpTBXLabel;
+    SpTBXLabel25: TSpTBXLabel;
+    SpTBXLabel26: TSpTBXLabel;
+    SpTBXTabItem8: TSpTBXTabItem;
+    SpTBXTabSheet9: TSpTBXTabSheet;
+    SpTBXPanel14: TSpTBXPanel;
+    SpTBXButton37: TSpTBXButton;
+    SpTBXLabel27: TSpTBXLabel;
+    SpTBXLabel28: TSpTBXLabel;
+    SpTBXLabel29: TSpTBXLabel;
+    SpTBXLabel30: TSpTBXLabel;
+    SpTBXLabel31: TSpTBXLabel;
+    SpTBXLabel32: TSpTBXLabel;
+    SpTBXPanel15: TSpTBXPanel;
+    SpTBXLabel33: TSpTBXLabel;
+    SpTBXLabel34: TSpTBXLabel;
+    SpTBXLabel35: TSpTBXLabel;
+    SpTBXLabel36: TSpTBXLabel;
+    tblFavorTickets: TRRAdvTable;
+    SpTBXButton38: TSpTBXButton;
+    SpTBXButton39: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -150,7 +177,20 @@ type
     procedure SpTBXButton33Click(Sender: TObject);
     procedure SpTBXButton30Click(Sender: TObject);
     procedure tblFindedTicketsAfterCellEdit(aCell: TRRCell);
+    procedure SpTBXButton34Click(Sender: TObject);
+    procedure SpTBXButton35Click(Sender: TObject);
+    procedure SpTBXButton36Click(Sender: TObject);
+    procedure tblFavorDblClickCell(Sender: TObject);
+    procedure tblFavorChangeSelectedCell(Sender: TObject);
+    procedure SpTBXButton38Click(Sender: TObject);
+    procedure SpTBXLabel23Click(Sender: TObject);
+    procedure SpTBXLabel15Click(Sender: TObject);
+    procedure tblFavorTicketsAfterCellEdit(aCell: TRRCell);
+    procedure SpTBXButton37Click(Sender: TObject);
+    procedure SpTBXButton39Click(Sender: TObject);
   private
+    Fact_cls_block_favor: TFMClass;
+    procedure Setact_cls_block_favor(const Value: TFMClass);
     { Private declarations }
   public
     curr_sel_cell_value:String;
@@ -158,6 +198,8 @@ type
     _ToGeoIndex:Integer;
 
     LockAllEventChangeSelCell:Boolean;
+
+    property act_cls_block_favor:TFMClass read Fact_cls_block_favor write Setact_cls_block_favor;
 
     procedure Run;
 
@@ -176,6 +218,8 @@ type
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
+
+    function  GetTicketByID(ID:String;aClass:TFMClass):TFMClass;
 
     procedure ToggleOperation(op_code:Integer);
 
@@ -205,8 +249,12 @@ begin
   end;
   SkinManager.SetSkin('Xito');
 
+  SpTBXTabControl1.ActiveTabIndex:= 0;
+
   curr_sel_cell_value:= '';
   LockAllEventChangeSelCell:= False;
+
+  act_cls_block_favor:= nil;
 
   cls_templates:= TFMClass.Create(Self);
   cls_templates.FileName:= AppDir + 'templates.dat';
@@ -247,13 +295,21 @@ begin
   tblFinded.Options.ForceNullSelecting:= False;
   tblFinded.Open;
 
+  tblFavor.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
+  tblFavor.Options.ForceNullSelecting:= False;
+  tblFavor.Open;
+
   tblFindedTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
   tblFindedTickets.Options.ForceNullSelecting:= False;
   tblFindedTickets.Open;
 
+  tblFavorTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
+  tblFavorTickets.Options.ForceNullSelecting:= False;
+  tblFavorTickets.Open;
 
   TblUpdateGeos(tblATIGeos,cls_geos);
   TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+  TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
   UpdateATI_f_Params;
   
 
@@ -381,6 +437,11 @@ begin
   if op_code = op_finded_ticks then
   begin
     tcClient.ActiveTabIndex:= 2;
+  end;
+
+  if op_code = op_favor_ticks then
+  begin
+    tcClient.ActiveTabIndex:= 3;
   end;
 
   LockWindowUpdate(0);
@@ -801,9 +862,13 @@ begin
   for i:= 0 to aClass.MyClassCount - 1 do
   begin
     aTable.CreateRowBlock(0);
-    aTable.Cell[0,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Caption').ValueS);
-    aTable.Cell[0,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Date').ValueS);
+    if Length(aClass.MyClass[i].FindPropertyByName('Caption').ValueS) > 0 then
+      aTable.Cell[1,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Caption').ValueS)
+    else
+      aTable.Cell[1,aTable.RowCount-1].TextSrings.Add('Без имени');
+    aTable.Cell[1,aTable.RowCount-1].TextSrings.Add(aClass.MyClass[i].FindPropertyByName('Date').ValueS);
     aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
+    aTable.Cell[1,aTable.RowCount-1].Data1:= aClass.MyClass[i];
   end;
 
   aTable.EndUpdate;
@@ -821,31 +886,33 @@ end;
 procedure TMainForm.SpTBXButton12Click(Sender: TObject);
 begin
   SpTBXTabControl1.ActiveTabIndex:= 0;
+  ToggleOperation(op_finded_ticks);
 end;
 
 procedure TMainForm.SpTBXButton29Click(Sender: TObject);
 begin
   SpTBXTabControl1.ActiveTabIndex:= 1;
+  ToggleOperation(op_favor_ticks);
 end;
 
 procedure TMainForm.SpTBXButton31Click(Sender: TObject);
 begin
-  if Assigned(tblFinded.SelectedCell) then
+  if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
   begin
-    if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
-    begin
-      TFMClass(tblFinded.SelectedCell.Data1).ParentClass.Close;
-      cls_data.Save;
-      TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
-    end;
+    cls_data.FindClassByName('blocks').FindClassByName('finded').Close;
+    cls_data.Save;
+    TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
   end;
 end;
 
 procedure TMainForm.SpTBXButton32Click(Sender: TObject);
 begin
-  TFMClass(tblFinded.SelectedCell.Data1).ParentClass.DeleteClassItem(TFMClass(tblFinded.SelectedCell.Data1));
-  tblFinded.DelRow(tblFinded.SelectedCell.Row);
-  cls_data.Save;
+  if Assigned(tblFinded.SelectedCell) then
+  begin
+    TFMClass(tblFinded.SelectedCell.Data1).ParentClass.DeleteClassItem(TFMClass(tblFinded.SelectedCell.Data1));
+    tblFinded.DelRow(tblFinded.SelectedCell.Row);
+    cls_data.Save;
+  end;
 end;
 
 procedure TMainForm.tblFindedChangeSelectedCell(Sender: TObject);
@@ -861,12 +928,13 @@ end;
 
 procedure TMainForm.TblUpdateTickets(aTable: TRRAdvTable;
   aClass: TFMClass);
-var i,n,k,k1:Integer;
+var i,n,k,k1,j:Integer;
     sel_cell:TRRCell;
     cls1,cls2:TFMClass;
     b:Boolean;
     ds:Char;
     s1,s2:String;
+    buff,buff2: TStringList;
 begin
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
@@ -881,53 +949,104 @@ begin
 
   cls1:= aClass.FindClassByName('items');
 
-  k:= -1;
-  for n:= 1 to 2 do
+  if Assigned(cls1) then
   begin
-    for i:= 0 to cls1.MyClassCount - 1 do
+    buff:= TStringList.Create;
+    buff2:= TStringList.Create;
+
+    if aTable = tblFindedTickets then
     begin
-      b:= True;
-      if n = 1 then
-        b:= AnsiUpperCase(cls1.MyClass[i].FindPropertyByName('Price1').ValueS) <> 'ЗАПРОС';
-      if n = 2 then
-        b:= cls1.MyClass[i].Tag <> 10;
-      if b then
+      for i:= 0 to cls1.MyClassCount - 1 do
       begin
-        cls1.MyClass[i].Tag:= 10;
-        aTable.CreateRowBlock(0);
-        Inc(k,2);
-
-        aTable.Cell[0,k-1].Data1:= cls1.MyClass[i];
-
-        if Assigned(cls1.MyClass[i].FindPropertyByName('_checked')) then
-          if cls1.MyClass[i].FindPropertyByName('_checked').ValueB then
-            aTable.Cell[0,k-1].TextString:= '1';
-
-        aTable.Cell[1,k-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('DistI').ValueI) + ' км';
-
-        aTable.Cell[2,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('Price1').ValueS;
-        if TryStrToInt(aTable.Cell[2,k-1].TextString,k1) then
-          aTable.Cell[2,k-1].TextString:= aTable.Cell[2,k-1].TextString + ' р';
-
-        s1:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('Weight').ValueF,fffixed,10,1);
-        s1:= DelSymb(s1,'.0');
-
-        if cls1.MyClass[i].FindPropertyByName('Volume').ValueF > 0 then
+        cls1.MyClass[i].Tag:= 0;
+        if TryStrToInt(cls1.MyClass[i].FindPropertyByName('Price1').ValueS,k1) then
         begin
-          s2:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('Volume').ValueF,fffixed,10,1);
-          s2:= DelSymb(s2,'.0');
+          buff.AddObject('',cls1.MyClass[i]);
+        end;
+      end;
+
+      while buff.Count > 0 do
+      begin
+        b:= False;
+        for n:= 0 to buff2.Count - 1 do
+        begin
+          if StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) > StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) then
+          begin
+            buff2.InsertObject(n,'',buff.Objects[0]);
+            TFMClass(buff.Objects[0]).Tag:= 10;
+            buff.Delete(0);
+            b:= True;
+            Break;
+          end;
+        end;
+        if not b then
+        begin
+          buff2.AddObject('',buff.Objects[0]);
+          TFMClass(buff.Objects[0]).Tag:= 10;
+          buff.Delete(0);
         end
-        else
-          s2:= '--';
-
-        aTable.Cell[3,k-1].TextString:= s1 + ' / ' + s2;
-
-        aTable.Cell[4,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('DateDesc').ValueS;
-        aTable.Cell[5,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('FromGeo').ValueS;
-        aTable.Cell[6,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('ToGeo').ValueS;
-        aTable.Cell[7,k-1].TextString:= cls1.MyClass[i].FindPropertyByName('CargoName').ValueS;
+      end;
+      for i:= 0 to cls1.MyClassCount - 1 do
+      begin
+        if cls1.MyClass[i].Tag = 0 then
+        begin
+          buff2.AddObject('',cls1.MyClass[i]);
+          cls1.MyClass[i].Tag:= 10;
+        end;
+      end;
+    end
+    else
+    begin
+      for i:= 0 to cls1.MyClassCount - 1 do
+      begin
+        buff2.AddObject('',cls1.MyClass[i]);
+        cls1.MyClass[i].Tag:= 10;
       end;
     end;
+
+    k:= -1;
+    
+    for i:= 0 to buff2.Count - 1 do
+    begin
+      aTable.CreateRowBlock(0);
+      
+      Inc(k,2);
+
+      cls1:= TFMClass(buff2.Objects[i]);
+
+      aTable.Cell[0,k-1].Data1:= cls1;
+
+      if Assigned(cls1.FindPropertyByName('_checked')) then
+        if cls1.FindPropertyByName('_checked').ValueB then
+          aTable.Cell[0,k-1].TextString:= '1';
+
+      aTable.Cell[1,k-1].TextString:= IntToStr(cls1.FindPropertyByName('DistI').ValueI) + ' км';
+
+      aTable.Cell[2,k-1].TextString:= cls1.FindPropertyByName('Price1').ValueS;
+      if TryStrToInt(aTable.Cell[2,k-1].TextString,k1) then
+        aTable.Cell[2,k-1].TextString:= aTable.Cell[2,k-1].TextString + ' р';
+
+      s1:= FloatToStrF(cls1.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+      s1:= DelSymb(s1,'.0');
+
+      if cls1.FindPropertyByName('Volume').ValueF > 0 then
+      begin
+        s2:= FloatToStrF(cls1.FindPropertyByName('Volume').ValueF,fffixed,10,1);
+        s2:= DelSymb(s2,'.0');
+      end
+      else
+        s2:= '--';
+
+      aTable.Cell[3,k-1].TextString:= s1 + ' / ' + s2;
+
+      aTable.Cell[4,k-1].TextString:= cls1.FindPropertyByName('DateDesc').ValueS;
+      aTable.Cell[5,k-1].TextString:= cls1.FindPropertyByName('FromGeo').ValueS;
+      aTable.Cell[6,k-1].TextString:= cls1.FindPropertyByName('ToGeo').ValueS;
+      aTable.Cell[7,k-1].TextString:= cls1.FindPropertyByName('CargoName').ValueS;
+    end;
+
+    FreeAndNil(buff);
+    FreeAndNil(buff2);
   end;
 
   aTable.EndUpdate;
@@ -948,6 +1067,11 @@ begin
     TblCheckWVolume(aTable);
     SpTBXLabel22.Caption:= IntToStr(aTable.RowCount div 2) + ' записей';
   end;
+  if aTable = tblFavorTickets then
+  begin
+    TblCheckWVolume(aTable);
+    SpTBXLabel33.Caption:= IntToStr(aTable.RowCount div 2) + ' записей';
+  end;
 end;
 
 procedure TMainForm.SpTBXButton33Click(Sender: TObject);
@@ -956,7 +1080,7 @@ begin
 end;
 
 procedure TMainForm.TblCheckUnCheck(aTable: TRRAdvTable; Value: Boolean);
-var i:Integer;
+var i,n:Integer;
     sel_cell:TRRCell;
 begin
   aTable.BeginUpdate;
@@ -965,20 +1089,28 @@ begin
 
   sel_cell:= nil;
 
+  n:= 2;
+
+  if aTable = tblFavor then n:= 1;
+
   i:= 0;
   while i <= aTable.RowCount-1 do
   begin
     if Value then
     begin
-      TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= True;
+      if Assigned(aTable.Cell[0,i].Data1) then
+        if Assigned(TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked')) then
+          TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= True;
       aTable.Cell[0,i].TextString:= '1'
     end
     else
     begin
-      TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= False;
+      if Assigned(aTable.Cell[0,i].Data1) then
+        if Assigned(TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked')) then
+          TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB:= False;
       aTable.Cell[0,i].TextString:= '';
     end;
-    Inc(i,2);
+    Inc(i,n);
   end;
 
   aTable.EndUpdate;
@@ -986,18 +1118,15 @@ begin
   Application.ProcessMessages;
 
   if Assigned(sel_cell) then
-    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
-  else
-    aTable.SetSelectedCell(-1,-1);
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row);
 
   aTable.LockEventChangeSelCell:= False;
 
   if aTable = tblFindedTickets then
   begin
     TblCheckWVolume(aTable);
+    cls_data.Save;
   end;
-
-  cls_data.Save;
 end;
 
 procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
@@ -1033,6 +1162,15 @@ begin
     SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' р';
   end;
 
+  if aTable = tblFavorTickets then
+  begin
+    SpTBXLabel28.Caption:= FloatToStrF(f1,fffixed,10,1) + ' т';
+    SpTBXLabel28.Caption:= DelSymb(SpTBXLabel28.Caption,'.0');
+    SpTBXLabel30.Caption:= FloatToStrF(f2,fffixed,10,1) + ' м3';
+    SpTBXLabel30.Caption:= DelSymb(SpTBXLabel30.Caption,'.0');
+    SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' р';
+  end;
+
   DecimalSeparator:= ds;
 end;
 
@@ -1048,6 +1186,158 @@ begin
     TFMClass(aCell.Data1).FindPropertyByName('_checked').ValueB:= aCell.TextString = '1';
     cls_data.Save;
     TblCheckWVolume(tblFindedTickets);
+  end;
+end;
+
+procedure TMainForm.SpTBXButton34Click(Sender: TObject);
+begin
+  if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
+  begin
+    cls_data.FindClassByName('blocks').FindClassByName('favor').Close;
+    cls_data.Save;
+    TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
+  end;
+end;
+
+procedure TMainForm.SpTBXButton35Click(Sender: TObject);
+begin
+  if Assigned(tblFavor.SelectedCell) then
+  begin
+    if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
+    begin
+      TFMClass(tblFavor.SelectedCell.Data1).ParentClass.DeleteClassItem(TFMClass(tblFavor.SelectedCell.Data1));
+      tblFavor.DelRow(tblFavor.SelectedCell.Row);
+      cls_data.Save;
+    end;
+  end;
+end;
+
+procedure TMainForm.SpTBXButton36Click(Sender: TObject);
+var cls1:TFMClass;
+begin
+  cls1:= cls_data.FindClassByName('blocks').FindClassByName('favor').CreateClassItem('','');
+  cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+  cls_data.Save;
+  TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
+end;
+
+procedure TMainForm.tblFavorDblClickCell(Sender: TObject);
+begin
+  if Assigned(tblFavor.SelectedCell) then
+  begin
+    act_cls_block_favor:= TFMClass(tblFavor.SelectedCell.Data1);
+    TblCheckUnCheck(tblFavor,False);
+    tblFavor.Cell[0,tblFavor.SelectedCell.Row].MyText:= '1';
+  end;
+end;
+
+procedure TMainForm.Setact_cls_block_favor(const Value: TFMClass);
+begin
+  Fact_cls_block_favor := Value;
+  if Assigned(act_cls_block_favor) then
+  begin
+    SpTBXLabel25.Caption:= act_cls_block_favor.FindPropertyByName('Caption').ValueS;
+    if Length(SpTBXLabel25.Caption) = 0 then
+      SpTBXLabel25.Caption:= 'Без имени';
+  end
+  else
+  begin
+    SpTBXLabel25.Caption:= '';
+  end;
+end;
+
+procedure TMainForm.tblFavorChangeSelectedCell(Sender: TObject);
+begin
+  if LockAllEventChangeSelCell then Exit;
+  if Assigned(tblFavor.SelectedCell) then
+  begin
+    ToggleOperation(op_favor_ticks);
+    Application.ProcessMessages;
+    TblUpdateTickets(tblFavorTickets,TFMClass(tblFavor.SelectedCell.Data1));
+  end;
+end;
+
+procedure TMainForm.SpTBXButton38Click(Sender: TObject);
+var cls1,cls2,cls3:TFMClass;
+begin
+  if Assigned(tblFindedTickets.SelectedCell) then
+  begin
+    if not Assigned(act_cls_block_favor) then
+    begin
+      MessageBox(Application.Handle,'Не задан активный блок избранного!','', MB_OK OR MB_ICONWARNING);
+    end
+    else
+    begin
+      cls2:= TFMClass(tblFindedTickets.Cell[0,tblFindedTickets.SelectedCell.Row].Data1);
+      if not Assigned(act_cls_block_favor.FindClassByName('items')) then
+        act_cls_block_favor.CreateClassItem('items','');
+      if not Assigned(GetTicketByID(cls2.FindPropertyByName('ID').ValueS,act_cls_block_favor.FindClassByName('items'))) then
+      begin
+        cls1:= act_cls_block_favor.FindClassByName('items').CreateClassItem('','');
+        cls2.CopyClass(cls1,cls2,True,True);
+        cls_data.Save;
+        InfoTimerForm.Execute('добавлено');
+      end
+      else
+        MessageBox(Application.Handle,'Заявка уже в активном блоке','', MB_OK OR MB_ICONINFORMATION);
+    end;
+  end;
+end;
+
+function TMainForm.GetTicketByID(ID: String; aClass: TFMClass): TFMClass;
+var i:Integer;
+begin
+  Result:= nil;
+  for i:= 0 to aClass.MyClassCount - 1 do
+  begin
+    if aClass.MyClass[i].FindPropertyByName('ID').ValueS = ID then
+    begin
+      Result:= aClass.MyClass[i];
+      Break;
+    end;
+  end;
+end;
+
+procedure TMainForm.SpTBXLabel23Click(Sender: TObject);
+begin
+  tblFavorChangeSelectedCell(nil);
+end;
+
+procedure TMainForm.SpTBXLabel15Click(Sender: TObject);
+begin
+  tblFindedChangeSelectedCell(nil);
+end;
+
+procedure TMainForm.tblFavorTicketsAfterCellEdit(aCell: TRRCell);
+begin
+  if aCell.MyTag = 'enabled' then
+  begin
+    TFMClass(aCell.Data1).FindPropertyByName('_checked').ValueB:= aCell.TextString = '1';
+    cls_data.Save;
+    TblCheckWVolume(tblFavorTickets);
+  end;
+end;
+
+procedure TMainForm.SpTBXButton37Click(Sender: TObject);
+begin
+  TblCheckUnCheck(tblFavorTickets,False);
+end;
+
+procedure TMainForm.SpTBXButton39Click(Sender: TObject);
+var cls1:TFMClass;
+    i:Integer;
+begin
+  if Assigned(tblFavorTickets.SelectedCell) then
+  begin
+    if MessageBox(Application.Handle,'Подтвердите действие !!!','Подтверждение',MB_OKCANCEL OR MB_ICONQUESTION) = ID_OK then
+    begin
+      cls1:= TFMClass(tblFavorTickets.Cell[0,tblFavorTickets.SelectedCell.Row].Data1);
+      cls1.ParentClass.DeleteClassItem(cls1);
+      i:= tblFavorTickets.SelectedCell.Row;
+      tblFavorTickets.DelRow(i);
+      tblFavorTickets.DelRow(i);
+      cls_data.Save;
+    end;
   end;
 end;
 

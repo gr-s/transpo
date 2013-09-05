@@ -7,7 +7,8 @@ uses
   transpo_classes in 'transpo_classes.pas',
   uSelectWizard1 in 'uSelectWizard1.pas' {SelectWizard1},
   uBrowser in 'uBrowser.pas' {Browser},
-  uCalendarWizard in 'uCalendarWizard.pas' {CalendarWizard};
+  uCalendarWizard in 'uCalendarWizard.pas' {CalendarWizard},
+  uInfoTimerForm in 'uInfoTimerForm.pas' {InfoTimerForm};
 
 {$R *.res}
 
@@ -17,6 +18,7 @@ begin
   Application.CreateForm(TSelectWizard1, SelectWizard1);
   Application.CreateForm(TBrowser, Browser);
   Application.CreateForm(TCalendarWizard, CalendarWizard);
+  Application.CreateForm(TInfoTimerForm, InfoTimerForm);
   MainForm.Run;
   Application.Run;
 end.
