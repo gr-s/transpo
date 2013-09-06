@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-05.09.2013 14:50:23
+06.09.2013 19:50:54
 /end header
 /begin data
 MyClass TopInstance
@@ -84,6 +84,8 @@ MyClass TopInstance
 			char DateDesc = /B$&V//E$&V/
 			char Note = /B$&V//E$&V/
 			bool _checked = /B$&V/False/E$&V/
+			int _status_id = /B$&V/0/E$&V/
+			char _status_str = /B$&V/Новая/E$&V/
 			/end public
 			/begin classes
 				MyClass controller_contacts
@@ -158,7 +160,90 @@ MyClass TopInstance
 			/begin public
 			char Caption = /B$&V//E$&V/
 			char Date = /B$&V//E$&V/
+			int _sel_col = /B$&V/-1/E$&V/
+			int _sel_row = /B$&V/-1/E$&V/
 			/end public
+		}
+		MyClass ticket_statuses
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/0/E$&V/
+					char str = /B$&V/Новая/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/10/E$&V/
+					char str = /B$&V/Просм/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/20/E$&V/
+					char str = /B$&V/Снята/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/30/E$&V/
+					char str = /B$&V/Удал/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/40/E$&V/
+					char str = /B$&V/Звонил/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/50/E$&V/
+					char str = /B$&V/Принята/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/60/E$&V/
+					char str = /B$&V/Отгружена/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/70/E$&V/
+					char str = /B$&V/Выполнена/E$&V/
+					/end public
+				}
+			/end classes
 		}
 	/end classes
 }

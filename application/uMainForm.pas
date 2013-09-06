@@ -23,7 +23,6 @@ type
     SpTBXLabel2: TSpTBXLabel;
     SpTBXLabel3: TSpTBXLabel;
     SpTBXLabel4: TSpTBXLabel;
-    tcSplitterLeft: TSpTBXSplitter;
     tcLeft: TSpTBXTabControl;
     SpTBXTabSheet2: TSpTBXTabSheet;
     tcClient: TSpTBXTabControl;
@@ -104,9 +103,6 @@ type
     SpTBXLabel17: TSpTBXLabel;
     SpTBXLabel18: TSpTBXLabel;
     SpTBXLabel19: TSpTBXLabel;
-    SpTBXTabItem6: TSpTBXTabItem;
-    SpTBXTabSheet7: TSpTBXTabSheet;
-    SpTBXButton30: TSpTBXButton;
     SpTBXLabel20: TSpTBXLabel;
     SpTBXLabel21: TSpTBXLabel;
     SpTBXPanel12: TSpTBXPanel;
@@ -133,11 +129,30 @@ type
     SpTBXPanel15: TSpTBXPanel;
     SpTBXLabel33: TSpTBXLabel;
     SpTBXLabel34: TSpTBXLabel;
-    SpTBXLabel35: TSpTBXLabel;
-    SpTBXLabel36: TSpTBXLabel;
     tblFavorTickets: TRRAdvTable;
     SpTBXButton38: TSpTBXButton;
     SpTBXButton39: TSpTBXButton;
+    SpTBXTabItem6: TSpTBXTabItem;
+    SpTBXTabSheet7: TSpTBXTabSheet;
+    SpTBXPanel16: TSpTBXPanel;
+    SpTBXButton30: TSpTBXButton;
+    SpTBXLabel36: TSpTBXLabel;
+    SpTBXLabel39: TSpTBXLabel;
+    Memo1: TMemo;
+    Memo2: TMemo;
+    Memo3: TMemo;
+    Shape1: TShape;
+    SpTBXLabel37: TSpTBXLabel;
+    SpTBXLabel38: TSpTBXLabel;
+    Shape2: TShape;
+    Memo4: TMemo;
+    SpTBXLabel40: TSpTBXLabel;
+    Memo5: TMemo;
+    Memo6: TMemo;
+    Memo7: TMemo;
+    tblTicketStatuses: TRRAdvTable;
+    SpTBXLabel35: TSpTBXLabel;
+    SpTBXLabel41: TSpTBXLabel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -188,14 +203,21 @@ type
     procedure tblFavorTicketsAfterCellEdit(aCell: TRRCell);
     procedure SpTBXButton37Click(Sender: TObject);
     procedure SpTBXButton39Click(Sender: TObject);
+    procedure tblFindedTicketsDblClickCell(Sender: TObject);
+    procedure tblFindedTicketsChangeSelectedCell(Sender: TObject);
+    procedure tblFavorTicketsDblClickCell(Sender: TObject);
+    procedure tblTicketStatusesDblClickCell(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
     { Private declarations }
   public
     curr_sel_cell_value:String;
+    old_ticket_info_oper_id:Integer;
     _FromGeoIndex:Integer;
     _ToGeoIndex:Integer;
+
+    cls_active_ticket:TFMClass;
 
     LockAllEventChangeSelCell:Boolean;
 
@@ -212,14 +234,18 @@ type
     procedure TblUpdateGeos(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateBlocks(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateTickets(aTable:TRRAdvTable; aClass:TFMClass);
+    procedure TblUpdateTicketStatuses(aTable:TRRAdvTable; aClass:TFMClass);
 
     procedure TblCheckUnCheck(aTable:TRRAdvTable; Value:Boolean);
     procedure TblCheckWVolume(aTable:TRRAdvTable);
+
+    procedure TblUpdateTicketInfo(aClass:TFMClass);
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
 
     function  GetTicketByID(ID:String;aClass:TFMClass):TFMClass;
+    function  GetStatusFontColor(statID:Integer):TColor;
 
     procedure ToggleOperation(op_code:Integer);
 
@@ -307,9 +333,15 @@ begin
   tblFavorTickets.Options.ForceNullSelecting:= False;
   tblFavorTickets.Open;
 
+  tblTicketStatuses.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\statuses.tbl';
+  tblTicketStatuses.Options.ForceNullSelecting:= False;
+  tblTicketStatuses.Open;
+
+
   TblUpdateGeos(tblATIGeos,cls_geos);
   TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
   TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
+  TblUpdateTicketStatuses(tblTicketStatuses,cls_templates.FindClassByName('ticket_statuses'));
   UpdateATI_f_Params;
   
 
@@ -411,14 +443,12 @@ begin
   if op_code = op_none then
   begin
     tcLeft.Hide;
-    tcSplitterLeft.Hide;
     tcClient.Hide;
   end;
 
   if op_code = op_ati then
   begin
     tcLeft.Show;
-    tcSplitterLeft.Show;
     tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 1;
@@ -427,7 +457,6 @@ begin
   if op_code = op_ati_get_ticks then
   begin
     tcLeft.Show;
-    tcSplitterLeft.Show;
     tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 0;
@@ -442,6 +471,11 @@ begin
   if op_code = op_favor_ticks then
   begin
     tcClient.ActiveTabIndex:= 3;
+  end;
+
+  if op_code = op_ticket_info then
+  begin
+    tcClient.ActiveTabIndex:= 4;
   end;
 
   LockWindowUpdate(0);
@@ -916,13 +950,18 @@ begin
 end;
 
 procedure TMainForm.tblFindedChangeSelectedCell(Sender: TObject);
+var cls1:TFMClass;
 begin
   if LockAllEventChangeSelCell then Exit;
   if Assigned(tblFinded.SelectedCell) then
   begin
     ToggleOperation(op_finded_ticks);
     Application.ProcessMessages;
-    TblUpdateTickets(tblFindedTickets,TFMClass(tblFinded.SelectedCell.Data1));
+    cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
+    TblUpdateTickets(tblFindedTickets,cls1);
+    if Assigned(cls1.FindPropertyByName('_sel_row')) then
+      if cls1.FindPropertyByName('_sel_row').ValueI >= 0 then
+        tblFindedTickets.SetSelectedCell(cls1.FindPropertyByName('_sel_col').ValueI,cls1.FindPropertyByName('_sel_row').ValueI);
   end;
 end;
 
@@ -939,8 +978,10 @@ begin
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
 
+  aTable.ClearRows(True);
+  Application.ProcessMessages;
+  
   aTable.BeginUpdate;
-  aTable.ClearRows;
 
   aTable.LockEventChangeSelCell:= True;
 
@@ -1043,6 +1084,12 @@ begin
       aTable.Cell[5,k-1].TextString:= cls1.FindPropertyByName('FromGeo').ValueS;
       aTable.Cell[6,k-1].TextString:= cls1.FindPropertyByName('ToGeo').ValueS;
       aTable.Cell[7,k-1].TextString:= cls1.FindPropertyByName('CargoName').ValueS;
+
+      if Assigned(cls1.FindPropertyByName('_status_id')) then
+      begin
+        aTable.Cell[7,k].Font.Color:= GetStatusFontColor(cls1.FindPropertyByName('_status_id').ValueI);
+        aTable.Cell[7,k].TextString:= cls1.FindPropertyByName('_status_str').ValueS;
+      end;
     end;
 
     FreeAndNil(buff);
@@ -1176,7 +1223,7 @@ end;
 
 procedure TMainForm.SpTBXButton30Click(Sender: TObject);
 begin
-  SpTBXTabControl1.ActiveTabIndex:= 2;
+  ToggleOperation(old_ticket_info_oper_id);
 end;
 
 procedure TMainForm.tblFindedTicketsAfterCellEdit(aCell: TRRCell);
@@ -1259,6 +1306,7 @@ end;
 
 procedure TMainForm.SpTBXButton38Click(Sender: TObject);
 var cls1,cls2,cls3:TFMClass;
+    i:Integer;
 begin
   if Assigned(tblFindedTickets.SelectedCell) then
   begin
@@ -1275,6 +1323,19 @@ begin
       begin
         cls1:= act_cls_block_favor.FindClassByName('items').CreateClassItem('','');
         cls2.CopyClass(cls1,cls2,True,True);
+        if Length(act_cls_block_favor.FindPropertyByName('Caption').ValueS) = 0 then
+        begin
+          act_cls_block_favor.FindPropertyByName('Caption').ValueS:=
+              Copy(cls1.FindPropertyByName('FromGeo').ValueS,1,4) + '-' + Copy(cls1.FindPropertyByName('ToGeo').ValueS,1,4);
+          for i:= 0 to tblFavor.RowCount - 1 do
+          begin
+            if tblFavor.Cell[0,i].TextString = '1' then
+            begin
+              tblFavor.Cell[1,i].MyText:= act_cls_block_favor.FindPropertyByName('Caption').ValueS; 
+            end;
+            act_cls_block_favor:= act_cls_block_favor;
+          end;
+        end;
         cls_data.Save;
         InfoTimerForm.Execute('добавлено');
       end
@@ -1338,6 +1399,202 @@ begin
       tblFavorTickets.DelRow(i);
       cls_data.Save;
     end;
+  end;
+end;
+
+procedure TMainForm.tblFindedTicketsDblClickCell(Sender: TObject);
+var cls1,cls2,cls3:TFMClass;
+    i:Integer;
+begin
+  if Assigned(tblFindedTickets.SelectedCell) then
+  begin
+    cls1:= TFMClass(tblFindedTickets.Cell[0,tblFindedTickets.SelectedCell.Row].Data1);
+    cls_active_ticket:= cls1;
+    old_ticket_info_oper_id:= op_finded_ticks;
+    TblUpdateTicketInfo(cls1);
+    ToggleOperation(op_ticket_info);
+  end;
+end;
+
+procedure TMainForm.tblFindedTicketsChangeSelectedCell(Sender: TObject);
+var cls1:TFMClass;
+begin
+  if Assigned(tblFinded.SelectedCell) then
+  begin
+    cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
+    cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+    cls1.FindPropertyByName('_sel_col').ValueI:= tblFindedTickets.SelectedCell.Col;
+    cls1.FindPropertyByName('_sel_row').ValueI:= tblFindedTickets.SelectedCell.Row;
+  end;
+end;
+
+procedure TMainForm.TblUpdateTicketInfo(aClass: TFMClass);
+var i,i1,i2,_price,n:Integer;
+    f1:Single;
+    s,s1:String;
+    ds:Char;
+begin
+  ds:= DecimalSeparator;
+  DecimalSeparator:= '.';
+
+  cls_templates.CopyClass(aClass,cls_templates.FindClassByName('ticket'),False,True);
+
+  SpTBXLabel36.Caption:= aClass.FindPropertyByName('Dist').ValueS;
+  s:= '';
+  for n:= 1 to 2 do
+  begin
+    i1:= 0; i2:= 0;
+    if aClass.FindPropertyByName('DistI').ValueI > 0 then
+    begin
+      f1:= 1;
+      if n = 1 then
+        if aClass.FindPropertyByName('Weight').ValueF > 0 then
+          f1:= aClass.FindPropertyByName('Weight').ValueF/5;
+      i1:= Round(((aClass.FindPropertyByName('DistI').ValueI/100) * 17 * 30)*(f1));
+    end;
+    if TryStrToInt(aClass.FindPropertyByName('Price1').ValueS,_price) then
+    begin
+      i2:= Round(_price * 0.1);
+    end;
+    if (i1 > 0) or (i2 > 0) then
+    begin
+      i:= i1 + i2;
+      s:= s + '-' + IntToStr(i) + ' р';
+      if _price > 0 then
+      begin
+        i:= _price - i;
+        s:= s + ' [' + IntToStr(i) + ' р]';
+      end;
+    end;
+    if n = 1 then
+      if Length(s) > 0 then
+        s:= s + ' :: ';
+  end;
+  if Length(s) > 0 then
+    SpTBXLabel36.Caption:= SpTBXLabel36.Caption + ' (' + s + ')';
+
+  Memo1.Text:= aClass.FindPropertyByName('FromGeoDesc1').ValueS;
+  Memo2.Text:= aClass.FindPropertyByName('ToGeoDesc1').ValueS;
+  SpTBXLabel39.Caption:= aClass.FindPropertyByName('Price1').ValueS + ' р ';
+  Memo3.Text:= aClass.FindPropertyByName('PriceDesc').ValueS;
+  Memo7.Text:= 'Прим.: ' + aClass.FindPropertyByName('Note').ValueS;
+  SpTBXLabel37.Caption:= aClass.FindPropertyByName('TruckType').ValueS;
+
+  SpTBXLabel38.Caption:= '';
+
+  if aClass.FindPropertyByName('Weight').ValueF > 0 then
+  begin
+    s1:= FloatToStrF(aClass.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+    s1:= DelSymb(s1,'.0');
+    SpTBXLabel38.Caption:= SpTBXLabel38.Caption + s1;
+  end
+  else
+    SpTBXLabel38.Caption:= '--';
+
+  if aClass.FindPropertyByName('Volume').ValueF > 0 then
+  begin
+    s1:= FloatToStrF(aClass.FindPropertyByName('Volume').ValueF,fffixed,10,1);
+    s1:= DelSymb(s1,'.0');
+    SpTBXLabel38.Caption:= SpTBXLabel38.Caption + ' / ' + s1;
+  end
+  else
+    SpTBXLabel38.Caption:= SpTBXLabel38.Caption + ' / --';
+
+  Memo4.Text:= aClass.FindPropertyByName('CargoDesc').ValueS;
+
+  SpTBXLabel40.Caption:= aClass.FindPropertyByName('DateDesc').ValueS;
+
+  Memo5.Text:= aClass.FindPropertyByName('ControllerInfo').ValueS;
+
+  Memo6.Lines.Clear;
+  for i:= 0 to aClass.FindClassByName('controller_contacts').MyClassCount - 1 do
+  begin
+    Memo6.Lines.Add(aClass.FindClassByName('controller_contacts').MyClass[i].FindPropertyByName('Str1').ValueS);
+  end;
+
+  if aClass.FindPropertyByName('_status_id').ValueI = 0 then
+  begin
+    aClass.FindPropertyByName('_status_id').ValueI:= 10;
+    aClass.FindPropertyByName('_status_str').ValueS:= 'Просм';
+    cls_data.Save;
+  end;
+
+  SpTBXLabel35.Caption:= aClass.FindPropertyByName('_status_str').ValueS;
+  SpTBXLabel35.Font.Color:= GetStatusFontColor(aClass.FindPropertyByName('_status_id').ValueI);
+
+  DecimalSeparator:= ds;
+end;
+
+procedure TMainForm.tblFavorTicketsDblClickCell(Sender: TObject);
+var cls1,cls2,cls3:TFMClass;
+    i:Integer;
+begin
+  if Assigned(tblFavorTickets.SelectedCell) then
+  begin
+    cls1:= TFMClass(tblFavorTickets.Cell[0,tblFavorTickets.SelectedCell.Row].Data1);
+    cls_active_ticket:= cls1;
+    old_ticket_info_oper_id:= op_favor_ticks;
+    TblUpdateTicketInfo(cls1);
+    ToggleOperation(op_ticket_info);
+  end;
+end;
+
+procedure TMainForm.TblUpdateTicketStatuses(aTable: TRRAdvTable;
+  aClass: TFMClass);
+var i:Integer;
+    sel_cell:TRRCell;
+begin
+  aTable.BeginUpdate;
+  aTable.ClearRows;
+
+  aTable.LockEventChangeSelCell:= True;
+
+  sel_cell:= nil;
+
+  for i:= 0 to aClass.MyClassCount - 1 do
+  begin
+    aTable.CreateRowBlock(0);
+    aTable.Cell[0,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('str').ValueS;
+    aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
+  end;
+
+  aTable.EndUpdate;
+
+  Application.ProcessMessages;
+
+  if Assigned(sel_cell) then
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
+  else
+    aTable.SetSelectedCell(-1,-1);
+
+  aTable.LockEventChangeSelCell:= False;
+end;
+
+function TMainForm.GetStatusFontColor(statID: Integer): TColor;
+begin
+  Result:= clBlack;
+  case statID of
+    20,30: Result:= clRed;
+    40: Result:= clBlue;
+    50: Result:= clGreen;
+    60: Result:= clFuchsia;
+    70: Result:= clNavy;
+  end;
+end;
+
+procedure TMainForm.tblTicketStatusesDblClickCell(Sender: TObject);
+var cls1,cls2,cls3:TFMClass;
+    i:Integer;
+begin
+  if Assigned(tblTicketStatuses.SelectedCell) then
+  begin
+    cls1:= TFMClass(tblTicketStatuses.Cell[0,tblTicketStatuses.SelectedCell.Row].Data1);
+    cls_templates.CopyClass(cls_active_ticket,cls_templates.FindClassByName('ticket'),False,True);
+    cls_active_ticket.FindPropertyByName('_status_id').ValueI:= cls1.FindPropertyByName('id').ValueI;
+    cls_active_ticket.FindPropertyByName('_status_str').ValueS:= cls1.FindPropertyByName('str').ValueS;
+    SpTBXLabel35.Caption:= cls_active_ticket.FindPropertyByName('_status_str').ValueS;
+    SpTBXLabel35.Font.Color:= GetStatusFontColor(cls_active_ticket.FindPropertyByName('_status_id').ValueI);
+    cls_data.Save;
   end;
 end;
 

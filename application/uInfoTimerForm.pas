@@ -30,6 +30,8 @@ implementation
 procedure TInfoTimerForm.Execute(aText: String);
 begin
   SpTBXLabel1.Caption:= aText;
+  Left:= Application.MainForm.Left + Application.MainForm.Width - Width - 10;
+  Top:= Application.MainForm.Top + Application.MainForm.Height - Height - 10;
   Show;
   Timer1.Enabled:= True;
 end;

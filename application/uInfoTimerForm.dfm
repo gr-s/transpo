@@ -14,7 +14,6 @@ object InfoTimerForm: TInfoTimerForm
   Font.Style = []
   FormStyle = fsStayOnTop
   OldCreateOrder = False
-  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object spMainForm: TSpTBXTitleBar
