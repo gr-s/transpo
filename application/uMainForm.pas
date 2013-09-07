@@ -88,9 +88,6 @@ type
     SpTBXTabSheet6: TSpTBXTabSheet;
     tblFinded: TRRAdvTable;
     SpTBXPanel9: TSpTBXPanel;
-    SpTBXPanel10: TSpTBXPanel;
-    SpTBXButton12: TSpTBXButton;
-    SpTBXButton29: TSpTBXButton;
     SpTBXButton31: TSpTBXButton;
     SpTBXButton32: TSpTBXButton;
     SpTBXLabel15: TSpTBXLabel;

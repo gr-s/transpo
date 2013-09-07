@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-07.09.2013 17:23:26
+07.09.2013 18:23:05
 /end header
 /begin data
 MyClass data_file
@@ -12663,9 +12663,9 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/НИЖН-ПЕРМ/E$&V/
 							char Date = /B$&V/09.09.2013/E$&V/
-							int _sel_col = /B$&V/3/E$&V/
-							int _sel_row = /B$&V/8/E$&V/
-							char _sel_session = /B$&V/3573029581-63514-17954/E$&V/
+							int _sel_col = /B$&V/2/E$&V/
+							int _sel_row = /B$&V/0/E$&V/
+							char _sel_session = /B$&V/149944896-36880-19474/E$&V/
 							/end public
 							/begin classes
 								MyClass items
@@ -12874,10 +12874,7 @@ sdf/E$&V/
 											char DateDesc = /B$&V/ 9 сен /E$&V/
 											char Note = /B$&V//E$&V/
 											char Reliability = /B$&V/Балл надёжности: 2,30. Субъективных оценок нет или их меньше 3-х./E$&V/
-											MemoBlock Comments = /B$&V/testasaass
-sd
-sd
-sd/E$&V/
+											MemoBlock Comments = /B$&V/9879798798/E$&V/
 											bool _checked = /B$&V/False/E$&V/
 											int _status_id = /B$&V/10/E$&V/
 											char _status_str = /B$&V/Просм/E$&V/

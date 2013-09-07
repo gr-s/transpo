@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 147
-  Top = 32
+  Left = 300
+  Top = 26
   Width = 1079
   Height = 677
   Caption = 'MainForm'
@@ -264,12 +264,17 @@ object MainForm: TMainForm
         TabItem = 'SpTBXTabItem4'
         object SpTBXTabControl1: TSpTBXTabControl
           Left = 2
-          Top = 41
+          Top = 0
           Width = 259
-          Height = 432
+          Height = 473
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           ActiveTabIndex = 0
-          TabVisible = False
           HiddenItems = <>
           object SpTBXTabItem2: TSpTBXTabItem
             Caption = #1055#1086#1080#1089#1082
@@ -282,7 +287,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 25
             Width = 259
-            Height = 407
+            Height = 448
             Caption = #1048#1079#1073#1088#1072#1085#1085#1086#1077
             ImageIndex = -1
             TabItem = 'SpTBXTabItem5'
@@ -290,14 +295,14 @@ object MainForm: TMainForm
               Left = 2
               Top = 0
               Width = 253
-              Height = 41
+              Height = 49
               Caption = 'SpTBXPanel9'
               Align = alTop
               TabOrder = 0
               Borders = False
               object SpTBXButton34: TSpTBXButton
                 Left = 183
-                Top = 8
+                Top = 16
                 Width = 65
                 Height = 27
                 Caption = #1086#1095#1080#1089#1090
@@ -306,7 +311,7 @@ object MainForm: TMainForm
               end
               object SpTBXButton35: TSpTBXButton
                 Left = 120
-                Top = 8
+                Top = 16
                 Width = 57
                 Height = 27
                 Caption = #1091#1076#1072#1083
@@ -331,7 +336,7 @@ object MainForm: TMainForm
               end
               object SpTBXButton36: TSpTBXButton
                 Left = 57
-                Top = 8
+                Top = 16
                 Width = 57
                 Height = 27
                 Caption = '+'
@@ -341,9 +346,9 @@ object MainForm: TMainForm
             end
             object tblFavor: TRRAdvTable
               Left = 2
-              Top = 41
+              Top = 49
               Width = 253
-              Height = 362
+              Height = 395
               Align = alClient
               Color = clWhite
               Constraints.MinWidth = 100
@@ -477,15 +482,15 @@ object MainForm: TMainForm
             Left = 0
             Top = 25
             Width = 259
-            Height = 407
+            Height = 448
             Caption = #1055#1086#1080#1089#1082
             ImageIndex = -1
             TabItem = 'SpTBXTabItem2'
             object tblFinded: TRRAdvTable
               Left = 2
-              Top = 41
+              Top = 49
               Width = 253
-              Height = 362
+              Height = 395
               Align = alClient
               Color = clWhite
               Constraints.MinWidth = 100
@@ -617,14 +622,14 @@ object MainForm: TMainForm
               Left = 2
               Top = 0
               Width = 253
-              Height = 41
+              Height = 49
               Caption = 'SpTBXPanel9'
               Align = alTop
               TabOrder = 1
               Borders = False
               object SpTBXButton31: TSpTBXButton
                 Left = 183
-                Top = 8
+                Top = 16
                 Width = 65
                 Height = 27
                 Caption = #1086#1095#1080#1089#1090
@@ -633,7 +638,7 @@ object MainForm: TMainForm
               end
               object SpTBXButton32: TSpTBXButton
                 Left = 80
-                Top = 8
+                Top = 16
                 Width = 89
                 Height = 27
                 Caption = #1091#1076#1072#1083
@@ -657,34 +662,6 @@ object MainForm: TMainForm
                 CaptionGlowColor = clWhite
               end
             end
-          end
-        end
-        object SpTBXPanel10: TSpTBXPanel
-          Left = 2
-          Top = 0
-          Width = 259
-          Height = 41
-          Caption = 'SpTBXPanel9'
-          Align = alTop
-          TabOrder = 1
-          Borders = False
-          object SpTBXButton12: TSpTBXButton
-            Left = 13
-            Top = 8
-            Width = 71
-            Height = 27
-            Caption = #1055#1086#1080#1089#1082
-            TabOrder = 0
-            OnClick = SpTBXButton12Click
-          end
-          object SpTBXButton29: TSpTBXButton
-            Left = 91
-            Top = 8
-            Width = 75
-            Height = 27
-            Caption = #1048#1079#1073#1088
-            TabOrder = 1
-            OnClick = SpTBXButton29Click
           end
         end
       end
@@ -2738,7 +2715,14 @@ object MainForm: TMainForm
               Height = 52
               Align = alClient
               Ctl3D = False
+              Font.Charset = RUSSIAN_CHARSET
+              Font.Color = clBlack
+              Font.Height = -13
+              Font.Name = 'Tahoma'
+              Font.Style = []
               ParentCtl3D = False
+              ParentFont = False
+              ScrollBars = ssVertical
               TabOrder = 0
               OnChange = Memo8Change
             end
