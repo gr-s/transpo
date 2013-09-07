@@ -965,9 +965,9 @@ begin
     cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
     cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
     TblUpdateTickets(tblFindedTickets,cls1);
-    if cls1.FindPropertyByName('_sel_session').ValueS = cur_session then
-      if cls1.FindPropertyByName('_sel_row').ValueI >= 0 then
-        tblFindedTickets.SetSelectedCell(cls1.FindPropertyByName('_sel_col').ValueI,cls1.FindPropertyByName('_sel_row').ValueI);
+  //  if cls1.FindPropertyByName('_sel_session').ValueS = cur_session then
+    //  if cls1.FindPropertyByName('_sel_row').ValueI >= 0 then
+      //  tblFindedTickets.SetSelectedCell(cls1.FindPropertyByName('_sel_col').ValueI,cls1.FindPropertyByName('_sel_row').ValueI);
   end;
 end;
 
@@ -1432,9 +1432,9 @@ begin
   begin
     cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
     cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
-    cls1.FindPropertyByName('_sel_session').ValueS:= cur_session;
-    cls1.FindPropertyByName('_sel_col').ValueI:= tblFindedTickets.SelectedCell.Col;
-    cls1.FindPropertyByName('_sel_row').ValueI:= tblFindedTickets.SelectedCell.Row;
+    //cls1.FindPropertyByName('_sel_session').ValueS:= cur_session;
+    //cls1.FindPropertyByName('_sel_col').ValueI:= tblFindedTickets.SelectedCell.Col;
+    //cls1.FindPropertyByName('_sel_row').ValueI:= tblFindedTickets.SelectedCell.Row;
   end;
 end;
 
