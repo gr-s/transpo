@@ -1423,6 +1423,7 @@ end;
 procedure TMainForm.tblFindedTicketsChangeSelectedCell(Sender: TObject);
 var cls1:TFMClass;
 begin
+  if LockAllEventChangeSelCell then Exit;
   if Assigned(tblFinded.SelectedCell) then
   begin
     cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
