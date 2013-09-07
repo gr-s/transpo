@@ -268,6 +268,9 @@ constructor TMainForm.Create(AOwner: TComponent);
 var cls1:TFMClass;
 begin
   inherited;
+
+  cur_session:= GenerateGUID;
+
   FileModLibName:= ExtractFilePath(Application.ExeName) + FileModLibName;
   if not InitFM then
   begin
@@ -960,8 +963,9 @@ begin
     ToggleOperation(op_finded_ticks);
     Application.ProcessMessages;
     cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
+    cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
     TblUpdateTickets(tblFindedTickets,cls1);
-    if Assigned(cls1.FindPropertyByName('_sel_row')) then
+    if cls1.FindPropertyByName('_sel_session').ValueS = cur_session then
       if cls1.FindPropertyByName('_sel_row').ValueI >= 0 then
         tblFindedTickets.SetSelectedCell(cls1.FindPropertyByName('_sel_col').ValueI,cls1.FindPropertyByName('_sel_row').ValueI);
   end;
@@ -1428,6 +1432,7 @@ begin
   begin
     cls1:= TFMClass(tblFinded.Cell[0,tblFinded.SelectedCell.Row].Data1);
     cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+    cls1.FindPropertyByName('_sel_session').ValueS:= cur_session;
     cls1.FindPropertyByName('_sel_col').ValueI:= tblFindedTickets.SelectedCell.Col;
     cls1.FindPropertyByName('_sel_row').ValueI:= tblFindedTickets.SelectedCell.Row;
   end;

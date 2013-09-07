@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-06.09.2013 19:50:54
+07.09.2013 11:59:10
 /end header
 /begin data
 MyClass TopInstance
@@ -162,6 +162,7 @@ MyClass TopInstance
 			char Date = /B$&V//E$&V/
 			int _sel_col = /B$&V/-1/E$&V/
 			int _sel_row = /B$&V/-1/E$&V/
+			char _sel_session = /B$&V//E$&V/
 			/end public
 		}
 		MyClass ticket_statuses

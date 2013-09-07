@@ -5,6 +5,8 @@ uses rrfile_mod_api;
 
 var
 
+  cur_session:String;
+
   app_sett:TFMClass;
   cls_templates:TFMClass;
 
