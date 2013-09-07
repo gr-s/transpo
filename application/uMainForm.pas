@@ -155,6 +155,22 @@ type
     SpTBXPanel17: TSpTBXPanel;
     SpTBXLabel35: TSpTBXLabel;
     Shape3: TShape;
+    SpTBXLabel42: TSpTBXLabel;
+    SpTBXLabel43: TSpTBXLabel;
+    SpTBXLabel44: TSpTBXLabel;
+    SpTBXLabel45: TSpTBXLabel;
+    SpTBXLabel46: TSpTBXLabel;
+    Memo9: TMemo;
+    SpTBXTabControl2: TSpTBXTabControl;
+    SpTBXTabItem9: TSpTBXTabItem;
+    SpTBXTabSheet10: TSpTBXTabSheet;
+    Memo8: TMemo;
+    SpTBXTabItem10: TSpTBXTabItem;
+    SpTBXTabSheet11: TSpTBXTabSheet;
+    SpTBXLabel47: TSpTBXLabel;
+    SpTBXLabel48: TSpTBXLabel;
+    SpTBXButton40: TSpTBXButton;
+    SpTBXCheckBox1: TSpTBXCheckBox;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -209,6 +225,7 @@ type
     procedure tblFindedTicketsChangeSelectedCell(Sender: TObject);
     procedure tblFavorTicketsDblClickCell(Sender: TObject);
     procedure tblTicketStatusesDblClickCell(Sender: TObject);
+    procedure Memo8Change(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -246,6 +263,9 @@ type
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
 
+    function  IsCashed(aClass:TFMClass):Boolean;
+    function  GetForecast(aClass:TFMClass):Integer;
+
     function  GetTicketByID(ID:String;aClass:TFMClass):TFMClass;
     function  GetStatusFontColor(statID:Integer):TColor;
 
@@ -259,6 +279,8 @@ var
   MainForm: TMainForm;
 
 implementation
+
+uses Math;
 
 {$R *.dfm}
 
@@ -286,6 +308,7 @@ begin
   LockAllEventChangeSelCell:= False;
 
   act_cls_block_favor:= nil;
+  cls_active_ticket:= nil;
 
   cls_templates:= TFMClass.Create(Self);
   cls_templates.FileName:= AppDir + 'templates.dat';
@@ -1073,6 +1096,8 @@ begin
       aTable.Cell[2,k-1].TextString:= cls1.FindPropertyByName('Price1').ValueS;
       if TryStrToInt(aTable.Cell[2,k-1].TextString,k1) then
         aTable.Cell[2,k-1].TextString:= aTable.Cell[2,k-1].TextString + ' ð';
+      if IsCashed(cls1) then
+        aTable.Cell[2,k-1].Color:= $00B4FFFF;
 
       s1:= FloatToStrF(cls1.FindPropertyByName('Weight').ValueF,fffixed,10,1);
       s1:= DelSymb(s1,'.0');
@@ -1185,15 +1210,15 @@ begin
 end;
 
 procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
-var f1,f2,f3,f4:Single;
-    i:Integer;
+var f1,f2,f3,f4,f5:Single;
+    i,_price,max_dist:Integer;
     ds:Char;
 begin
-  f1:= 0; f2:= 0; f3:= 0;
+  f1:= 0; f2:= 0; f3:= 0; f5:= 0;
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
 
-  i:= 0;
+  i:= 0; max_dist:= 0;
   while i <= aTable.RowCount-1 do
   begin
     if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('_checked').ValueB then
@@ -1202,11 +1227,19 @@ begin
         f1:= f1 + TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Weight').ValueF;
       if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Volume').ValueF > 0 then
         f2:= f2 + TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Volume').ValueF;
-      if TryStrToFloat(TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Price1').ValueS,f4) then
-        f3:= f3 + f4;
+      if TryStrToInt(TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('Price1').ValueS,_price) then
+      begin
+        f3:= f3 + _price;
+        if not IsCashed(TFMClass(aTable.Cell[0,i].Data1)) then
+          f5:= f5 + (_price * 0.1);
+      end;
+      if TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('DistI').ValueI > max_dist then
+        max_dist:= TFMClass(aTable.Cell[0,i].Data1).FindPropertyByName('DistI').ValueI;
     end;
     Inc(i,2);
   end;
+
+  f5:= f5 + ((max_dist/100) * 17 * 30);
 
   if aTable = tblFindedTickets then
   begin
@@ -1215,6 +1248,7 @@ begin
     SpTBXLabel19.Caption:= FloatToStrF(f2,fffixed,10,1) + ' ì3';
     SpTBXLabel19.Caption:= DelSymb(SpTBXLabel19.Caption,'.0');
     SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' ð';
+    SpTBXLabel44.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' ð';
   end;
 
   if aTable = tblFavorTickets then
@@ -1224,6 +1258,7 @@ begin
     SpTBXLabel30.Caption:= FloatToStrF(f2,fffixed,10,1) + ' ì3';
     SpTBXLabel30.Caption:= DelSymb(SpTBXLabel30.Caption,'.0');
     SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' ð';
+    SpTBXLabel46.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' ð';
   end;
 
   DecimalSeparator:= ds;
@@ -1464,7 +1499,8 @@ begin
     end;
     if TryStrToInt(aClass.FindPropertyByName('Price1').ValueS,_price) then
     begin
-      i2:= Round(_price * 0.1);
+      if not IsCashed(aClass) then
+        i2:= Round(_price * 0.1);
     end;
     if (i1 > 0) or (i2 > 0) then
     begin
@@ -1480,8 +1516,7 @@ begin
       if Length(s) > 0 then
         s:= s + ' :: ';
   end;
-  if Length(s) > 0 then
-    SpTBXLabel36.Caption:= SpTBXLabel36.Caption + ' (' + s + ')';
+  SpTBXLabel42.Caption:= '(' + s + ')';
 
   Memo1.Text:= aClass.FindPropertyByName('FromGeoDesc1').ValueS;
   Memo2.Text:= aClass.FindPropertyByName('ToGeoDesc1').ValueS;
@@ -1514,6 +1549,7 @@ begin
 
   SpTBXLabel40.Caption:= aClass.FindPropertyByName('DateDesc').ValueS;
 
+  Memo9.Text:= aClass.FindPropertyByName('Reliability').ValueS;
   Memo5.Text:= aClass.FindPropertyByName('ControllerInfo').ValueS;
 
   Memo6.Lines.Clear;
@@ -1531,6 +1567,14 @@ begin
 
   SpTBXLabel35.Caption:= aClass.FindPropertyByName('_status_str').ValueS;
   SpTBXLabel35.Font.Color:= GetStatusFontColor(aClass.FindPropertyByName('_status_id').ValueI);
+
+  Memo8.Text:= aClass.FindPropertyByName('Comments').ValueS;
+
+  SpTBXCheckBox1.Checked:= not IsCashed(aClass);
+  if not SpTBXCheckBox1.Checked then
+    Shape1.Brush.Color:= $00B4FFFF
+  else
+    Shape1.Brush.Color:= clWhite;
 
   DecimalSeparator:= ds;
 end;
@@ -1605,6 +1649,26 @@ begin
     cls_active_ticket.FindPropertyByName('_status_str').ValueS:= cls1.FindPropertyByName('str').ValueS;
     SpTBXLabel35.Caption:= cls_active_ticket.FindPropertyByName('_status_str').ValueS;
     SpTBXLabel35.Font.Color:= GetStatusFontColor(cls_active_ticket.FindPropertyByName('_status_id').ValueI);
+    cls_data.Save;
+  end;
+end;
+
+function TMainForm.IsCashed(aClass: TFMClass): Boolean;
+var s1:String;
+begin
+  Result:= GetFirstChar(AnsiUpperCase(aClass.FindPropertyByName('PriceDesc').ValueS),'ÍÀË',1,False,s1) > 0;  
+end;
+
+function TMainForm.GetForecast(aClass: TFMClass): Integer;
+begin
+
+end;
+
+procedure TMainForm.Memo8Change(Sender: TObject);
+begin
+  if Assigned(cls_active_ticket) then
+  begin
+    cls_active_ticket.FindPropertyByName('Comments').ValueS:= Memo8.Text;
     cls_data.Save;
   end;
 end;

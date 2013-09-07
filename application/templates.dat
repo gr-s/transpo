@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-07.09.2013 11:59:10
+07.09.2013 16:47:24
 /end header
 /begin data
 MyClass TopInstance
@@ -83,6 +83,8 @@ MyClass TopInstance
 			char ControllerInfo = /B$&V//E$&V/
 			char DateDesc = /B$&V//E$&V/
 			char Note = /B$&V//E$&V/
+			char Reliability = /B$&V//E$&V/
+			MemoBlock Comments = /B$&V//E$&V/
 			bool _checked = /B$&V/False/E$&V/
 			int _status_id = /B$&V/0/E$&V/
 			char _status_str = /B$&V/Новая/E$&V/

@@ -179,7 +179,7 @@ begin
   // Get all tags in body element ('*' => any tag name)
   Tags := Body.getElementsByTagName('*');
   // Scan through all tags in body
-  for n:= 1 to 2 do
+  for n:= 1 to 1 do
   begin
     case n of
       1:
@@ -204,7 +204,8 @@ begin
         Break;
       end;
     end;
-    DOM_Index:= I;
+    if Assigned(Result) then
+      DOM_Index:= I;
     if Assigned(Result) then Break;
   end;
 end;
@@ -381,6 +382,7 @@ var s,s1,s2,s3:String;
     Tags: IHTMLElementCollection;
     f1:Single;
     page_count:Integer;
+    ov:OleVariant;
 begin
   if params.task = 'GetTickets1' then
   begin
@@ -651,6 +653,20 @@ begin
             begin
               s:= IHTMLElement(elm2).innerText;
               cls1.FindPropertyByName('ControllerInfo').ValueS:= s;
+            end;
+
+            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_starReliabilityName_' + IntToStr(i)
+                                  + '_ctlStarControl_' + IntToStr(i),elm));
+            if Assigned(elm2) then
+            begin
+              s:= IHTMLElement(elm2).outerHTML;
+              ov:= IHTMLElement(elm2).getAttribute('RateDescription',-1);
+              //Tags:= IHTMLElementCollection(elm2.getElementsByTagName('*'));
+              //elm2:= IHTMLElement2(Tags.item(0, EmptyParam));
+              //s:= IHTMLElement(elm2).innerHTML;
+              //s:= IHTMLElement(elm2).getAttribute('title',-1);
+              if TVarData(ov).VDispatch <> nil then
+                cls1.FindPropertyByName('Reliability').ValueS:= String(ov);
             end;
 
             elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts_' + IntToStr(i),elm));
