@@ -151,8 +151,10 @@ type
     Memo6: TMemo;
     Memo7: TMemo;
     tblTicketStatuses: TRRAdvTable;
-    SpTBXLabel35: TSpTBXLabel;
     SpTBXLabel41: TSpTBXLabel;
+    SpTBXPanel17: TSpTBXPanel;
+    SpTBXLabel35: TSpTBXLabel;
+    Shape3: TShape;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -983,6 +985,7 @@ begin
   
   aTable.BeginUpdate;
 
+  LockAllEventChangeSelCell:= True;
   aTable.LockEventChangeSelCell:= True;
 
   sel_cell:= nil;
@@ -1046,7 +1049,7 @@ begin
     end;
 
     k:= -1;
-    
+
     for i:= 0 to buff2.Count - 1 do
     begin
       aTable.CreateRowBlock(0);
@@ -1108,6 +1111,7 @@ begin
     aTable.SetSelectedCell(-1,-1);
 
   aTable.LockEventChangeSelCell:= False;
+  LockAllEventChangeSelCell:= False;
 
   if aTable = tblFindedTickets then
   begin
@@ -1556,6 +1560,7 @@ begin
     aTable.CreateRowBlock(0);
     aTable.Cell[0,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('str').ValueS;
     aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
+    aTable.Cell[0,aTable.RowCount-1].Font.Color:= GetStatusFontColor(aClass.MyClass[i].FindPropertyByName('id').ValueI);
   end;
 
   aTable.EndUpdate;
