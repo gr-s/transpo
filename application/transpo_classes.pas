@@ -12,6 +12,7 @@ var
 
   cls_geos:TFMClass;
   cls_data:TFMClass;
+  cls_periods:TFMClass;
 
 const
   op_none:Integer = 0;
@@ -20,6 +21,8 @@ const
   op_finded_ticks:Integer = 30;
   op_favor_ticks:Integer = 40;
   op_ticket_info:Integer = 50;
+  op_per_menu:Integer = 60;
+  op_per_info:Integer = 70;
 
 implementation
 

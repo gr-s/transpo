@@ -1,0 +1,159 @@
+fmod
+/begin header
+1.1
+08.09.2013 18:45:04
+/end header
+/begin data
+MyClass periods_file
+{
+	/begin private
+	/end private
+	/begin public
+	char active_period = /B$&V/820355819-50012-17191/E$&V/
+	/end public
+	/begin classes
+		MyClass periods
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass period
+				{
+					/begin private
+					/end private
+					/begin public
+					char guid = /B$&V/820355819-50012-17191/E$&V/
+					char BeginDate = /B$&V/01.09.2013/E$&V/
+					char EndDate = /B$&V/30.09.2013/E$&V/
+					/end public
+					/begin classes
+						MyClass debits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/196231229240230232237241234202243240241234325332473245324021323223646322392402382282432342422513223722923823922424123725122932414948484848/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char unload_date = /B$&V//E$&V/
+									char caption = /B$&V/Дзержинск-Курск /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/30/E$&V/
+									char settlem_str = /B$&V/Безнал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									char card_type = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/10000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/196231229240230232237241234202243240241234325332473245324021323223646322392402382282432342422513223722923823922424123725122932414948484848/E$&V/
+													char FromGeo = /B$&V/Дзержинск/E$&V/
+													char FromGeoDesc1 = /B$&V/Дзержинск 
+Нижегородская область
+ 
+35 км от Нижний Новгород 
+5 - 6 сен /E$&V/
+													char ToGeo = /B$&V/Курск /E$&V/
+													char ToGeoDesc1 = /B$&V/Курск 
+ближайшие крупные города 1 доп. пункт разгрузки /E$&V/
+													char Dist = /B$&V/985 км/E$&V/
+													int DistI = /B$&V/985/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/5 / - (Хим. продукты неопасные )/E$&V/
+													char CargoName = /B$&V/Хим. продукты неопасные /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/5/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/10000 (10,2 р/км) 
+торг 
+     /E$&V/
+													char Price1 = /B$&V/10000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/АвтоТранс 152, ООО (ID:171450, гр/вл.-пер, Нижний Новгород) (р100) /E$&V/
+													char DateDesc = /B$&V/5 - 6 сен /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V/kjhkhkhj/E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:646718675, факс: +7(831)2725220 +7(831)2725220,  +7(915)9345373, Татьяна,Илья/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+							/end classes
+						}
+						MyClass credits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/295463604-27438-18039/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Дзержинск-Курск /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/1000/E$&V/
+									/end public
+								}
+							/end classes
+						}
+					/end classes
+				}
+			/end classes
+		}
+	/end classes
+}
+/end data
