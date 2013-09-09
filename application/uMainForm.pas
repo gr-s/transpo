@@ -2132,6 +2132,7 @@ begin
 
   SpTBXCheckBox2.Checked:= aClass.FindPropertyByName('enabled').ValueB;
   
+  SpTBXEdit10.Text:= aClass.FindPropertyByName('create_date').ValueS;
   SpTBXEdit13.Text:= IntToStr(aClass.FindPropertyByName('value').ValueI);
   SpTBXEdit11.Text:= aClass.FindPropertyByName('type_str').ValueS;
   SpTBXEdit12.Text:= aClass.FindPropertyByName('caption').ValueS;
