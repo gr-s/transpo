@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.09.2013 18:20:23
+08.09.2013 23:00:04
 /end header
 /begin data
 MyClass data_file
@@ -10817,9 +10817,9 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/¬ŒÀ√-–Œ——/E$&V/
 							char Date = /B$&V/07.09.2013/E$&V/
-							int _sel_col = /B$&V/0/E$&V/
-							int _sel_row = /B$&V/4/E$&V/
-							char _sel_session = /B$&V/734647180-64976-16476/E$&V/
+							int _sel_col = /B$&V/5/E$&V/
+							int _sel_row = /B$&V/24/E$&V/
+							char _sel_session = /B$&V/1841608858-15554-19188/E$&V/
 							/end public
 							/begin classes
 								MyClass items
@@ -12663,9 +12663,9 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/Õ»∆Õ-œ≈–Ã/E$&V/
 							char Date = /B$&V/09.09.2013/E$&V/
-							int _sel_col = /B$&V/2/E$&V/
-							int _sel_row = /B$&V/0/E$&V/
-							char _sel_session = /B$&V/149944896-36880-19474/E$&V/
+							int _sel_col = /B$&V/1/E$&V/
+							int _sel_row = /B$&V/4/E$&V/
+							char _sel_session = /B$&V/1841608858-15554-19188/E$&V/
 							/end public
 							/begin classes
 								MyClass items

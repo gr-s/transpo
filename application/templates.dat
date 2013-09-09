@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.09.2013 18:17:41
+08.09.2013 19:18:20
 /end header
 /begin data
 MyClass TopInstance
@@ -447,6 +447,24 @@ MyClass TopInstance
 					/begin public
 					int id = /B$&V/50/E$&V/
 					char caption = /B$&V/Наличные gr-s/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/60/E$&V/
+					char caption = /B$&V/Возврат в РК/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/70/E$&V/
+					char caption = /B$&V/Другое/E$&V/
 					/end public
 				}
 			/end classes

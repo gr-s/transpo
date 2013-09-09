@@ -560,7 +560,9 @@ begin
     begin
       tcClient.Show;
       tcClient.ActiveTabIndex:= 5;
-    end;
+    end
+    else
+      tcClient.Hide;
   end;
 
   LockWindowUpdate(0);
