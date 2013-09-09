@@ -187,6 +187,48 @@ type
     SpTBXButton45: TSpTBXButton;
     SpTBXButton47: TSpTBXButton;
     SpTBXButton42: TSpTBXButton;
+    SpTBXTabItem12: TSpTBXTabItem;
+    SpTBXTabSheet13: TSpTBXTabSheet;
+    SpTBXPanel18: TSpTBXPanel;
+    SpTBXPanel19: TSpTBXPanel;
+    SpTBXLabel58: TSpTBXLabel;
+    SpTBXLabel59: TSpTBXLabel;
+    tblDebits: TRRAdvTable;
+    SpTBXButton43: TSpTBXButton;
+    SpTBXTabItem14: TSpTBXTabItem;
+    SpTBXTabSheet15: TSpTBXTabSheet;
+    SpTBXLabel52: TSpTBXLabel;
+    SpTBXEdit10: TSpTBXEdit;
+    SpTBXButton44: TSpTBXButton;
+    SpTBXPanel20: TSpTBXPanel;
+    SpTBXButton49: TSpTBXButton;
+    SpTBXPanel21: TSpTBXPanel;
+    SpTBXCheckBox2: TSpTBXCheckBox;
+    SpTBXLabel53: TSpTBXLabel;
+    SpTBXEdit11: TSpTBXEdit;
+    tblDebitTypes: TRRAdvTable;
+    SpTBXLabel54: TSpTBXLabel;
+    SpTBXEdit12: TSpTBXEdit;
+    SpTBXLabel55: TSpTBXLabel;
+    SpTBXEdit13: TSpTBXEdit;
+    SpTBXLabel56: TSpTBXLabel;
+    SpTBXEdit14: TSpTBXEdit;
+    SpTBXButton50: TSpTBXButton;
+    SpTBXLabel57: TSpTBXLabel;
+    SpTBXLabel60: TSpTBXLabel;
+    SpTBXEdit15: TSpTBXEdit;
+    tblSettlTypes: TRRAdvTable;
+    SpTBXLabel61: TSpTBXLabel;
+    SpTBXLabel62: TSpTBXLabel;
+    SpTBXEdit16: TSpTBXEdit;
+    SpTBXLabel63: TSpTBXLabel;
+    SpTBXEdit17: TSpTBXEdit;
+    RRAdvTable1: TRRAdvTable;
+    SpTBXLabel64: TSpTBXLabel;
+    SpTBXLabel65: TSpTBXLabel;
+    Memo10: TMemo;
+    SpTBXLabel66: TSpTBXLabel;
+    SpTBXButton51: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -251,6 +293,13 @@ type
     procedure SpTBXEdit9Change(Sender: TObject);
     procedure tblPeriodsDblClickCell(Sender: TObject);
     procedure SpTBXButton40Click(Sender: TObject);
+    procedure tblATIGeosDblClickCell(Sender: TObject);
+    procedure SpTBXButton45Click(Sender: TObject);
+    procedure SpTBXButton43Click(Sender: TObject);
+    procedure SpTBXButton44Click(Sender: TObject);
+    procedure SpTBXButton50Click(Sender: TObject);
+    procedure SpTBXButton49Click(Sender: TObject);
+    procedure tblDebitsDblClickCell(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -258,11 +307,13 @@ type
   public
     curr_sel_cell_value:String;
     old_ticket_info_oper_id:Integer;
+    old_debit_info_oper_id:Integer;
     _FromGeoIndex:Integer;
     _ToGeoIndex:Integer;
 
     cls_active_ticket:TFMClass;
     cls_active_period:TFMClass;
+    cls_active_debit:TFMClass;
 
     LockAllEventChangeSelCell:Boolean;
 
@@ -281,12 +332,14 @@ type
     procedure TblUpdateTickets(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateTicketStatuses(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdatePeriods(aTable:TRRAdvTable; aClass:TFMClass);
+    procedure TblUpdateDebits(aTable:TRRAdvTable; aClass:TFMClass);
 
     procedure TblCheckUnCheck(aTable:TRRAdvTable; Value:Boolean);
     procedure TblCheckWVolume(aTable:TRRAdvTable);
 
     procedure TblUpdateTicketInfo(aClass:TFMClass);
     procedure TblUpdatePeriodInfo(aClass:TFMClass);
+    procedure TblUpdateDebitInfo(aClass:TFMClass);
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
@@ -299,6 +352,8 @@ type
     function  GetDebitByID(ID:String;aClass:TFMClass):TFMClass;
 
     procedure SetActivePeriod;
+
+    function  GetFMClassFromTable(aTable:TRRAdvTable):TFMClass;
 
     procedure ToggleOperation(op_code:Integer);
 
@@ -341,6 +396,7 @@ begin
   act_cls_block_favor:= nil;
   cls_active_ticket:= nil;
   cls_active_period:= nil;
+  cls_active_debit:= nil;
 
   cls_templates:= TFMClass.Create(Self);
   cls_templates.FileName:= AppDir + 'templates.dat';
@@ -408,6 +464,10 @@ begin
   tblPeriods.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
   tblPeriods.Options.ForceNullSelecting:= False;
   tblPeriods.Open;
+
+  tblDebits.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
+  tblDebits.Options.ForceNullSelecting:= False;
+  tblDebits.Open;
 
   SetActivePeriod;
 
@@ -534,7 +594,6 @@ begin
     tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 0;
-    SpTBXButton4Click(SpTBXButton4);
   end;
 
   if op_code = op_finded_ticks then
@@ -563,6 +622,18 @@ begin
     end
     else
       tcClient.Hide;
+  end;
+
+  if op_code = op_debits then
+  begin
+    tcClient.Show;
+    tcClient.ActiveTabIndex:= 6;
+  end;
+
+  if op_code = op_debit_info then
+  begin
+    tcClient.Show;
+    tcClient.ActiveTabIndex:= 7;
   end;
 
   LockWindowUpdate(0);
@@ -1838,6 +1909,8 @@ end;
 procedure TMainForm.SpTBXEdit8Change(Sender: TObject);
 var aClass:TFMClass;
 begin
+  if SpTBXEdit8.Tag = 1 then Exit;
+
   aClass:= TFMClass(tblPeriods.Cell[0,tblPeriods.SelectedCell.Row].Data1);
   aClass.FindPropertyByName('BeginDate').ValueS:= SpTBXEdit8.Text;
   cls_periods.Save;
@@ -1846,6 +1919,8 @@ end;
 procedure TMainForm.SpTBXEdit9Change(Sender: TObject);
 var aClass:TFMClass;
 begin
+  if SpTBXEdit8.Tag = 1 then Exit;
+  
   aClass:= TFMClass(tblPeriods.Cell[0,tblPeriods.SelectedCell.Row].Data1);
   aClass.FindPropertyByName('EndDate').ValueS:= SpTBXEdit9.Text;
   cls_periods.Save;
@@ -1901,6 +1976,7 @@ begin
       cls1:= cls_active_period.FindClassByName('debits').CreateClassItem('','');
       cls_templates.CopyClass(cls1,cls_templates.FindClassByName('debit'),False,True);
       cls1.FindPropertyByName('guid').ValueS:= cls_active_ticket.FindPropertyByName('ID').ValueS;
+      cls1.FindPropertyByName('create_date').ValueS:= DateToStr(Now);
       cls1.FindPropertyByName('type').ValueI:= 10;
       cls1.FindPropertyByName('type_str').ValueS:= 'Заявка';
       cls1.FindPropertyByName('caption').ValueS:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
@@ -1934,6 +2010,7 @@ begin
         cls1:= cls_active_period.FindClassByName('credits').CreateClassItem('','');
         cls_templates.CopyClass(cls1,cls_templates.FindClassByName('credit'),False,True);
         cls1.FindPropertyByName('guid').ValueS:= GenerateGUID;
+        cls1.FindPropertyByName('create_date').ValueS:= DateToStr(Now);
         cls1.FindPropertyByName('type').ValueI:= 30;
         cls1.FindPropertyByName('type_str').ValueS:= 'Комиссия ИП';
         cls1.FindPropertyByName('caption').ValueS:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
@@ -1958,6 +2035,127 @@ begin
       Result:= aClass.MyClass[i];
       Break;
     end;
+  end;
+end;
+
+procedure TMainForm.tblATIGeosDblClickCell(Sender: TObject);
+begin
+  SpTBXButton18Click(nil);
+end;
+
+procedure TMainForm.TblUpdateDebits(aTable: TRRAdvTable; aClass: TFMClass);
+var i,n:Integer;
+    sel_cell:TRRCell;
+    a_color:TColor;
+begin
+  aTable.BeginUpdate;
+  aTable.ClearRows;
+
+  aTable.LockEventChangeSelCell:= True;
+
+  sel_cell:= nil;
+
+  for i:= 0 to aClass.MyClassCount - 1 do
+  begin
+    aTable.CreateRowBlock(0);
+    a_color:= $006E6E6F;
+    aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i]; 
+    if aClass.MyClass[i].FindPropertyByName('enabled').ValueB then
+    begin
+      aTable.Cell[0,aTable.RowCount-1].TextString:= '1';
+      a_color:= clBlack;
+    end;
+    aTable.Cell[1,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('create_date').ValueS;
+    aTable.Cell[1,aTable.RowCount-1].Font.Color:= a_color;
+    aTable.Cell[2,aTable.RowCount-1].TextString:= IntToStr(aClass.MyClass[i].FindPropertyByName('value').ValueI) + ' р';
+    aTable.Cell[2,aTable.RowCount-1].Font.Color:= a_color;
+    aTable.Cell[3,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('type_str').ValueS;
+    aTable.Cell[3,aTable.RowCount-1].Font.Color:= a_color;
+    aTable.Cell[4,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('caption').ValueS;
+    aTable.Cell[4,aTable.RowCount-1].Font.Color:= a_color;
+    aTable.Cell[5,aTable.RowCount-1].TextSrings.Text:= aClass.MyClass[i].FindPropertyByName('comments').ValueS;
+    aTable.Cell[5,aTable.RowCount-1].Font.Color:= a_color;
+  end;
+
+  aTable.EndUpdate;
+
+  Application.ProcessMessages;
+
+  SpTBXLabel58.Caption:= IntToStr(aTable.RowCount) + ' записей';
+
+  if Assigned(sel_cell) then
+    aTable.SetSelectedCell(sel_cell.Col,sel_cell.Row)
+  else
+    aTable.SetSelectedCell(-1,-1);
+
+  aTable.LockEventChangeSelCell:= False;
+end;
+
+procedure TMainForm.SpTBXButton45Click(Sender: TObject);
+begin
+  TblUpdateDebits(tblDebits,GetFMClassFromTable(tblPeriods).FindClassByName('debits'));
+  ToggleOperation(op_debits);
+end;
+
+function TMainForm.GetFMClassFromTable(aTable: TRRAdvTable): TFMClass;
+begin
+  Result:= nil;
+  if Assigned(aTable.SelectedCell) then
+    Result:= TFMClass(aTable.Cell[0,aTable.SelectedCell.Row].Data1);
+end;
+
+procedure TMainForm.SpTBXButton43Click(Sender: TObject);
+begin
+  TblUpdateDebits(tblDebits,GetFMClassFromTable(tblPeriods).FindClassByName('debits'));
+end;
+
+procedure TMainForm.SpTBXButton44Click(Sender: TObject);
+begin
+    if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y+10) = mrOk then
+      SpTBXEdit10.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.SpTBXButton50Click(Sender: TObject);
+begin
+    if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y+10) = mrOk then
+      SpTBXEdit14.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.SpTBXButton49Click(Sender: TObject);
+begin
+  ToggleOperation(old_debit_info_oper_id);
+end;
+
+procedure TMainForm.TblUpdateDebitInfo(aClass: TFMClass);
+begin
+  SpTBXEdit10.Tag:= 1;
+
+  SpTBXCheckBox2.Checked:= aClass.FindPropertyByName('enabled').ValueB;
+  
+  SpTBXEdit13.Text:= IntToStr(aClass.FindPropertyByName('value').ValueI);
+  SpTBXEdit11.Text:= aClass.FindPropertyByName('type_str').ValueS;
+  SpTBXEdit12.Text:= aClass.FindPropertyByName('caption').ValueS;
+  SpTBXEdit14.Text:= aClass.FindPropertyByName('ttn_date').ValueS;
+  SpTBXEdit15.Text:= aClass.FindPropertyByName('settlem_str').ValueS;
+  if aClass.FindPropertyByName('settlem_days').ValueI >= 0 then
+    SpTBXEdit16.Text:= IntToStr(aClass.FindPropertyByName('settlem_days').ValueI);
+  SpTBXEdit17.Text:= aClass.FindPropertyByName('card_type').ValueS;
+  Memo10.Lines.Text:= aClass.FindPropertyByName('comments').ValueS;
+
+  SpTBXEdit10.Tag:= 0;
+end;
+
+procedure TMainForm.tblDebitsDblClickCell(Sender: TObject);
+var cls1,cls2,cls3:TFMClass;
+    i:Integer;
+begin
+  if Assigned(tblDebits.SelectedCell) then
+  begin
+    cls1:= GetFMClassFromTable(tblDebits);
+    cls_active_debit:= cls1;
+    old_debit_info_oper_id:= op_debits;
+    TblUpdateDebitInfo(cls1);
+    ToggleOperation(op_debit_info);
   end;
 end;
 

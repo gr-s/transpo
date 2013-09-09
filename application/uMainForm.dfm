@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 204
-  Top = 51
+  Left = 163
+  Top = 181
   Width = 1079
   Height = 677
   Caption = 'MainForm'
@@ -877,7 +877,7 @@ object MainForm: TMainForm
       Width = 782
       Height = 502
       Align = alClient
-      ActiveTabIndex = 4
+      ActiveTabIndex = 7
       TabVisible = False
       HiddenItems = <>
       object SpTBXTabItem3: TSpTBXTabItem
@@ -894,10 +894,373 @@ object MainForm: TMainForm
       end
       object SpTBXTabItem6: TSpTBXTabItem
         Caption = 'ticket'
-        Checked = True
       end
       object SpTBXTabItem13: TSpTBXTabItem
         Caption = 'p_info'
+      end
+      object SpTBXTabItem12: TSpTBXTabItem
+        Caption = 'debits'
+      end
+      object SpTBXTabItem14: TSpTBXTabItem
+        Caption = 'd_info'
+        Checked = True
+      end
+      object SpTBXTabSheet8: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 782
+        Height = 477
+        Caption = 'f_tickets'
+        ImageIndex = -1
+        TabItem = 'SpTBXTabItem7'
+        object tblFindedTickets: TRRAdvTable
+          Left = 2
+          Top = 49
+          Width = 776
+          Height = 424
+          Align = alClient
+          Color = clWhite
+          Constraints.MinWidth = 100
+          TabOrder = 0
+          TabStop = True
+          FixedColShow = False
+          AlwaysFixedColShow = True
+          TemplateFileAppDir = False
+          TemplateFileExceptions = True
+          FixedCellHeight = 18
+          FixedCellFontEnabled = False
+          FixedCellFont.Charset = DEFAULT_CHARSET
+          FixedCellFont.Color = clWindowText
+          FixedCellFont.Height = -11
+          FixedCellFont.Name = 'MS Sans Serif'
+          FixedCellFont.Style = []
+          DefaultCellWidth = 100
+          DefaultCellHeight = 18
+          AutoCellWidthEnabled = True
+          CellLineDragMethod = rrdmSingleLine
+          Painter.FixedCellBorderColor = clBlack
+          Painter.FixedCellBorderWidth = 1
+          Painter.FixedCellColor = clBtnFace
+          Painter.FixedCellInnerFrameColor = clWhite
+          Painter.FixedCellInnerFrameRectLeftOffset = 0
+          Painter.FixedCellInnerFrameRectTopOffset = 0
+          Painter.FixedCellInnerFrameRectRightOffset = 1
+          Painter.FixedCellInnerFrameRectBottomOffset = 1
+          Painter.FixedSeparatorColor = clGray
+          Painter.FixedSeparatorSubColor = clWhite
+          Painter.FixedSeparatorOffset1 = 1
+          Painter.SplitLineColor = clBlack
+          Painter.SplitLinePenStyle = psDot
+          Painter.SortTriangleLine1Color = clWhite
+          Painter.SortTriangleLine2Color = clWhite
+          Painter.SortTriangleLine3Color = clBlack
+          Painter.SortTriangleBorderAreaColor = clGray
+          Painter.SortTriangleBorderEdgeAreaColor = clWhite
+          Painter.SortActiveTriangleColor = clRed
+          Painter.FilterCaptionFontColor = clBlack
+          Painter.FilterActiveFrameColor = clYellow
+          Painter.PreActiveFramesColor = clCream
+          Painter.TechZoneWidth = 20
+          Painter.TechZoneColor1 = 14211288
+          Painter.TechZoneColor2 = 14211288
+          Painter.TechZoneLineColor = clBlack
+          Painter.TechZoneCursorRowColor = clBlack
+          Painter.TechZoneCursorRowLineMainColor = clWhite
+          Painter.TechZoneCursorRowLineColor = clBlack
+          Painter.TechZoneCursorRecColor = clSilver
+          Painter.TechZoneSymbolVisible = True
+          Painter.TechZoneSymbolFontColor = clBlack
+          Painter.TechZoneLineWidth = 1
+          Painter.CellHorzLineColor = clSilver
+          Painter.CellVertLineColor = clSilver
+          Painter.CellHorzLineWidth = 1
+          Painter.CellVertLineWidth = 1
+          Painter.SelFrameMainColor = clNavy
+          Painter.SelFrameMainFontColor = clWhite
+          Painter.SelFrameMainWidth = 1
+          Painter.SelFrameMainPenStyle = psDot
+          Painter.SelFrameColColor = clBlack
+          Painter.SelFrameColWidth = 1
+          Painter.SelFrameColPenStyle = psSolid
+          Painter.BoolCellRectColor = clBlack
+          Painter.BoolCellRectSymbColor = clBlack
+          Painter.BoolCellRectSymbol = #0
+          Painter.VertCtrlsModeUseSelRowFrame = False
+          Painter.VertCtrlsModeSelRowFrameColor = clGray
+          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
+          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
+          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
+          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
+          Painter.VertCtrlsModeSelRowFrameFont.Style = []
+          Painter.ChessPaintModeColor = 16250357
+          Painter.ChessPaintModeCellMainColor = clWhite
+          Options.AllowVertLineSplit = True
+          Options.AllowHorzLineSplit = False
+          Options.TechZoneVisible = False
+          Options.TechZoneAlwaysVisible = False
+          Options.TechZoneCursorRowVisible = False
+          Options.TechZoneCursorRowView = tcvTriangle
+          Options.TechZoneCursorRecVisible = True
+          Options.TechZoneCursorRecView = tcvTriangle
+          Options.EmptyPromtVisible = False
+          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
+          Options.EmptyPromtFont.Color = clWindowText
+          Options.EmptyPromtFont.Height = -11
+          Options.EmptyPromtFont.Name = 'MS Sans Serif'
+          Options.EmptyPromtFont.Style = []
+          Options.EmptyPromtCaption = 'No items ...'
+          Options.CellHorzLineVisible = True
+          Options.CellVertLineVisible = True
+          Options.SelFrameMainVisible = False
+          Options.SelFrameMainType = msftSolid
+          Options.SelFrameColVisible = True
+          Options.SelFrameColType = csftFocusedFrame
+          Options.EmmediatelyEditing = True
+          Options.WantEditorOnSelReClick = False
+          Options.WantEditor = False
+          Options.WantCuttingText = True
+          Options.WantShowEditorWhenIReadOnly = False
+          Options.WantDirectBoolChange = True
+          Options.CuttingText = '....'
+          Options.ScrollBars = ssBoth
+          Options.UseDesignerSettingsOpenning = False
+          Options.MultiSelecting = False
+          Options.ChessPaintMode = True
+          Options.ChessPaintModeIncludeImageCell = True
+          TestDraw = False
+          MinCellHeight = 16
+          MinCellWidth = 5
+          SplitOption.VertCtrlsModeEnabled = False
+          SplitOption.VertCtrlsModeWantEnter = True
+          SplitOption.DBModeEnabled = False
+          SplitOption.DBCreateCellsMode = ccmRowBlocks
+          SplitOption.DBSelectingMoveCursor = True
+          SplitOption.DBRowBlockIndex = 0
+          Active = True
+          ServiceButtonFlat = False
+          ServiceButtonText = 'F1'
+          ReadOnly = False
+          DesignModeEnabled = False
+          HideSelection = False
+          SelectComboAutoDropDown = False
+          OnAfterCellEdit = tblFindedTicketsAfterCellEdit
+          OnDblClickCell = tblFindedTicketsDblClickCell
+          OnChangeSelectedCell = tblFindedTicketsChangeSelectedCell
+        end
+        object SpTBXPanel11: TSpTBXPanel
+          Left = 2
+          Top = 0
+          Width = 776
+          Height = 49
+          Caption = 'SpTBXPanel11'
+          Align = alTop
+          TabOrder = 1
+          Borders = False
+          object SpTBXButton33: TSpTBXButton
+            Left = 13
+            Top = 14
+            Width = 76
+            Height = 30
+            Caption = #1059#1073#1088'. '#1074#1099#1076#1077#1083
+            TabOrder = 0
+            OnClick = SpTBXButton33Click
+          end
+          object SpTBXLabel16: TSpTBXLabel
+            Left = 106
+            Top = 13
+            Width = 63
+            Height = 13
+            Caption = #1042#1077#1089':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel17: TSpTBXLabel
+            Left = 178
+            Top = 13
+            Width = 47
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpTBXLabel18: TSpTBXLabel
+            Left = 106
+            Top = 27
+            Width = 63
+            Height = 13
+            Caption = #1054#1073#1098#1077#1084':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel19: TSpTBXLabel
+            Left = 177
+            Top = 27
+            Width = 48
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpTBXLabel20: TSpTBXLabel
+            Left = 242
+            Top = 13
+            Width = 47
+            Height = 13
+            Caption = #1057#1091#1084#1084#1072':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel21: TSpTBXLabel
+            Left = 298
+            Top = 13
+            Width = 47
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpTBXPanel12: TSpTBXPanel
+            Left = 674
+            Top = 2
+            Width = 100
+            Height = 45
+            Caption = 'SpTBXPanel12'
+            Align = alRight
+            TabOrder = 7
+            Borders = False
+            object SpTBXLabel22: TSpTBXLabel
+              Left = 8
+              Top = 25
+              Width = 89
+              Height = 13
+              Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+              Alignment = taRightJustify
+            end
+            object SpTBXLabel26: TSpTBXLabel
+              Left = 48
+              Top = 1
+              Width = 50
+              Height = 19
+              Caption = #1055#1086#1080#1089#1082
+              Font.Charset = RUSSIAN_CHARSET
+              Font.Color = clGreen
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+              CaptionGlow = gldAll
+              CaptionGlowColor = clWhite
+            end
+          end
+          object SpTBXLabel24: TSpTBXLabel
+            Left = 378
+            Top = 5
+            Width = 71
+            Height = 13
+            Caption = #1040#1082#1090' '#1080#1079#1073#1088'.:'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel25: TSpTBXLabel
+            Left = 458
+            Top = 5
+            Width = 54
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            Font.Charset = RUSSIAN_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            CaptionGlow = gldAll
+            CaptionGlowColor = clWhite
+          end
+          object SpTBXButton38: TSpTBXButton
+            Left = 387
+            Top = 19
+            Width = 126
+            Height = 27
+            Caption = #1076#1086#1073#1072#1074
+            TabOrder = 10
+            OnClick = SpTBXButton38Click
+          end
+          object SpTBXLabel43: TSpTBXLabel
+            Left = 242
+            Top = 27
+            Width = 47
+            Height = 13
+            Caption = #1055#1088#1086#1075#1085':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Alignment = taRightJustify
+          end
+          object SpTBXLabel44: TSpTBXLabel
+            Left = 298
+            Top = 27
+            Width = 47
+            Height = 13
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+        end
       end
       object SpTBXTabSheet1: TSpTBXTabSheet
         Left = 0
@@ -967,6 +1330,7 @@ object MainForm: TMainForm
             Caption = #1047#1072#1075#1088#1091#1079#1082#1072
             TabOrder = 0
             OnClick = SpTBXButton4Click
+            Checked = True
           end
           object SpTBXButton5: TSpTBXButton
             Left = 8
@@ -1689,6 +2053,7 @@ object MainForm: TMainForm
             HideSelection = False
             SelectComboAutoDropDown = False
             OnAfterCellEdit = tblATIGeosAfterCellEdit
+            OnDblClickCell = tblATIGeosDblClickCell
             OnChangeSelectedCell = tblATIGeosChangeSelectedCell
           end
         end
@@ -1711,6 +2076,126 @@ object MainForm: TMainForm
             TabOrder = 0
             OnClick = SpTBXButton26Click
           end
+        end
+      end
+      object SpTBXTabSheet14: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 782
+        Height = 477
+        Caption = 'p_info'
+        ImageIndex = -1
+        DesignSize = (
+          782
+          477)
+        TabItem = 'SpTBXTabItem13'
+        object SpTBXLabel50: TSpTBXLabel
+          Left = 27
+          Top = 40
+          Width = 40
+          Height = 13
+          Caption = #1044#1072#1090#1072' '#1086#1090
+        end
+        object SpTBXEdit8: TSpTBXEdit
+          Left = 77
+          Top = 32
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+          OnChange = SpTBXEdit8Change
+        end
+        object SpTBXButton46: TSpTBXButton
+          Left = 212
+          Top = 32
+          Width = 40
+          Height = 27
+          Caption = #1091#1089#1090
+          TabOrder = 2
+          OnClick = SpTBXButton46Click
+        end
+        object SpTBXLabel51: TSpTBXLabel
+          Left = 27
+          Top = 72
+          Width = 41
+          Height = 13
+          Caption = #1044#1072#1090#1072' '#1076#1086
+        end
+        object SpTBXEdit9: TSpTBXEdit
+          Left = 77
+          Top = 64
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 4
+          OnChange = SpTBXEdit9Change
+        end
+        object SpTBXButton48: TSpTBXButton
+          Left = 212
+          Top = 64
+          Width = 40
+          Height = 27
+          Caption = #1091#1089#1090
+          TabOrder = 5
+          OnClick = SpTBXButton48Click
+        end
+        object SpTBXButton45: TSpTBXButton
+          Left = 33
+          Top = 136
+          Width = 248
+          Height = 57
+          Caption = #1044#1086#1093#1086#1076#1099
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 6
+          OnClick = SpTBXButton45Click
+        end
+        object SpTBXButton47: TSpTBXButton
+          Left = 33
+          Top = 200
+          Width = 248
+          Height = 65
+          Caption = #1056#1072#1089#1093#1086#1076#1099
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+        end
+        object SpTBXButton42: TSpTBXButton
+          Left = 33
+          Top = 296
+          Width = 248
+          Height = 65
+          Caption = #1041#1072#1083#1072#1085#1089
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 8
         end
       end
       object SpTBXTabSheet9: TSpTBXTabSheet
@@ -2037,482 +2522,6 @@ object MainForm: TMainForm
           SelectComboAutoDropDown = False
           OnAfterCellEdit = tblFavorTicketsAfterCellEdit
           OnDblClickCell = tblFavorTicketsDblClickCell
-        end
-      end
-      object SpTBXTabSheet8: TSpTBXTabSheet
-        Left = 0
-        Top = 25
-        Width = 782
-        Height = 477
-        Caption = 'f_tickets'
-        ImageIndex = -1
-        TabItem = 'SpTBXTabItem7'
-        object tblFindedTickets: TRRAdvTable
-          Left = 2
-          Top = 49
-          Width = 776
-          Height = 424
-          Align = alClient
-          Color = clWhite
-          Constraints.MinWidth = 100
-          TabOrder = 0
-          TabStop = True
-          FixedColShow = False
-          AlwaysFixedColShow = True
-          TemplateFileAppDir = False
-          TemplateFileExceptions = True
-          FixedCellHeight = 18
-          FixedCellFontEnabled = False
-          FixedCellFont.Charset = DEFAULT_CHARSET
-          FixedCellFont.Color = clWindowText
-          FixedCellFont.Height = -11
-          FixedCellFont.Name = 'MS Sans Serif'
-          FixedCellFont.Style = []
-          DefaultCellWidth = 100
-          DefaultCellHeight = 18
-          AutoCellWidthEnabled = True
-          CellLineDragMethod = rrdmSingleLine
-          Painter.FixedCellBorderColor = clBlack
-          Painter.FixedCellBorderWidth = 1
-          Painter.FixedCellColor = clBtnFace
-          Painter.FixedCellInnerFrameColor = clWhite
-          Painter.FixedCellInnerFrameRectLeftOffset = 0
-          Painter.FixedCellInnerFrameRectTopOffset = 0
-          Painter.FixedCellInnerFrameRectRightOffset = 1
-          Painter.FixedCellInnerFrameRectBottomOffset = 1
-          Painter.FixedSeparatorColor = clGray
-          Painter.FixedSeparatorSubColor = clWhite
-          Painter.FixedSeparatorOffset1 = 1
-          Painter.SplitLineColor = clBlack
-          Painter.SplitLinePenStyle = psDot
-          Painter.SortTriangleLine1Color = clWhite
-          Painter.SortTriangleLine2Color = clWhite
-          Painter.SortTriangleLine3Color = clBlack
-          Painter.SortTriangleBorderAreaColor = clGray
-          Painter.SortTriangleBorderEdgeAreaColor = clWhite
-          Painter.SortActiveTriangleColor = clRed
-          Painter.FilterCaptionFontColor = clBlack
-          Painter.FilterActiveFrameColor = clYellow
-          Painter.PreActiveFramesColor = clCream
-          Painter.TechZoneWidth = 20
-          Painter.TechZoneColor1 = 14211288
-          Painter.TechZoneColor2 = 14211288
-          Painter.TechZoneLineColor = clBlack
-          Painter.TechZoneCursorRowColor = clBlack
-          Painter.TechZoneCursorRowLineMainColor = clWhite
-          Painter.TechZoneCursorRowLineColor = clBlack
-          Painter.TechZoneCursorRecColor = clSilver
-          Painter.TechZoneSymbolVisible = True
-          Painter.TechZoneSymbolFontColor = clBlack
-          Painter.TechZoneLineWidth = 1
-          Painter.CellHorzLineColor = clSilver
-          Painter.CellVertLineColor = clSilver
-          Painter.CellHorzLineWidth = 1
-          Painter.CellVertLineWidth = 1
-          Painter.SelFrameMainColor = clNavy
-          Painter.SelFrameMainFontColor = clWhite
-          Painter.SelFrameMainWidth = 1
-          Painter.SelFrameMainPenStyle = psDot
-          Painter.SelFrameColColor = clBlack
-          Painter.SelFrameColWidth = 1
-          Painter.SelFrameColPenStyle = psSolid
-          Painter.BoolCellRectColor = clBlack
-          Painter.BoolCellRectSymbColor = clBlack
-          Painter.BoolCellRectSymbol = #0
-          Painter.VertCtrlsModeUseSelRowFrame = False
-          Painter.VertCtrlsModeSelRowFrameColor = clGray
-          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
-          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
-          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
-          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
-          Painter.VertCtrlsModeSelRowFrameFont.Style = []
-          Painter.ChessPaintModeColor = 16250357
-          Painter.ChessPaintModeCellMainColor = clWhite
-          Options.AllowVertLineSplit = True
-          Options.AllowHorzLineSplit = False
-          Options.TechZoneVisible = False
-          Options.TechZoneAlwaysVisible = False
-          Options.TechZoneCursorRowVisible = False
-          Options.TechZoneCursorRowView = tcvTriangle
-          Options.TechZoneCursorRecVisible = True
-          Options.TechZoneCursorRecView = tcvTriangle
-          Options.EmptyPromtVisible = False
-          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
-          Options.EmptyPromtFont.Color = clWindowText
-          Options.EmptyPromtFont.Height = -11
-          Options.EmptyPromtFont.Name = 'MS Sans Serif'
-          Options.EmptyPromtFont.Style = []
-          Options.EmptyPromtCaption = 'No items ...'
-          Options.CellHorzLineVisible = True
-          Options.CellVertLineVisible = True
-          Options.SelFrameMainVisible = False
-          Options.SelFrameMainType = msftSolid
-          Options.SelFrameColVisible = True
-          Options.SelFrameColType = csftFocusedFrame
-          Options.EmmediatelyEditing = True
-          Options.WantEditorOnSelReClick = False
-          Options.WantEditor = False
-          Options.WantCuttingText = True
-          Options.WantShowEditorWhenIReadOnly = False
-          Options.WantDirectBoolChange = True
-          Options.CuttingText = '....'
-          Options.ScrollBars = ssBoth
-          Options.UseDesignerSettingsOpenning = False
-          Options.MultiSelecting = False
-          Options.ChessPaintMode = True
-          Options.ChessPaintModeIncludeImageCell = True
-          TestDraw = False
-          MinCellHeight = 16
-          MinCellWidth = 5
-          SplitOption.VertCtrlsModeEnabled = False
-          SplitOption.VertCtrlsModeWantEnter = True
-          SplitOption.DBModeEnabled = False
-          SplitOption.DBCreateCellsMode = ccmRowBlocks
-          SplitOption.DBSelectingMoveCursor = True
-          SplitOption.DBRowBlockIndex = 0
-          Active = True
-          ServiceButtonFlat = False
-          ServiceButtonText = 'F1'
-          ReadOnly = False
-          DesignModeEnabled = False
-          HideSelection = False
-          SelectComboAutoDropDown = False
-          OnAfterCellEdit = tblFindedTicketsAfterCellEdit
-          OnDblClickCell = tblFindedTicketsDblClickCell
-          OnChangeSelectedCell = tblFindedTicketsChangeSelectedCell
-        end
-        object SpTBXPanel11: TSpTBXPanel
-          Left = 2
-          Top = 0
-          Width = 776
-          Height = 49
-          Caption = 'SpTBXPanel11'
-          Align = alTop
-          TabOrder = 1
-          Borders = False
-          object SpTBXButton33: TSpTBXButton
-            Left = 13
-            Top = 14
-            Width = 76
-            Height = 30
-            Caption = #1059#1073#1088'. '#1074#1099#1076#1077#1083
-            TabOrder = 0
-            OnClick = SpTBXButton33Click
-          end
-          object SpTBXLabel16: TSpTBXLabel
-            Left = 106
-            Top = 13
-            Width = 63
-            Height = 13
-            Caption = #1042#1077#1089':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Alignment = taRightJustify
-          end
-          object SpTBXLabel17: TSpTBXLabel
-            Left = 178
-            Top = 13
-            Width = 47
-            Height = 13
-            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object SpTBXLabel18: TSpTBXLabel
-            Left = 106
-            Top = 27
-            Width = 63
-            Height = 13
-            Caption = #1054#1073#1098#1077#1084':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Alignment = taRightJustify
-          end
-          object SpTBXLabel19: TSpTBXLabel
-            Left = 177
-            Top = 27
-            Width = 48
-            Height = 13
-            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clMaroon
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object SpTBXLabel20: TSpTBXLabel
-            Left = 242
-            Top = 13
-            Width = 47
-            Height = 13
-            Caption = #1057#1091#1084#1084#1072':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Alignment = taRightJustify
-          end
-          object SpTBXLabel21: TSpTBXLabel
-            Left = 298
-            Top = 13
-            Width = 47
-            Height = 13
-            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clBlack
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object SpTBXPanel12: TSpTBXPanel
-            Left = 674
-            Top = 2
-            Width = 100
-            Height = 45
-            Caption = 'SpTBXPanel12'
-            Align = alRight
-            TabOrder = 7
-            Borders = False
-            object SpTBXLabel22: TSpTBXLabel
-              Left = 8
-              Top = 25
-              Width = 89
-              Height = 13
-              Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-              AutoSize = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-              Alignment = taRightJustify
-            end
-            object SpTBXLabel26: TSpTBXLabel
-              Left = 48
-              Top = 1
-              Width = 50
-              Height = 19
-              Caption = #1055#1086#1080#1089#1082
-              Font.Charset = RUSSIAN_CHARSET
-              Font.Color = clGreen
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold, fsUnderline]
-              ParentFont = False
-              CaptionGlow = gldAll
-              CaptionGlowColor = clWhite
-            end
-          end
-          object SpTBXLabel24: TSpTBXLabel
-            Left = 378
-            Top = 5
-            Width = 71
-            Height = 13
-            Caption = #1040#1082#1090' '#1080#1079#1073#1088'.:'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Alignment = taRightJustify
-          end
-          object SpTBXLabel25: TSpTBXLabel
-            Left = 458
-            Top = 5
-            Width = 54
-            Height = 13
-            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-            Font.Charset = RUSSIAN_CHARSET
-            Font.Color = clBlack
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            CaptionGlow = gldAll
-            CaptionGlowColor = clWhite
-          end
-          object SpTBXButton38: TSpTBXButton
-            Left = 387
-            Top = 19
-            Width = 126
-            Height = 27
-            Caption = #1076#1086#1073#1072#1074
-            TabOrder = 10
-            OnClick = SpTBXButton38Click
-          end
-          object SpTBXLabel43: TSpTBXLabel
-            Left = 242
-            Top = 27
-            Width = 47
-            Height = 13
-            Caption = #1055#1088#1086#1075#1085':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Alignment = taRightJustify
-          end
-          object SpTBXLabel44: TSpTBXLabel
-            Left = 298
-            Top = 27
-            Width = 47
-            Height = 13
-            Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clBlack
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-        end
-      end
-      object SpTBXTabSheet14: TSpTBXTabSheet
-        Left = 0
-        Top = 25
-        Width = 782
-        Height = 477
-        Caption = 'p_info'
-        ImageIndex = -1
-        DesignSize = (
-          782
-          477)
-        TabItem = 'SpTBXTabItem13'
-        object SpTBXLabel50: TSpTBXLabel
-          Left = 27
-          Top = 40
-          Width = 40
-          Height = 13
-          Caption = #1044#1072#1090#1072' '#1086#1090
-        end
-        object SpTBXEdit8: TSpTBXEdit
-          Left = 77
-          Top = 32
-          Width = 124
-          Height = 28
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 1
-          OnChange = SpTBXEdit8Change
-        end
-        object SpTBXButton46: TSpTBXButton
-          Left = 212
-          Top = 32
-          Width = 40
-          Height = 27
-          Caption = #1091#1089#1090
-          TabOrder = 2
-          OnClick = SpTBXButton46Click
-        end
-        object SpTBXLabel51: TSpTBXLabel
-          Left = 27
-          Top = 72
-          Width = 41
-          Height = 13
-          Caption = #1044#1072#1090#1072' '#1076#1086
-        end
-        object SpTBXEdit9: TSpTBXEdit
-          Left = 77
-          Top = 64
-          Width = 124
-          Height = 28
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 4
-          OnChange = SpTBXEdit9Change
-        end
-        object SpTBXButton48: TSpTBXButton
-          Left = 212
-          Top = 64
-          Width = 40
-          Height = 27
-          Caption = #1091#1089#1090
-          TabOrder = 5
-          OnClick = SpTBXButton48Click
-        end
-        object SpTBXButton45: TSpTBXButton
-          Left = 33
-          Top = 136
-          Width = 248
-          Height = 57
-          Caption = #1044#1086#1093#1086#1076#1099
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 6
-        end
-        object SpTBXButton47: TSpTBXButton
-          Left = 33
-          Top = 200
-          Width = 248
-          Height = 65
-          Caption = #1056#1072#1089#1093#1086#1076#1099
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 7
-        end
-        object SpTBXButton42: TSpTBXButton
-          Left = 33
-          Top = 296
-          Width = 248
-          Height = 65
-          Caption = #1041#1072#1083#1072#1085#1089
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 8
         end
       end
       object SpTBXTabSheet7: TSpTBXTabSheet
@@ -2961,41 +2970,14 @@ object MainForm: TMainForm
           Width = 541
           Height = 81
           Anchors = [akLeft, akTop, akBottom]
-          ActiveTabIndex = 1
+          ActiveTabIndex = 0
           HiddenItems = <>
           object SpTBXTabItem9: TSpTBXTabItem
             Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1080
+            Checked = True
           end
           object SpTBXTabItem10: TSpTBXTabItem
             Caption = #1054#1087#1077#1088#1072#1094#1080#1080
-            Checked = True
-          end
-          object SpTBXTabSheet10: TSpTBXTabSheet
-            Left = 0
-            Top = 25
-            Width = 541
-            Height = 56
-            Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1080
-            ImageIndex = -1
-            TabItem = 'SpTBXTabItem9'
-            object Memo8: TMemo
-              Left = 2
-              Top = 0
-              Width = 535
-              Height = 52
-              Align = alClient
-              Ctl3D = False
-              Font.Charset = RUSSIAN_CHARSET
-              Font.Color = clBlack
-              Font.Height = -13
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              ScrollBars = ssVertical
-              TabOrder = 0
-              OnChange = Memo8Change
-            end
           end
           object SpTBXTabSheet11: TSpTBXTabSheet
             Left = 0
@@ -3054,6 +3036,959 @@ object MainForm: TMainForm
               TabOrder = 3
             end
           end
+          object SpTBXTabSheet10: TSpTBXTabSheet
+            Left = 0
+            Top = 25
+            Width = 541
+            Height = 56
+            Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1080
+            ImageIndex = -1
+            TabItem = 'SpTBXTabItem9'
+            object Memo8: TMemo
+              Left = 2
+              Top = 0
+              Width = 535
+              Height = 52
+              Align = alClient
+              Ctl3D = False
+              Font.Charset = RUSSIAN_CHARSET
+              Font.Color = clBlack
+              Font.Height = -13
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentCtl3D = False
+              ParentFont = False
+              ScrollBars = ssVertical
+              TabOrder = 0
+              OnChange = Memo8Change
+            end
+          end
+        end
+      end
+      object SpTBXTabSheet13: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 782
+        Height = 477
+        Caption = 'debits'
+        ImageIndex = -1
+        TabItem = 'SpTBXTabItem12'
+        object SpTBXPanel18: TSpTBXPanel
+          Left = 2
+          Top = 0
+          Width = 776
+          Height = 49
+          Caption = 'SpTBXPanel11'
+          Align = alTop
+          TabOrder = 0
+          Borders = False
+          object SpTBXPanel19: TSpTBXPanel
+            Left = 674
+            Top = 2
+            Width = 100
+            Height = 45
+            Caption = 'SpTBXPanel12'
+            Align = alRight
+            TabOrder = 0
+            Borders = False
+            object SpTBXLabel58: TSpTBXLabel
+              Left = 8
+              Top = 25
+              Width = 89
+              Height = 13
+              Caption = #1054#1087#1077#1088#1072#1094#1080#1103':'
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+              Alignment = taRightJustify
+            end
+            object SpTBXLabel59: TSpTBXLabel
+              Left = 32
+              Top = 1
+              Width = 66
+              Height = 19
+              Caption = #1044#1086#1093#1086#1076#1099
+              Font.Charset = RUSSIAN_CHARSET
+              Font.Color = clGreen
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+              CaptionGlow = gldAll
+              CaptionGlowColor = clWhite
+            end
+          end
+          object SpTBXButton43: TSpTBXButton
+            Left = 24
+            Top = 8
+            Width = 87
+            Height = 27
+            Caption = #1086#1073#1085#1086#1074#1080#1090#1100
+            TabOrder = 1
+            OnClick = SpTBXButton43Click
+          end
+        end
+        object tblDebits: TRRAdvTable
+          Left = 2
+          Top = 49
+          Width = 776
+          Height = 424
+          Align = alClient
+          Color = clWhite
+          Constraints.MinWidth = 100
+          TabOrder = 1
+          TabStop = True
+          FixedColShow = False
+          AlwaysFixedColShow = True
+          TemplateFileAppDir = False
+          TemplateFileExceptions = True
+          FixedCellHeight = 18
+          FixedCellFontEnabled = False
+          FixedCellFont.Charset = DEFAULT_CHARSET
+          FixedCellFont.Color = clWindowText
+          FixedCellFont.Height = -11
+          FixedCellFont.Name = 'MS Sans Serif'
+          FixedCellFont.Style = []
+          DefaultCellWidth = 100
+          DefaultCellHeight = 18
+          AutoCellWidthEnabled = True
+          CellLineDragMethod = rrdmSingleLine
+          Painter.FixedCellBorderColor = clBlack
+          Painter.FixedCellBorderWidth = 1
+          Painter.FixedCellColor = clBtnFace
+          Painter.FixedCellInnerFrameColor = clWhite
+          Painter.FixedCellInnerFrameRectLeftOffset = 0
+          Painter.FixedCellInnerFrameRectTopOffset = 0
+          Painter.FixedCellInnerFrameRectRightOffset = 1
+          Painter.FixedCellInnerFrameRectBottomOffset = 1
+          Painter.FixedSeparatorColor = clGray
+          Painter.FixedSeparatorSubColor = clWhite
+          Painter.FixedSeparatorOffset1 = 1
+          Painter.SplitLineColor = clBlack
+          Painter.SplitLinePenStyle = psDot
+          Painter.SortTriangleLine1Color = clWhite
+          Painter.SortTriangleLine2Color = clWhite
+          Painter.SortTriangleLine3Color = clBlack
+          Painter.SortTriangleBorderAreaColor = clGray
+          Painter.SortTriangleBorderEdgeAreaColor = clWhite
+          Painter.SortActiveTriangleColor = clRed
+          Painter.FilterCaptionFontColor = clBlack
+          Painter.FilterActiveFrameColor = clYellow
+          Painter.PreActiveFramesColor = clCream
+          Painter.TechZoneWidth = 20
+          Painter.TechZoneColor1 = 14211288
+          Painter.TechZoneColor2 = 14211288
+          Painter.TechZoneLineColor = clBlack
+          Painter.TechZoneCursorRowColor = clBlack
+          Painter.TechZoneCursorRowLineMainColor = clWhite
+          Painter.TechZoneCursorRowLineColor = clBlack
+          Painter.TechZoneCursorRecColor = clSilver
+          Painter.TechZoneSymbolVisible = True
+          Painter.TechZoneSymbolFontColor = clBlack
+          Painter.TechZoneLineWidth = 1
+          Painter.CellHorzLineColor = clSilver
+          Painter.CellVertLineColor = clSilver
+          Painter.CellHorzLineWidth = 1
+          Painter.CellVertLineWidth = 1
+          Painter.SelFrameMainColor = clNavy
+          Painter.SelFrameMainFontColor = clWhite
+          Painter.SelFrameMainWidth = 1
+          Painter.SelFrameMainPenStyle = psDot
+          Painter.SelFrameColColor = clBlack
+          Painter.SelFrameColWidth = 1
+          Painter.SelFrameColPenStyle = psSolid
+          Painter.BoolCellRectColor = clBlack
+          Painter.BoolCellRectSymbColor = clBlack
+          Painter.BoolCellRectSymbol = #0
+          Painter.VertCtrlsModeUseSelRowFrame = False
+          Painter.VertCtrlsModeSelRowFrameColor = clGray
+          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
+          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
+          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
+          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
+          Painter.VertCtrlsModeSelRowFrameFont.Style = []
+          Painter.ChessPaintModeColor = 16250357
+          Painter.ChessPaintModeCellMainColor = clWhite
+          Options.AllowVertLineSplit = True
+          Options.AllowHorzLineSplit = False
+          Options.TechZoneVisible = False
+          Options.TechZoneAlwaysVisible = False
+          Options.TechZoneCursorRowVisible = False
+          Options.TechZoneCursorRowView = tcvTriangle
+          Options.TechZoneCursorRecVisible = True
+          Options.TechZoneCursorRecView = tcvTriangle
+          Options.EmptyPromtVisible = False
+          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
+          Options.EmptyPromtFont.Color = clWindowText
+          Options.EmptyPromtFont.Height = -11
+          Options.EmptyPromtFont.Name = 'MS Sans Serif'
+          Options.EmptyPromtFont.Style = []
+          Options.EmptyPromtCaption = 'No items ...'
+          Options.CellHorzLineVisible = True
+          Options.CellVertLineVisible = True
+          Options.SelFrameMainVisible = False
+          Options.SelFrameMainType = msftSolid
+          Options.SelFrameColVisible = True
+          Options.SelFrameColType = csftFocusedFrame
+          Options.EmmediatelyEditing = True
+          Options.WantEditorOnSelReClick = False
+          Options.WantEditor = False
+          Options.WantCuttingText = True
+          Options.WantShowEditorWhenIReadOnly = False
+          Options.WantDirectBoolChange = True
+          Options.CuttingText = '....'
+          Options.ScrollBars = ssBoth
+          Options.UseDesignerSettingsOpenning = False
+          Options.MultiSelecting = False
+          Options.ChessPaintMode = True
+          Options.ChessPaintModeIncludeImageCell = True
+          TestDraw = False
+          MinCellHeight = 16
+          MinCellWidth = 5
+          SplitOption.VertCtrlsModeEnabled = False
+          SplitOption.VertCtrlsModeWantEnter = True
+          SplitOption.DBModeEnabled = False
+          SplitOption.DBCreateCellsMode = ccmRowBlocks
+          SplitOption.DBSelectingMoveCursor = True
+          SplitOption.DBRowBlockIndex = 0
+          Active = True
+          ServiceButtonFlat = False
+          ServiceButtonText = 'F1'
+          ReadOnly = False
+          DesignModeEnabled = False
+          HideSelection = False
+          SelectComboAutoDropDown = False
+          OnDblClickCell = tblDebitsDblClickCell
+        end
+      end
+      object SpTBXTabSheet15: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 782
+        Height = 477
+        Caption = 'd_info'
+        ImageIndex = -1
+        DesignSize = (
+          782
+          477)
+        TabItem = 'SpTBXTabItem14'
+        object SpTBXLabel52: TSpTBXLabel
+          Left = 16
+          Top = 104
+          Width = 57
+          Height = 13
+          Caption = #1044#1072#1090#1072
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit10: TSpTBXEdit
+          Left = 85
+          Top = 96
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object SpTBXButton44: TSpTBXButton
+          Left = 212
+          Top = 96
+          Width = 40
+          Height = 27
+          Caption = #1091#1089#1090
+          TabOrder = 2
+          OnClick = SpTBXButton44Click
+        end
+        object SpTBXPanel20: TSpTBXPanel
+          Left = 2
+          Top = 0
+          Width = 776
+          Height = 41
+          Caption = 'SpTBXPanel16'
+          Align = alTop
+          TabOrder = 3
+          Borders = False
+          object SpTBXButton49: TSpTBXButton
+            Left = 8
+            Top = 5
+            Width = 121
+            Height = 32
+            Caption = '<<<<<<<<<'
+            TabOrder = 0
+            OnClick = SpTBXButton49Click
+          end
+          object SpTBXPanel21: TSpTBXPanel
+            Left = 576
+            Top = 2
+            Width = 198
+            Height = 37
+            Caption = 'SpTBXPanel17'
+            Align = alRight
+            TabOrder = 1
+            Borders = False
+            object SpTBXButton51: TSpTBXButton
+              Left = 74
+              Top = 4
+              Width = 121
+              Height = 32
+              Caption = #1047#1072#1103#1074#1082#1072
+              TabOrder = 0
+            end
+          end
+        end
+        object SpTBXCheckBox2: TSpTBXCheckBox
+          Left = 40
+          Top = 56
+          Width = 80
+          Height = 21
+          Caption = #1040#1082#1090#1080#1074#1085#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+        end
+        object SpTBXLabel53: TSpTBXLabel
+          Left = 296
+          Top = 104
+          Width = 57
+          Height = 13
+          Caption = #1058#1080#1087
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit11: TSpTBXEdit
+          Left = 365
+          Top = 96
+          Width = 140
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 6
+        end
+        object tblDebitTypes: TRRAdvTable
+          Left = 552
+          Top = 93
+          Width = 169
+          Height = 124
+          Anchors = [akLeft, akTop, akRight]
+          Color = clWhite
+          Constraints.MinWidth = 100
+          TabOrder = 7
+          TabStop = True
+          FixedColShow = False
+          AlwaysFixedColShow = True
+          TemplateFileAppDir = False
+          TemplateFileExceptions = True
+          FixedCellHeight = 18
+          FixedCellFontEnabled = False
+          FixedCellFont.Charset = DEFAULT_CHARSET
+          FixedCellFont.Color = clWindowText
+          FixedCellFont.Height = -11
+          FixedCellFont.Name = 'MS Sans Serif'
+          FixedCellFont.Style = []
+          DefaultCellWidth = 100
+          DefaultCellHeight = 18
+          AutoCellWidthEnabled = True
+          CellLineDragMethod = rrdmSingleLine
+          Painter.FixedCellBorderColor = clBlack
+          Painter.FixedCellBorderWidth = 1
+          Painter.FixedCellColor = clBtnFace
+          Painter.FixedCellInnerFrameColor = clWhite
+          Painter.FixedCellInnerFrameRectLeftOffset = 0
+          Painter.FixedCellInnerFrameRectTopOffset = 0
+          Painter.FixedCellInnerFrameRectRightOffset = 1
+          Painter.FixedCellInnerFrameRectBottomOffset = 1
+          Painter.FixedSeparatorColor = clGray
+          Painter.FixedSeparatorSubColor = clWhite
+          Painter.FixedSeparatorOffset1 = 1
+          Painter.SplitLineColor = clBlack
+          Painter.SplitLinePenStyle = psDot
+          Painter.SortTriangleLine1Color = clWhite
+          Painter.SortTriangleLine2Color = clWhite
+          Painter.SortTriangleLine3Color = clBlack
+          Painter.SortTriangleBorderAreaColor = clGray
+          Painter.SortTriangleBorderEdgeAreaColor = clWhite
+          Painter.SortActiveTriangleColor = clRed
+          Painter.FilterCaptionFontColor = clBlack
+          Painter.FilterActiveFrameColor = clYellow
+          Painter.PreActiveFramesColor = clCream
+          Painter.TechZoneWidth = 20
+          Painter.TechZoneColor1 = 14211288
+          Painter.TechZoneColor2 = 14211288
+          Painter.TechZoneLineColor = clBlack
+          Painter.TechZoneCursorRowColor = clBlack
+          Painter.TechZoneCursorRowLineMainColor = clWhite
+          Painter.TechZoneCursorRowLineColor = clBlack
+          Painter.TechZoneCursorRecColor = clSilver
+          Painter.TechZoneSymbolVisible = True
+          Painter.TechZoneSymbolFontColor = clBlack
+          Painter.TechZoneLineWidth = 1
+          Painter.CellHorzLineColor = clSilver
+          Painter.CellVertLineColor = clSilver
+          Painter.CellHorzLineWidth = 1
+          Painter.CellVertLineWidth = 1
+          Painter.SelFrameMainColor = clNavy
+          Painter.SelFrameMainFontColor = clWhite
+          Painter.SelFrameMainWidth = 1
+          Painter.SelFrameMainPenStyle = psDot
+          Painter.SelFrameColColor = clBlack
+          Painter.SelFrameColWidth = 1
+          Painter.SelFrameColPenStyle = psSolid
+          Painter.BoolCellRectColor = clBlack
+          Painter.BoolCellRectSymbColor = clBlack
+          Painter.BoolCellRectSymbol = #0
+          Painter.VertCtrlsModeUseSelRowFrame = False
+          Painter.VertCtrlsModeSelRowFrameColor = clGray
+          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
+          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
+          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
+          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
+          Painter.VertCtrlsModeSelRowFrameFont.Style = []
+          Painter.ChessPaintModeColor = 16250357
+          Painter.ChessPaintModeCellMainColor = clWhite
+          Options.AllowVertLineSplit = True
+          Options.AllowHorzLineSplit = False
+          Options.TechZoneVisible = False
+          Options.TechZoneAlwaysVisible = False
+          Options.TechZoneCursorRowVisible = False
+          Options.TechZoneCursorRowView = tcvTriangle
+          Options.TechZoneCursorRecVisible = True
+          Options.TechZoneCursorRecView = tcvTriangle
+          Options.EmptyPromtVisible = False
+          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
+          Options.EmptyPromtFont.Color = clWindowText
+          Options.EmptyPromtFont.Height = -11
+          Options.EmptyPromtFont.Name = 'MS Sans Serif'
+          Options.EmptyPromtFont.Style = []
+          Options.EmptyPromtCaption = 'No items ...'
+          Options.CellHorzLineVisible = True
+          Options.CellVertLineVisible = True
+          Options.SelFrameMainVisible = False
+          Options.SelFrameMainType = msftSolid
+          Options.SelFrameColVisible = True
+          Options.SelFrameColType = csftFocusedFrame
+          Options.EmmediatelyEditing = True
+          Options.WantEditorOnSelReClick = False
+          Options.WantEditor = False
+          Options.WantCuttingText = True
+          Options.WantShowEditorWhenIReadOnly = False
+          Options.WantDirectBoolChange = True
+          Options.CuttingText = '....'
+          Options.ScrollBars = ssBoth
+          Options.UseDesignerSettingsOpenning = False
+          Options.MultiSelecting = False
+          Options.ChessPaintMode = False
+          Options.ChessPaintModeIncludeImageCell = True
+          TestDraw = False
+          MinCellHeight = 16
+          MinCellWidth = 5
+          SplitOption.VertCtrlsModeEnabled = False
+          SplitOption.VertCtrlsModeWantEnter = True
+          SplitOption.DBModeEnabled = False
+          SplitOption.DBCreateCellsMode = ccmRowBlocks
+          SplitOption.DBSelectingMoveCursor = True
+          SplitOption.DBRowBlockIndex = 0
+          Active = True
+          ServiceButtonFlat = False
+          ServiceButtonText = 'F1'
+          ReadOnly = False
+          DesignModeEnabled = False
+          HideSelection = True
+          SelectComboAutoDropDown = False
+        end
+        object SpTBXLabel54: TSpTBXLabel
+          Left = 16
+          Top = 152
+          Width = 57
+          Height = 13
+          Caption = #1058#1077#1082#1089#1090
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit12: TSpTBXEdit
+          Left = 85
+          Top = 144
+          Width = 420
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 9
+        end
+        object SpTBXLabel55: TSpTBXLabel
+          Left = 296
+          Top = 64
+          Width = 57
+          Height = 13
+          Caption = #1057#1091#1084#1084#1072
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit13: TSpTBXEdit
+          Left = 365
+          Top = 56
+          Width = 140
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 11
+        end
+        object SpTBXLabel56: TSpTBXLabel
+          Left = 16
+          Top = 192
+          Width = 57
+          Height = 13
+          Caption = #1058#1058#1053
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit14: TSpTBXEdit
+          Left = 85
+          Top = 184
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 13
+        end
+        object SpTBXButton50: TSpTBXButton
+          Left = 212
+          Top = 184
+          Width = 40
+          Height = 27
+          Caption = #1091#1089#1090
+          TabOrder = 14
+          OnClick = SpTBXButton50Click
+        end
+        object SpTBXLabel57: TSpTBXLabel
+          Left = 512
+          Top = 103
+          Width = 24
+          Height = 13
+          Caption = '<<<<'
+        end
+        object SpTBXLabel60: TSpTBXLabel
+          Left = 8
+          Top = 240
+          Width = 65
+          Height = 13
+          Caption = #1058#1080#1087' '#1086#1087#1083#1072#1090#1099
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit15: TSpTBXEdit
+          Left = 85
+          Top = 232
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 17
+        end
+        object tblSettlTypes: TRRAdvTable
+          Left = 256
+          Top = 229
+          Width = 169
+          Height = 124
+          Anchors = [akLeft, akTop, akRight]
+          Color = clWhite
+          Constraints.MinWidth = 100
+          TabOrder = 18
+          TabStop = True
+          FixedColShow = False
+          AlwaysFixedColShow = True
+          TemplateFileAppDir = False
+          TemplateFileExceptions = True
+          FixedCellHeight = 18
+          FixedCellFontEnabled = False
+          FixedCellFont.Charset = DEFAULT_CHARSET
+          FixedCellFont.Color = clWindowText
+          FixedCellFont.Height = -11
+          FixedCellFont.Name = 'MS Sans Serif'
+          FixedCellFont.Style = []
+          DefaultCellWidth = 100
+          DefaultCellHeight = 18
+          AutoCellWidthEnabled = True
+          CellLineDragMethod = rrdmSingleLine
+          Painter.FixedCellBorderColor = clBlack
+          Painter.FixedCellBorderWidth = 1
+          Painter.FixedCellColor = clBtnFace
+          Painter.FixedCellInnerFrameColor = clWhite
+          Painter.FixedCellInnerFrameRectLeftOffset = 0
+          Painter.FixedCellInnerFrameRectTopOffset = 0
+          Painter.FixedCellInnerFrameRectRightOffset = 1
+          Painter.FixedCellInnerFrameRectBottomOffset = 1
+          Painter.FixedSeparatorColor = clGray
+          Painter.FixedSeparatorSubColor = clWhite
+          Painter.FixedSeparatorOffset1 = 1
+          Painter.SplitLineColor = clBlack
+          Painter.SplitLinePenStyle = psDot
+          Painter.SortTriangleLine1Color = clWhite
+          Painter.SortTriangleLine2Color = clWhite
+          Painter.SortTriangleLine3Color = clBlack
+          Painter.SortTriangleBorderAreaColor = clGray
+          Painter.SortTriangleBorderEdgeAreaColor = clWhite
+          Painter.SortActiveTriangleColor = clRed
+          Painter.FilterCaptionFontColor = clBlack
+          Painter.FilterActiveFrameColor = clYellow
+          Painter.PreActiveFramesColor = clCream
+          Painter.TechZoneWidth = 20
+          Painter.TechZoneColor1 = 14211288
+          Painter.TechZoneColor2 = 14211288
+          Painter.TechZoneLineColor = clBlack
+          Painter.TechZoneCursorRowColor = clBlack
+          Painter.TechZoneCursorRowLineMainColor = clWhite
+          Painter.TechZoneCursorRowLineColor = clBlack
+          Painter.TechZoneCursorRecColor = clSilver
+          Painter.TechZoneSymbolVisible = True
+          Painter.TechZoneSymbolFontColor = clBlack
+          Painter.TechZoneLineWidth = 1
+          Painter.CellHorzLineColor = clSilver
+          Painter.CellVertLineColor = clSilver
+          Painter.CellHorzLineWidth = 1
+          Painter.CellVertLineWidth = 1
+          Painter.SelFrameMainColor = clNavy
+          Painter.SelFrameMainFontColor = clWhite
+          Painter.SelFrameMainWidth = 1
+          Painter.SelFrameMainPenStyle = psDot
+          Painter.SelFrameColColor = clBlack
+          Painter.SelFrameColWidth = 1
+          Painter.SelFrameColPenStyle = psSolid
+          Painter.BoolCellRectColor = clBlack
+          Painter.BoolCellRectSymbColor = clBlack
+          Painter.BoolCellRectSymbol = #0
+          Painter.VertCtrlsModeUseSelRowFrame = False
+          Painter.VertCtrlsModeSelRowFrameColor = clGray
+          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
+          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
+          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
+          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
+          Painter.VertCtrlsModeSelRowFrameFont.Style = []
+          Painter.ChessPaintModeColor = 16250357
+          Painter.ChessPaintModeCellMainColor = clWhite
+          Options.AllowVertLineSplit = True
+          Options.AllowHorzLineSplit = False
+          Options.TechZoneVisible = False
+          Options.TechZoneAlwaysVisible = False
+          Options.TechZoneCursorRowVisible = False
+          Options.TechZoneCursorRowView = tcvTriangle
+          Options.TechZoneCursorRecVisible = True
+          Options.TechZoneCursorRecView = tcvTriangle
+          Options.EmptyPromtVisible = False
+          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
+          Options.EmptyPromtFont.Color = clWindowText
+          Options.EmptyPromtFont.Height = -11
+          Options.EmptyPromtFont.Name = 'MS Sans Serif'
+          Options.EmptyPromtFont.Style = []
+          Options.EmptyPromtCaption = 'No items ...'
+          Options.CellHorzLineVisible = True
+          Options.CellVertLineVisible = True
+          Options.SelFrameMainVisible = False
+          Options.SelFrameMainType = msftSolid
+          Options.SelFrameColVisible = True
+          Options.SelFrameColType = csftFocusedFrame
+          Options.EmmediatelyEditing = True
+          Options.WantEditorOnSelReClick = False
+          Options.WantEditor = False
+          Options.WantCuttingText = True
+          Options.WantShowEditorWhenIReadOnly = False
+          Options.WantDirectBoolChange = True
+          Options.CuttingText = '....'
+          Options.ScrollBars = ssBoth
+          Options.UseDesignerSettingsOpenning = False
+          Options.MultiSelecting = False
+          Options.ChessPaintMode = False
+          Options.ChessPaintModeIncludeImageCell = True
+          TestDraw = False
+          MinCellHeight = 16
+          MinCellWidth = 5
+          SplitOption.VertCtrlsModeEnabled = False
+          SplitOption.VertCtrlsModeWantEnter = True
+          SplitOption.DBModeEnabled = False
+          SplitOption.DBCreateCellsMode = ccmRowBlocks
+          SplitOption.DBSelectingMoveCursor = True
+          SplitOption.DBRowBlockIndex = 0
+          Active = True
+          ServiceButtonFlat = False
+          ServiceButtonText = 'F1'
+          ReadOnly = False
+          DesignModeEnabled = False
+          HideSelection = True
+          SelectComboAutoDropDown = False
+        end
+        object SpTBXLabel61: TSpTBXLabel
+          Left = 216
+          Top = 239
+          Width = 24
+          Height = 13
+          Caption = '<<<<'
+        end
+        object SpTBXLabel62: TSpTBXLabel
+          Left = 8
+          Top = 272
+          Width = 65
+          Height = 13
+          Caption = #1063#1077#1088#1077#1079' ('#1076#1085#1077#1081')'
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit16: TSpTBXEdit
+          Left = 85
+          Top = 264
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 21
+        end
+        object SpTBXLabel63: TSpTBXLabel
+          Left = 448
+          Top = 240
+          Width = 65
+          Height = 13
+          Caption = #1050#1072#1088#1090#1072
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit17: TSpTBXEdit
+          Left = 525
+          Top = 232
+          Width = 124
+          Height = 28
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 23
+        end
+        object RRAdvTable1: TRRAdvTable
+          Left = 528
+          Top = 277
+          Width = 169
+          Height = 124
+          Anchors = [akLeft, akTop, akRight]
+          Color = clWhite
+          Constraints.MinWidth = 100
+          TabOrder = 24
+          TabStop = True
+          FixedColShow = False
+          AlwaysFixedColShow = True
+          TemplateFileAppDir = False
+          TemplateFileExceptions = True
+          FixedCellHeight = 18
+          FixedCellFontEnabled = False
+          FixedCellFont.Charset = DEFAULT_CHARSET
+          FixedCellFont.Color = clWindowText
+          FixedCellFont.Height = -11
+          FixedCellFont.Name = 'MS Sans Serif'
+          FixedCellFont.Style = []
+          DefaultCellWidth = 100
+          DefaultCellHeight = 18
+          AutoCellWidthEnabled = True
+          CellLineDragMethod = rrdmSingleLine
+          Painter.FixedCellBorderColor = clBlack
+          Painter.FixedCellBorderWidth = 1
+          Painter.FixedCellColor = clBtnFace
+          Painter.FixedCellInnerFrameColor = clWhite
+          Painter.FixedCellInnerFrameRectLeftOffset = 0
+          Painter.FixedCellInnerFrameRectTopOffset = 0
+          Painter.FixedCellInnerFrameRectRightOffset = 1
+          Painter.FixedCellInnerFrameRectBottomOffset = 1
+          Painter.FixedSeparatorColor = clGray
+          Painter.FixedSeparatorSubColor = clWhite
+          Painter.FixedSeparatorOffset1 = 1
+          Painter.SplitLineColor = clBlack
+          Painter.SplitLinePenStyle = psDot
+          Painter.SortTriangleLine1Color = clWhite
+          Painter.SortTriangleLine2Color = clWhite
+          Painter.SortTriangleLine3Color = clBlack
+          Painter.SortTriangleBorderAreaColor = clGray
+          Painter.SortTriangleBorderEdgeAreaColor = clWhite
+          Painter.SortActiveTriangleColor = clRed
+          Painter.FilterCaptionFontColor = clBlack
+          Painter.FilterActiveFrameColor = clYellow
+          Painter.PreActiveFramesColor = clCream
+          Painter.TechZoneWidth = 20
+          Painter.TechZoneColor1 = 14211288
+          Painter.TechZoneColor2 = 14211288
+          Painter.TechZoneLineColor = clBlack
+          Painter.TechZoneCursorRowColor = clBlack
+          Painter.TechZoneCursorRowLineMainColor = clWhite
+          Painter.TechZoneCursorRowLineColor = clBlack
+          Painter.TechZoneCursorRecColor = clSilver
+          Painter.TechZoneSymbolVisible = True
+          Painter.TechZoneSymbolFontColor = clBlack
+          Painter.TechZoneLineWidth = 1
+          Painter.CellHorzLineColor = clSilver
+          Painter.CellVertLineColor = clSilver
+          Painter.CellHorzLineWidth = 1
+          Painter.CellVertLineWidth = 1
+          Painter.SelFrameMainColor = clNavy
+          Painter.SelFrameMainFontColor = clWhite
+          Painter.SelFrameMainWidth = 1
+          Painter.SelFrameMainPenStyle = psDot
+          Painter.SelFrameColColor = clBlack
+          Painter.SelFrameColWidth = 1
+          Painter.SelFrameColPenStyle = psSolid
+          Painter.BoolCellRectColor = clBlack
+          Painter.BoolCellRectSymbColor = clBlack
+          Painter.BoolCellRectSymbol = #0
+          Painter.VertCtrlsModeUseSelRowFrame = False
+          Painter.VertCtrlsModeSelRowFrameColor = clGray
+          Painter.VertCtrlsModeSelRowFrameFont.Charset = DEFAULT_CHARSET
+          Painter.VertCtrlsModeSelRowFrameFont.Color = clBlue
+          Painter.VertCtrlsModeSelRowFrameFont.Height = -11
+          Painter.VertCtrlsModeSelRowFrameFont.Name = 'MS Sans Serif'
+          Painter.VertCtrlsModeSelRowFrameFont.Style = []
+          Painter.ChessPaintModeColor = 16250357
+          Painter.ChessPaintModeCellMainColor = clWhite
+          Options.AllowVertLineSplit = True
+          Options.AllowHorzLineSplit = False
+          Options.TechZoneVisible = False
+          Options.TechZoneAlwaysVisible = False
+          Options.TechZoneCursorRowVisible = False
+          Options.TechZoneCursorRowView = tcvTriangle
+          Options.TechZoneCursorRecVisible = True
+          Options.TechZoneCursorRecView = tcvTriangle
+          Options.EmptyPromtVisible = False
+          Options.EmptyPromtFont.Charset = DEFAULT_CHARSET
+          Options.EmptyPromtFont.Color = clWindowText
+          Options.EmptyPromtFont.Height = -11
+          Options.EmptyPromtFont.Name = 'MS Sans Serif'
+          Options.EmptyPromtFont.Style = []
+          Options.EmptyPromtCaption = 'No items ...'
+          Options.CellHorzLineVisible = True
+          Options.CellVertLineVisible = True
+          Options.SelFrameMainVisible = False
+          Options.SelFrameMainType = msftSolid
+          Options.SelFrameColVisible = True
+          Options.SelFrameColType = csftFocusedFrame
+          Options.EmmediatelyEditing = True
+          Options.WantEditorOnSelReClick = False
+          Options.WantEditor = False
+          Options.WantCuttingText = True
+          Options.WantShowEditorWhenIReadOnly = False
+          Options.WantDirectBoolChange = True
+          Options.CuttingText = '....'
+          Options.ScrollBars = ssBoth
+          Options.UseDesignerSettingsOpenning = False
+          Options.MultiSelecting = False
+          Options.ChessPaintMode = False
+          Options.ChessPaintModeIncludeImageCell = True
+          TestDraw = False
+          MinCellHeight = 16
+          MinCellWidth = 5
+          SplitOption.VertCtrlsModeEnabled = False
+          SplitOption.VertCtrlsModeWantEnter = True
+          SplitOption.DBModeEnabled = False
+          SplitOption.DBCreateCellsMode = ccmRowBlocks
+          SplitOption.DBSelectingMoveCursor = True
+          SplitOption.DBRowBlockIndex = 0
+          Active = True
+          ServiceButtonFlat = False
+          ServiceButtonText = 'F1'
+          ReadOnly = False
+          DesignModeEnabled = False
+          HideSelection = True
+          SelectComboAutoDropDown = False
+        end
+        object SpTBXLabel64: TSpTBXLabel
+          Left = 656
+          Top = 218
+          Width = 25
+          Height = 31
+          Caption = '____'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -33
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SpTBXLabel65: TSpTBXLabel
+          Left = 677
+          Top = 245
+          Width = 25
+          Height = 23
+          Caption = '|'
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -33
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Memo10: TMemo
+          Left = 90
+          Top = 384
+          Width = 415
+          Height = 85
+          Ctl3D = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 27
+          OnChange = Memo8Change
+        end
+        object SpTBXLabel66: TSpTBXLabel
+          Left = 8
+          Top = 384
+          Width = 73
+          Height = 13
+          Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1080
+          AutoSize = False
+          Alignment = taRightJustify
         end
       end
     end

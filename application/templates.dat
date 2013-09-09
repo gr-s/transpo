@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.09.2013 19:18:20
+09.09.2013 19:11:02
 /end header
 /begin data
 MyClass TopInstance
@@ -297,10 +297,10 @@ MyClass TopInstance
 			/end private
 			/begin public
 			char guid = /B$&V//E$&V/
+			char create_date = /B$&V//E$&V/
 			bool enabled = /B$&V/False/E$&V/
 			int type = /B$&V/0/E$&V/
 			char type_str = /B$&V//E$&V/
-			char unload_date = /B$&V//E$&V/
 			char caption = /B$&V//E$&V/
 			char ttn_date = /B$&V//E$&V/
 			int settlem_type = /B$&V/0/E$&V/
@@ -380,6 +380,7 @@ MyClass TopInstance
 			/end private
 			/begin public
 			char guid = /B$&V//E$&V/
+			char create_date = /B$&V//E$&V/
 			bool enabled = /B$&V/False/E$&V/
 			int type = /B$&V/0/E$&V/
 			char type_str = /B$&V//E$&V/

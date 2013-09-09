@@ -133,7 +133,7 @@ begin
   Result:= Result + '&FromGeo=' + ReplaceSymb(option.FromGeo,'%20',' ');
   Result:= Result + '&ToGeo=' + ReplaceSymb(option.ToGeo,'%20',' ');
   Result:= Result + '&FromGeoRadius=' + IntToStr(option.FromRadius);
-  Result:= Result + '&ToGeoRadius=' + IntToStr(option.FromRadius);
+  Result:= Result + '&ToGeoRadius=' + IntToStr(option.ToRadius);
   Result:= Result + '&CarType=115&LoadType=4';
   if option.WeightEnd > 0 then 
     Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);

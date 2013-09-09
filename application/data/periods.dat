@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.09.2013 22:58:53
+09.09.2013 19:24:22
 /end header
 /begin data
 MyClass periods_file
@@ -41,19 +41,19 @@ MyClass periods_file
 									/begin private
 									/end private
 									/begin public
-									char guid = /B$&V/196231229240230232237241234202243240241234325332473245324021323223646322392402382282432342422513223722923823922424123725122932414948484848/E$&V/
+									char guid = /B$&V/2052322302372322333220523822622723824023822820722923723122432514453324732505632402062252382402432282382262242372322293223232231224239247224241242232324157534848/E$&V/
+									char create_date = /B$&V/09.09.2013/E$&V/
 									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
-									char unload_date = /B$&V//E$&V/
-									char caption = /B$&V/Дзержинск-Курск /E$&V/
+									char caption = /B$&V/Нижний Новгород-Пенза /E$&V/
 									char ttn_date = /B$&V//E$&V/
 									int settlem_type = /B$&V/30/E$&V/
 									char settlem_str = /B$&V/Безнал/E$&V/
 									int settlem_days = /B$&V/-1/E$&V/
 									char card_type = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/10000/E$&V/
+									int value = /B$&V/9500/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
@@ -69,35 +69,33 @@ MyClass periods_file
 													/end private
 													/begin public
 													int _type = /B$&V/10/E$&V/
-													char ID = /B$&V/196231229240230232237241234202243240241234325332473245324021323223646322392402382282432342422513223722923823922424123725122932414948484848/E$&V/
-													char FromGeo = /B$&V/Дзержинск/E$&V/
-													char FromGeoDesc1 = /B$&V/Дзержинск 
-Нижегородская область
- 
-35 км от Нижний Новгород 
-5 - 6 сен /E$&V/
-													char ToGeo = /B$&V/Курск /E$&V/
-													char ToGeoDesc1 = /B$&V/Курск 
-ближайшие крупные города 1 доп. пункт разгрузки /E$&V/
-													char Dist = /B$&V/985 км/E$&V/
-													int DistI = /B$&V/985/E$&V/
-													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
-													char CargoDesc = /B$&V/5 / - (Хим. продукты неопасные )/E$&V/
-													char CargoName = /B$&V/Хим. продукты неопасные /E$&V/
+													char ID = /B$&V/2052322302372322333220523822622723824023822820722923723122432514453324732505632402062252382402432282382262242372322293223232231224239247224241242232324157534848/E$&V/
+													char FromGeo = /B$&V/Нижний Новгород/E$&V/
+													char FromGeoDesc1 = /B$&V/Нижний Новгород 
+12 сен /E$&V/
+													char ToGeo = /B$&V/Пенза /E$&V/
+													char ToGeoDesc1 = /B$&V/Пенза /E$&V/
+													char Dist = /B$&V/449 км/E$&V/
+													int DistI = /B$&V/449/E$&V/
+													char TruckType = /B$&V/тент. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/3,5 / 28 (Оборудование и запчасти )/E$&V/
+													char CargoName = /B$&V/Оборудование и запчасти /E$&V/
 													char CargoNote = /B$&V//E$&V/
-													float Weight = /B$&V/5/E$&V/
-													float Volume = /B$&V/-1/E$&V/
-													char PriceDesc = /B$&V/10000 (10,2 р/км) 
-торг 
+													float Weight = /B$&V/3,5/E$&V/
+													float Volume = /B$&V/28/E$&V/
+													char PriceDesc = /B$&V/9500 на карту (21,2 р/км) 
+10500 с НДС (23,4 р/км) 
+10000 без НДС (22,3 р/км) 
+через 5 б/д 
      /E$&V/
-													char Price1 = /B$&V/10000/E$&V/
+													char Price1 = /B$&V/9500/E$&V/
 													char Controller = /B$&V//E$&V/
-													char ControllerInfo = /B$&V/АвтоТранс 152, ООО (ID:171450, гр/вл.-пер, Нижний Новгород) (р100) /E$&V/
-													char DateDesc = /B$&V/5 - 6 сен /E$&V/
+													char ControllerInfo = /B$&V/ALS ltd (АВТОЛАЙН, ООО) (ID:21307, гр/вл.-пер, Самара) (р71)  /E$&V/
+													char DateDesc = /B$&V/12 сен /E$&V/
 													char Note = /B$&V//E$&V/
-													char Reliability = /B$&V//E$&V/
-													MemoBlock Comments = /B$&V/kjhkhkhj/E$&V/
-													bool _checked = /B$&V/False/E$&V/
+													char Reliability = /B$&V/Балл надёжности: 4,30. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
 													int _status_id = /B$&V/10/E$&V/
 													char _status_str = /B$&V/Просм/E$&V/
 													/end public
@@ -114,7 +112,7 @@ MyClass periods_file
 																	/begin private
 																	/end private
 																	/begin public
-																	char Str1 = /B$&V/ICQ#:646718675, факс: +7(831)2725220 +7(831)2725220,  +7(915)9345373, Татьяна,Илья/E$&V/
+																	char Str1 = /B$&V/ICQ#:470677284, факс: +7(846)2680020  +7(846)2680020,  +7(927)7448791, Людмила, Наталья/E$&V/
 																	/end public
 																}
 															/end classes
@@ -139,13 +137,14 @@ MyClass periods_file
 									/begin private
 									/end private
 									/begin public
-									char guid = /B$&V/295463604-27438-18039/E$&V/
+									char guid = /B$&V/1890080325-61691-19350/E$&V/
+									char create_date = /B$&V/09.09.2013/E$&V/
 									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/30/E$&V/
 									char type_str = /B$&V/Комиссия ИП/E$&V/
-									char caption = /B$&V/Дзержинск-Курск /E$&V/
+									char caption = /B$&V/Нижний Новгород-Пенза /E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/1000/E$&V/
+									int value = /B$&V/950/E$&V/
 									/end public
 								}
 							/end classes

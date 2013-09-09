@@ -23,6 +23,8 @@ const
   op_ticket_info:Integer = 50;
   op_per_menu:Integer = 60;
   op_per_info:Integer = 70;
+  op_debits:Integer = 80;
+  op_debit_info:Integer = 90;
 
 implementation
 

@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.09.2013 13:52:25
+09.09.2013 17:51:28
 /end header
 /begin data
 MyClass EmptyClass
@@ -20,12 +20,48 @@ MyClass EmptyClass
 			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
+		MyClass ÂÎĞÎÍÅÆ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÂÎĞÎÍÅÆ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ÈÂÀÍÎÂÎ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÈÂÀÍÎÂÎ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
 		MyClass ÊÀÇÀÍÜ
 		{
 			/begin private
 			/end private
 			/begin public
 			char Caption = /B$&V/ÊÀÇÀÍÜ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ÊÈĞÎÂ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÊÈĞÎÂ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ËÈÏÅÖÊ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ËÈÏÅÖÊ/E$&V/
 			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
@@ -62,6 +98,33 @@ MyClass EmptyClass
 			/end private
 			/begin public
 			char Caption = /B$&V/ĞÎÑÑÈß/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ĞßÇÀÍÜ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ĞßÇÀÍÜ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ÒÀÌÁÎÂ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÒÀÌÁÎÂ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ÒÓËÀ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÒÓËÀ/E$&V/
 			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
