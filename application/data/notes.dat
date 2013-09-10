@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-10.09.2013 19:22:12
+10.09.2013 20:41:14
 /end header
 /begin data
 MyClass notes_file
@@ -17,6 +17,134 @@ MyClass notes_file
 			/end private
 			/begin public
 			/end public
+			/begin classes
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/Общие данные/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/"ati id": 657 126
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/_iveco
+Yb2b76D4bc
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/объем: 34.5
+длинна: 6.05
+высота: 2.40
+ширина: 2.35
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/ном. машины: А814ОЕ152
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/Паспорт/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/Паспорт:
+
+выдан: отделом внутренних дел Ковернинского района Нижегогородской области
+дата выдачи: 13.04.2006
+код подр. 522-038
+серия 2205
+номер 741428
+
+ФИО: Слугин Максим Сергеевич
+дата рождения: 26.03.1986
+место рождения: п. Красноселькуп Красноселькупского района Тюменской области
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/Водительское удостоверение:
+серия 5214
+номер 749410
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/Банк. карты/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/номер карты 4154816945704984
+действительна до 06/14
+
+Банк получателя ОАО «Альфа-Банк», г. Москва 
+БИК 044525593
+К/с 30101810200000000593
+Наименование получателя Григорьев Сергей Игоревич
+№ счета получателя 40817810408310003276
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/5469420011575779
+ Григорьев Александр Игоревич
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+			/end classes
 		}
 	/end classes
 }
