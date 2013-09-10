@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 125
-  Top = 151
+  Left = 385
+  Top = 164
   Width = 1079
   Height = 677
   Caption = 'MainForm'
@@ -19,7 +19,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 1063
     Height = 639
-    Caption = 'TRANSPO'
+    Caption = #1090#1088#1072#1085#1089#1087#1086
     object SpTBXPanel1: TSpTBXPanel
       Left = 8
       Top = 573
