@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-09.09.2013 19:11:02
+10.09.2013 12:47:04
 /end header
 /begin data
 MyClass TopInstance
@@ -306,7 +306,8 @@ MyClass TopInstance
 			int settlem_type = /B$&V/0/E$&V/
 			char settlem_str = /B$&V//E$&V/
 			int settlem_days = /B$&V/-1/E$&V/
-			char card_type = /B$&V//E$&V/
+			int card_type = /B$&V/0/E$&V/
+			char card_str = /B$&V//E$&V/
 			MemoBlock comments = /B$&V//E$&V/
 			int value = /B$&V/0/E$&V/
 			/end public
@@ -466,6 +467,33 @@ MyClass TopInstance
 					/begin public
 					int id = /B$&V/70/E$&V/
 					char caption = /B$&V/Другое/E$&V/
+					/end public
+				}
+			/end classes
+		}
+		MyClass card_types
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/10/E$&V/
+					char caption = /B$&V/Альфа/E$&V/
+					/end public
+				}
+				MyClass item
+				{
+					/begin private
+					/end private
+					/begin public
+					int id = /B$&V/20/E$&V/
+					char caption = /B$&V/Сбер (Алекс)/E$&V/
 					/end public
 				}
 			/end classes
