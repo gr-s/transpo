@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-10.09.2013 12:47:04
+10.09.2013 18:07:37
 /end header
 /begin data
 MyClass TopInstance
@@ -306,8 +306,7 @@ MyClass TopInstance
 			int settlem_type = /B$&V/0/E$&V/
 			char settlem_str = /B$&V//E$&V/
 			int settlem_days = /B$&V/-1/E$&V/
-			int card_type = /B$&V/0/E$&V/
-			char card_str = /B$&V//E$&V/
+			char card_type = /B$&V//E$&V/
 			MemoBlock comments = /B$&V//E$&V/
 			int value = /B$&V/0/E$&V/
 			/end public
@@ -471,6 +470,38 @@ MyClass TopInstance
 				}
 			/end classes
 		}
+		MyClass notes_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass items
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass note_block
+		{
+			/begin private
+			/end private
+			/begin public
+			char caption = /B$&V//E$&V/
+			/end public
+		}
+		MyClass note_item
+		{
+			/begin private
+			/end private
+			/begin public
+			MemoBlock text = /B$&V//E$&V/
+			/end public
+		}
 		MyClass card_types
 		{
 			/begin private
@@ -484,7 +515,7 @@ MyClass TopInstance
 					/end private
 					/begin public
 					int id = /B$&V/10/E$&V/
-					char caption = /B$&V/Альфа/E$&V/
+					char caption = /B$&V/Альфа1/E$&V/
 					/end public
 				}
 				MyClass item
