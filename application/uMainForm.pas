@@ -134,7 +134,6 @@ type
     SpTBXPanel16: TSpTBXPanel;
     SpTBXButton30: TSpTBXButton;
     SpTBXLabel36: TSpTBXLabel;
-    SpTBXLabel39: TSpTBXLabel;
     Memo1: TMemo;
     Memo2: TMemo;
     Memo3: TMemo;
@@ -284,6 +283,7 @@ type
     SpTBXButton64: TSpTBXButton;
     SpTBXButton65: TSpTBXButton;
     tblNoteItems: TRRAdvTable;
+    Memo12: TMemo;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -393,6 +393,9 @@ type
     procedure SpTBXButton65Click(Sender: TObject);
     procedure tblNoteItemsAfterCellEdit(aCell: TRRCell);
     procedure SpTBXButton64Click(Sender: TObject);
+    procedure Memo12Change(Sender: TObject);
+    procedure SpTBXTabControl1ActiveTabChange(Sender: TObject;
+      TabIndex: Integer);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -1849,7 +1852,7 @@ begin
 
   Memo1.Text:= aClass.FindPropertyByName('FromGeoDesc1').ValueS;
   Memo2.Text:= aClass.FindPropertyByName('ToGeoDesc1').ValueS;
-  SpTBXLabel39.Caption:= aClass.FindPropertyByName('Price1').ValueS + ' р ';
+  Memo12.Text:= aClass.FindPropertyByName('Price1').ValueS;
   Memo3.Text:= aClass.FindPropertyByName('PriceDesc').ValueS;
   Memo7.Text:= 'Прим.: ' + aClass.FindPropertyByName('Note').ValueS;
   SpTBXLabel37.Caption:= aClass.FindPropertyByName('TruckType').ValueS;
@@ -1904,6 +1907,8 @@ begin
     Shape1.Brush.Color:= $00B4FFFF
   else
     Shape1.Brush.Color:= clWhite;
+    
+  Memo12.Color:= Shape1.Brush.Color;
 
   SpTBXLabel48.Caption:= '';
   if Assigned(cls_active_period) then
@@ -2969,6 +2974,27 @@ begin
       cls_notes.Save;
     end;
   end;
+end;
+
+procedure TMainForm.Memo12Change(Sender: TObject);
+begin
+  cls_active_ticket.FindPropertyByName('Price1').ValueS:= Memo12.Text;
+  cls_data.Save;
+end;
+
+procedure TMainForm.SpTBXTabControl1ActiveTabChange(Sender: TObject;
+  TabIndex: Integer);
+begin
+  case SpTBXTabControl1.ActiveTabIndex of
+    0:
+    begin
+      tblFindedChangeSelectedCell(nil);
+    end;
+    1:
+    begin
+      tblFavorChangeSelectedCell(nil);
+    end;
+  end
 end;
 
 end.

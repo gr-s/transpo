@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-12.09.2013 16:49:08
+12.09.2013 17:15:54
 /end header
 /begin data
 MyClass data_file
@@ -8614,9 +8614,9 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/НИЖН-ПЕРМ/E$&V/
 							char Date = /B$&V/12.09.2013/E$&V/
-							int _sel_col = /B$&V/4/E$&V/
-							int _sel_row = /B$&V/16/E$&V/
-							char _sel_session = /B$&V/1083996500-2236-16568/E$&V/
+							int _sel_col = /B$&V/5/E$&V/
+							int _sel_row = /B$&V/2/E$&V/
+							char _sel_session = /B$&V/2358692994-25164-18633/E$&V/
 							/end public
 							/begin classes
 								MyClass items
@@ -9389,8 +9389,8 @@ MyClass data_file
 											char Reliability = /B$&V/Балл надёжности: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
 											MemoBlock Comments = /B$&V//E$&V/
 											bool _checked = /B$&V/False/E$&V/
-											int _status_id = /B$&V/0/E$&V/
-											char _status_str = /B$&V/Новая/E$&V/
+											int _status_id = /B$&V/10/E$&V/
+											char _status_str = /B$&V/Просм/E$&V/
 											/end public
 											/begin classes
 												MyClass controller_contacts
@@ -9700,7 +9700,7 @@ MyClass data_file
 											char PriceDesc = /B$&V/17000 с НДС (14 р/км) 
 16000 без НДС (13,2 р/км) 
      /E$&V/
-											char Price1 = /B$&V/17000/E$&V/
+											char Price1 = /B$&V/16000/E$&V/
 											char Controller = /B$&V//E$&V/
 											char ControllerInfo = /B$&V/Буер, ООО (ID:47986, эксп-перев, Нижний Новгород) (р53) /E$&V/
 											char DateDesc = /B$&V/11 - 13 сен /E$&V/
