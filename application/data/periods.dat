@@ -1,0 +1,52 @@
+fmod
+/begin header
+1.1
+12.09.2013 16:48:52
+/end header
+/begin data
+MyClass periods_file
+{
+	/begin private
+	/end private
+	/begin public
+	char active_period = /B$&V//E$&V/
+	/end public
+	/begin classes
+		MyClass periods
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass period
+				{
+					/begin private
+					/end private
+					/begin public
+					char guid = /B$&V/1099389208-54993-17476/E$&V/
+					char BeginDate = /B$&V/12.09.2013/E$&V/
+					char EndDate = /B$&V/13.10.2013/E$&V/
+					/end public
+					/begin classes
+						MyClass debits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+						MyClass credits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+					/end classes
+				}
+			/end classes
+		}
+	/end classes
+}
+/end data
