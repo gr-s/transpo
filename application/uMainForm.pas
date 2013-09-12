@@ -1897,6 +1897,7 @@ begin
     cls_data.Save;
   end;
 
+  
   SpTBXLabel35.Caption:= aClass.FindPropertyByName('_status_str').ValueS;
   SpTBXLabel35.Font.Color:= GetStatusFontColor(aClass.FindPropertyByName('_status_id').ValueI);
 
