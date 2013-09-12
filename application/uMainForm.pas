@@ -2322,6 +2322,8 @@ procedure TMainForm.TblUpdateDebitInfo(aClass: TFMClass);
 begin
   SpTBXEdit10.Tag:= 1;
 
+  cls_templates.CopyClass(aClass,cls_templates.FindClassByName('debit'),False,True);
+
   SpTBXCheckBox2.Checked:= aClass.FindPropertyByName('enabled').ValueB;
   
   SpTBXEdit10.Text:= aClass.FindPropertyByName('create_date').ValueS;
@@ -2618,6 +2620,8 @@ procedure TMainForm.TblUpdateCreditInfo(aClass: TFMClass);
 begin
   SpTBXEdit18.Tag:= 1;
 
+  cls_templates.CopyClass(aClass,cls_templates.FindClassByName('credit'),False,True);
+  
   SpTBXCheckBox3.Checked:= aClass.FindPropertyByName('enabled').ValueB;
 
   SpTBXEdit18.Text:= aClass.FindPropertyByName('create_date').ValueS;

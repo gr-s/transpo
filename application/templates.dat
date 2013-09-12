@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-10.09.2013 18:07:37
+12.09.2013 17:50:22
 /end header
 /begin data
 MyClass TopInstance
@@ -306,7 +306,8 @@ MyClass TopInstance
 			int settlem_type = /B$&V/0/E$&V/
 			char settlem_str = /B$&V//E$&V/
 			int settlem_days = /B$&V/-1/E$&V/
-			char card_type = /B$&V//E$&V/
+			int card_type = /B$&V/0/E$&V/
+			char card_str = /B$&V//E$&V/
 			MemoBlock comments = /B$&V//E$&V/
 			int value = /B$&V/0/E$&V/
 			/end public
