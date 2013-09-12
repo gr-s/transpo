@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-12.09.2013 17:15:54
+12.09.2013 17:48:50
 /end header
 /begin data
 MyClass data_file
@@ -9817,7 +9817,7 @@ MyClass data_file
 											char DateDesc = /B$&V/12 - 14 сен /E$&V/
 											char Note = /B$&V//E$&V/
 											char Reliability = /B$&V/Балл надёжности: 4,50. Субъективных оценок нет или их меньше 3-х./E$&V/
-											MemoBlock Comments = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V/ттн марату (915)9451488/E$&V/
 											bool _checked = /B$&V/True/E$&V/
 											int _status_id = /B$&V/60/E$&V/
 											char _status_str = /B$&V/Отгружена/E$&V/

@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-12.09.2013 16:48:52
+12.09.2013 17:49:02
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V//E$&V/
+	char active_period = /B$&V/1099389208-54993-17476/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -35,6 +35,271 @@ MyClass periods_file
 							/end private
 							/begin public
 							/end public
+							/begin classes
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1962312292402302322372412341932292402292312372322342323251445132473254324020924224023823323622424222924023222423525132414955484848/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Дзержинск-Березники /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/30/E$&V/
+									char settlem_str = /B$&V/Безнал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									char card_type = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/16000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/1962312292402302322372412341932292402292312372322342323251445132473254324020924224023823323622424222924023222423525132414955484848/E$&V/
+													char FromGeo = /B$&V/Дзержинск/E$&V/
+													char FromGeoDesc1 = /B$&V/Дзержинск 
+Нижегородская область
+ 
+35 км от Нижний Новгород 
+11 - 13 сен /E$&V/
+													char ToGeo = /B$&V/Березники /E$&V/
+													char ToGeoDesc1 = /B$&V/Березники 
+Пермский край 
+174 км от Пермь /E$&V/
+													char Dist = /B$&V/1211 км/E$&V/
+													int DistI = /B$&V/1211/E$&V/
+													char TruckType = /B$&V/тент. (загр:бок. задн.)/E$&V/
+													char CargoDesc = /B$&V/3,3 / 6 (Стройматериалы )/E$&V/
+													char CargoName = /B$&V/Стройматериалы /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/3,29999995231628/E$&V/
+													float Volume = /B$&V/6/E$&V/
+													char PriceDesc = /B$&V/17000 с НДС (14 р/км) 
+16000 без НДС (13,2 р/км) 
+     /E$&V/
+													char Price1 = /B$&V/16000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Буер, ООО (ID:47986, эксп-перев, Нижний Новгород) (р53) /E$&V/
+													char DateDesc = /B$&V/11 - 13 сен /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл надёжности: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/60/E$&V/
+													char _status_str = /B$&V/Отгружена/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:470975523,  +7(831)2458221,  +7(910)3814187, Елена /E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/205232230237232233322052382262272382402382282072292402362523248445332473256324020422922522923525232413240196120216120194442365849445312050120504450324157484848/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Нижний Новгород-Пермь /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/30/E$&V/
+									char settlem_str = /B$&V/Безнал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									char card_type = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/9000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/205232230237232233322052382262272382402382282072292402362523248445332473256324020422922522923525232413240196120216120194442365849445312050120504450324157484848/E$&V/
+													char FromGeo = /B$&V/Нижний Новгород/E$&V/
+													char FromGeoDesc1 = /B$&V/Нижний Новгород 
+11 - 13 сен /E$&V/
+													char ToGeo = /B$&V/Пермь /E$&V/
+													char ToGeoDesc1 = /B$&V/Пермь /E$&V/
+													char Dist = /B$&V/1011 км/E$&V/
+													int DistI = /B$&V/1011/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/0,5 / 8 (Мебель ) (ДxШxВ,м:1,5x2x2,2 )/E$&V/
+													char CargoName = /B$&V/Мебель /E$&V/
+													char CargoNote = /B$&V/ДxШxВ,м:1,5x2x2,2 /E$&V/
+													float Weight = /B$&V/0,5/E$&V/
+													float Volume = /B$&V/8/E$&V/
+													char PriceDesc = /B$&V/9000 без НДС (8,9 р/км) 
+     /E$&V/
+													char Price1 = /B$&V/9000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Ильин Вячеслав Абрамович, ИП (ID:165250, перев., Нижний Новгород) (р7, нп1)  /E$&V/
+													char DateDesc = /B$&V/11 - 13 сен /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл надёжности: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/60/E$&V/
+													char _status_str = /B$&V/Отгружена/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:305666028, факс: +7(8312)759717 , +7(8312)759717,  +7(951)9154599, Максим/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1962312292402302322372412342092382352322342242362412343248445153324732493240210205207324153484848/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Дзержинск-Соликамск /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/30/E$&V/
+									char settlem_str = /B$&V/Безнал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									char card_type = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/5000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/1962312292402302322372412342092382352322342242362412343248445153324732493240210205207324153484848/E$&V/
+													char FromGeo = /B$&V/Дзержинск/E$&V/
+													char FromGeoDesc1 = /B$&V/Дзержинск 
+Нижегородская область
+ 
+35 км от Нижний Новгород 
+12 - 14 сен /E$&V/
+													char ToGeo = /B$&V/Соликамск /E$&V/
+													char ToGeoDesc1 = /B$&V/Соликамск 
+Пермский край 
+200 км от Пермь /E$&V/
+													char Dist = /B$&V/1238 км/E$&V/
+													int DistI = /B$&V/1238/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/0,35 / 1 (ТНП )/E$&V/
+													char CargoName = /B$&V/ТНП /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/0,349999994039536/E$&V/
+													float Volume = /B$&V/1/E$&V/
+													char PriceDesc = /B$&V/5000 (4 р/км) 
+     /E$&V/
+													char Price1 = /B$&V/5000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Сфера, ООО (ID:246313, эксп., Дзержинск) (р127)  /E$&V/
+													char DateDesc = /B$&V/12 - 14 сен /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл надёжности: 4,50. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V/ттн марату (915)9451488/E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/60/E$&V/
+													char _status_str = /B$&V/Отгружена/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:571822815, факс: +7(8313)212600 +7(8313)212600, +7(915)9451488, Марат/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+							/end classes
 						}
 						MyClass credits
 						{
@@ -42,6 +307,53 @@ MyClass periods_file
 							/end private
 							/begin public
 							/end public
+							/begin classes
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1812280700-23353-19755/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Дзержинск-Березники /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/1600/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1028766206-58498-17281/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Нижний Новгород-Пермь /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/900/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/786041362-42798-19351/E$&V/
+									char create_date = /B$&V/12.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Дзержинск-Соликамск /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/500/E$&V/
+									/end public
+								}
+							/end classes
 						}
 					/end classes
 				}
