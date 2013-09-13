@@ -284,6 +284,8 @@ type
     SpTBXButton65: TSpTBXButton;
     tblNoteItems: TRRAdvTable;
     Memo12: TMemo;
+    SpTBXButton63: TSpTBXButton;
+    SpTBXButton66: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -396,6 +398,7 @@ type
     procedure Memo12Change(Sender: TObject);
     procedure SpTBXTabControl1ActiveTabChange(Sender: TObject;
       TabIndex: Integer);
+    procedure SpTBXButton63Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -2298,7 +2301,8 @@ end;
 
 procedure TMainForm.SpTBXButton43Click(Sender: TObject);
 begin
-  TblUpdateDebits(tblDebits,GetFMClassFromTable(tblPeriods).FindClassByName('debits'));
+  if Assigned(GetFMClassFromTable(tblPeriods)) then
+    TblUpdateDebits(tblDebits,GetFMClassFromTable(tblPeriods).FindClassByName('debits'));
 end;
 
 procedure TMainForm.SpTBXButton44Click(Sender: TObject);
@@ -2513,7 +2517,8 @@ end;
 
 procedure TMainForm.SpTBXButton54Click(Sender: TObject);
 begin
-  TblUpdateCredits(tblCredits,GetFMClassFromTable(tblPeriods).FindClassByName('credits'));
+  if Assigned(GetFMClassFromTable(tblPeriods)) then
+    TblUpdateCredits(tblCredits,GetFMClassFromTable(tblPeriods).FindClassByName('credits'));
 end;
 
 procedure TMainForm.TblUpdateCredits(aTable: TRRAdvTable;
@@ -2693,7 +2698,7 @@ end;
 
 procedure TMainForm.TblUpdateDebCredBalance(aTable: TRRAdvTable;
   aClass: TFMClass);
-var i,n,d_summ,c_summ:Integer;
+var i,n,d_summ,c_summ,d_summ_all,c_summ_all:Integer;
     sel_cell:TRRCell;
     a_color:TColor;
     cls1:TFMClass;
@@ -2706,7 +2711,7 @@ begin
   sel_cell:= nil;
 
   cls1:= aClass;
-  d_summ:= 0; c_summ:= 0;
+  d_summ:= 0; c_summ:= 0; d_summ_all:= 0; c_summ_all:= 0; 
   for n:= 1 to 2 do
   begin
     if n = 1 then aClass:= cls1.FindClassByName('debits');
@@ -2715,7 +2720,7 @@ begin
     begin
       aTable.CreateRowBlock(0);
 
-      if n = 1 then a_color:= clBlue;
+      if n = 1 then a_color:= clBlack;
       if n = 2 then a_color:= clMaroon;
 
       if not aClass.MyClass[i].FindPropertyByName('enabled').ValueB then
@@ -2724,7 +2729,9 @@ begin
       aTable.Cell[0,aTable.RowCount-1].Data1:= aClass.MyClass[i];
       aTable.Cell[1,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('create_date').ValueS;
       aTable.Cell[1,aTable.RowCount-1].Font.Color:= a_color;
-      aTable.Cell[2,aTable.RowCount-1].TextString:= IntToStr(aClass.MyClass[i].FindPropertyByName('value').ValueI) + ' р';
+      if n = 2 then
+        aTable.Cell[2,aTable.RowCount-1].TextString:= '-';
+      aTable.Cell[2,aTable.RowCount-1].TextString:= aTable.Cell[2,aTable.RowCount-1].TextString + IntToStr(aClass.MyClass[i].FindPropertyByName('value').ValueI) + ' р';
       aTable.Cell[2,aTable.RowCount-1].Font.Color:= a_color;
       aTable.Cell[3,aTable.RowCount-1].TextString:= aClass.MyClass[i].FindPropertyByName('type_str').ValueS;
       aTable.Cell[3,aTable.RowCount-1].Font.Color:= a_color;
@@ -2738,6 +2745,8 @@ begin
         if n = 1 then d_summ:= d_summ + aClass.MyClass[i].FindPropertyByName('value').ValueI;
         if n = 2 then c_summ:= c_summ + aClass.MyClass[i].FindPropertyByName('value').ValueI;
       end;
+      if n = 1 then d_summ_all:= d_summ_all + aClass.MyClass[i].FindPropertyByName('value').ValueI;
+      if n = 2 then c_summ_all:= c_summ_all + aClass.MyClass[i].FindPropertyByName('value').ValueI;
     end;
   end;
 
@@ -2756,7 +2765,7 @@ begin
   aTable.Cell[3,aTable.RowCount-1].VERT_MERGING:= True;
   aTable.Cell[1,aTable.RowCount-1].TextString:= 'доходы: ';
   aTable.Cell[5,aTable.RowCount-1].HorzTextAlignment:= htaCenter;
-  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(d_summ);
+  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(d_summ) + ' (' + IntToStr(d_summ_all) + ')';
 
   aTable.CreateRowBlock(0);
   aTable.Cell[1,aTable.RowCount-1].HorzTextAlignment:= htaRight;
@@ -2765,7 +2774,7 @@ begin
   aTable.Cell[3,aTable.RowCount-1].VERT_MERGING:= True;
   aTable.Cell[1,aTable.RowCount-1].TextString:= 'расходы: ';
   aTable.Cell[5,aTable.RowCount-1].HorzTextAlignment:= htaCenter;
-  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(c_summ);
+  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(c_summ) + ' (' + IntToStr(c_summ_all) + ')';
 
   aTable.CreateRowBlock(0);
   aTable.Cell[1,aTable.RowCount-1].HorzTextAlignment:= htaRight;
@@ -2774,7 +2783,7 @@ begin
   aTable.Cell[3,aTable.RowCount-1].VERT_MERGING:= True;
   aTable.Cell[1,aTable.RowCount-1].TextString:= 'итог: ';
   aTable.Cell[5,aTable.RowCount-1].HorzTextAlignment:= htaCenter;
-  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(d_summ - c_summ) + ' р';
+  aTable.Cell[5,aTable.RowCount-1].MyText:= IntToStr(d_summ - c_summ) + ' р' + ' (' + IntToStr(d_summ_all - c_summ_all) + ' р)';
 
   tblDCBalance.FixedCell[0].Visible:= False;
 
@@ -3000,6 +3009,11 @@ begin
       tblFavorChangeSelectedCell(nil);
     end;
   end
+end;
+
+procedure TMainForm.SpTBXButton63Click(Sender: TObject);
+begin
+  tblPeriodsChangeSelectedCell(nil);
 end;
 
 end.
