@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-12.09.2013 17:49:02
+12.09.2013 18:00:56
 /end header
 /begin data
 MyClass periods_file
@@ -142,6 +142,7 @@ MyClass periods_file
 									char settlem_str = /B$&V/Безнал/E$&V/
 									int settlem_days = /B$&V/-1/E$&V/
 									char card_type = /B$&V//E$&V/
+									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/9000/E$&V/
 									/end public
@@ -226,7 +227,8 @@ MyClass periods_file
 									char settlem_str = /B$&V/Безнал/E$&V/
 									int settlem_days = /B$&V/-1/E$&V/
 									char card_type = /B$&V//E$&V/
-									MemoBlock comments = /B$&V//E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V/ттн марату 7(915)9451488/E$&V/
 									int value = /B$&V/5000/E$&V/
 									/end public
 									/begin classes
@@ -270,7 +272,7 @@ MyClass periods_file
 													char DateDesc = /B$&V/12 - 14 сен /E$&V/
 													char Note = /B$&V//E$&V/
 													char Reliability = /B$&V/Балл надёжности: 4,50. Субъективных оценок нет или их меньше 3-х./E$&V/
-													MemoBlock Comments = /B$&V/ттн марату (915)9451488/E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
 													bool _checked = /B$&V/True/E$&V/
 													int _status_id = /B$&V/60/E$&V/
 													char _status_str = /B$&V/Отгружена/E$&V/
@@ -336,21 +338,6 @@ MyClass periods_file
 									char caption = /B$&V/Нижний Новгород-Пермь /E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/900/E$&V/
-									/end public
-								}
-								MyClass credit
-								{
-									/begin private
-									/end private
-									/begin public
-									char guid = /B$&V/786041362-42798-19351/E$&V/
-									char create_date = /B$&V/12.09.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
-									int type = /B$&V/30/E$&V/
-									char type_str = /B$&V/Комиссия ИП/E$&V/
-									char caption = /B$&V/Дзержинск-Соликамск /E$&V/
-									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/500/E$&V/
 									/end public
 								}
 							/end classes
