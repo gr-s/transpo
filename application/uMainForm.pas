@@ -54,17 +54,13 @@ type
     SpTBXButton19: TSpTBXButton;
     SpTBXLabel7: TSpTBXLabel;
     SpTBXEdit4: TSpTBXEdit;
-    SpTBXButton20: TSpTBXButton;
     SpTBXLabel8: TSpTBXLabel;
     SpTBXEdit5: TSpTBXEdit;
-    SpTBXButton21: TSpTBXButton;
     SpTBXLabel9: TSpTBXLabel;
     SpTBXEdit6: TSpTBXEdit;
-    SpTBXButton22: TSpTBXButton;
     SpTBXButton23: TSpTBXButton;
     SpTBXLabel10: TSpTBXLabel;
     SpTBXEdit7: TSpTBXEdit;
-    SpTBXButton24: TSpTBXButton;
     SpTBXButton25: TSpTBXButton;
     SpTBXPanel7: TSpTBXPanel;
     SpTBXButton26: TSpTBXButton;
@@ -286,6 +282,16 @@ type
     Memo12: TMemo;
     SpTBXButton63: TSpTBXButton;
     SpTBXButton66: TSpTBXButton;
+    SpTBXButton20: TSpTBXButton;
+    SpTBXButton21: TSpTBXButton;
+    SpTBXButton22: TSpTBXButton;
+    SpTBXButton24: TSpTBXButton;
+    SpTBXButton67: TSpTBXButton;
+    SpTBXButton68: TSpTBXButton;
+    SpTBXButton69: TSpTBXButton;
+    SpTBXButton70: TSpTBXButton;
+    SpTBXButton71: TSpTBXButton;
+    SpTBXButton72: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -399,6 +405,12 @@ type
     procedure SpTBXTabControl1ActiveTabChange(Sender: TObject;
       TabIndex: Integer);
     procedure SpTBXButton63Click(Sender: TObject);
+    procedure SpTBXButton67Click(Sender: TObject);
+    procedure SpTBXButton68Click(Sender: TObject);
+    procedure SpTBXButton69Click(Sender: TObject);
+    procedure SpTBXButton70Click(Sender: TObject);
+    procedure SpTBXButton71Click(Sender: TObject);
+    procedure SpTBXButton72Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -1056,22 +1068,22 @@ end;
 
 procedure TMainForm.SpTBXButton20Click(Sender: TObject);
 begin
-  SpTBXEdit4.Text:= '';
+  SpTBXEdit1.Text:= '100';
 end;
 
 procedure TMainForm.SpTBXButton21Click(Sender: TObject);
 begin
-  SpTBXEdit5.Text:= '';
+  SpTBXEdit1.Text:= '200';
 end;
 
 procedure TMainForm.SpTBXButton22Click(Sender: TObject);
 begin
-  SpTBXEdit6.Text:= '';
+  SpTBXEdit1.Text:= '300';
 end;
 
 procedure TMainForm.SpTBXButton24Click(Sender: TObject);
 begin
-  SpTBXEdit7.Text:= '';
+  SpTBXEdit1.Text:= '400';
 end;
 
 procedure TMainForm.SpTBXButton6Click(Sender: TObject);
@@ -3014,6 +3026,36 @@ end;
 procedure TMainForm.SpTBXButton63Click(Sender: TObject);
 begin
   tblPeriodsChangeSelectedCell(nil);
+end;
+
+procedure TMainForm.SpTBXButton67Click(Sender: TObject);
+begin
+  SpTBXEdit1.Text:= '500';
+end;
+
+procedure TMainForm.SpTBXButton68Click(Sender: TObject);
+begin
+  SpTBXEdit2.Text:= '100';
+end;
+
+procedure TMainForm.SpTBXButton69Click(Sender: TObject);
+begin
+  SpTBXEdit2.Text:= '200';
+end;
+
+procedure TMainForm.SpTBXButton70Click(Sender: TObject);
+begin
+  SpTBXEdit2.Text:= '300';
+end;
+
+procedure TMainForm.SpTBXButton71Click(Sender: TObject);
+begin
+  SpTBXEdit2.Text:= '400';
+end;
+
+procedure TMainForm.SpTBXButton72Click(Sender: TObject);
+begin
+  SpTBXEdit2.Text:= '500';
 end;
 
 end.
