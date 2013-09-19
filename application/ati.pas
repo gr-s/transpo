@@ -362,7 +362,7 @@ begin
   Application.ProcessMessages;
   if Assigned(wb.Document) then
     load_result:= 1;
-  ShowMessage(wb.LocationURL);
+  //ShowMessage(wb.LocationURL);
   DOM_Index:= 0;
   PopOperStack;
 end;
@@ -403,7 +403,10 @@ begin
       oo.task:= 'GetTickets3';
       PushOperStack(oo);
       curr_page:= 1;
-      load_document('http://google.ru');
+      wb.WaitWhileBusy;
+      Application.ProcessMessages;
+      params.task:= 'GetTickets3';
+      //load_document('http://google.ru');
     end;
     if params.task = 'GetTickets3' then
     begin
