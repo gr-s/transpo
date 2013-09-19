@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-18.09.2013 15:32:52
+19.09.2013 10:32:33
 /end header
 /begin data
 MyClass periods_file
@@ -361,6 +361,95 @@ MyClass periods_file
 										}
 									/end classes
 								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/21522423323423822624123423223320823824124223822645237224451962382372433252324732505632402482262292332372512293223223122822923523225532415055484848/E$&V/
+									char create_date = /B$&V/19.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Чайковский-Ростов-на-Дону /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/30/E$&V/
+									char settlem_str = /B$&V/Безнал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/27000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/21522423323423822624123423223320823824124223822645237224451962382372433252324732505632402482262292332372512293223223122822923523225532415055484848/E$&V/
+													char FromGeo = /B$&V/Чайковский/E$&V/
+													char FromGeoDesc1 = /B$&V/Чайковский 
+Пермский край
+ 
+96 км от Ижевск 
+18 - 19 сен /E$&V/
+													char ToGeo = /B$&V/Ростов-на-Дону /E$&V/
+													char ToGeoDesc1 = /B$&V/Ростов-на-Дону 
+ближайшие крупные города /E$&V/
+													char Dist = /B$&V/1975 км/E$&V/
+													int DistI = /B$&V/1975/E$&V/
+													char TruckType = /B$&V/тент. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/4 / 28 (швейные изделия )/E$&V/
+													char CargoName = /B$&V/швейные изделия /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/4/E$&V/
+													float Volume = /B$&V/28/E$&V/
+													char PriceDesc = /B$&V/27000 без НДС (13,7 р/км) 
+     /E$&V/
+													char Price1 = /B$&V/27000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/ЧайкТрансАвто (Юкин Сергей Александрович, ИП) (ID:486233, гр/вл.-пер, Чайковский) (р22, нп1)  /E$&V/
+													char DateDesc = /B$&V/18 - 19 сен /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл надёжности: 3,75. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/50/E$&V/
+													char _status_str = /B$&V/Принята/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:657535018, факс: +7(34241)46187  +7(912)7896744, Дмитрий/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
 							/end classes
 						}
 						MyClass credits
@@ -458,6 +547,21 @@ MyClass periods_file
 									char caption = /B$&V/пермь - ижевск/E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/200/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4235024234-35690-17456/E$&V/
+									char create_date = /B$&V/19.09.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Чайковский-Ростов-на-Дону /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/2700/E$&V/
 									/end public
 								}
 							/end classes
