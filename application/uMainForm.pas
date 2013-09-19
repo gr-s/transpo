@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one;
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm;
 
 type
   TMainForm = class(TForm)
@@ -416,6 +416,8 @@ type
     procedure Setact_cls_block_favor(const Value: TFMClass);
     { Private declarations }
   public
+    SplashForm:TSplashForm;
+    
     curr_sel_cell_value:String;
     old_ticket_info_oper_id:Integer;
     old_debit_info_oper_id:Integer;
@@ -496,6 +498,9 @@ uses Math;
 constructor TMainForm.Create(AOwner: TComponent);
 begin
   inherited;
+  SplashForm:= TSplashForm.Create(nil);
+  SplashForm.Show;
+  Application.ProcessMessages;
 end;
 
 destructor TMainForm.Destroy;
@@ -3083,6 +3088,8 @@ begin
   ati_service.wb.Height:= 0;
 
   logisticone:= TLogisticOne.Create(Self);
+
+  FreeAndNil(SplashForm);
 end;
 
 end.

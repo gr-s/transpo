@@ -9,23 +9,18 @@ uses
   uBrowser in 'uBrowser.pas' {Browser},
   uCalendarWizard in 'uCalendarWizard.pas' {CalendarWizard},
   uInfoTimerForm in 'uInfoTimerForm.pas' {InfoTimerForm},
-  logistic_one in 'logistic_one.pas',
-  uSplashForm in 'uSplashForm.pas' {SplashForm};
+  logistic_one in 'logistic_one.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TSplashForm, SplashForm);
-  SplashForm.Show;
-  Application.ProcessMessages;
   MainForm.Init;
   Application.CreateForm(TSelectWizard1, SelectWizard1);
   Application.CreateForm(TBrowser, Browser);
   Application.CreateForm(TCalendarWizard, CalendarWizard);
   Application.CreateForm(TInfoTimerForm, InfoTimerForm);
-  FreeAndNil(SplashForm);
   MainForm.Run;
   Application.Run;
 end.
