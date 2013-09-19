@@ -8,7 +8,8 @@ uses
   uSelectWizard1 in 'uSelectWizard1.pas' {SelectWizard1},
   uBrowser in 'uBrowser.pas' {Browser},
   uCalendarWizard in 'uCalendarWizard.pas' {CalendarWizard},
-  uInfoTimerForm in 'uInfoTimerForm.pas' {InfoTimerForm};
+  uInfoTimerForm in 'uInfoTimerForm.pas' {InfoTimerForm},
+  logistic_one in 'logistic_one.pas';
 
 {$R *.res}
 

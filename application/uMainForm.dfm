@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 190
-  Top = 80
-  Width = 1079
+  Left = 102
+  Top = 13
+  Width = 1166
   Height = 733
   Caption = 'MainForm'
   Color = clBtnFace
@@ -17,19 +17,19 @@ object MainForm: TMainForm
   object spMainForm: TSpTBXTitleBar
     Left = 0
     Top = 0
-    Width = 1063
+    Width = 1150
     Height = 695
     Caption = #1090#1088#1072#1085#1089#1087#1086
     object SpTBXPanel1: TSpTBXPanel
       Left = 8
       Top = 629
-      Width = 1047
+      Width = 1134
       Height = 58
       Caption = 'SpTBXPanel1'
       Align = alBottom
       TabOrder = 1
       object SpTBXButton1: TSpTBXButton
-        Left = 877
+        Left = 964
         Top = 2
         Width = 84
         Height = 54
@@ -61,7 +61,7 @@ object MainForm: TMainForm
         OnClick = SpTBXButton2Click
       end
       object SpTBXButton3: TSpTBXButton
-        Left = 961
+        Left = 1048
         Top = 2
         Width = 84
         Height = 54
@@ -112,7 +112,7 @@ object MainForm: TMainForm
     object SpTBXPanel2: TSpTBXPanel
       Left = 8
       Top = 30
-      Width = 1047
+      Width = 1134
       Height = 41
       Caption = 'SpTBXPanel2'
       Color = clWhite
@@ -123,7 +123,7 @@ object MainForm: TMainForm
       Borders = False
       BorderType = pbrRaised
       object SpTBXPanel3: TSpTBXPanel
-        Left = 697
+        Left = 784
         Top = 2
         Width = 348
         Height = 37
@@ -189,7 +189,7 @@ object MainForm: TMainForm
         end
       end
       object SpTBXPanel8: TSpTBXPanel
-        Left = 349
+        Left = 436
         Top = 2
         Width = 348
         Height = 37
@@ -1080,7 +1080,7 @@ object MainForm: TMainForm
     object tcClient: TSpTBXTabControl
       Left = 273
       Top = 71
-      Width = 782
+      Width = 869
       Height = 558
       Align = alClient
       ActiveTabIndex = 0
@@ -1123,58 +1123,15 @@ object MainForm: TMainForm
       object SpTBXTabItem19: TSpTBXTabItem
         Caption = 'notes'
       end
-      object SpTBXTabSheet1: TSpTBXTabSheet
-        Left = 0
-        Top = 25
-        Width = 782
-        Height = 533
-        Caption = 'f_ati'
-        ImageIndex = -1
-        DesignSize = (
-          782
-          533)
-        TabItem = 'SpTBXTabItem1'
-        object SpTBXButton27: TSpTBXButton
-          Left = 49
-          Top = 40
-          Width = 696
-          Height = 65
-          Caption = #1056#1091#1095#1085#1086#1081' '#1087#1086#1080#1089#1082
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          OnClick = SpTBXButton27Click
-        end
-        object SpTBXButton28: TSpTBXButton
-          Left = 49
-          Top = 128
-          Width = 696
-          Height = 65
-          Caption = #1059#1084#1085#1099#1081' '#1087#1086#1080#1089#1082
-          Anchors = [akLeft, akTop, akRight]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-        end
-      end
       object SpTBXTabSheet14: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'p_info'
         ImageIndex = -1
         DesignSize = (
-          782
+          869
           533)
         TabItem = 'SpTBXTabItem13'
         object SpTBXLabel50: TSpTBXLabel
@@ -1242,7 +1199,7 @@ object MainForm: TMainForm
         object SpTBXButton45: TSpTBXButton
           Left = 33
           Top = 136
-          Width = 248
+          Width = 335
           Height = 57
           Caption = #1044#1086#1093#1086#1076#1099
           Anchors = [akLeft, akTop, akRight]
@@ -1258,7 +1215,7 @@ object MainForm: TMainForm
         object SpTBXButton47: TSpTBXButton
           Left = 33
           Top = 200
-          Width = 248
+          Width = 335
           Height = 65
           Caption = #1056#1072#1089#1093#1086#1076#1099
           Anchors = [akLeft, akTop, akRight]
@@ -1274,7 +1231,7 @@ object MainForm: TMainForm
         object SpTBXButton42: TSpTBXButton
           Left = 33
           Top = 296
-          Width = 248
+          Width = 335
           Height = 65
           Caption = #1041#1072#1083#1072#1085#1089
           Anchors = [akLeft, akTop, akRight]
@@ -1291,7 +1248,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet20: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'notes'
         ImageIndex = -1
@@ -1299,14 +1256,14 @@ object MainForm: TMainForm
         object SpTBXPanel29: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
           TabOrder = 0
           Borders = False
           object SpTBXPanel30: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -1367,7 +1324,7 @@ object MainForm: TMainForm
         object tblNoteItems: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -1500,7 +1457,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet8: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'f_tickets'
         ImageIndex = -1
@@ -1508,7 +1465,7 @@ object MainForm: TMainForm
         object tblFindedTickets: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -1642,7 +1599,7 @@ object MainForm: TMainForm
         object SpTBXPanel11: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
@@ -1745,7 +1702,7 @@ object MainForm: TMainForm
             ParentFont = False
           end
           object SpTBXPanel12: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -1857,7 +1814,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet9: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'fav_tickets'
         ImageIndex = -1
@@ -1865,7 +1822,7 @@ object MainForm: TMainForm
         object SpTBXPanel14: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
@@ -1968,7 +1925,7 @@ object MainForm: TMainForm
             ParentFont = False
           end
           object SpTBXPanel15: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -2049,7 +2006,7 @@ object MainForm: TMainForm
         object tblFavorTickets: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -2183,12 +2140,12 @@ object MainForm: TMainForm
       object SpTBXTabSheet7: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'ticket'
         ImageIndex = -1
         DesignSize = (
-          782
+          869
           533)
         TabItem = 'SpTBXTabItem6'
         object Shape1: TShape
@@ -2206,7 +2163,7 @@ object MainForm: TMainForm
         object SpTBXPanel16: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 41
           Caption = 'SpTBXPanel16'
           Align = alTop
@@ -2222,7 +2179,7 @@ object MainForm: TMainForm
             OnClick = SpTBXButton30Click
           end
           object SpTBXPanel17: TSpTBXPanel
-            Left = 576
+            Left = 663
             Top = 2
             Width = 198
             Height = 37
@@ -2431,7 +2388,7 @@ object MainForm: TMainForm
         object tblTicketStatuses: TRRAdvTable
           Left = 573
           Top = 303
-          Width = 182
+          Width = 269
           Height = 218
           Anchors = [akLeft, akTop, akRight, akBottom]
           Color = clWhite
@@ -2726,18 +2683,18 @@ object MainForm: TMainForm
       object SpTBXTabSheet17: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'c_info'
         ImageIndex = -1
         DesignSize = (
-          782
+          869
           533)
         TabItem = 'SpTBXTabItem16'
         object SpTBXPanel24: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 41
           Caption = 'SpTBXPanel16'
           Align = alTop
@@ -2753,7 +2710,7 @@ object MainForm: TMainForm
             OnClick = SpTBXButton57Click
           end
           object SpTBXPanel25: TSpTBXPanel
-            Left = 576
+            Left = 663
             Top = 2
             Width = 198
             Height = 37
@@ -2836,7 +2793,7 @@ object MainForm: TMainForm
         object tblCreditTypes: TRRAdvTable
           Left = 552
           Top = 93
-          Width = 169
+          Width = 256
           Height = 260
           Anchors = [akLeft, akTop, akRight]
           Color = clWhite
@@ -3048,7 +3005,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet18: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'dc_balance'
         ImageIndex = -1
@@ -3056,14 +3013,14 @@ object MainForm: TMainForm
         object SpTBXPanel26: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
           TabOrder = 0
           Borders = False
           object SpTBXPanel27: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -3100,7 +3057,7 @@ object MainForm: TMainForm
         object tblDCBalance: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -3233,12 +3190,12 @@ object MainForm: TMainForm
       object SpTBXTabSheet15: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'd_info'
         ImageIndex = -1
         DesignSize = (
-          782
+          869
           533)
         TabItem = 'SpTBXTabItem14'
         object SpTBXLabel52: TSpTBXLabel
@@ -3276,7 +3233,7 @@ object MainForm: TMainForm
         object SpTBXPanel20: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 41
           Caption = 'SpTBXPanel16'
           Align = alTop
@@ -3292,7 +3249,7 @@ object MainForm: TMainForm
             OnClick = SpTBXButton49Click
           end
           object SpTBXPanel21: TSpTBXPanel
-            Left = 576
+            Left = 663
             Top = 2
             Width = 198
             Height = 37
@@ -3352,7 +3309,7 @@ object MainForm: TMainForm
         object tblDebitTypes: TRRAdvTable
           Left = 552
           Top = 93
-          Width = 169
+          Width = 256
           Height = 124
           Anchors = [akLeft, akTop, akRight]
           Color = clWhite
@@ -3592,7 +3549,7 @@ object MainForm: TMainForm
         object tblSettlTypes: TRRAdvTable
           Left = 256
           Top = 229
-          Width = 169
+          Width = 256
           Height = 124
           Anchors = [akLeft, akTop, akRight]
           Color = clWhite
@@ -3777,7 +3734,7 @@ object MainForm: TMainForm
         object tblCardTypes: TRRAdvTable
           Left = 528
           Top = 277
-          Width = 169
+          Width = 256
           Height = 124
           Anchors = [akLeft, akTop, akRight]
           Color = clWhite
@@ -3964,7 +3921,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet13: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'debits'
         ImageIndex = -1
@@ -3972,14 +3929,14 @@ object MainForm: TMainForm
         object SpTBXPanel18: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
           TabOrder = 0
           Borders = False
           object SpTBXPanel19: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -4058,7 +4015,7 @@ object MainForm: TMainForm
         object tblDebits: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -4191,7 +4148,7 @@ object MainForm: TMainForm
       object SpTBXTabSheet16: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'credits'
         ImageIndex = -1
@@ -4199,14 +4156,14 @@ object MainForm: TMainForm
         object SpTBXPanel22: TSpTBXPanel
           Left = 2
           Top = 0
-          Width = 776
+          Width = 863
           Height = 49
           Caption = 'SpTBXPanel11'
           Align = alTop
           TabOrder = 0
           Borders = False
           object SpTBXPanel23: TSpTBXPanel
-            Left = 674
+            Left = 761
             Top = 2
             Width = 100
             Height = 45
@@ -4285,7 +4242,7 @@ object MainForm: TMainForm
         object tblCredits: TRRAdvTable
           Left = 2
           Top = 49
-          Width = 776
+          Width = 863
           Height = 480
           Align = alClient
           Color = clWhite
@@ -4415,10 +4372,53 @@ object MainForm: TMainForm
           OnDblClickCell = tblCreditsDblClickCell
         end
       end
+      object SpTBXTabSheet1: TSpTBXTabSheet
+        Left = 0
+        Top = 25
+        Width = 869
+        Height = 533
+        Caption = 'f_ati'
+        ImageIndex = -1
+        DesignSize = (
+          869
+          533)
+        TabItem = 'SpTBXTabItem1'
+        object SpTBXButton27: TSpTBXButton
+          Left = 49
+          Top = 40
+          Width = 783
+          Height = 65
+          Caption = #1056#1091#1095#1085#1086#1081' '#1087#1086#1080#1089#1082
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnClick = SpTBXButton27Click
+        end
+        object SpTBXButton28: TSpTBXButton
+          Left = 49
+          Top = 128
+          Width = 783
+          Height = 65
+          Caption = 'Logistic One'
+          Anchors = [akLeft, akTop, akRight]
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -24
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+      end
       object SpTBXTabSheet3: TSpTBXTabSheet
         Left = 0
         Top = 25
-        Width = 782
+        Width = 869
         Height = 533
         Caption = 'f_ati_par'
         ImageIndex = -1
@@ -4934,7 +4934,7 @@ object MainForm: TMainForm
         object SpTBXPanel6: TSpTBXPanel
           Left = 409
           Top = 0
-          Width = 369
+          Width = 456
           Height = 488
           Caption = 'SpTBXPanel4'
           Align = alClient
@@ -5224,7 +5224,7 @@ object MainForm: TMainForm
         object SpTBXPanel7: TSpTBXPanel
           Left = 2
           Top = 488
-          Width = 776
+          Width = 863
           Height = 41
           Caption = 'SpTBXPanel7'
           Align = alBottom
@@ -5233,7 +5233,7 @@ object MainForm: TMainForm
           object SpTBXButton26: TSpTBXButton
             Left = 2
             Top = 2
-            Width = 772
+            Width = 859
             Height = 37
             Caption = #1057' '#1058' '#1040' '#1056' '#1058
             Align = alClient

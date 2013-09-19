@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm;
+  GRFormPanel, uInfoTimerForm, logistic_one;
 
 type
   TMainForm = class(TForm)
@@ -646,19 +646,14 @@ begin
 
 
   ati_service:= TATI.Create(Self);
-  ati_service.OnAutorizCode:= DoATIAutorizCode;
-  ati_service.OnCaptcha:= DoATICaptcha;
-  ati_service.OnEndGetTickets:= DoEndGetTickets;
-  ati_service.OnOperProgress:= DoOperProgress;
-
-
-
   ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
                     app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
   spMainForm.InsertControl(ati_service.wb);
   ati_service.wb.Align:= alNone;
   ati_service.wb.Width:= 0;
   ati_service.wb.Height:= 0;
+
+  logisticone:= TLogisticOne.Create(Self);
 end;
 
 destructor TMainForm.Destroy;
@@ -1016,6 +1011,11 @@ procedure TMainForm.SpTBXButton26Click(Sender: TObject);
 var i:Integer;
     dt:TDateTime;
 begin
+  ati_service.OnAutorizCode:= DoATIAutorizCode;
+  ati_service.OnCaptcha:= DoATICaptcha;
+  ati_service.OnEndGetTickets:= DoEndGetTickets;
+  ati_service.OnOperProgress:= DoOperProgress;
+
   ati_service.GetTickOption:= GetTickOptionDefault;
 
   if TryStrToInt(SpTBXEdit1.Text,i) then
@@ -1345,6 +1345,7 @@ var i,n,k,k1,j:Integer;
     ds:Char;
     s1,s2:String;
     buff,buff2: TStringList;
+    f1,_tarif1,_tarif2:Single;
 begin
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
@@ -1383,13 +1384,19 @@ begin
         b:= False;
         for n:= 0 to buff2.Count - 1 do
         begin
-          if StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) > StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) then
+          if TFMClass(buff.Objects[0]).FindPropertyByName('DistI').ValueI > 0 then
           begin
-            buff2.InsertObject(n,'',buff.Objects[0]);
-            TFMClass(buff.Objects[0]).Tag:= 10;
-            buff.Delete(0);
-            b:= True;
-            Break;
+            _tarif1:= StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) / TFMClass(buff.Objects[0]).FindPropertyByName('DistI').ValueI;
+            _tarif2:= StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) / TFMClass(buff2.Objects[n]).FindPropertyByName('DistI').ValueI;
+            //if StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) > StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) then
+            if _tarif1 > _tarif2 then
+            begin
+              buff2.InsertObject(n,'',buff.Objects[0]);
+              TFMClass(buff.Objects[0]).Tag:= 10;
+              buff.Delete(0);
+              b:= True;
+              Break;
+            end;
           end;
         end;
         if not b then
@@ -1433,7 +1440,10 @@ begin
         if cls1.FindPropertyByName('_checked').ValueB then
           aTable.Cell[0,k-1].TextString:= '1';
 
-      aTable.Cell[1,k-1].TextString:= IntToStr(cls1.FindPropertyByName('DistI').ValueI) + ' κμ';
+      if cls1.FindPropertyByName('DistI').ValueI > 0 then
+        aTable.Cell[1,k-1].TextString:= IntToStr(cls1.FindPropertyByName('DistI').ValueI) + ' κμ'
+      else
+        aTable.Cell[1,k-1].TextString:= '--';
 
       aTable.Cell[2,k-1].TextString:= cls1.FindPropertyByName('Price1').ValueS;
       if TryStrToInt(aTable.Cell[2,k-1].TextString,k1) then
@@ -1441,8 +1451,13 @@ begin
       if IsCashed(cls1) then
         aTable.Cell[2,k-1].Color:= $00B4FFFF;
 
-      s1:= FloatToStrF(cls1.FindPropertyByName('Weight').ValueF,fffixed,10,1);
-      s1:= DelSymb(s1,'.0');
+      if cls1.FindPropertyByName('Weight').ValueF > 0 then
+      begin
+        s1:= FloatToStrF(cls1.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+        s1:= DelSymb(s1,'.0');
+      end
+      else
+        s1:= '--';
 
       if cls1.FindPropertyByName('Volume').ValueF > 0 then
       begin
@@ -1452,19 +1467,25 @@ begin
       else
         s2:= '--';
 
-      aTable.Cell[3,k-1].TextString:= s1 + ' / ' + s2;
+      aTable.Cell[4,k-1].TextString:= s1 + ' / ' + s2;
 
-      aTable.Cell[4,k-1].TextString:= cls1.FindPropertyByName('DateDesc').ValueS;
-      aTable.Cell[5,k-1].TextString:= cls1.FindPropertyByName('FromGeo').ValueS;
-      aTable.Cell[6,k-1].TextString:= cls1.FindPropertyByName('ToGeo').ValueS;
-      aTable.Cell[7,k-1].TextString:= cls1.FindPropertyByName('CargoName').ValueS;
+      aTable.Cell[5,k-1].TextString:= cls1.FindPropertyByName('DateDesc').ValueS;
+      aTable.Cell[6,k-1].TextString:= cls1.FindPropertyByName('FromGeo').ValueS;
+      aTable.Cell[7,k-1].TextString:= cls1.FindPropertyByName('ToGeo').ValueS;
+      aTable.Cell[8,k-1].TextString:= cls1.FindPropertyByName('CargoName').ValueS;
+
+      aTable.Cell[3,k-1].TextString:= '--';
+      
+      if TryStrToFloat(cls1.FindPropertyByName('Price1').ValueS,f1) then
+        if cls1.FindPropertyByName('DistI').ValueI > 0 then
+          aTable.Cell[3,k-1].TextString:= FloatToStrF(f1/cls1.FindPropertyByName('DistI').ValueI,fffixed,10,1) + ' π/κμ';
 
       if Assigned(cls1.FindPropertyByName('_status_id')) then
       begin
         if cls1.FindPropertyByName('_status_id').ValueI > 0 then
         begin
-          aTable.Cell[7,k].Font.Color:= GetStatusFontColor(cls1.FindPropertyByName('_status_id').ValueI);
-          aTable.Cell[7,k].TextString:= cls1.FindPropertyByName('_status_str').ValueS;
+          aTable.Cell[8,k].Font.Color:= GetStatusFontColor(cls1.FindPropertyByName('_status_id').ValueI);
+          aTable.Cell[8,k].TextString:= cls1.FindPropertyByName('_status_str').ValueS;
         end;
       end;
     end;

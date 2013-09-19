@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-17.09.2013 14:23:08
+18.09.2013 23:15:18
 /end header
 /begin data
 MyClass notes_file
@@ -186,6 +186,15 @@ Yb2b76D4bc
 							/end private
 							/begin public
 							MemoBlock text = /B$&V/17.09.2013 на карту Максиму 5000
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/vin 2468430 рабочий цилиндр сцепления который на коробке
 /E$&V/
 							/end public
 						}
