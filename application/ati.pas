@@ -403,7 +403,7 @@ begin
       oo.task:= 'GetTickets3';
       PushOperStack(oo);
       curr_page:= 1;
-      load_document('http://ya.ru');
+      load_document('http://google.ru');
     end;
     if params.task = 'GetTickets3' then
     begin
