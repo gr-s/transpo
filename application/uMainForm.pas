@@ -478,6 +478,7 @@ type
     procedure ToggleOperation(op_code:Integer);
 
     constructor Create(AOwner: TComponent);override;
+    procedure Init;
     destructor  Destroy;override;
   end;
 
@@ -493,167 +494,8 @@ uses Math;
 { TForm1 }
 
 constructor TMainForm.Create(AOwner: TComponent);
-var cls1:TFMClass;
 begin
   inherited;
-
-  cur_session:= GenerateGUID;
-
-  FileModLibName:= ExtractFilePath(Application.ExeName) + FileModLibName;
-  if not InitFM then
-  begin
-    MessageBox(Application.Handle,PChar('Не найден один из компонентов приложения' +  '(file_mod_dll.dll).' + #13 + 'Приложение будет закрыто'),PChar('Ошибка'), MB_OK	 OR MB_ICONERROR);
-    Application.Terminate;
-    Exit;
-  end;
-  SkinManager.SetSkin('Xito');
-
-  SpTBXTabControl1.ActiveTabIndex:= 0;
-
-  curr_sel_cell_value:= '';
-  LockAllEventChangeSelCell:= False;
-
-  act_cls_block_favor:= nil;
-  cls_active_ticket:= nil;
-  cls_active_period:= nil;
-  cls_active_debit:= nil;
-  cls_active_credit:= nil;
-
-  cls_templates:= TFMClass.Create(Self);
-  cls_templates.FileName:= AppDir + 'templates.dat';
-  cls_templates.Open;
-
-  app_sett:= TFMClass.Create(Self);
-  app_sett.FileName:= AppDir + 'transpo.dat';
-  app_sett.Open;
-  app_sett.FileType:= ftFullText;
-
-  cls1:= cls_templates.FindClassByName('app_sett');
-  cls1.CopyClass(app_sett,cls1,False,True);
-
-  cls_geos:= TFMClass.Create(Self);
-  cls_geos.FileName:= AppDir + 'data\geos.dat';
-  cls_geos.Open;
-  cls_geos.FileType:= ftFullText;
-  cls_geos.ClassSortType:= stAlpha;
-
-  cls_data:= TFMClass.Create(Self);
-  cls_data.FileName:= AppDir + 'data\data.dat';
-  cls_data.Open;
-  cls_data.FileType:= ftFullText;
-
-  cls1:= cls_templates.FindClassByName('data_file');
-  cls1.CopyClass(cls_data,cls1,False,True);
-
-  cls_periods:= TFMClass.Create(Self);
-  cls_periods.FileName:= AppDir + 'data\periods.dat';
-  cls_periods.Open;
-  cls_periods.FileType:= ftFullText;
-
-  cls1:= cls_templates.FindClassByName('periods_file');
-  cls1.CopyClass(cls_periods,cls1,False,True);
-
-  cls_notes:= TFMClass.Create(Self);
-  cls_notes.FileName:= AppDir + 'data\notes.dat';
-  cls_notes.Open;
-  cls_notes.FileType:= ftFullText;
-
-  cls1:= cls_templates.FindClassByName('notes_file');
-  cls1.CopyClass(cls_notes,cls1,False,True);
-
-  ToggleOperation(op_none);
-
-  tblATIFromGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
-  tblATIFromGeo.Open;
-  tblATIToGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
-  tblATIToGeo.Open;
-  tblATIGeos.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
-  tblATIGeos.Open;
-
-  tblFinded.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
-  tblFinded.Options.ForceNullSelecting:= False;
-  tblFinded.Open;
-
-  tblFavor.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
-  tblFavor.Options.ForceNullSelecting:= False;
-  tblFavor.Open;
-
-  tblFindedTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
-  tblFindedTickets.Options.ForceNullSelecting:= False;
-  tblFindedTickets.Open;
-
-  tblFavorTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
-  tblFavorTickets.Options.ForceNullSelecting:= False;
-  tblFavorTickets.Open;
-
-  tblTicketStatuses.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\statuses.tbl';
-  tblTicketStatuses.Options.ForceNullSelecting:= False;
-  tblTicketStatuses.Open;
-
-  tblPeriods.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
-  tblPeriods.Options.ForceNullSelecting:= False;
-  tblPeriods.Open;
-
-  tblDebits.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
-  tblDebits.Options.ForceNullSelecting:= False;
-  tblDebits.Open;
-
-  tblDebitTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
-  tblDebitTypes.Options.ForceNullSelecting:= False;
-  tblDebitTypes.Open;
-
-  tblSettlTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
-  tblSettlTypes.Options.ForceNullSelecting:= False;
-  tblSettlTypes.Open;
-
-  tblCardTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
-  tblCardTypes.Options.ForceNullSelecting:= False;
-  tblCardTypes.Open;
-
-  tblCredits.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
-  tblCredits.Options.ForceNullSelecting:= False;
-  tblCredits.Open;
-
-  tblCreditTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
-  tblCreditTypes.Options.ForceNullSelecting:= False;
-  tblCreditTypes.Open;
-
-  tblDCBalance.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
-  tblDCBalance.Options.ForceNullSelecting:= False;
-  tblDCBalance.Open;
-
-  tblNotes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\notes.tbl';
-  tblNotes.Options.ForceNullSelecting:= False;
-  tblNotes.Open;
-
-  tblNoteItems.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\note_items.tbl';
-  tblNoteItems.Options.ForceNullSelecting:= False;
-  tblNoteItems.Open;
-
-  SetActivePeriod;
-
-  TblUpdateGeos(tblATIGeos,cls_geos);
-  TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
-  TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
-  TblUpdateTicketStatuses(tblTicketStatuses,cls_templates.FindClassByName('ticket_statuses'));
-  TblUpdatePeriods(tblPeriods,cls_periods.FindClassByName('periods'));
-  TblUpdateStdItemsTable(tblDebitTypes,cls_templates.FindClassByName('debit_types'));
-  TblUpdateStdItemsTable(tblSettlTypes,cls_templates.FindClassByName('settlem_types'));
-  TblUpdateStdItemsTable(tblCardTypes,cls_templates.FindClassByName('card_types'));
-  TblUpdateStdItemsTable(tblCreditTypes,cls_templates.FindClassByName('credit_types'));
-  TblUpdateNotes(tblNotes,cls_notes.FindClassByName('items'));
-  UpdateATI_f_Params;
-
-
-  ati_service:= TATI.Create(Self);
-  ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
-                    app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
-  spMainForm.InsertControl(ati_service.wb);
-  ati_service.wb.Align:= alNone;
-  ati_service.wb.Width:= 0;
-  ati_service.wb.Height:= 0;
-
-  logisticone:= TLogisticOne.Create(Self);
 end;
 
 destructor TMainForm.Destroy;
@@ -3077,6 +2919,170 @@ end;
 procedure TMainForm.SpTBXButton72Click(Sender: TObject);
 begin
   SpTBXEdit2.Text:= '500';
+end;
+
+procedure TMainForm.Init;
+var cls1:TFMClass;
+begin
+  inherited;
+
+  cur_session:= GenerateGUID;
+
+  FileModLibName:= ExtractFilePath(Application.ExeName) + FileModLibName;
+  if not InitFM then
+  begin
+    MessageBox(Application.Handle,PChar('Не найден один из компонентов приложения' +  '(file_mod_dll.dll).' + #13 + 'Приложение будет закрыто'),PChar('Ошибка'), MB_OK	 OR MB_ICONERROR);
+    Application.Terminate;
+    Exit;
+  end;
+  SkinManager.SetSkin('Xito');
+
+  SpTBXTabControl1.ActiveTabIndex:= 0;
+
+  curr_sel_cell_value:= '';
+  LockAllEventChangeSelCell:= False;
+
+  act_cls_block_favor:= nil;
+  cls_active_ticket:= nil;
+  cls_active_period:= nil;
+  cls_active_debit:= nil;
+  cls_active_credit:= nil;
+
+  cls_templates:= TFMClass.Create(Self);
+  cls_templates.FileName:= AppDir + 'templates.dat';
+  cls_templates.Open;
+
+  app_sett:= TFMClass.Create(Self);
+  app_sett.FileName:= AppDir + 'transpo.dat';
+  app_sett.Open;
+  app_sett.FileType:= ftFullText;
+
+  cls1:= cls_templates.FindClassByName('app_sett');
+  cls1.CopyClass(app_sett,cls1,False,True);
+
+  cls_geos:= TFMClass.Create(Self);
+  cls_geos.FileName:= AppDir + 'data\geos.dat';
+  cls_geos.Open;
+  cls_geos.FileType:= ftFullText;
+  cls_geos.ClassSortType:= stAlpha;
+
+  cls_data:= TFMClass.Create(Self);
+  cls_data.FileName:= AppDir + 'data\data.dat';
+  cls_data.Open;
+  cls_data.FileType:= ftFullText;
+
+  cls1:= cls_templates.FindClassByName('data_file');
+  cls1.CopyClass(cls_data,cls1,False,True);
+
+  cls_periods:= TFMClass.Create(Self);
+  cls_periods.FileName:= AppDir + 'data\periods.dat';
+  cls_periods.Open;
+  cls_periods.FileType:= ftFullText;
+
+  cls1:= cls_templates.FindClassByName('periods_file');
+  cls1.CopyClass(cls_periods,cls1,False,True);
+
+  cls_notes:= TFMClass.Create(Self);
+  cls_notes.FileName:= AppDir + 'data\notes.dat';
+  cls_notes.Open;
+  cls_notes.FileType:= ftFullText;
+
+  cls1:= cls_templates.FindClassByName('notes_file');
+  cls1.CopyClass(cls_notes,cls1,False,True);
+
+  ToggleOperation(op_none);
+
+  tblATIFromGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIFromGeo.Open;
+  tblATIToGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIToGeo.Open;
+  tblATIGeos.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
+  tblATIGeos.Open;
+
+  tblFinded.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
+  tblFinded.Options.ForceNullSelecting:= False;
+  tblFinded.Open;
+
+  tblFavor.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
+  tblFavor.Options.ForceNullSelecting:= False;
+  tblFavor.Open;
+
+  tblFindedTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
+  tblFindedTickets.Options.ForceNullSelecting:= False;
+  tblFindedTickets.Open;
+
+  tblFavorTickets.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\tickets.tbl';
+  tblFavorTickets.Options.ForceNullSelecting:= False;
+  tblFavorTickets.Open;
+
+  tblTicketStatuses.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\statuses.tbl';
+  tblTicketStatuses.Options.ForceNullSelecting:= False;
+  tblTicketStatuses.Open;
+
+  tblPeriods.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\blocks.tbl';
+  tblPeriods.Options.ForceNullSelecting:= False;
+  tblPeriods.Open;
+
+  tblDebits.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
+  tblDebits.Options.ForceNullSelecting:= False;
+  tblDebits.Open;
+
+  tblDebitTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
+  tblDebitTypes.Options.ForceNullSelecting:= False;
+  tblDebitTypes.Open;
+
+  tblSettlTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
+  tblSettlTypes.Options.ForceNullSelecting:= False;
+  tblSettlTypes.Open;
+
+  tblCardTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
+  tblCardTypes.Options.ForceNullSelecting:= False;
+  tblCardTypes.Open;
+
+  tblCredits.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
+  tblCredits.Options.ForceNullSelecting:= False;
+  tblCredits.Open;
+
+  tblCreditTypes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\stditems.tbl';
+  tblCreditTypes.Options.ForceNullSelecting:= False;
+  tblCreditTypes.Open;
+
+  tblDCBalance.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\debits.tbl';
+  tblDCBalance.Options.ForceNullSelecting:= False;
+  tblDCBalance.Open;
+
+  tblNotes.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\notes.tbl';
+  tblNotes.Options.ForceNullSelecting:= False;
+  tblNotes.Open;
+
+  tblNoteItems.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\note_items.tbl';
+  tblNoteItems.Options.ForceNullSelecting:= False;
+  tblNoteItems.Open;
+
+  SetActivePeriod;
+
+  TblUpdateGeos(tblATIGeos,cls_geos);
+  TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+  TblUpdateBlocks(tblFavor,cls_data.FindClassByName('blocks').FindClassByName('favor'));
+  TblUpdateTicketStatuses(tblTicketStatuses,cls_templates.FindClassByName('ticket_statuses'));
+  TblUpdatePeriods(tblPeriods,cls_periods.FindClassByName('periods'));
+  TblUpdateStdItemsTable(tblDebitTypes,cls_templates.FindClassByName('debit_types'));
+  TblUpdateStdItemsTable(tblSettlTypes,cls_templates.FindClassByName('settlem_types'));
+  TblUpdateStdItemsTable(tblCardTypes,cls_templates.FindClassByName('card_types'));
+  TblUpdateStdItemsTable(tblCreditTypes,cls_templates.FindClassByName('credit_types'));
+  TblUpdateNotes(tblNotes,cls_notes.FindClassByName('items'));
+  UpdateATI_f_Params;
+
+
+  ati_service:= TATI.Create(Self);
+  ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,
+                    app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
+  spMainForm.InsertControl(ati_service.wb);
+  ati_service.wb.Align:= alNone;
+  ati_service.wb.Width:= 0;
+  ati_service.wb.Height:= 0;
+
+  logisticone:= TLogisticOne.Create(Self);
 end;
 
 end.
