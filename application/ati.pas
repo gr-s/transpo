@@ -362,6 +362,7 @@ begin
   Application.ProcessMessages;
   if Assigned(wb.Document) then
     load_result:= 1;
+  ShowMessage(wb.LocationURL);
   DOM_Index:= 0;
   PopOperStack;
 end;
