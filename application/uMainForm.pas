@@ -292,6 +292,9 @@ type
     SpTBXButton70: TSpTBXButton;
     SpTBXButton71: TSpTBXButton;
     SpTBXButton72: TSpTBXButton;
+    SpTBXTabItem20: TSpTBXTabItem;
+    SpTBXTabSheet21: TSpTBXTabSheet;
+    SpTBXButton73: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -411,6 +414,8 @@ type
     procedure SpTBXButton70Click(Sender: TObject);
     procedure SpTBXButton71Click(Sender: TObject);
     procedure SpTBXButton72Click(Sender: TObject);
+    procedure SpTBXButton73Click(Sender: TObject);
+    procedure SpTBXButton28Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -441,6 +446,8 @@ type
     procedure DoEndGetTickets(Sender: TObject);
     procedure DoOperProgress(Stage1,Stage2:String);
     procedure DoOperSub1Progress(Stage1,Stage2:String);
+
+    procedure DoEndOperProgress(Stage1,Stage2:String);
 
     procedure TblUpdateGeos(aTable:TRRAdvTable; aClass:TFMClass);
     procedure TblUpdateBlocks(aTable:TRRAdvTable; aClass:TFMClass);
@@ -480,7 +487,7 @@ type
     procedure ToggleOperation(op_code:Integer);
 
     constructor Create(AOwner: TComponent);override;
-    procedure Init;
+    procedure   Init;
     destructor  Destroy;override;
   end;
 
@@ -594,6 +601,13 @@ begin
     tcLeft.ActiveTabIndex:= 0;
     tcClient.Show;
     tcClient.ActiveTabIndex:= 1;
+  end;
+
+  if op_code = op_logistic_one then
+  begin
+    tcLeft.Hide;
+    tcClient.Show;
+    tcClient.ActiveTabIndex:= 12;
   end;
 
   if op_code = op_ati_get_ticks then
@@ -3088,8 +3102,27 @@ begin
   ati_service.wb.Height:= 0;
 
   logisticone:= TLogisticOne.Create(Self);
+  logisticone.OnOperProgress:= DoOperProgress;
+  logisticone.OnEndOperProgress:= DoEndOperProgress;
 
   FreeAndNil(SplashForm);
+end;
+
+procedure TMainForm.SpTBXButton73Click(Sender: TObject);
+begin
+  DoOperProgress('','');
+  DoOperSub1Progress('Индексация городов','');
+  logisticone.IndexingGeosFromWays;
+end;
+
+procedure TMainForm.SpTBXButton28Click(Sender: TObject);
+begin
+  ToggleOperation(op_logistic_one);
+end;
+
+procedure TMainForm.DoEndOperProgress(Stage1, Stage2: String);
+begin
+  DoOperSub1Progress('','');
 end;
 
 end.

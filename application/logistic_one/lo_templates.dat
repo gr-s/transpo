@@ -1,0 +1,66 @@
+fmod
+/begin header
+1.1
+19.09.2013 23:00:07
+/end header
+/begin data
+MyClass TopInstance
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass geo_objects_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass admins
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+				MyClass locals
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass ways_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass items
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass geo_object
+		{
+			/begin private
+			/end private
+			/begin public
+			char name = /B$&V//E$&V/
+			float lon = /B$&V/0/E$&V/
+			float lat = /B$&V/0/E$&V/
+			char admin_name = /B$&V//E$&V/
+			/end public
+		}
+	/end classes
+}
+/end data

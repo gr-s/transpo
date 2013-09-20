@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-19.09.2013 15:36:07
+19.09.2013 16:13:12
 /end header
 /begin data
 MyClass notes_file
@@ -71,7 +71,7 @@ Yb2b76D4bc
 							/begin private
 							/end private
 							/begin public
-							MemoBlock text = /B$&V/
+							MemoBlock text = /B$&V/vin: zcfa75c020 2468430
 /E$&V/
 							/end public
 						}

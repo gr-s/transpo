@@ -31,6 +31,7 @@ const
   op_deb_cred_balance:Integer = 120;
   op_notes:Integer = 130;
   op_note_items:Integer = 140;
+  op_logistic_one:Integer = 150;
 
 implementation
 

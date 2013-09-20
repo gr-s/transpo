@@ -1,0 +1,272 @@
+fmod
+/begin header
+1.1
+19.09.2013 18:59:51
+/end header
+/begin data
+MyClass TopInstance
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass items
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass тюмень_москва
+				{
+					/begin private
+					/end private
+					/begin public
+					char point1 = /B$&V/Москва/E$&V/
+					char point2 = /B$&V/Тюмень/E$&V/
+					/end public
+					/begin classes
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/тюмень/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/екатеринбург/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/пермь/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/ижевск/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/казань/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/чебоксары/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/нижний новгород/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/владимир/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/москва/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass нижнийновгород_воронеж
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/нижний новгород/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/тамбов/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/липецк/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/воронеж/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass москва_краснодар
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/москва/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/тула/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/воронеж/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/ростов-на-дону/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/краснодар/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass нижнийновгород_волгоград
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/нижний новгород/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/тамбов/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/волгоград/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass нижнийновгород_волгоград
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/нижний новгород/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/пенза/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/саратов/E$&V/
+							/end public
+						}
+						MyClass point
+						{
+							/begin private
+							/end private
+							/begin public
+							char geo = /B$&V/волгоград/E$&V/
+							/end public
+						}
+					/end classes
+				}
+			/end classes
+		}
+	/end classes
+}
+/end data

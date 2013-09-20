@@ -1,0 +1,230 @@
+fmod
+/begin header
+1.1
+19.09.2013 23:12:47
+/end header
+/begin data
+MyClass geo_objects_file
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass admins
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÒŞÌÅÍÜ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÅÊÀÒÅĞÈÍÁÓĞÃ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÏÅĞÌÜ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÈÆÅÂÑÊ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÊÀÇÀÍÜ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/×ÅÁÎÊÑÀĞÛ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÍÈÆÍÈÉ ÍÎÂÃÎĞÎÄ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÂËÀÄÈÌÈĞ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÌÎÑÊÂÀ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÒÀÌÁÎÂ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ËÈÏÅÖÊ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÂÎĞÎÍÅÆ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÒÓËÀ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ĞÎÑÒÎÂ-ÍÀ-ÄÎÍÓ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÊĞÀÑÍÎÄÀĞ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÂÎËÃÎÃĞÀÄ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÏÅÍÇÀ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+				MyClass geo_object
+				{
+					/begin private
+					/end private
+					/begin public
+					char name = /B$&V/ÑÀĞÀÒÎÂ/E$&V/
+					float lon = /B$&V/0/E$&V/
+					float lat = /B$&V/0/E$&V/
+					char admin_name = /B$&V//E$&V/
+					/end public
+				}
+			/end classes
+		}
+		MyClass locals
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+		}
+	/end classes
+}
+/end data
