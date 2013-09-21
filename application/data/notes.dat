@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-19.09.2013 16:13:12
+21.09.2013 15:09:40
 /end header
 /begin data
 MyClass notes_file
@@ -92,7 +92,7 @@ Yb2b76D4bc
 							/begin public
 							MemoBlock text = /B$&V/Паспорт:
 
-выдан: отделом внутренних дел Ковернинского района Нижегогородской области
+выдан: отделом внутренних дел Ковернинского района Нижегородской области
 дата выдачи: 13.04.2006
 код подр. 522-038
 серия 2205
@@ -195,6 +195,56 @@ Yb2b76D4bc
 							/end private
 							/begin public
 							MemoBlock text = /B$&V/vin zcfa75c020 2468430 рабочий цилиндр сцепления который на коробке
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/Письмо/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/Паспорт:
+
+выдан: отделом внутренних дел Ковернинского района Нижегородской области
+дата выдачи: 13.04.2006
+код подр. 522-038
+серия 2205
+номер 741428
+
+ФИО: Слугин Максим Сергеевич
+дата рождения: 26.03.1986
+место рождения: п. Красноселькуп Красноселькупского района Тюменской области
+
+Водительское удостоверение:
+серия 5214
+номер 749410
+
+ном. машины: А814ОЕ152
+
+код ati: 657 126
+
+карта сбербанка:
+5469420011575779
+Григорьев Александр Игоревич
 /E$&V/
 							/end public
 						}
