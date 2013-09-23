@@ -7,7 +7,9 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm;
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdBaseComponent,
+  IdComponent, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase,
+  IdMessageClient, IdSMTPBase, IdSMTP, IdMessage;
 
 type
   TMainForm = class(TForm)
@@ -295,6 +297,8 @@ type
     SpTBXTabItem20: TSpTBXTabItem;
     SpTBXTabSheet21: TSpTBXTabSheet;
     SpTBXButton73: TSpTBXButton;
+    IdSMTP1: TIdSMTP;
+    SpTBXButton74: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -416,6 +420,7 @@ type
     procedure SpTBXButton72Click(Sender: TObject);
     procedure SpTBXButton73Click(Sender: TObject);
     procedure SpTBXButton28Click(Sender: TObject);
+    procedure SpTBXButton74Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -484,7 +489,11 @@ type
 
     function  GetFMClassFromTable(aTable:TRRAdvTable):TFMClass;
 
+    function  GetTicketMailText(aTicket:TFMClass):String;
+
     procedure ToggleOperation(op_code:Integer);
+
+    procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
 
     constructor Create(AOwner: TComponent);override;
     procedure   Init;
@@ -1057,7 +1066,7 @@ begin
     ATIGetTickets(_FromGeoIndex,_ToGeoIndex);
     Exit;
   end;
-  
+
   ati_service.GetTickOption.FromGeo:= tblATIFromGeo.Cell[1,_FromGeoIndex].TextString;
   ati_service.GetTickOption.ToGeo:= tblATIToGeo.Cell[1,_ToGeoIndex].TextString;
   DoOperSub1Progress(ati_service.GetTickOption.FromGeo + ' - ' + ati_service.GetTickOption.ToGeo,'');
@@ -3105,6 +3114,10 @@ begin
   logisticone.OnOperProgress:= DoOperProgress;
   logisticone.OnEndOperProgress:= DoEndOperProgress;
 
+  IdSMTP1.Host:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('smtp_host').ValueS;
+  IdSMTP1.Username:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('user').ValueS;
+  IdSMTP1.Password:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('passw').ValueS;
+
   FreeAndNil(SplashForm);
 end;
 
@@ -3123,6 +3136,36 @@ end;
 procedure TMainForm.DoEndOperProgress(Stage1, Stage2: String);
 begin
   DoOperSub1Progress('','');
+end;
+
+procedure TMainForm.SpTBXButton74Click(Sender: TObject);
+var aMessage:TIdMessage;
+begin
+  aMessage:= TIdMessage.Create;
+  aMessage.OnInitializeISO:= DoMessageInitializeISO;
+  aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
+  aMessage.Subject:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
+  aMessage.Recipients.EMailAddresses:= 'gr-s@mail.ru';
+  aMessage.Body.Text:= GetTicketMailText(cls_active_ticket);
+  aMessage.CharSet:= 'windows-1251';
+  aMessage.IsEncoded:= True;
+  IdSMTP1.Connect;
+  IdSMTP1.Send(aMessage);
+  IdSMTP1.Disconnect;
+end;
+
+function TMainForm.GetTicketMailText(aTicket: TFMClass): String;
+begin
+  Result:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
+           ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
+           '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS;  
+end;
+
+procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char;
+  var VCharSet: string);
+begin
+  VHeaderEncoding:='B';
+  VCharSet:='windows-1251';
 end;
 
 end.
