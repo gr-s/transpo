@@ -9,7 +9,7 @@ uses
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
   GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase,
-  IdMessageClient, IdSMTPBase, IdSMTP, IdMessage;
+  IdMessageClient, IdSMTPBase, IdSMTP, IdMessage, TntStdCtrls;
 
 type
   TMainForm = class(TForm)
@@ -299,6 +299,12 @@ type
     SpTBXButton73: TSpTBXButton;
     IdSMTP1: TIdSMTP;
     SpTBXButton74: TSpTBXButton;
+    SpTBXComboBox1: TSpTBXComboBox;
+    SpTBXLabel39: TSpTBXLabel;
+    SpTBXButton75: TSpTBXButton;
+    SpTBXButton76: TSpTBXButton;
+    SpTBXLabel79: TSpTBXLabel;
+    SpTBXEdit22: TSpTBXEdit;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -421,6 +427,8 @@ type
     procedure SpTBXButton73Click(Sender: TObject);
     procedure SpTBXButton28Click(Sender: TObject);
     procedure SpTBXButton74Click(Sender: TObject);
+    procedure SpTBXButton75Click(Sender: TObject);
+    procedure SpTBXButton76Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -3158,7 +3166,9 @@ function TMainForm.GetTicketMailText(aTicket: TFMClass): String;
 begin
   Result:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
            ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
-           '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS;  
+           '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS;
+  if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
+    Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
 end;
 
 procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char;
@@ -3166,6 +3176,25 @@ procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char;
 begin
   VHeaderEncoding:='B';
   VCharSet:='windows-1251';
+end;
+
+procedure TMainForm.SpTBXButton75Click(Sender: TObject);
+var i:Integer;
+begin
+  if TryStrToInt(SpTBXEdit22.Text,i) then
+    logisticone.tmPass.Interval:= i*60*1000
+  else
+    logisticone.tmPass.Interval:= 30*60*1000;
+
+  logisticone.WorkMode:= logistic_one.TWorkMode(SpTBXComboBox1.ItemIndex);
+
+  logisticone.Pass;
+end;
+
+procedure TMainForm.SpTBXButton76Click(Sender: TObject);
+begin
+  logisticone.tmPass.Enabled:= False;
+  logisticone.stopped:= True;
 end;
 
 end.

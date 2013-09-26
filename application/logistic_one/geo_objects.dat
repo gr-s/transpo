@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-19.09.2013 23:12:47
+26.09.2013 19:21:03
 /end header
 /begin data
 MyClass geo_objects_file
@@ -24,8 +24,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/“ﬁÃ≈Õ‹/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/65,5343246459961/E$&V/
+					float lat = /B$&V/57,1530342102051/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -35,8 +36,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/≈ ¿“≈–»Õ¡”–√/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/60,6055145263672/E$&V/
+					float lat = /B$&V/56,8386077880859/E$&V/
+					char description = /B$&V/—¬≈–ƒÀŒ¬— ¿ﬂ Œ¡À¿—“‹, –Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -46,8 +48,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/œ≈–Ã‹/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/56,2341957092285/E$&V/
+					float lat = /B$&V/58,0102577209473/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -57,8 +60,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/»∆≈¬— /E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/53,2114639282227/E$&V/
+					float lat = /B$&V/56,8527755737305/E$&V/
+					char description = /B$&V/”ƒÃ”–“— ¿ﬂ –≈—œ”¡À» ¿, –Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -68,8 +72,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/ ¿«¿Õ‹/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/49,1065864562988/E$&V/
+					float lat = /B$&V/55,7957916259766/E$&V/
+					char description = /B$&V/–≈—œ”¡À» ¿ “¿“¿–—“¿Õ, –Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -79,8 +84,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/◊≈¡Œ —¿–€/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/47,2488861083984/E$&V/
+					float lat = /B$&V/56,1439018249512/E$&V/
+					char description = /B$&V/◊”¬¿ÿ— ¿ﬂ –≈—œ”¡À» ¿, –Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -90,8 +96,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/Õ»∆Õ»… ÕŒ¬√Œ–Œƒ/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/44,0059852600098/E$&V/
+					float lat = /B$&V/56,3268852233887/E$&V/
+					char description = /B$&V/Õ»∆≈√Œ–Œƒ— ¿ﬂ Œ¡À¿—“‹, –Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -101,8 +108,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/¬À¿ƒ»Ã»–/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/40,4070281982422/E$&V/
+					float lat = /B$&V/56,1290435791016/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -112,8 +120,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/ÃŒ— ¬¿/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/37,6198997497559/E$&V/
+					float lat = /B$&V/55,7536773681641/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -123,8 +132,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/“¿Ã¡Œ¬/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/41,4522361755371/E$&V/
+					float lat = /B$&V/52,7212448120117/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -134,8 +144,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/À»œ≈÷ /E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/39,5947189331055/E$&V/
+					float lat = /B$&V/52,610221862793/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -145,8 +156,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/¬Œ–ŒÕ≈∆/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/39,2002868652344/E$&V/
+					float lat = /B$&V/51,6615333557129/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -156,8 +168,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/“”À¿/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/37,6177520751953/E$&V/
+					float lat = /B$&V/54,1930313110352/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -167,8 +180,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/–Œ—“Œ¬-Õ¿-ƒŒÕ”/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/39,7187042236328/E$&V/
+					float lat = /B$&V/47,2225303649902/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -178,8 +192,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/ –¿—ÕŒƒ¿–/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/38,970157623291/E$&V/
+					float lat = /B$&V/45,0238761901855/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -189,8 +204,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/¬ŒÀ√Œ√–¿ƒ/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/44,5169372558594/E$&V/
+					float lat = /B$&V/48,707103729248/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -200,8 +216,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/œ≈Õ«¿/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/45,0195274353027/E$&V/
+					float lat = /B$&V/53,1945457458496/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}
@@ -211,8 +228,9 @@ MyClass geo_objects_file
 					/end private
 					/begin public
 					char name = /B$&V/—¿–¿“Œ¬/E$&V/
-					float lon = /B$&V/0/E$&V/
-					float lat = /B$&V/0/E$&V/
+					float lon = /B$&V/46,0358200073242/E$&V/
+					float lat = /B$&V/51,5315284729004/E$&V/
+					char description = /B$&V/–Œ——»ﬂ/E$&V/
 					char admin_name = /B$&V//E$&V/
 					/end public
 				}

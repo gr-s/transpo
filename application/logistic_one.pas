@@ -4,11 +4,12 @@ interface
 
 uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api,
      OleCtrls, SHDocVw_EWB, EwbCore, EmbeddedWB, IEAddress,  Mshtml_Ewb, ExtCtrls, Controls,
-     GRUtils, GRString;
+     GRUtils, GRString, IdHTTP, uLkJSON;
 
 type
 
   TOnOperProgress = procedure(Stage1,Stage2:String) of object;
+  TWorkMode = (wmPoint,wmWay);
 
   TLogisticOne = class(TComponent)
   private
@@ -19,10 +20,19 @@ type
 
   protected
 
+    procedure tmPassTimer(Sender: TObject);
+
   public
+    tmPass:TTimer;
+
+    WorkMode:TWorkMode;
+
     cls_lo_templates:TFMClass;
     cls_geo_objects:TFMClass;
     cls_ways:TFMClass;
+    IdHTTP:TIdHTTP;
+
+    stopped:Boolean;
 
     property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
     property OnEndOperProgress:TOnOperProgress read FOnEndOperProgress write SetOnEndOperProgress;
@@ -33,6 +43,8 @@ type
 
     procedure IndexingGeo(GeoName:String; IsAdmin:Boolean; AdminName:String);
     procedure IndexingGeosFromWays;
+
+    procedure Pass;
 
     constructor Create(AOwner: TComponent);
     destructor Destroy;override;
@@ -52,6 +64,13 @@ begin
   FOnOperProgress:= nil;
   FOnEndOperProgress:= nil;
 
+  tmPass:= TTimer.Create(nil);
+  tmPass.Enabled:= False;
+  tmPass.OnTimer:= tmPassTimer;
+
+  WorkMode:= wmPoint;
+  stopped:= False;
+
   cls_lo_templates:= TFMClass.Create(Self);
   cls_lo_templates.FileName:= AppDir + 'logistic_one\lo_templates.dat';
   cls_lo_templates.Open;
@@ -67,6 +86,8 @@ begin
   cls_ways.Open;
   cls_ways.FileType:= ftFullText;
   cls_lo_templates.CopyClass(cls_ways,cls_lo_templates.FindClassByName('ways_file'),False,True);
+
+  IdHTTP:= TIdHTTP.Create;
 end;
 
 destructor TLogisticOne.Destroy;
@@ -100,7 +121,17 @@ end;
 
 procedure TLogisticOne.IndexingGeo(GeoName: String; IsAdmin:Boolean; AdminName:String);
 var cls1,cls2:TFMClass;
+    s:WideString;
+    s1,s2:String;
+    js,js2:TlkJSONobject;
+    jl:TlkJSONlist;
+    f1:Double;
+    k:Integer;
+    ds:Char;
 begin
+  ds:= DecimalSeparator;
+  DecimalSeparator:= '.';
+
   cls1:= GetGeoObject(GeoName);
   if not Assigned(cls1) then
   begin
@@ -116,8 +147,24 @@ begin
   end;
   if (cls1.FindPropertyByName('lon').ValueF = 0) or (cls1.FindPropertyByName('lat').ValueF = 0) then
   begin
+    s1:= ReplaceSymb(GeoName,'+',' ');
+    js:= TlkJSON.ParseText(IdHTTP.Get('http://geocode-maps.yandex.ru/1.x/?format=json&geocode=' + s1)) as TlkJSONobject;
+    jl:= TlkJSONlist(TlkJSONobject(TlkJSONobject(js.Field['response']).Field['GeoObjectCollection']).Field['featureMember']);
 
+    js:= TlkJSONobject(TlkJSONobject(jl.Child[0]).Field['GeoObject']);
+    cls1.FindPropertyByName('description').ValueS:= AnsiUpperCase(js.getWideString('description'));
+
+    js2:= TlkJSONobject(js.Field['Point']);
+    s1:= TlkJSONstring(js2.Field['pos']).Value;
+    k:= GetFirstChar(s1,' ',1,False,s2);
+    if TryStrToFloat(s2,f1) then
+      cls1.FindPropertyByName('lon').ValueF:= f1;
+    k:= GetFirstChar(s1,' ',k+1,False,s2);
+    if TryStrToFloat(s2,f1) then
+      cls1.FindPropertyByName('lat').ValueF:= f1;
   end;
+
+  DecimalSeparator:= ds;
 end;
 
 procedure TLogisticOne.IndexingGeosFromWays;
@@ -157,6 +204,11 @@ begin
   Result:= aGeoObject.ParentClass.SysName = 'admins';
 end;
 
+procedure TLogisticOne.Pass;
+begin
+
+end;
+
 procedure TLogisticOne.SetOnEndOperProgress(const Value: TOnOperProgress);
 begin
   FOnEndOperProgress := Value;
@@ -165,6 +217,12 @@ end;
 procedure TLogisticOne.SetOnOperProgress(const Value: TOnOperProgress);
 begin
   FOnOperProgress := Value;
+end;
+
+procedure TLogisticOne.tmPassTimer(Sender: TObject);
+begin
+  tmPass.Enabled:= False;
+  Pass;
 end;
 
 end.
