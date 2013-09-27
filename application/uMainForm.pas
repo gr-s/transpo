@@ -297,7 +297,6 @@ type
     SpTBXTabItem20: TSpTBXTabItem;
     SpTBXTabSheet21: TSpTBXTabSheet;
     SpTBXButton73: TSpTBXButton;
-    IdSMTP1: TIdSMTP;
     SpTBXButton74: TSpTBXButton;
     SpTBXComboBox1: TSpTBXComboBox;
     SpTBXLabel39: TSpTBXLabel;
@@ -305,6 +304,14 @@ type
     SpTBXButton76: TSpTBXButton;
     SpTBXLabel79: TSpTBXLabel;
     SpTBXEdit22: TSpTBXEdit;
+    SpTBXLabel80: TSpTBXLabel;
+    SpTBXEdit23: TSpTBXEdit;
+    SpTBXLabel81: TSpTBXLabel;
+    SpTBXEdit24: TSpTBXEdit;
+    SpTBXLabel82: TSpTBXLabel;
+    SpTBXEdit25: TSpTBXEdit;
+    SpTBXLabel83: TSpTBXLabel;
+    SpTBXEdit26: TSpTBXEdit;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -435,7 +442,9 @@ type
     { Private declarations }
   public
     SplashForm:TSplashForm;
-    
+
+    IdSMTP1:TIdSMTP;
+
     curr_sel_cell_value:String;
     old_ticket_info_oper_id:Integer;
     old_debit_info_oper_id:Integer;
@@ -525,6 +534,7 @@ begin
   SplashForm:= TSplashForm.Create(nil);
   SplashForm.Show;
   Application.ProcessMessages;
+  IdSMTP1:= TIdSMTP.Create(nil);
 end;
 
 destructor TMainForm.Destroy;
@@ -3180,7 +3190,10 @@ end;
 
 procedure TMainForm.SpTBXButton75Click(Sender: TObject);
 var i:Integer;
+    f1:Single;
 begin
+  logisticone.stopped:= False;
+
   if TryStrToInt(SpTBXEdit22.Text,i) then
     logisticone.tmPass.Interval:= i*60*1000
   else
@@ -3188,13 +3201,25 @@ begin
 
   logisticone.WorkMode:= logistic_one.TWorkMode(SpTBXComboBox1.ItemIndex);
 
+  logisticone.FromGeo:= SpTBXEdit23.Text;
+  logisticone.ToGeo:= SpTBXEdit24.Text;
+
+  if TryStrToFloat(SpTBXEdit25.Text,f1) then
+    logisticone.Weight:= f1
+  else
+    logisticone.Weight:= 0;
+
+  if TryStrToFloat(SpTBXEdit26.Text,f1) then
+    logisticone.Volume:= f1
+  else
+    logisticone.Volume:= 0;
+
   logisticone.Pass;
 end;
 
 procedure TMainForm.SpTBXButton76Click(Sender: TObject);
 begin
-  logisticone.tmPass.Enabled:= False;
-  logisticone.stopped:= True;
+  logisticone.Stop;
 end;
 
 end.

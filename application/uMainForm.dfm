@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 59
-  Top = 137
+  Left = 71
+  Top = 138
   Width = 1166
   Height = 733
   Caption = 'MainForm'
@@ -5325,6 +5325,66 @@ object MainForm: TMainForm
           TabOrder = 6
           Text = '15'
         end
+        object SpTBXLabel80: TSpTBXLabel
+          Left = 241
+          Top = 78
+          Width = 56
+          Height = 13
+          Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074
+        end
+        object SpTBXEdit23: TSpTBXEdit
+          Left = 309
+          Top = 72
+          Width = 173
+          Height = 21
+          TabOrder = 8
+        end
+        object SpTBXLabel81: TSpTBXLabel
+          Left = 241
+          Top = 110
+          Width = 58
+          Height = 13
+          Caption = #1042#1099#1075#1088#1091#1079#1082#1072' '#1074
+        end
+        object SpTBXEdit24: TSpTBXEdit
+          Left = 309
+          Top = 104
+          Width = 173
+          Height = 21
+          TabOrder = 10
+        end
+        object SpTBXLabel82: TSpTBXLabel
+          Left = 505
+          Top = 78
+          Width = 40
+          Height = 13
+          Caption = #1042#1077#1089
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit25: TSpTBXEdit
+          Left = 557
+          Top = 72
+          Width = 60
+          Height = 21
+          TabOrder = 12
+        end
+        object SpTBXLabel83: TSpTBXLabel
+          Left = 505
+          Top = 110
+          Width = 40
+          Height = 13
+          Caption = #1054#1073#1098#1077#1084
+          AutoSize = False
+          Alignment = taRightJustify
+        end
+        object SpTBXEdit26: TSpTBXEdit
+          Left = 557
+          Top = 104
+          Width = 60
+          Height = 21
+          TabOrder = 14
+        end
       end
     end
   end
@@ -5334,10 +5394,5 @@ object MainForm: TMainForm
     OnTimer = Timer1Timer
     Left = 216
     Top = 152
-  end
-  object IdSMTP1: TIdSMTP
-    SASLMechanisms = <>
-    Left = 697
-    Top = 320
   end
 end

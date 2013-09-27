@@ -11,6 +11,11 @@ type
   TOnOperProgress = procedure(Stage1,Stage2:String) of object;
   TWorkMode = (wmPoint,wmWay);
 
+  TPassGeoOption = record
+    Geo:String;
+    _ToGeo:String;
+  end;
+
   TLogisticOne = class(TComponent)
   private
     FOnOperProgress: TOnOperProgress;
@@ -25,8 +30,12 @@ type
   public
     tmPass:TTimer;
 
-    WorkMode:TWorkMode;
-
+    WorkMode:TWorkMode; //режим (на точке, в пути)
+    FromGeo:String;
+    ToGeo:String;
+    Weight:Single;
+    Volume:Single;
+    
     cls_lo_templates:TFMClass;
     cls_geo_objects:TFMClass;
     cls_ways:TFMClass;
@@ -41,10 +50,13 @@ type
     function IsGeoAdmin(aGeoObject:TFMClass):Boolean;
     function GetGeoObject(aName:String):TFMClass;
 
+    procedure _pass_geo(option:TPassGeoOption);
+
     procedure IndexingGeo(GeoName:String; IsAdmin:Boolean; AdminName:String);
     procedure IndexingGeosFromWays;
 
     procedure Pass;
+    procedure Stop;
 
     constructor Create(AOwner: TComponent);
     destructor Destroy;override;
@@ -52,6 +64,10 @@ type
 
 var
   logisticone:TLogisticOne;
+
+const PassGeoOption:TPassGeoOption        = ( Geo: '';
+                                              _ToGeo: '';
+                                             );
 
 implementation
 
@@ -205,8 +221,29 @@ begin
 end;
 
 procedure TLogisticOne.Pass;
+var option:TPassGeoOption;
 begin
-
+  if Length(FromGeo) > 0 then
+  begin
+    if not Assigned(GetGeoObject(FromGeo)) then
+    begin
+      Stop;
+      MessageBox(Application.Handle,'Город загрузки не найден !','Ошибка',MB_OK OR MB_ICONWARNING);
+      Exit;
+    end;
+  end;
+  if Length(ToGeo) > 0 then
+  begin
+    if not Assigned(GetGeoObject(ToGeo)) then
+    begin
+      Stop;
+      MessageBox(Application.Handle,'Город разгрузки не найден !','Ошибка',MB_OK OR MB_ICONWARNING);
+      Exit;
+    end;
+  end;
+  
+  option:= PassGeoOption;
+  _pass_geo(option);
 end;
 
 procedure TLogisticOne.SetOnEndOperProgress(const Value: TOnOperProgress);
@@ -219,10 +256,21 @@ begin
   FOnOperProgress := Value;
 end;
 
+procedure TLogisticOne.Stop;
+begin
+  tmPass.Enabled:= False;
+  stopped:= True;
+end;
+
 procedure TLogisticOne.tmPassTimer(Sender: TObject);
 begin
   tmPass.Enabled:= False;
   Pass;
+end;
+
+procedure TLogisticOne._pass_geo(option: TPassGeoOption);
+begin
+
 end;
 
 end.
