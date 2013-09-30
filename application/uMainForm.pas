@@ -535,6 +535,7 @@ begin
   SplashForm.Show;
   Application.ProcessMessages;
   IdSMTP1:= TIdSMTP.Create(nil);
+  IdSMTP1.AuthenticationType:= atLogin; 
 end;
 
 destructor TMainForm.Destroy;
