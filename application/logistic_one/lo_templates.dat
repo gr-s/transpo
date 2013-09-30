@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-26.09.2013 18:45:58
+30.09.2013 17:20:01
 /end header
 /begin data
 MyClass TopInstance
@@ -60,6 +60,13 @@ MyClass TopInstance
 			float lat = /B$&V/0/E$&V/
 			char description = /B$&V//E$&V/
 			char admin_name = /B$&V//E$&V/
+			/end public
+		}
+		MyClass pass_object
+		{
+			/begin private
+			/end private
+			/begin public
 			/end public
 		}
 	/end classes

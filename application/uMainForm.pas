@@ -311,6 +311,8 @@ type
     SpTBXEdit25: TSpTBXEdit;
     SpTBXLabel83: TSpTBXLabel;
     SpTBXEdit26: TSpTBXEdit;
+    SpTBXLabel84: TSpTBXLabel;
+    SpTBXLabel85: TSpTBXLabel;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -509,8 +511,7 @@ type
 
     procedure ToggleOperation(op_code:Integer);
 
-    //procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
-    procedure DoMessageInitializeISO(var VTransferHeader: TTransfer; var VHeaderEncoding: Char; var VCharSet: string);
+    procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
 
     constructor Create(AOwner: TComponent);override;
     procedure   Init;
@@ -535,7 +536,6 @@ begin
   SplashForm.Show;
   Application.ProcessMessages;
   IdSMTP1:= TIdSMTP.Create(nil);
-  IdSMTP1.AuthenticationType:= atLogin; 
 end;
 
 destructor TMainForm.Destroy;
@@ -1504,6 +1504,10 @@ begin
     SpTBXLabel19.Caption:= DelSymb(SpTBXLabel19.Caption,'.0');
     SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
     SpTBXLabel44.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
+    if max_dist > 0 then
+      SpTBXLabel85.Caption:= FloatToStrF((f3-f5)/max_dist,fffixed,10,1) + ' π/κμ'
+    else
+      SpTBXLabel85.Caption:= '';
   end;
 
   if aTable = tblFavorTickets then
@@ -1514,6 +1518,10 @@ begin
     SpTBXLabel30.Caption:= DelSymb(SpTBXLabel30.Caption,'.0');
     SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
     SpTBXLabel46.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
+    if max_dist > 0 then
+      SpTBXLabel84.Caption:= FloatToStrF((f3-f5)/max_dist,fffixed,10,1) + ' π/κμ'
+    else
+      SpTBXLabel84.Caption:= '';
   end;
 
   DecimalSeparator:= ds;
@@ -3182,8 +3190,7 @@ begin
     Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
 end;
 
-//procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
-procedure TMainForm.DoMessageInitializeISO(var VTransferHeader: TTransfer; var VHeaderEncoding: Char; var VCharSet: string);
+procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
 begin
   VHeaderEncoding:='B';
   VCharSet:='windows-1251';

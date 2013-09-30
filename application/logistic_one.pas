@@ -40,6 +40,7 @@ type
     cls_geo_objects:TFMClass;
     cls_ways:TFMClass;
     IdHTTP:TIdHTTP;
+    cls_pass:TFMClass;
 
     stopped:Boolean;
 
@@ -86,6 +87,8 @@ begin
 
   WorkMode:= wmPoint;
   stopped:= False;
+
+  cls_pass:= nil;
 
   cls_lo_templates:= TFMClass.Create(Self);
   cls_lo_templates.FileName:= AppDir + 'logistic_one\lo_templates.dat';
@@ -241,7 +244,10 @@ begin
       Exit;
     end;
   end;
-  
+
+  FreeAndNil(cls_pass);
+  cls_pass:= TFMClass.Create(Self);
+  cls_lo_templates.CopyClass(cls_pass,cls_lo_templates.FindClassByName('pass_object'),False,True);
   option:= PassGeoOption;
   _pass_geo(option);
 end;
