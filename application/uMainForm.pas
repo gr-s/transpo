@@ -7,11 +7,10 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdBaseComponent,
-  IdComponent, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase,
-  IdMessageClient, IdSMTPBase, IdSMTP, IdMessage, TntStdCtrls;
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls, IdCoderHeader;
 
 type
+  
   TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
     SpTBXPanel1: TSpTBXPanel;
@@ -510,7 +509,8 @@ type
 
     procedure ToggleOperation(op_code:Integer);
 
-    procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
+    //procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
+    procedure DoMessageInitializeISO(var VTransferHeader: TTransfer; var VHeaderEncoding: Char; var VCharSet: string);
 
     constructor Create(AOwner: TComponent);override;
     procedure   Init;
@@ -3159,7 +3159,7 @@ end;
 procedure TMainForm.SpTBXButton74Click(Sender: TObject);
 var aMessage:TIdMessage;
 begin
-  aMessage:= TIdMessage.Create;
+  aMessage:= TIdMessage.Create(nil);
   aMessage.OnInitializeISO:= DoMessageInitializeISO;
   aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
   aMessage.Subject:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
@@ -3181,8 +3181,8 @@ begin
     Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
 end;
 
-procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char;
-  var VCharSet: string);
+//procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
+procedure TMainForm.DoMessageInitializeISO(var VTransferHeader: TTransfer; var VHeaderEncoding: Char; var VCharSet: string);
 begin
   VHeaderEncoding:='B';
   VCharSet:='windows-1251';

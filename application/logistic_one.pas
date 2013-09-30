@@ -103,7 +103,7 @@ begin
   cls_ways.FileType:= ftFullText;
   cls_lo_templates.CopyClass(cls_ways,cls_lo_templates.FindClassByName('ways_file'),False,True);
 
-  IdHTTP:= TIdHTTP.Create;
+  IdHTTP:= TIdHTTP.Create(nil);
 end;
 
 destructor TLogisticOne.Destroy;
