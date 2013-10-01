@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-01.10.2013 9:18:36
+01.10.2013 22:43:16
 /end header
 /begin data
 MyClass notes_file
@@ -245,6 +245,25 @@ Yb2b76D4bc
 карта сбербанка:
 5469420011575779
 Григорьев Александр Игоревич
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/ростов-екат/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/ростов 01.10 9500
 /E$&V/
 							/end public
 						}

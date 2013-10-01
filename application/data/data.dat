@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-01.10.2013 14:58:35
+01.10.2013 22:47:40
 /end header
 /begin data
 MyClass data_file
@@ -1371,7 +1371,7 @@ MyClass data_file
 											float Volume = /B$&V/-1/E$&V/
 											char PriceDesc = /B$&V/запрос 
      /E$&V/
-											char Price1 = /B$&V/запрос/E$&V/
+											char Price1 = /B$&V/10000/E$&V/
 											char Controller = /B$&V//E$&V/
 											char ControllerInfo = /B$&V/Силивановская ТК, ООО (ID:507658, эксп-перев, Москва) (р17)  /E$&V/
 											char DateDesc = /B$&V/1 - 2 окт /E$&V/
