@@ -313,6 +313,11 @@ type
     SpTBXEdit26: TSpTBXEdit;
     SpTBXLabel84: TSpTBXLabel;
     SpTBXLabel85: TSpTBXLabel;
+    SpTBXCheckBox4: TSpTBXCheckBox;
+    SpTBXLabel86: TSpTBXLabel;
+    SpTBXEdit27: TSpTBXEdit;
+    SpTBXLabel87: TSpTBXLabel;
+    SpTBXEdit28: TSpTBXEdit;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -507,7 +512,7 @@ type
 
     function  GetFMClassFromTable(aTable:TRRAdvTable):TFMClass;
 
-    function  GetTicketMailText(aTicket:TFMClass):String;
+    function  GetTicketMailText(aTicket:TFMClass;ShortView:Boolean):String;
 
     procedure ToggleOperation(op_code:Integer);
 
@@ -3173,7 +3178,7 @@ begin
   aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
   aMessage.Subject:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
   aMessage.Recipients.EMailAddresses:= 'gr-s@mail.ru';
-  aMessage.Body.Text:= GetTicketMailText(cls_active_ticket);
+  aMessage.Body.Text:= GetTicketMailText(cls_active_ticket,SpTBXCheckBox4.Checked);
   aMessage.CharSet:= 'windows-1251';
   aMessage.IsEncoded:= True;
   IdSMTP1.Connect;
@@ -3181,13 +3186,61 @@ begin
   IdSMTP1.Disconnect;
 end;
 
-function TMainForm.GetTicketMailText(aTicket: TFMClass): String;
+function TMainForm.GetTicketMailText(aTicket: TFMClass;ShortView:Boolean): String;
+var s1,s:String;
+    ds:Char;
+    k:Integer;
 begin
-  Result:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
-           ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
-           '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS;
-  if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
-    Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
+  ds:= DecimalSeparator;
+  DecimalSeparator:= '.';
+
+  if not ShortView then
+  begin
+    Result:= cls_active_ticket.FindPropertyByName('DateDesc').ValueS + ' ' + cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
+             ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
+             '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS +
+             '  (' + cls_active_ticket.FindPropertyByName('ControllerInfo').ValueS + ')';
+    if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
+      Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
+  end
+  else
+  begin
+    Result:= cls_active_ticket.FindPropertyByName('DateDesc').ValueS + ' ' + cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
+
+    if cls_active_ticket.FindPropertyByName('Weight').ValueF > 0 then
+    begin
+      s1:= FloatToStrF(cls_active_ticket.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+      s1:= DelSymb(s1,'.0');
+      Result:= Result + ' ' + s1;
+    end
+    else
+      Result:= Result + ' --';
+    if cls_active_ticket.FindPropertyByName('Volume').ValueF > 0 then
+    begin
+      s1:= FloatToStrF(cls_active_ticket.FindPropertyByName('Volume').ValueF,fffixed,10,1);
+      s1:= DelSymb(s1,'.0');
+      Result:= Result + '/' + s1;
+    end
+    else
+      Result:= Result + '/--';
+
+    Result:= Result + ' ' + cls_active_ticket.FindPropertyByName('CargoName').ValueS;
+    Result:= Result + ' ' + cls_active_ticket.FindPropertyByName('Price1').ValueS + ' ð.';
+
+    s:= AnsiUpperCase(cls_active_ticket.FindPropertyByName('ControllerInfo').ValueS);
+    k:= GetFirstChar(s,'ID:',1,False,s1);
+    if k > 0 then
+    begin
+      k:= GetFirstUnDigitalChar(s,k+3,s1);
+      Result:= Result + ' ID:' + s1;
+    end
+    else
+      Result:= Result + ' ID: ---';
+    if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
+      Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
+  end;
+
+  DecimalSeparator:= ds;
 end;
 
 procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
@@ -3221,6 +3274,16 @@ begin
     logisticone.Volume:= f1
   else
     logisticone.Volume:= 0;
+
+  if TryStrToInt(SpTBXEdit27.Text,i) then
+    logisticone.from_radius1:= i
+  else
+    logisticone.from_radius1:= 200;
+
+  if TryStrToInt(SpTBXEdit28.Text,i) then
+    logisticone.from_radius2:= i
+  else
+    logisticone.from_radius2:= 100;
 
   logisticone.Pass;
 end;

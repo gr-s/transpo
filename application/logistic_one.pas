@@ -26,6 +26,9 @@ type
   protected
 
     procedure tmPassTimer(Sender: TObject);
+    procedure DoATICaptcha(oper_code:Integer);
+    procedure DoOperProgress(Stage1,Stage2:String);
+    procedure DoEndGetTickets(Sender: TObject);
 
   public
     tmPass:TTimer;
@@ -35,7 +38,10 @@ type
     ToGeo:String;
     Weight:Single;
     Volume:Single;
-    
+
+    from_radius1:Integer;
+    from_radius2:Integer;
+
     cls_lo_templates:TFMClass;
     cls_geo_objects:TFMClass;
     cls_ways:TFMClass;
@@ -71,7 +77,7 @@ const PassGeoOption:TPassGeoOption        = ( Geo: '';
                                              );
 
 implementation
-
+uses ati;
 { TLogisticOne }
 
 constructor TLogisticOne.Create(AOwner: TComponent);
@@ -115,6 +121,22 @@ begin
   inherited;
 end;
 
+
+procedure TLogisticOne.DoATICaptcha(oper_code: Integer);
+begin
+
+end;
+
+procedure TLogisticOne.DoEndGetTickets(Sender: TObject);
+begin
+
+end;
+
+procedure TLogisticOne.DoOperProgress(Stage1, Stage2: String);
+begin
+  if Assigned(OnOperProgress) then
+    OnOperProgress(Stage1, Stage2);
+end;
 
 function TLogisticOne.GetGeoObject(aName: String): TFMClass;
 var i,j:Integer;
@@ -234,7 +256,14 @@ begin
       MessageBox(Application.Handle,'Город загрузки не найден !','Ошибка',MB_OK OR MB_ICONWARNING);
       Exit;
     end;
+  end
+  else
+  begin
+    Stop;
+    MessageBox(Application.Handle,'Не задан город загрузки !','Ошибка',MB_OK OR MB_ICONWARNING);
+    Exit;
   end;
+
   if Length(ToGeo) > 0 then
   begin
     if not Assigned(GetGeoObject(ToGeo)) then
@@ -245,10 +274,15 @@ begin
     end;
   end;
 
+  ati_service.OnCaptcha:= DoATICaptcha;
+  ati_service.OnOperProgress:= DoOperProgress;
+  ati_service.OnEndGetTickets:= DoEndGetTickets;
+
   FreeAndNil(cls_pass);
   cls_pass:= TFMClass.Create(Self);
   cls_lo_templates.CopyClass(cls_pass,cls_lo_templates.FindClassByName('pass_object'),False,True);
   option:= PassGeoOption;
+  option.Geo:= FromGeo;
   _pass_geo(option);
 end;
 
@@ -276,7 +310,15 @@ end;
 
 procedure TLogisticOne._pass_geo(option: TPassGeoOption);
 begin
-
+  ati_service.GetTickOption:= GetTickOptionDefault;
+  if WorkMode = wmPoint then
+  begin
+    ati_service.GetTickOption.FromGeo:= option.Geo;
+    if option.Geo = FromGeo then
+      ati_service.GetTickOption.FromRadius:= from_radius1
+    else
+      ati_service.GetTickOption.FromRadius:= from_radius2;
+  end;
 end;
 
 end.
