@@ -1,7 +1,8 @@
 program transpo;
 
 uses
-  Forms, SysUtils,
+  Forms,
+  SysUtils,
   uMainForm in 'uMainForm.pas' {MainForm},
   ati in 'ati.pas',
   transpo_classes in 'transpo_classes.pas',
@@ -9,7 +10,8 @@ uses
   uBrowser in 'uBrowser.pas' {Browser},
   uCalendarWizard in 'uCalendarWizard.pas' {CalendarWizard},
   uInfoTimerForm in 'uInfoTimerForm.pas' {InfoTimerForm},
-  logistic_one in 'logistic_one.pas';
+  logistic_one in 'logistic_one.pas',
+  manage_stack in 'manage_stack.pas';
 
 {$R *.res}
 

@@ -1510,7 +1510,7 @@ begin
     SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
     SpTBXLabel44.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
     if max_dist > 0 then
-      SpTBXLabel85.Caption:= FloatToStrF((f3-f5)/max_dist,fffixed,10,1) + ' π/κμ'
+      SpTBXLabel85.Caption:= FloatToStrF((f3)/max_dist,fffixed,10,1) + ' π/κμ'
     else
       SpTBXLabel85.Caption:= '';
   end;
@@ -1524,7 +1524,7 @@ begin
     SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
     SpTBXLabel46.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
     if max_dist > 0 then
-      SpTBXLabel84.Caption:= FloatToStrF((f3-f5)/max_dist,fffixed,10,1) + ' π/κμ'
+      SpTBXLabel84.Caption:= FloatToStrF((f3)/max_dist,fffixed,10,1) + ' π/κμ'
     else
       SpTBXLabel84.Caption:= '';
   end;

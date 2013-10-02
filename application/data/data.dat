@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-01.10.2013 22:47:40
+02.10.2013 20:01:31
 /end header
 /begin data
 MyClass data_file
@@ -1048,7 +1048,7 @@ MyClass data_file
 											char Note = /B$&V/ НАЛИЧКА!!! 4 ТОЧЕК ВЫГРУЗКИ./E$&V/
 											char Reliability = /B$&V/Балл надёжности: 3,00. Субъективных оценок нет или их меньше 3-х./E$&V/
 											MemoBlock Comments = /B$&V/01.10 9.30/E$&V/
-											bool _checked = /B$&V/False/E$&V/
+											bool _checked = /B$&V/True/E$&V/
 											int _status_id = /B$&V/40/E$&V/
 											char _status_str = /B$&V/Звонил/E$&V/
 											/end public
@@ -1378,7 +1378,7 @@ MyClass data_file
 											char Note = /B$&V//E$&V/
 											char Reliability = /B$&V/Балл надёжности: 3,10. Субъективных оценок нет или их меньше 3-х./E$&V/
 											MemoBlock Comments = /B$&V//E$&V/
-											bool _checked = /B$&V/False/E$&V/
+											bool _checked = /B$&V/True/E$&V/
 											int _status_id = /B$&V/10/E$&V/
 											char _status_str = /B$&V/Просм/E$&V/
 											/end public

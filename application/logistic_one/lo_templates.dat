@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-30.09.2013 17:20:01
+02.10.2013 20:22:38
 /end header
 /begin data
 MyClass TopInstance
@@ -68,6 +68,28 @@ MyClass TopInstance
 			/end private
 			/begin public
 			/end public
+		}
+		MyClass stack_objects_params
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass get_tickets_params
+				{
+					/begin private
+					/end private
+					/begin public
+					char FromGeo = /B$&V//E$&V/
+					char FromRadius = /B$&V/-1/E$&V/
+					char ToGeo = /B$&V//E$&V/
+					char ToRadius = /B$&V/-1/E$&V/
+					char DateBegin = /B$&V/0/E$&V/
+					char DateEnd = /B$&V/0/E$&V/
+					/end public
+				}
+			/end classes
 		}
 	/end classes
 }

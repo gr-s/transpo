@@ -2,9 +2,8 @@ unit logistic_one;
 
 interface
 
-uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api,
-     OleCtrls, SHDocVw_EWB, EwbCore, EmbeddedWB, IEAddress,  Mshtml_Ewb, ExtCtrls, Controls,
-     GRUtils, GRString, IdHTTP, uLkJSON;
+uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api, ExtCtrls, Controls,
+     GRUtils, GRString, IdHTTP, uLkJSON, manage_stack;
 
 type
 
@@ -31,6 +30,7 @@ type
     procedure DoEndGetTickets(Sender: TObject);
 
   public
+    ManageStack:TManageStack;
     tmPass:TTimer;
 
     WorkMode:TWorkMode; //режим (на точке, в пути)
@@ -61,6 +61,8 @@ type
 
     procedure IndexingGeo(GeoName:String; IsAdmin:Boolean; AdminName:String);
     procedure IndexingGeosFromWays;
+
+    procedure LoadTickets(so:TSO);
 
     procedure Pass;
     procedure Stop;
@@ -113,6 +115,9 @@ begin
   cls_lo_templates.CopyClass(cls_ways,cls_lo_templates.FindClassByName('ways_file'),False,True);
 
   IdHTTP:= TIdHTTP.Create(nil);
+
+  ManageStack:= TManageStack.Create(nil);
+  ManageStack.NewStack('get_tickets');
 end;
 
 destructor TLogisticOne.Destroy;
@@ -129,7 +134,7 @@ end;
 
 procedure TLogisticOne.DoEndGetTickets(Sender: TObject);
 begin
-
+  ManageStack.Stack('get_tickets').PopAndExecute;
 end;
 
 procedure TLogisticOne.DoOperProgress(Stage1, Stage2: String);
@@ -245,8 +250,23 @@ begin
   Result:= aGeoObject.ParentClass.SysName = 'admins';
 end;
 
+procedure TLogisticOne.LoadTickets(so: TSO);
+begin
+  ati_service.GetTickOption:= GetTickOptionDefault;
+  ati_service.GetTickOption.FromGeo:= so.Param('FromGeo').ValueS;
+  ati_service.GetTickOption.FromRadius:= so.Param('FromRadius').ValueI;
+  ati_service.GetTickOption.ToGeo:= so.Param('ToGeo').ValueS;
+  ati_service.GetTickOption.ToRadius:= so.Param('ToRadius').ValueI;
+  ati_service.GetTickOption.WeightEnd:= 5;
+  ati_service.GetTickOption.VolumeEnd:= 35;
+  ati_service.GetTickOption.DateBegin:= StrToDate(so.Param('DateBegin').ValueS);
+  ati_service.GetTickOption.DateEnd:= StrToDate(so.Param('DateEnd').ValueS);
+  ati_service.GetTickets;
+end;
+
 procedure TLogisticOne.Pass;
 var option:TPassGeoOption;
+    so:TSO;
 begin
   if Length(FromGeo) > 0 then
   begin
@@ -281,9 +301,8 @@ begin
   FreeAndNil(cls_pass);
   cls_pass:= TFMClass.Create(Self);
   cls_lo_templates.CopyClass(cls_pass,cls_lo_templates.FindClassByName('pass_object'),False,True);
-  option:= PassGeoOption;
-  option.Geo:= FromGeo;
-  _pass_geo(option);
+
+  so:= ManageStack.Stack('get_tickets').NewObject(cls_lo_templates.FindClassByName('stack_objects_params').FindClassByName('get_tickets_params'));
 end;
 
 procedure TLogisticOne.SetOnEndOperProgress(const Value: TOnOperProgress);
