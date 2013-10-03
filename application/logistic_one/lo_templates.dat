@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-02.10.2013 20:22:38
+03.10.2013 19:11:51
 /end header
 /begin data
 MyClass TopInstance
@@ -82,11 +82,19 @@ MyClass TopInstance
 					/end private
 					/begin public
 					char FromGeo = /B$&V//E$&V/
-					char FromRadius = /B$&V/-1/E$&V/
+					int FromRadius = /B$&V/-1/E$&V/
 					char ToGeo = /B$&V//E$&V/
-					char ToRadius = /B$&V/-1/E$&V/
+					int ToRadius = /B$&V/-1/E$&V/
 					char DateBegin = /B$&V/0/E$&V/
 					char DateEnd = /B$&V/0/E$&V/
+					/end public
+				}
+				MyClass pass1_params
+				{
+					/begin private
+					/end private
+					/begin public
+					int ticket_index = /B$&V/0/E$&V/
 					/end public
 				}
 			/end classes

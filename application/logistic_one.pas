@@ -10,11 +10,6 @@ type
   TOnOperProgress = procedure(Stage1,Stage2:String) of object;
   TWorkMode = (wmPoint,wmWay);
 
-  TPassGeoOption = record
-    Geo:String;
-    _ToGeo:String;
-  end;
-
   TLogisticOne = class(TComponent)
   private
     FOnOperProgress: TOnOperProgress;
@@ -38,6 +33,8 @@ type
     ToGeo:String;
     Weight:Single;
     Volume:Single;
+    DateBegin:TDate;
+    DateEnd:TDate;
 
     from_radius1:Integer;
     from_radius2:Integer;
@@ -57,7 +54,7 @@ type
     function IsGeoAdmin(aGeoObject:TFMClass):Boolean;
     function GetGeoObject(aName:String):TFMClass;
 
-    procedure _pass_geo(option:TPassGeoOption);
+    procedure _pass1(so:TSO);
 
     procedure IndexingGeo(GeoName:String; IsAdmin:Boolean; AdminName:String);
     procedure IndexingGeosFromWays;
@@ -74,9 +71,6 @@ type
 var
   logisticone:TLogisticOne;
 
-const PassGeoOption:TPassGeoOption        = ( Geo: '';
-                                              _ToGeo: '';
-                                             );
 
 implementation
 uses ati;
@@ -118,6 +112,7 @@ begin
 
   ManageStack:= TManageStack.Create(nil);
   ManageStack.NewStack('get_tickets');
+  ManageStack.NewStack('pass1');
 end;
 
 destructor TLogisticOne.Destroy;
@@ -265,8 +260,10 @@ begin
 end;
 
 procedure TLogisticOne.Pass;
-var option:TPassGeoOption;
-    so:TSO;
+type tst1 = ^TStackProc;
+var so1,so2:TSO;
+    dw1:DWORD;
+    proc: tst1;
 begin
   if Length(FromGeo) > 0 then
   begin
@@ -302,7 +299,20 @@ begin
   cls_pass:= TFMClass.Create(Self);
   cls_lo_templates.CopyClass(cls_pass,cls_lo_templates.FindClassByName('pass_object'),False,True);
 
-  so:= ManageStack.Stack('get_tickets').NewObject(cls_lo_templates.FindClassByName('stack_objects_params').FindClassByName('get_tickets_params'));
+  so1:= ManageStack.Stack('get_tickets').NewObject(cls_lo_templates.FindClassByName('stack_objects_params').FindClassByName('get_tickets_params'));
+  so1.Param('FromGeo').ValueS:= FromGeo;
+  so1.Param('FromRadius').ValueI:= from_radius1;
+  so1.Param('DateBegin').ValueS:= DateToStr(DateBegin);
+  so1.Param('DateEnd').ValueS:= DateToStr(DateEnd);
+  so1.AddProc(_pass1);
+  proc:= tst1(_pass1);
+  dw1:= DWORD(@proc);
+  proc:= TStackProc(Pointer(dw1)^);
+  proc(nil);
+
+  so2:= ManageStack.Stack('pass1').NewObject(cls_lo_templates.FindClassByName('stack_objects_params').FindClassByName('pass1_params'));
+
+  LoadTickets(so1);
 end;
 
 procedure TLogisticOne.SetOnEndOperProgress(const Value: TOnOperProgress);
@@ -327,17 +337,9 @@ begin
   Pass;
 end;
 
-procedure TLogisticOne._pass_geo(option: TPassGeoOption);
+procedure TLogisticOne._pass1(so:TSO);
 begin
-  ati_service.GetTickOption:= GetTickOptionDefault;
-  if WorkMode = wmPoint then
-  begin
-    ati_service.GetTickOption.FromGeo:= option.Geo;
-    if option.Geo = FromGeo then
-      ati_service.GetTickOption.FromRadius:= from_radius1
-    else
-      ati_service.GetTickOption.FromRadius:= from_radius2;
-  end;
+  ShowMessage('ok');
 end;
 
 end.

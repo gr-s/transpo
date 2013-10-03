@@ -24,6 +24,8 @@ var
 
 implementation
 
+uses DateUtils;
+
 {$R *.dfm}
 
 { TCalendarWizard }
@@ -32,6 +34,8 @@ function TCalendarWizard.Execute(x, y: Integer): Integer;
 begin
   Left:= x;
   Top:= y;
+  if YearOf(MonthCalendar1.Date) < 2000 then
+    MonthCalendar1.Date:= Now;
   Result:= ShowModal;
   Self.Result:= MonthCalendar1.Date;
 end;

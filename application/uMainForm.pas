@@ -318,6 +318,12 @@ type
     SpTBXEdit27: TSpTBXEdit;
     SpTBXLabel87: TSpTBXLabel;
     SpTBXEdit28: TSpTBXEdit;
+    SpTBXLabel88: TSpTBXLabel;
+    SpTBXEdit29: TSpTBXEdit;
+    SpTBXButton77: TSpTBXButton;
+    SpTBXLabel89: TSpTBXLabel;
+    SpTBXEdit30: TSpTBXEdit;
+    SpTBXButton78: TSpTBXButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -442,6 +448,8 @@ type
     procedure SpTBXButton74Click(Sender: TObject);
     procedure SpTBXButton75Click(Sender: TObject);
     procedure SpTBXButton76Click(Sender: TObject);
+    procedure SpTBXButton77Click(Sender: TObject);
+    procedure SpTBXButton78Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -500,6 +508,7 @@ type
 
     procedure ATIGetTickets(FromGeoIndex, ToGeoIndex:Integer);
     procedure UpdateATI_f_Params;
+    procedure UpdateLogisticOne_f_Params;
 
     function  IsCashed(aClass:TFMClass):Boolean;
     function  GetForecast(aClass:TFMClass):Integer;
@@ -3132,6 +3141,7 @@ begin
   TblUpdateStdItemsTable(tblCreditTypes,cls_templates.FindClassByName('credit_types'));
   TblUpdateNotes(tblNotes,cls_notes.FindClassByName('items'));
   UpdateATI_f_Params;
+  UpdateLogisticOne_f_Params;
 
 
   ati_service:= TATI.Create(Self);
@@ -3252,6 +3262,7 @@ end;
 procedure TMainForm.SpTBXButton75Click(Sender: TObject);
 var i:Integer;
     f1:Single;
+    dt:TDateTime;
 begin
   logisticone.stopped:= False;
 
@@ -3263,27 +3274,56 @@ begin
   logisticone.WorkMode:= logistic_one.TWorkMode(SpTBXComboBox1.ItemIndex);
 
   logisticone.FromGeo:= SpTBXEdit23.Text;
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromGeo').ValueS:= logisticone.FromGeo;
+
   logisticone.ToGeo:= SpTBXEdit24.Text;
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('ToGeo').ValueS:= logisticone.ToGeo;
 
   if TryStrToFloat(SpTBXEdit25.Text,f1) then
     logisticone.Weight:= f1
   else
     logisticone.Weight:= 0;
 
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('WeightEnd').ValueI:= Round(logisticone.Weight);
+
   if TryStrToFloat(SpTBXEdit26.Text,f1) then
     logisticone.Volume:= f1
   else
     logisticone.Volume:= 0;
+
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('VolumeEnd').ValueI:= Round(logisticone.Volume);
 
   if TryStrToInt(SpTBXEdit27.Text,i) then
     logisticone.from_radius1:= i
   else
     logisticone.from_radius1:= 200;
 
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius1').ValueI:= logisticone.from_radius1;
+
   if TryStrToInt(SpTBXEdit28.Text,i) then
     logisticone.from_radius2:= i
   else
     logisticone.from_radius2:= 100;
+
+  app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius2').ValueI:= logisticone.from_radius2;
+
+  if TryStrToDate(SpTBXEdit29.Text,dt) then
+  begin
+    logisticone.DateBegin:= dt;
+    app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateBegin').ValueS:= SpTBXEdit29.Text;
+  end
+  else
+    logisticone.DateBegin:= 0;
+
+  if TryStrToDate(SpTBXEdit30.Text,dt) then
+  begin
+    logisticone.DateEnd:= dt;
+    app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS:= SpTBXEdit30.Text;
+  end
+  else
+    logisticone.DateEnd:= 0;
+
+  app_sett.Save;
 
   logisticone.Pass;
 end;
@@ -3291,6 +3331,43 @@ end;
 procedure TMainForm.SpTBXButton76Click(Sender: TObject);
 begin
   logisticone.Stop;
+end;
+
+procedure TMainForm.SpTBXButton77Click(Sender: TObject);
+begin
+  if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
+    SpTBXEdit29.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.SpTBXButton78Click(Sender: TObject);
+begin
+  if CalendarWizard.Execute(Mouse.CursorPos.X-CalendarWizard.spMainForm.Width,Mouse.CursorPos.Y-CalendarWizard.spMainForm.Height) = mrOk then
+    SpTBXEdit30.Text:= DateToStr(CalendarWizard.Result);
+end;
+
+procedure TMainForm.UpdateLogisticOne_f_Params;
+begin
+  SpTBXEdit23.Text:= app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromGeo').ValueS;
+
+  SpTBXEdit24.Text:= app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('ToGeo').ValueS;
+
+  if app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('WeightEnd').ValueI > 0 then
+    SpTBXEdit25.Text:= IntToStr(app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('WeightEnd').ValueI);
+
+  if app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('VolumeEnd').ValueI > 0 then
+    SpTBXEdit26.Text:= IntToStr(app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('VolumeEnd').ValueI);
+
+  if app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius1').ValueI >= 0 then
+    SpTBXEdit27.Text:= IntToStr(app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius1').ValueI);
+
+  if app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius2').ValueI >= 0 then
+    SpTBXEdit28.Text:= IntToStr(app_sett.FindClassByName('logistic_one_f_params').FindPropertyByName('FromRadius2').ValueI);
+
+  if Length(app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateBegin').ValueS) > 0 then
+    SpTBXEdit29.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateBegin').ValueS;
+
+  if Length(app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS) > 0 then
+    SpTBXEdit30.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS;
 end;
 
 end.

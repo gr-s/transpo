@@ -28,7 +28,7 @@ object CalendarWizard: TCalendarWizard
       Top = 30
       Width = 183
       Height = 199
-      Date = 41520.845959699070000000
+      Date = 0.774401909722655500
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16

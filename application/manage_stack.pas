@@ -155,10 +155,15 @@ end;
 
 procedure TStack._execute(stack_object: TSO);
 var i:Integer;
+    proc:TStackProc;
+    p:Pointer;
 begin
   for i:= 0 to stack_object.params.FindClassByName('proc').MyClassCount - 1 do
   begin
-    TStackProc(Pointer(stack_object.params.FindClassByName('proc').MyClass[i].FindPropertyByName('entry').ValueW)^)(stack_object);
+    p:= Pointer(stack_object.params.FindClassByName('proc').MyClass[i].FindPropertyByName('entry').ValueW);
+    proc:= TStackProc(p^);
+//    proc:= TStackProc(stack_object.params.FindClassByName('proc').MyClass[i].FindPropertyByName('entry').ValueW^);
+    proc(stack_object);
   end;
 end;
 

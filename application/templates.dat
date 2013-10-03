@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-23.09.2013 17:06:10
+03.10.2013 18:44:21
 /end header
 /begin data
 MyClass TopInstance
@@ -75,6 +75,21 @@ MyClass TopInstance
 							/end public
 						}
 					/end classes
+				}
+				MyClass logistic_one_f_params
+				{
+					/begin private
+					/end private
+					/begin public
+					char FromGeo = /B$&V//E$&V/
+					int FromRadius1 = /B$&V/-1/E$&V/
+					int FromRadius2 = /B$&V/-1/E$&V/
+					char ToGeo = /B$&V//E$&V/
+					int WeightEnd = /B$&V/-1/E$&V/
+					int VolumeEnd = /B$&V/-1/E$&V/
+					char DateBegin = /B$&V//E$&V/
+					char DateEnd = /B$&V//E$&V/
+					/end public
 				}
 			/end classes
 		}
