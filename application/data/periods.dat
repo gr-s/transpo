@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-03.10.2013 18:18:32
+04.10.2013 12:03:32
 /end header
 /begin data
 MyClass periods_file
@@ -626,6 +626,91 @@ MyClass periods_file
 										}
 									/end classes
 								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2052322302372322333220523822622723824023822820722924023625232494451324732503240213232236463223924023822824323424225132237229238239224241237251229324152534848/E$&V/
+									char create_date = /B$&V/04.10.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Нижний Новгород-Пермь /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/4500/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/2052322302372322333220523822622723824023822820722924023625232494451324732503240213232236463223924023822824323424225132237229238239224241237251229324152534848/E$&V/
+													char FromGeo = /B$&V/Нижний Новгород/E$&V/
+													char FromGeoDesc1 = /B$&V/Нижний Новгород 
+3 - 4 окт /E$&V/
+													char ToGeo = /B$&V/Пермь /E$&V/
+													char ToGeoDesc1 = /B$&V/Пермь /E$&V/
+													char Dist = /B$&V/1011 км/E$&V/
+													int DistI = /B$&V/1011/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/1,3 / 2 (Хим. продукты неопасные )/E$&V/
+													char CargoName = /B$&V/Хим. продукты неопасные /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/1,29999995231628/E$&V/
+													float Volume = /B$&V/2/E$&V/
+													char PriceDesc = /B$&V/4500 нал (4,5 р/км) 
+     /E$&V/
+													char Price1 = /B$&V/4500/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/"Инфраструктура", ООО (ID:578027, эксп-перев, Дзержинск) (р11)  /E$&V/
+													char DateDesc = /B$&V/3 - 4 окт /E$&V/
+													char Note = /B$&V/ большие машинки не подойдут/E$&V/
+													char Reliability = /B$&V/Балл надёжности: 2,05. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:683225739, факс: +7(8313)251527 +7(8313)251527, +7(920)0300298, Светлана/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
 							/end classes
 						}
 						MyClass credits
@@ -798,6 +883,21 @@ MyClass periods_file
 									char caption = /B$&V/Ростов-на-Дону-Пермь /E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/1000/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/964822479-5761-17712/E$&V/
+									char create_date = /B$&V/30.09.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/20/E$&V/
+									char type_str = /B$&V/Ремонт/E$&V/
+									char caption = /B$&V/ремонт сцепления + раб цилиндр/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/45000/E$&V/
 									/end public
 								}
 							/end classes

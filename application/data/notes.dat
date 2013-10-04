@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-02.10.2013 15:26:37
+04.10.2013 17:17:02
 /end header
 /begin data
 MyClass notes_file
@@ -203,7 +203,7 @@ Yb2b76D4bc
 							/begin private
 							/end private
 							/begin public
-							MemoBlock text = /B$&V/vatutina 82
+							MemoBlock text = /B$&V/+79200251222 елена дзержинск грузовладелец
 /E$&V/
 							/end public
 						}
@@ -238,13 +238,13 @@ Yb2b76D4bc
 серия 5214
 номер 749410
 
+машина: Iveco
 ном. машины: А814ОЕ152
 
 код ati: 657 126
 
-карта сбербанка:
-5469420011575779
-Григорьев Александр Игоревич
+тел. (водитель) +79108924461 Максим
+тел. (диспетчер) +79202524267 Сергей
 /E$&V/
 							/end public
 						}
@@ -263,7 +263,27 @@ Yb2b76D4bc
 							/begin private
 							/end private
 							/begin public
-							MemoBlock text = /B$&V/01.10 ростов  9500
+							MemoBlock text = /B$&V/01.10 ростов  6500
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/02.10 елец 4000
+наличка 16000
+20000
+/E$&V/
+							/end public
+						}
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/04.10 нижний 11000
 /E$&V/
 							/end public
 						}
