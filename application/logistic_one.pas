@@ -260,10 +260,8 @@ begin
 end;
 
 procedure TLogisticOne.Pass;
-type tst1 = ^TStackProc;
 var so1,so2:TSO;
     dw1:DWORD;
-    proc: tst1;
 begin
   if Length(FromGeo) > 0 then
   begin
@@ -305,10 +303,6 @@ begin
   so1.Param('DateBegin').ValueS:= DateToStr(DateBegin);
   so1.Param('DateEnd').ValueS:= DateToStr(DateEnd);
   so1.AddProc(_pass1);
-  proc:= tst1(_pass1);
-  dw1:= DWORD(@proc);
-  proc:= TStackProc(Pointer(dw1)^);
-  proc(nil);
 
   so2:= ManageStack.Stack('pass1').NewObject(cls_lo_templates.FindClassByName('stack_objects_params').FindClassByName('pass1_params'));
 

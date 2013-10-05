@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.10.2013 17:52:36
+05.10.2013 19:28:27
 /end header
 /begin data
 MyClass data_file
@@ -220,7 +220,7 @@ MyClass data_file
 							char Date = /B$&V/07.10.2013/E$&V/
 							int _sel_col = /B$&V/2/E$&V/
 							int _sel_row = /B$&V/0/E$&V/
-							char _sel_session = /B$&V/1410855952-40084-20404/E$&V/
+							char _sel_session = /B$&V/3403450297-41766-20076/E$&V/
 							/end public
 							/begin classes
 								MyClass items

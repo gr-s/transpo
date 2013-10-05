@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls, IdCoderHeader;
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls, IdCoderHeader, idCharSets;
 
 type
   
@@ -3206,7 +3206,7 @@ begin
 
   if not ShortView then
   begin
-    Result:= cls_active_ticket.FindPropertyByName('DateDesc').ValueS + ' ' + cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
+    Result:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
              ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
              '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS +
              '  (' + cls_active_ticket.FindPropertyByName('ControllerInfo').ValueS + ')';
@@ -3255,8 +3255,9 @@ end;
 
 procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
 begin
-  VHeaderEncoding:='B';
-  VCharSet:='windows-1251';
+  VHeaderEncoding := 'B';
+  //VCharSet:='windows-1251';
+  VCharSet := IdCharsetNames[ idcs_UTF_8 ];
 end;
 
 procedure TMainForm.SpTBXButton75Click(Sender: TObject);
