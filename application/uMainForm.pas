@@ -3257,7 +3257,7 @@ procedure TMainForm.DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharS
 begin
   VHeaderEncoding := 'B';
   //VCharSet:='windows-1251';
-  VCharSet := IdCharsetNames[ idcs_UTF_8 ];
+  VCharSet := 'idcs_UTF_8';//IdCharsetNames[idcs_UTF_8];
 end;
 
 procedure TMainForm.SpTBXButton75Click(Sender: TObject);

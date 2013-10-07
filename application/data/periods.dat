@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.10.2013 12:03:32
+07.10.2013 19:07:04
 /end header
 /begin data
 MyClass periods_file
@@ -369,7 +369,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/21522423323423822624123423223320823824124223822645237224451962382372433252324732505632402482262292332372512293223223122822923523225532415055484848/E$&V/
 									char create_date = /B$&V/19.09.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Чайковский-Ростов-на-Дону /E$&V/
@@ -817,7 +817,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/4235024234-35690-17456/E$&V/
 									char create_date = /B$&V/19.09.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/30/E$&V/
 									char type_str = /B$&V/Комиссия ИП/E$&V/
 									char caption = /B$&V/Чайковский-Ростов-на-Дону /E$&V/
