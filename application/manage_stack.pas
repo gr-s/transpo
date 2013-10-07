@@ -9,7 +9,20 @@ type
   TSO = class;
 
   TStackProc = procedure (so:TSO) of object;
-  
+
+  TStackProcWrap = class(TComponent)
+  private
+
+  protected
+
+
+  public
+    StackProc:TStackProc;
+
+    constructor Create(AOwner: TComponent);
+    destructor Destroy;override;
+  end;
+
   TSO = class(TComponent)
   private
 
@@ -18,6 +31,7 @@ type
 
   public
     params:TFMClass;
+    _procs:TObjectList;
 
     constructor Create(AOwner: TComponent; aTemplate:TFMClass);
     destructor Destroy;override;
@@ -155,25 +169,23 @@ end;
 
 procedure TStack._execute(stack_object: TSO);
 var i:Integer;
-    proc:TStackProc;
-    p:Pointer;
+    proc:TStackProcWrap;
 begin
-  for i:= 0 to stack_object.params.FindClassByName('proc').MyClassCount - 1 do
+  for i:= 0 to stack_object._procs.Count - 1 do
   begin
-    p:= Pointer(stack_object.params.FindClassByName('proc').MyClass[i].FindPropertyByName('entry').ValueW);
-    proc:= TStackProc(p^);
-//    proc:= TStackProc(stack_object.params.FindClassByName('proc').MyClass[i].FindPropertyByName('entry').ValueW^);
-    proc(stack_object);
+    proc:= TStackProcWrap(stack_object._procs.Items[i]);
+    proc.StackProc(stack_object);
   end;
 end;
 
 { TSO }
 
 procedure TSO.AddProc(proc: TStackProc);
-var cls1:TFMClass;
+var StackProcWrap:TStackProcWrap;
 begin
-  cls1:= params.FindClassByName('proc').CreateClassItem('','');
-  cls1.CreateClassPropertyItem('entry',ptDWord,'0').ValueW:= DWORD(@proc);
+  StackProcWrap:= TStackProcWrap.Create(nil);
+  StackProcWrap.StackProc:= proc;
+  _procs.Add(StackProcWrap);
 end;
 
 constructor TSO.Create(AOwner: TComponent; aTemplate:TFMClass);
@@ -181,7 +193,7 @@ begin
   inherited Create(AOwner);
 
   params:= TFMClass.Create(nil);
-  params.CreateClassItem('proc','');
+  _procs:= TObjectList.Create;
 
   if Assigned(aTemplate) then
     ParamsUpdate(aTemplate);
@@ -189,7 +201,7 @@ end;
 
 procedure TSO.DelProc(aIndex: Integer);
 begin
-  params.FindClassByName('proc').DeleteClassItem(params.FindClassByName('proc').MyClass[aIndex]);
+  _procs.Delete(aIndex);
 end;
 
 destructor TSO.Destroy;
@@ -206,6 +218,20 @@ end;
 procedure TSO.ParamsUpdate(aTemplate: TFMClass);
 begin
   aTemplate.CopyClass(params,aTemplate,False,True);
+end;
+
+{ TStackProcWrap }
+
+constructor TStackProcWrap.Create(AOwner: TComponent);
+begin
+  inherited;
+  StackProc:= nil;  
+end;
+
+destructor TStackProcWrap.Destroy;
+begin
+
+  inherited;
 end;
 
 end.
