@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-03.10.2013 18:44:21
+08.10.2013 18:20:29
 /end header
 /begin data
 MyClass TopInstance
@@ -92,6 +92,17 @@ MyClass TopInstance
 					/end public
 				}
 			/end classes
+		}
+		MyClass app_params
+		{
+			/begin private
+			/end private
+			/begin public
+			float truck_fuel_cons = /B$&V/18/E$&V/
+			float fuel_price = /B$&V/30/E$&V/
+			float day_range = /B$&V/600/E$&V/
+			float day_credits = /B$&V/500/E$&V/
+			/end public
 		}
 		MyClass ticket
 		{

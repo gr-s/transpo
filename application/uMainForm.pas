@@ -130,7 +130,6 @@ type
     SpTBXTabSheet7: TSpTBXTabSheet;
     SpTBXPanel16: TSpTBXPanel;
     SpTBXButton30: TSpTBXButton;
-    SpTBXLabel36: TSpTBXLabel;
     Memo1: TMemo;
     Memo2: TMemo;
     Memo3: TMemo;
@@ -324,6 +323,8 @@ type
     SpTBXLabel89: TSpTBXLabel;
     SpTBXEdit30: TSpTBXEdit;
     SpTBXButton78: TSpTBXButton;
+    Memo13: TMemo;
+    SpTBXCheckBox5: TSpTBXCheckBox;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -450,6 +451,7 @@ type
     procedure SpTBXButton76Click(Sender: TObject);
     procedure SpTBXButton77Click(Sender: TObject);
     procedure SpTBXButton78Click(Sender: TObject);
+    procedure Memo13Change(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -555,6 +557,7 @@ end;
 destructor TMainForm.Destroy;
 begin
   app_sett.Save;
+  cls_params.Save;
   inherited;
 end;
 
@@ -1244,7 +1247,7 @@ procedure TMainForm.TblUpdateTickets(aTable: TRRAdvTable;
 var i,n,k,k1,j:Integer;
     sel_cell:TRRCell;
     cls1,cls2:TFMClass;
-    b:Boolean;
+    b,b1:Boolean;
     ds:Char;
     s1,s2:String;
     buff,buff2: TStringList;
@@ -1289,10 +1292,17 @@ begin
         begin
           if TFMClass(buff.Objects[0]).FindPropertyByName('DistI').ValueI > 0 then
           begin
-            _tarif1:= StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) / TFMClass(buff.Objects[0]).FindPropertyByName('DistI').ValueI;
-            _tarif2:= StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) / TFMClass(buff2.Objects[n]).FindPropertyByName('DistI').ValueI;
-            //if StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) > StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) then
-            if _tarif1 > _tarif2 then
+            if SpTBXCheckBox5.Checked then
+            begin
+              _tarif1:= StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) / TFMClass(buff.Objects[0]).FindPropertyByName('DistI').ValueI;
+              _tarif2:= StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS) / TFMClass(buff2.Objects[n]).FindPropertyByName('DistI').ValueI;
+              b1:= _tarif1 > _tarif2;
+            end
+            else
+            begin
+              b1:= StrToFloat(TFMClass(buff.Objects[0]).FindPropertyByName('Price1').ValueS) > StrToFloat(TFMClass(buff2.Objects[n]).FindPropertyByName('Price1').ValueS);
+            end;
+            if b1 then
             begin
               buff2.InsertObject(n,'',buff.Objects[0]);
               TFMClass(buff.Objects[0]).Tag:= 10;
@@ -1482,6 +1492,8 @@ procedure TMainForm.TblCheckWVolume(aTable: TRRAdvTable);
 var f1,f2,f3,f4,f5:Single;
     i,_price,max_dist:Integer;
     ds:Char;
+    dpp:TDebitPrognosParams;
+    count_days:Single;
 begin
   f1:= 0; f2:= 0; f3:= 0; f5:= 0;
   ds:= DecimalSeparator;
@@ -1508,7 +1520,9 @@ begin
     Inc(i,2);
   end;
 
-  f5:= f5 + ((max_dist/100) * 17 * 30);
+  dpp.distance:= max_dist;
+  count_days:= max_dist/cls_params.FindPropertyByName('day_range').ValueF;
+  f5:= f5 + CalcDebitPrognosis(dpp);
 
   if aTable = tblFindedTickets then
   begin
@@ -1516,7 +1530,7 @@ begin
     SpTBXLabel17.Caption:= DelSymb(SpTBXLabel17.Caption,'.0');
     SpTBXLabel19.Caption:= FloatToStrF(f2,fffixed,10,1) + ' μ3';
     SpTBXLabel19.Caption:= DelSymb(SpTBXLabel19.Caption,'.0');
-    SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
+    SpTBXLabel21.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π' + ' (' + IntToStr(Round(count_days)) + ' δνει)';
     SpTBXLabel44.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
     if max_dist > 0 then
       SpTBXLabel85.Caption:= FloatToStrF((f3)/max_dist,fffixed,10,1) + ' π/κμ'
@@ -1530,7 +1544,7 @@ begin
     SpTBXLabel28.Caption:= DelSymb(SpTBXLabel28.Caption,'.0');
     SpTBXLabel30.Caption:= FloatToStrF(f2,fffixed,10,1) + ' μ3';
     SpTBXLabel30.Caption:= DelSymb(SpTBXLabel30.Caption,'.0');
-    SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π';
+    SpTBXLabel32.Caption:= FloatToStrF(f3,fffixed,10,0) + ' π' + ' (' + IntToStr(Round(count_days)) + ' δνει)';
     SpTBXLabel46.Caption:= FloatToStrF(f3-f5,fffixed,10,0) + ' π';
     if max_dist > 0 then
       SpTBXLabel84.Caption:= FloatToStrF((f3)/max_dist,fffixed,10,1) + ' π/κμ'
@@ -1763,7 +1777,10 @@ begin
 
   cls_templates.CopyClass(aClass,cls_templates.FindClassByName('ticket'),False,True);
 
-  SpTBXLabel36.Caption:= aClass.FindPropertyByName('Dist').ValueS;
+  if aClass.FindPropertyByName('DistI').ValueI > 0 then
+    Memo13.Text:= IntToStr(aClass.FindPropertyByName('DistI').ValueI) + ' κμ'
+  else
+    Memo13.Text:= '--';
   s:= '';
   for n:= 1 to 2 do
   begin
@@ -1774,7 +1791,7 @@ begin
       if n = 1 then
         if aClass.FindPropertyByName('Weight').ValueF > 0 then
           f1:= aClass.FindPropertyByName('Weight').ValueF/5;
-      i1:= Round(((aClass.FindPropertyByName('DistI').ValueI/100) * 17 * 30)*(f1));
+      i1:= Round(((aClass.FindPropertyByName('DistI').ValueI/100) * cls_params.FindPropertyByName('truck_fuel_cons').ValueF * 30)*(f1));
     end;
     if TryStrToInt(aClass.FindPropertyByName('Price1').ValueS,_price) then
     begin
@@ -3059,6 +3076,12 @@ begin
   cls1:= cls_templates.FindClassByName('notes_file');
   cls1.CopyClass(cls_notes,cls1,False,True);
 
+  cls_params:= TFMClass.Create(Self);
+  cls_params.FileName:= AppDir + 'data\params.dat';
+  cls_params.Open;
+  cls_params.FileType:= ftFullText;
+  cls_templates.CopyClass(cls_params,cls_templates.FindClassByName('app_params'),False,True);
+
   ToggleOperation(op_none);
 
   tblATIFromGeo.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\geos.tbl';
@@ -3369,6 +3392,14 @@ begin
 
   if Length(app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS) > 0 then
     SpTBXEdit30.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS;
+end;
+
+procedure TMainForm.Memo13Change(Sender: TObject);
+var i:Integer;
+begin
+  if TryStrToInt(Memo13.Text,i) then
+    cls_active_ticket.FindPropertyByName('DistI').ValueI:= i;
+  cls_data.Save;
 end;
 
 end.

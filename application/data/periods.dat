@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-07.10.2013 19:07:04
+08.10.2013 17:24:51
 /end header
 /begin data
 MyClass periods_file
@@ -219,7 +219,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/1962312292402302322372412342092382352322342242362412343248445153324732493240210205207324153484848/E$&V/
 									char create_date = /B$&V/12.09.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Дзержинск-Соликамск /E$&V/
@@ -458,7 +458,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2082382412422382264523722445196238237243207229240236252324844523247324532402062252382402432282382262242372322293223232231224239247224241242232324132402392242354424824246493241231224239240238241/E$&V/
 									char create_date = /B$&V/01.10.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Ростов-на-Дону-Пермь /E$&V/
@@ -543,7 +543,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/19723522924619723422424222924023223722524324022732504452324732505332402102052073241324023423824023822523423232415148484848/E$&V/
 									char create_date = /B$&V/03.10.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Елец-Екатеринбург /E$&V/
@@ -633,7 +633,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2052322302372322333220523822622723824023822820722924023625232494451324732503240213232236463223924023822824323424225132237229238239224241237251229324152534848/E$&V/
 									char create_date = /B$&V/04.10.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Нижний Новгород-Пермь /E$&V/
@@ -711,6 +711,92 @@ MyClass periods_file
 										}
 									/end classes
 								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1972342242422292402322372252432402272062402292372252432402273250444932473245324020924224023823323622424222924023222423525132413240196442365850445132234238240238225234232324155484848/E$&V/
+									char create_date = /B$&V/08.10.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екатеринбург-Оренбург /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/7000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/1972342242422292402322372252432402272062402292372252432402273250444932473245324020924224023823323622424222924023222423525132413240196442365850445132234238240238225234232324155484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург 
+7 - 9 окт /E$&V/
+													char ToGeo = /B$&V/Оренбург /E$&V/
+													char ToGeoDesc1 = /B$&V/Оренбург /E$&V/
+													char Dist = /B$&V/851 км/E$&V/
+													int DistI = /B$&V/851/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/2,1 / - (Стройматериалы ) (Д,м:2,3 коробки )/E$&V/
+													char CargoName = /B$&V/Стройматериалы /E$&V/
+													char CargoNote = /B$&V/Д,м:2,3 коробки /E$&V/
+													float Weight = /B$&V/2,09999990463257/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/7000 нал (8,2 р/км) 
+на выгр. 
+     /E$&V/
+													char Price1 = /B$&V/7000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Ивина Т.Ю. ИП (ID:387274, эксп., Екатеринбург) (р19)  /E$&V/
+													char DateDesc = /B$&V/7 - 9 окт /E$&V/
+													char Note = /B$&V/ по полу груз займет 2,3 метра/E$&V/
+													char Reliability = /B$&V/Балл надёжности: 4,00. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:644910473, факс: +7(343)2588161 +7(343)2667520, +7(905)8067520, Татьяна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
 							/end classes
 						}
 						MyClass credits
@@ -757,7 +843,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/100206003-25298-18619/E$&V/
 									char create_date = /B$&V/13.09.2013/E$&V/
-									bool enabled = /B$&V/True/E$&V/
+									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/20/E$&V/
 									char type_str = /B$&V/Ремонт/E$&V/
 									char caption = /B$&V/Э/м клапан для тормозов (в Казани)/E$&V/
@@ -877,7 +963,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/496771604-49127-16883/E$&V/
 									char create_date = /B$&V/01.10.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/30/E$&V/
 									char type_str = /B$&V/Комиссия ИП/E$&V/
 									char caption = /B$&V/Ростов-на-Дону-Пермь /E$&V/
@@ -892,12 +978,42 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/964822479-5761-17712/E$&V/
 									char create_date = /B$&V/30.09.2013/E$&V/
-									bool enabled = /B$&V/True/E$&V/
+									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/20/E$&V/
 									char type_str = /B$&V/Ремонт/E$&V/
 									char caption = /B$&V/ремонт сцепления + раб цилиндр/E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/45000/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1741667814-4016-18988/E$&V/
+									char create_date = /B$&V/08.10.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/30/E$&V/
+									char type_str = /B$&V/Комиссия ИП/E$&V/
+									char caption = /B$&V/Екатеринбург-Оренбург /E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/700/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2727787875-30923-19820/E$&V/
+									char create_date = /B$&V/29.08.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Рейсовые расходы/E$&V/
+									char caption = /B$&V/Ижевск - Ков - Ростов/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/14000/E$&V/
 									/end public
 								}
 							/end classes

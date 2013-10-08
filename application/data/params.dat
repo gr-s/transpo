@@ -1,0 +1,18 @@
+fmod
+/begin header
+1.1
+08.10.2013 20:54:39
+/end header
+/begin data
+MyClass app_params
+{
+	/begin private
+	/end private
+	/begin public
+	float truck_fuel_cons = /B$&V/18/E$&V/
+	float fuel_price = /B$&V/31,5/E$&V/
+	float day_range = /B$&V/600/E$&V/
+	float day_credits = /B$&V/550/E$&V/
+	/end public
+}
+/end data
