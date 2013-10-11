@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.10.2013 17:17:02
+09.10.2013 14:05:52
 /end header
 /begin data
 MyClass notes_file
@@ -284,6 +284,28 @@ Yb2b76D4bc
 							/end private
 							/begin public
 							MemoBlock text = /B$&V/04.10 нижний 11000
+/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass note_block
+				{
+					/begin private
+					/end private
+					/begin public
+					char caption = /B$&V/мои расходы/E$&V/
+					/end public
+					/begin classes
+						MyClass note_item
+						{
+							/begin private
+							/end private
+							/begin public
+							MemoBlock text = /B$&V/карта 30 000
+проценты 2000
+ати 2000
+на ремонт рессоры 2000
 /E$&V/
 							/end public
 						}

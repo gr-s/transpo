@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.10.2013 17:24:51
+09.10.2013 14:08:07
 /end header
 /begin data
 MyClass periods_file
@@ -849,21 +849,6 @@ MyClass periods_file
 									char caption = /B$&V/Э/м клапан для тормозов (в Казани)/E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/9000/E$&V/
-									/end public
-								}
-								MyClass credit
-								{
-									/begin private
-									/end private
-									/begin public
-									char guid = /B$&V/1384800875-31566-17564/E$&V/
-									char create_date = /B$&V/17.09.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
-									int type = /B$&V/70/E$&V/
-									char type_str = /B$&V/Другое/E$&V/
-									char caption = /B$&V/ati.su/E$&V/
-									MemoBlock comments = /B$&V/акт гр-с платил/E$&V/
-									int value = /B$&V/1050/E$&V/
 									/end public
 								}
 								MyClass credit
