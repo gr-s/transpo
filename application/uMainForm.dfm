@@ -458,7 +458,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -631,7 +630,6 @@ object MainForm: TMainForm
               Options.MultiSelecting = False
               Options.ChessPaintMode = True
               Options.ChessPaintModeIncludeImageCell = True
-              Options.ForceNullSelecting = True
               TestDraw = False
               MinCellHeight = 16
               MinCellWidth = 5
@@ -870,7 +868,6 @@ object MainForm: TMainForm
               Options.MultiSelecting = False
               Options.ChessPaintMode = True
               Options.ChessPaintModeIncludeImageCell = True
-              Options.ForceNullSelecting = True
               TestDraw = False
               MinCellHeight = 16
               MinCellWidth = 5
@@ -1059,7 +1056,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -1338,7 +1334,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -1591,7 +1586,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -1832,7 +1826,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2018,7 +2011,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2282,7 +2274,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2468,7 +2459,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2817,7 +2807,6 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
-            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -3006,7 +2995,6 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
-            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -3441,7 +3429,6 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = True
             Options.ChessPaintModeIncludeImageCell = True
-            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -3931,7 +3918,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -4238,7 +4224,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -4625,7 +4610,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -5142,7 +5126,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -5285,7 +5268,6 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
-          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5

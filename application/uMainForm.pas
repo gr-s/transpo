@@ -1498,7 +1498,7 @@ begin
   f1:= 0; f2:= 0; f3:= 0; f5:= 0;
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
-
+  
   i:= 0; max_dist:= 0;
   while i <= aTable.RowCount-1 do
   begin
