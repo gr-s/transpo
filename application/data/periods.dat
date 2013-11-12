@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-09.10.2013 14:08:07
+14.10.2013 23:48:50
 /end header
 /begin data
 MyClass periods_file
@@ -787,6 +787,94 @@ MyClass periods_file
 																	/end private
 																	/begin public
 																	char Str1 = /B$&V/ICQ#:644910473, факс: +7(343)2588161 +7(343)2667520, +7(905)8067520, Татьяна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/209224236224240224192240231224236224241324844523247324956324020224323424324024323123725122932239224235238247234232324152534848/E$&V/
+									char create_date = /B$&V/14.10.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Самара-НН-Урень/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/8500/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/209224236224240224192240231224236224241324844523247324956324020224323424324024323123725122932239224235238247234232324152534848/E$&V/
+													char FromGeo = /B$&V/Самара/E$&V/
+													char FromGeoDesc1 = /B$&V/Самара 
+готов /E$&V/
+													char ToGeo = /B$&V/Арзамас /E$&V/
+													char ToGeoDesc1 = /B$&V/Арзамас 
+Нижегородская область 
+114 км от Нижний Новгород /E$&V/
+													char Dist = /B$&V/666 км/E$&V/
+													int DistI = /B$&V/666/E$&V/
+													char TruckType = /B$&V/тент. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/0,4 / 18 (Кукурузные палочки )/E$&V/
+													char CargoName = /B$&V/Кукурузные палочки /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/0,400000005960464/E$&V/
+													float Volume = /B$&V/18/E$&V/
+													char PriceDesc = /B$&V/4500 нал (6,8 р/км) 
+предопл. прям.дог. 
+     /E$&V/
+													char Price1 = /B$&V/8500/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Вариант-Транс, ООО (ID:207492, эксп., Самара) (р85, нп2)  /E$&V/
+													char DateDesc = /B$&V/готов /E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл надёжности: 4,70. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:99360432, факс: +7(846)3021501 +7(846)3021501, +7(927)6925961, Виктория/E$&V/
 																	/end public
 																}
 															/end classes
