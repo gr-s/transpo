@@ -138,7 +138,7 @@ type
     procedure DoCloseProject;
 
     function AddTreeViewItem(cls_tree_object:TFMClass; ParentNode:TTreeNode):TTreeNode;
-    function AddTreeObject(cls_book_tree_object:TFMClass):TFMClass;
+    function AddTreeObject(cls_book_link_tree_object:TFMClass):TFMClass;
     function  GetTreeObject(guid:string):TFMClass;
   end;
 
@@ -297,6 +297,10 @@ begin
   if not CloseFile then Exit;
   ProjectDir:= ExtractFilePath(aFileName);
   ProjectFileName:= ExtractFileName(aFileName);
+  cls_project:= TFMClass.Create(Self);
+  cls_project.FileName:= ProjectFullFileName;
+  cls_project.Open;
+  cls_templates.CopyClass(cls_project,cls_templates.FindClassByName('project_file'),False,True);
   Empty:= False; 
   Modified:= False;
   UpdateCaption;
@@ -627,8 +631,8 @@ begin
    AddTreeObject(TFMClass(TSpTBXItem(Sender).VCLComObject));
 end;
 
-function TMainForm.AddTreeObject(cls_book_tree_object: TFMClass): TFMClass;
-var cls1:TFMClass;
+function TMainForm.AddTreeObject(cls_book_link_tree_object: TFMClass): TFMClass;
+var cls1,cls2:TFMClass;
 begin
   if not Assigned(ActiveNode) then
   begin
@@ -638,11 +642,13 @@ begin
   begin
     cls1:= ActiveNode;
   end;
-  Result:= TFMClass.Create(Self);
+  Result:= cls1.CreateClassItem('','');
   cls_templates.CopyClass(Result,cls_templates.FindClassByName('tree_object'),False,True);
-  Result.FindPropertyByName('guid').ValueS:= cls_book_tree_object.FindPropertyByName('guid').ValueS;
-  Result.FindPropertyByName('caption').ValueS:= cls_book_tree_object.FindPropertyByName('caption').ValueS; 
+  cls2:= GetTreeObject(cls_book_link_tree_object.FindPropertyByName('guid').ValueS);
+  Result.FindPropertyByName('guid').ValueS:= cls2.FindPropertyByName('guid').ValueS;
+  Result.FindPropertyByName('caption').ValueS:= cls2.FindPropertyByName('caption').ValueS; 
   AddTreeViewItem(Result,TreeView1.Selected);
+  Modified:= True;
 end;
 
 function TMainForm.AddTreeViewItem(cls_tree_object: TFMClass; ParentNode:TTreeNode): TTreeNode;
