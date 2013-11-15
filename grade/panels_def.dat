@@ -1,0 +1,260 @@
+fmod
+/begin header
+1.1
+15.11.2013 17:18:04
+/end header
+/begin data
+MyClass app_sett
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass MultiDockPanelSaver
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass Default
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass Panels
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass SpTBXDockablePanel2
+								{
+									/begin private
+									/end private
+									/begin public
+									int Left = /B$&V/0/E$&V/
+									int Top = /B$&V/0/E$&V/
+									int Width = /B$&V/239/E$&V/
+									int Height = /B$&V/930/E$&V/
+									bool Visible = /B$&V/True/E$&V/
+									char DockName = /B$&V/SpTBXMultiDock3/E$&V/
+									int DockPos = /B$&V/0/E$&V/
+									/end public
+								}
+								MyClass SpTBXDockablePanel4
+								{
+									/begin private
+									/end private
+									/begin public
+									int Left = /B$&V/0/E$&V/
+									int Top = /B$&V/0/E$&V/
+									int Width = /B$&V/617/E$&V/
+									int Height = /B$&V/361/E$&V/
+									bool Visible = /B$&V/True/E$&V/
+									char DockName = /B$&V//E$&V/
+									/end public
+								}
+							/end classes
+						}
+						MyClass Docks
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass SpTBXMultiDock3
+								{
+									/begin private
+									/end private
+									/begin public
+									int Width = /B$&V/239/E$&V/
+									int Tag = /B$&V/0/E$&V/
+									/end public
+								}
+							/end classes
+						}
+						MyClass ToolBars
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass SpTBXToolbar1
+								{
+									/begin private
+									/end private
+									/begin public
+									int Left = /B$&V/0/E$&V/
+									int Top = /B$&V/25/E$&V/
+									int Width = /B$&V/108/E$&V/
+									int Height = /B$&V/26/E$&V/
+									int FloatLeft = /B$&V/0/E$&V/
+									int FloatTop = /B$&V/0/E$&V/
+									int UndockWidth = /B$&V/0/E$&V/
+									int UndockHeight = /B$&V/26/E$&V/
+									char DockName = /B$&V/SpTBXDock1/E$&V/
+									int DockPos = /B$&V/-1/E$&V/
+									int DockRow = /B$&V/1/E$&V/
+									/end public
+								}
+								MyClass SpTBXToolbar2
+								{
+									/begin private
+									/end private
+									/begin public
+									int Left = /B$&V/0/E$&V/
+									int Top = /B$&V/0/E$&V/
+									int Width = /B$&V/79/E$&V/
+									int Height = /B$&V/25/E$&V/
+									int FloatLeft = /B$&V/0/E$&V/
+									int FloatTop = /B$&V/0/E$&V/
+									int UndockWidth = /B$&V/0/E$&V/
+									int UndockHeight = /B$&V/25/E$&V/
+									char DockName = /B$&V/SpTBXDock1/E$&V/
+									int DockPos = /B$&V/0/E$&V/
+									int DockRow = /B$&V/0/E$&V/
+									/end public
+								}
+							/end classes
+						}
+						MyClass WinControls
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+						MyClass Params
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+					/end classes
+				}
+				MyClass Panels
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass SpTBXDockablePanel2
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/-118/E$&V/
+							int Top = /B$&V/59/E$&V/
+							int Width = /B$&V/242/E$&V/
+							int Height = /B$&V/929/E$&V/
+							bool Visible = /B$&V/True/E$&V/
+							char DockName = /B$&V/SpTBXMultiDock3/E$&V/
+							int DockPos = /B$&V/0/E$&V/
+							/end public
+						}
+						MyClass SpTBXDockablePanel4
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/279/E$&V/
+							int Top = /B$&V/86/E$&V/
+							int Width = /B$&V/648/E$&V/
+							int Height = /B$&V/343/E$&V/
+							bool Visible = /B$&V/True/E$&V/
+							char DockName = /B$&V//E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass Docks
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass SpTBXMultiDock3
+						{
+							/begin private
+							/end private
+							/begin public
+							int Width = /B$&V/242/E$&V/
+							int Tag = /B$&V/0/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass ToolBars
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass SpTBXToolbar1
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/0/E$&V/
+							int Top = /B$&V/25/E$&V/
+							int Width = /B$&V/108/E$&V/
+							int Height = /B$&V/26/E$&V/
+							int FloatLeft = /B$&V/0/E$&V/
+							int FloatTop = /B$&V/0/E$&V/
+							int UndockWidth = /B$&V/0/E$&V/
+							int UndockHeight = /B$&V/26/E$&V/
+							char DockName = /B$&V/SpTBXDock1/E$&V/
+							int DockPos = /B$&V/-1/E$&V/
+							int DockRow = /B$&V/1/E$&V/
+							/end public
+						}
+						MyClass SpTBXToolbar2
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/0/E$&V/
+							int Top = /B$&V/0/E$&V/
+							int Width = /B$&V/79/E$&V/
+							int Height = /B$&V/25/E$&V/
+							int FloatLeft = /B$&V/0/E$&V/
+							int FloatTop = /B$&V/0/E$&V/
+							int UndockWidth = /B$&V/0/E$&V/
+							int UndockHeight = /B$&V/25/E$&V/
+							char DockName = /B$&V/SpTBXDock1/E$&V/
+							int DockPos = /B$&V/0/E$&V/
+							int DockRow = /B$&V/0/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass WinControls
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+				MyClass Params
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+	/end classes
+}
+/end data

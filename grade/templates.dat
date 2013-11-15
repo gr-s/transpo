@@ -1,0 +1,154 @@
+fmod
+/begin header
+1.1
+15.11.2013 19:37:57
+/end header
+/begin data
+MyClass TopInstance
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+	/begin classes
+		MyClass app_sett
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass Common
+				{
+					/begin private
+					/end private
+					/begin public
+					char Skin = /B$&V/Xito/E$&V/
+					char last_project_file = /B$&V//E$&V/
+					/end public
+				}
+				MyClass OpenedHistory
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass project_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass tree
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass tree_object
+		{
+			/begin private
+			/end private
+			/begin public
+			char guid = /B$&V//E$&V/
+			char caption = /B$&V//E$&V/
+			/end public
+		}
+		MyClass treebook
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass links
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass root
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass cycle
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									/end public
+								}
+							/end classes
+						}
+						MyClass cycle
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+							/end public
+							/begin classes
+								MyClass cycle
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									/end public
+								}
+								MyClass training
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+									/end public
+								}
+							/end classes
+						}
+					/end classes
+				}
+				MyClass tree_objects
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass cycle
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+							char caption = /B$&V/Цикл/E$&V/
+							/end public
+						}
+						MyClass training
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+							char caption = /B$&V/Тренировка/E$&V/
+							/end public
+						}
+					/end classes
+				}
+			/end classes
+		}
+	/end classes
+}
+/end data

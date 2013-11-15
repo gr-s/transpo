@@ -1,0 +1,14 @@
+fmod
+/begin header
+1.1
+15.11.2013 17:55:22
+/end header
+/begin data
+MyClass project_file
+{
+	/begin private
+	/end private
+	/begin public
+	/end public
+}
+/end data
