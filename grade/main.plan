@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-15.11.2013 20:31:32
+16.11.2013 15:33:19
 /end header
 /begin data
 MyClass project_file
@@ -26,6 +26,28 @@ MyClass project_file
 					char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 					char caption = /B$&V/Цикл/E$&V/
 					/end public
+					/begin classes
+						MyClass tree_object
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+							char caption = /B$&V/Цикл/E$&V/
+							/end public
+							/begin classes
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char caption = /B$&V/Цикл/E$&V/
+									/end public
+								}
+							/end classes
+						}
+					/end classes
 				}
 			/end classes
 		}

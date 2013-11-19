@@ -140,6 +140,8 @@ type
     function AddTreeViewItem(cls_tree_object:TFMClass; ParentNode:TTreeNode):TTreeNode;
     function AddTreeObject(cls_book_link_tree_object:TFMClass):TFMClass;
     function  GetTreeObject(guid:string):TFMClass;
+
+    procedure UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
   end;
 
 const
@@ -566,6 +568,7 @@ procedure TMainForm.DoOpenProject;
 begin
   TreeView1.Enabled:= True;
   TreeView1.Color:= clWhite;
+  UpdateTree(nil,nil);
 end;
 
 function TMainForm.GetActiveNode: TFMClass;
@@ -592,6 +595,7 @@ begin
   begin
     for i:= 0 to TreeBook.FindClassByName('links').MyClassCount - 1 do
     begin
+      if TreeBook.FindClassByName('links').MyClass[i].SysName = 'root' then Continue;
       if TreeBook.FindClassByName('links').MyClass[i].FindPropertyByName('guid').ValueS = ActiveNode.FindPropertyByName('guid').ValueS then
       begin
         cls1:= TreeBook.FindClassByName('links').MyClass[i];
@@ -646,17 +650,33 @@ begin
   cls_templates.CopyClass(Result,cls_templates.FindClassByName('tree_object'),False,True);
   cls2:= GetTreeObject(cls_book_link_tree_object.FindPropertyByName('guid').ValueS);
   Result.FindPropertyByName('guid').ValueS:= cls2.FindPropertyByName('guid').ValueS;
-  Result.FindPropertyByName('caption').ValueS:= cls2.FindPropertyByName('caption').ValueS; 
+  Result.FindPropertyByName('caption').ValueS:= cls2.FindPropertyByName('caption').ValueS;
   AddTreeViewItem(Result,TreeView1.Selected);
+  TreeView1.Selected.Expand(False);
   Modified:= True;
 end;
 
 function TMainForm.AddTreeViewItem(cls_tree_object: TFMClass; ParentNode:TTreeNode): TTreeNode;
-var tn:TTreeNode;
 begin
-  tn:= TreeView1.Items.AddChild(ParentNode,'');
-  tn.Text:= cls_tree_object.FindPropertyByName('caption').ValueS;
-  tn.Data:= cls_tree_object; 
+  Result:= TreeView1.Items.AddChild(ParentNode,'');
+  Result.Text:= cls_tree_object.FindPropertyByName('caption').ValueS;
+  Result.Data:= cls_tree_object;
+end;
+
+procedure TMainForm.UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
+var cls1:TFMClass;
+    i:Integer;
+    tn1:TTreeNode;
+begin
+  if not Assigned(cls_tree_object) then
+    cls_tree_object:= cls_project.FindClassByName('tree');
+
+  for i:= 0 to cls_tree_object.MyClassCount - 1 do
+  begin
+    tn1:= AddTreeViewItem(cls_tree_object.MyClass[i],ParentNode);
+    UpdateTree(cls_tree_object.MyClass[i],tn1);
+  end;
+
 end;
 
 end.
