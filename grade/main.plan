@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-16.11.2013 15:33:19
+19.11.2013 20:39:00
 /end header
 /begin data
 MyClass project_file
@@ -18,32 +18,57 @@ MyClass project_file
 			/begin public
 			/end public
 			/begin classes
-				MyClass tree_object
+				MyClass cycle
 				{
 					/begin private
 					/end private
 					/begin public
 					char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
-					char caption = /B$&V/Цикл/E$&V/
+					char type = /B$&V/cycle/E$&V/
+					char caption = /B$&V/2014/E$&V/
 					/end public
 					/begin classes
-						MyClass tree_object
+						MyClass cycle
 						{
 							/begin private
 							/end private
 							/begin public
 							char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
-							char caption = /B$&V/Цикл/E$&V/
+							char type = /B$&V/cycle/E$&V/
+							char caption = /B$&V/Силовой 01.12/E$&V/
 							/end public
 							/begin classes
-								MyClass tree_object
+								MyClass cycle
 								{
 									/begin private
 									/end private
 									/begin public
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
-									char caption = /B$&V/Цикл/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/1 неделя/E$&V/
 									/end public
+									/begin classes
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											/end public
+										}
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											/end public
+										}
+									/end classes
 								}
 							/end classes
 						}

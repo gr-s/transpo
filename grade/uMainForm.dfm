@@ -186,6 +186,9 @@ object MainForm: TMainForm
               MultiSelectStyle = [msControlSelect, msShiftSelect, msSiblingOnly]
               PopupMenu = SpTBXPopupMenu1
               TabOrder = 0
+              OnChange = TreeView1Change
+              OnEdited = TreeView1Edited
+              OnKeyDown = TreeView1KeyDown
             end
           end
         end
@@ -725,6 +728,7 @@ object MainForm: TMainForm
     end
     object SpTBXItem13: TSpTBXItem
       Caption = #1059#1076#1072#1083#1080#1090#1100
+      OnClick = SpTBXItem13Click
     end
   end
 end

@@ -81,6 +81,12 @@ type
     procedure actShowContentExecute(Sender: TObject);
     procedure actCloseFileExecute(Sender: TObject);
     procedure SpTBXPopupMenu1Popup(Sender: TObject);
+    procedure TreeView1Edited(Sender: TObject; Node: TTreeNode;
+      var S: String);
+    procedure TreeView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure SpTBXItem13Click(Sender: TObject);
+    procedure TreeView1Change(Sender: TObject; Node: TTreeNode);
 
   private
     FModified: Boolean;
@@ -139,7 +145,10 @@ type
 
     function AddTreeViewItem(cls_tree_object:TFMClass; ParentNode:TTreeNode):TTreeNode;
     function AddTreeObject(cls_book_link_tree_object:TFMClass):TFMClass;
-    function  GetTreeObject(guid:string):TFMClass;
+    function GetTreeObject(guid:string):TFMClass;
+    procedure RenameTreeObject(cls_tree_object:TFMClass; NewCaption:String);
+    procedure DeleteTreeObject(cls_tree_object:TFMClass);
+    procedure UpdateTreeObjectContent(cls_tree_object:TFMClass);
 
     procedure UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
   end;
@@ -586,6 +595,7 @@ var it1:TSpTBXSubmenuItem;
 begin
   it1:= TSpTBXSubmenuItem(SpTBXPopupMenu1.Items.Items[0]);
   it1.Clear;
+  cls1:= nil;
   if not Assigned(ActiveNode) then
   begin
     cls1:= TreeBook.FindClassByName('links').FindClassByName('root');
@@ -603,14 +613,17 @@ begin
       end;
     end;
   end;
-  for i:= 0 to cls1.MyClassCount - 1 do
+  if Assigned(cls1) then
   begin
-    it2:= TSpTBXItem.Create(SpTBXPopupMenu1);
-    it1.Add(it2);
-    cls2:= GetTreeObject(cls1.MyClass[i].FindPropertyByName('guid').ValueS);
-    it2.Caption:= cls2.FindPropertyByName('caption').ValueS;
-    it2.VCLComObject:= cls1.MyClass[i];
-    it2.OnClick:= DoTreePopupAddItemClick;
+    for i:= 0 to cls1.MyClassCount - 1 do
+    begin
+      it2:= TSpTBXItem.Create(SpTBXPopupMenu1);
+      it1.Add(it2);
+      cls2:= GetTreeObject(cls1.MyClass[i].FindPropertyByName('guid').ValueS);
+      it2.Caption:= cls2.FindPropertyByName('caption').ValueS;
+      it2.VCLComObject:= cls1.MyClass[i];
+      it2.OnClick:= DoTreePopupAddItemClick;
+    end;
   end;
 end;
 
@@ -649,10 +662,10 @@ begin
   Result:= cls1.CreateClassItem('','');
   cls_templates.CopyClass(Result,cls_templates.FindClassByName('tree_object'),False,True);
   cls2:= GetTreeObject(cls_book_link_tree_object.FindPropertyByName('guid').ValueS);
-  Result.FindPropertyByName('guid').ValueS:= cls2.FindPropertyByName('guid').ValueS;
-  Result.FindPropertyByName('caption').ValueS:= cls2.FindPropertyByName('caption').ValueS;
+  cls2.CopyClass(Result,cls2,True,True);
   AddTreeViewItem(Result,TreeView1.Selected);
-  TreeView1.Selected.Expand(False);
+  if Assigned(TreeView1.Selected) then
+    TreeView1.Selected.Expand(False);
   Modified:= True;
 end;
 
@@ -661,6 +674,7 @@ begin
   Result:= TreeView1.Items.AddChild(ParentNode,'');
   Result.Text:= cls_tree_object.FindPropertyByName('caption').ValueS;
   Result.Data:= cls_tree_object;
+  cls_tree_object.Point1:= Result;
 end;
 
 procedure TMainForm.UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
@@ -677,6 +691,53 @@ begin
     UpdateTree(cls_tree_object.MyClass[i],tn1);
   end;
 
+end;
+
+procedure TMainForm.RenameTreeObject(cls_tree_object: TFMClass;
+  NewCaption: String);
+begin
+  cls_tree_object.FindPropertyByName('caption').ValueS:= NewCaption;
+  TTreeNode(cls_tree_object.Point1).Text:= NewCaption;
+  Modified:= True;
+end;
+
+procedure TMainForm.TreeView1Edited(Sender: TObject; Node: TTreeNode;
+  var S: String);
+begin
+  RenameTreeObject(ActiveNode,S);
+end;
+
+procedure TMainForm.TreeView1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_F2 then
+    TreeView1.Selected.EditText;
+end;
+
+procedure TMainForm.DeleteTreeObject(cls_tree_object: TFMClass);
+begin
+  if MessageBoxW(Handle, 'Подтвердите действие','Внимание', MB_OKCANCEL	 OR MB_ICONQUESTION) = ID_OK then
+  begin
+    TTreeNode(cls_tree_object.Point1).Delete;
+    cls_tree_object.ParentClass.DeleteClassItem(cls_tree_object);
+    Modified:= True;
+  end;
+end;
+
+procedure TMainForm.SpTBXItem13Click(Sender: TObject);
+begin
+  if Assigned(TreeView1.Selected) then
+    DeleteTreeObject(ActiveNode);
+end;
+
+procedure TMainForm.UpdateTreeObjectContent(cls_tree_object: TFMClass);
+begin
+
+end;
+
+procedure TMainForm.TreeView1Change(Sender: TObject; Node: TTreeNode);
+begin
+  UpdateTreeObjectContent(ActiveNode);
 end;
 
 end.
