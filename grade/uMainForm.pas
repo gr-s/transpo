@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXControls, TB2Dock, TB2Toolbar, SpTBXItem, TB2Item,
   ActnList, ImgList, rrfile_mod_api, SpTBXSkins, SpTBXDkPanels,
   ExtCtrls, ComCtrls, RRClassInspector, rrAppPanelSaver, SpTBXTabs,
-  GRFormPanel, Menus;
+  GRFormPanel, Menus, rrAdvTable;
 
 type
   TMainForm = class(TForm)
@@ -68,6 +68,7 @@ type
     SpTBXPopupMenu1: TSpTBXPopupMenu;
     SpTBXSubmenuItem1: TSpTBXSubmenuItem;
     SpTBXItem13: TSpTBXItem;
+    tblContent: TRRAdvTable;
     procedure actExitApplicationExecute(Sender: TObject);
     procedure SpTBXDockablePanel2Resize(Sender: TObject);
     procedure actShowTreeExecute(Sender: TObject);
@@ -87,6 +88,7 @@ type
       Shift: TShiftState);
     procedure SpTBXItem13Click(Sender: TObject);
     procedure TreeView1Change(Sender: TObject; Node: TTreeNode);
+    procedure tblContentAfterCellEdit(aCell: TRRCell);
 
   private
     FModified: Boolean;
@@ -149,6 +151,8 @@ type
     procedure RenameTreeObject(cls_tree_object:TFMClass; NewCaption:String);
     procedure DeleteTreeObject(cls_tree_object:TFMClass);
     procedure UpdateTreeObjectContent(cls_tree_object:TFMClass);
+
+    function GetStuff(guid:string):TFMClass;
 
     procedure UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
   end;
@@ -269,6 +273,9 @@ begin
   UpdateActions;
 
   UpdateReopenGroup;
+
+  tblContent.TemplateFile:= ExtractFilePath(Application.ExeName) + 'tbl\content.tbl';
+  tblContent.Open;
 
   if FileExists(cls_sett.FindClassByName('Common').FindPropertyByName('last_project_file').ValueS) then
     OpenFile(cls_sett.FindClassByName('Common').FindPropertyByName('last_project_file').ValueS);
@@ -679,7 +686,7 @@ end;
 
 procedure TMainForm.UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
 var cls1:TFMClass;
-    i:Integer;
+    i:Integer;                                                 
     tn1:TTreeNode;
 begin
   if not Assigned(cls_tree_object) then
@@ -687,8 +694,11 @@ begin
 
   for i:= 0 to cls_tree_object.MyClassCount - 1 do
   begin
-    tn1:= AddTreeViewItem(cls_tree_object.MyClass[i],ParentNode);
-    UpdateTree(cls_tree_object.MyClass[i],tn1);
+    if not Assigned(cls_tree_object.MyClass[i].FindPropertyByName('sys')) then
+    begin
+      tn1:= AddTreeViewItem(cls_tree_object.MyClass[i],ParentNode);
+      UpdateTree(cls_tree_object.MyClass[i],tn1);
+    end;
   end;
 
 end;
@@ -731,13 +741,159 @@ begin
 end;
 
 procedure TMainForm.UpdateTreeObjectContent(cls_tree_object: TFMClass);
+var aTable: TRRAdvTable;
+    cls1,cls2:TFMClass;
+    i:Integer;
 begin
+  aTable:= tblContent;
 
+  aTable.ClearRows(True);
+  Application.ProcessMessages;
+
+  aTable.BeginUpdate;
+
+  cls1:= cls_tree_object.FindClassByName('content');
+  for i:= 0 to cls1.MyClassCount - 1 do
+  begin
+    cls2:= GetStuff(cls1.MyClass[i].FindPropertyByName('stuff_guid').ValueS);
+    if Assigned(cls2) then
+    begin
+      aTable.CreateRowBlock(0);
+      aTable.Cell[0,aTable.RowCount-1].Data1:= cls1.MyClass[i]; 
+      aTable.Cell[0,aTable.RowCount-1].TextString:= IntToStr(i+1);
+      aTable.Cell[1,aTable.RowCount-1].TextString:= cls2.FindPropertyByName('caption').ValueS;
+      if cls1.MyClass[i].FindPropertyByName('weight').ValueF >= 0 then
+        aTable.Cell[2,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight').ValueF,fffixed,10,1);
+      if cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF >= 0 then
+        aTable.Cell[3,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
+      if cls1.MyClass[i].FindPropertyByName('set_count').ValueI >= 0 then
+        aTable.Cell[4,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('set_count').ValueI);
+      if cls1.MyClass[i].FindPropertyByName('rep_count').ValueI >= 0 then
+        aTable.Cell[5,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('rep_count').ValueI);
+      if cls1.MyClass[i].FindPropertyByName('weight_max').ValueF >= 0 then
+        aTable.Cell[6,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_max').ValueF,fffixed,10,1);
+    end;
+  end;
+
+  aTable.EndUpdate;
+  aTable.Show;
 end;
 
 procedure TMainForm.TreeView1Change(Sender: TObject; Node: TTreeNode);
 begin
-  UpdateTreeObjectContent(ActiveNode);
+  if ActiveNode.FindPropertyByName('type').ValueS = 'training' then
+    UpdateTreeObjectContent(ActiveNode)
+  else
+    tblContent.Hide;
+end;
+
+function TMainForm.GetStuff(guid: string): TFMClass;
+var cls1:TFMClass;
+    i:Integer;
+begin
+  Result:= nil;
+  cls1:= TreeBook.FindClassByName('stuff');
+  for i:= 0 to cls1.MyClassCount - 1 do
+  begin
+    if cls1.MyClass[i].FindPropertyByName('guid').ValueS = guid then
+    begin
+      Result:= cls1.MyClass[i];
+      Break;
+    end;
+  end;
+end;
+
+procedure TMainForm.tblContentAfterCellEdit(aCell: TRRCell);
+var cls1:TFMClass;
+    f1:Single;
+    i1:Integer;
+    b1:Boolean;
+begin
+  cls1:= TFMClass(tblContent.Cell[0,aCell.Row].Data1);
+  if aCell.MyTag = 'weight' then
+  begin
+    if TryStrToFloat(aCell.TextString,f1) then
+    begin
+      cls1.FindPropertyByName('weight').ValueF:= f1;
+      if cls1.FindPropertyByName('weight_max').ValueF >= 0 then
+      begin
+        cls1.FindPropertyByName('weight_proc').ValueF:= (cls1.FindPropertyByName('weight').ValueF/cls1.FindPropertyByName('weight_max').ValueF)*100;
+        tblContent.Cell[3,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
+      end;
+    end
+    else
+    begin
+      aCell.MyText:= '';
+      cls1.FindPropertyByName('weight').ValueF:= -1;
+    end;
+  end;
+  if aCell.MyTag = 'weight_proc' then
+  begin
+    if TryStrToFloat(aCell.TextString,f1) then
+    begin
+      cls1.FindPropertyByName('weight_proc').ValueF:= f1;
+      if cls1.FindPropertyByName('weight_max').ValueF >= 0 then
+      begin
+        cls1.FindPropertyByName('weight').ValueF:= Round(((cls1.FindPropertyByName('weight_proc').ValueF/100)*cls1.FindPropertyByName('weight_max').ValueF)/2.5)*2.5;
+        tblContent.Cell[2,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight').ValueF,fffixed,10,1);
+      end;
+    end
+    else
+    begin
+      aCell.MyText:= '';
+      cls1.FindPropertyByName('weight_proc').ValueF:= -1;
+    end;
+  end;
+  if aCell.MyTag = 'weight_max' then
+  begin
+    if TryStrToFloat(aCell.TextString,f1) then
+    begin
+      cls1.FindPropertyByName('weight_max').ValueF:= f1;
+      if cls1.FindPropertyByName('weight').ValueF >= 0 then
+      begin
+        cls1.FindPropertyByName('weight_proc').ValueF:= (cls1.FindPropertyByName('weight').ValueF/cls1.FindPropertyByName('weight_max').ValueF)*100;
+        tblContent.Cell[3,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
+      end
+      else
+      begin
+        if cls1.FindPropertyByName('weight_proc').ValueF >= 0 then
+        begin
+          cls1.FindPropertyByName('weight').ValueF:= Round(((cls1.FindPropertyByName('weight_proc').ValueF/100)*cls1.FindPropertyByName('weight_max').ValueF)/2.5)*2.5;
+          tblContent.Cell[2,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight').ValueF,fffixed,10,1);
+        end;
+      end;
+    end
+    else
+    begin
+      aCell.MyText:= '';
+      cls1.FindPropertyByName('weight_max').ValueF:= -1;
+    end;
+  end;
+  if aCell.MyTag = 'set_count' then
+  begin
+    if TryStrToInt(aCell.TextString,i1) then
+    begin
+      cls1.FindPropertyByName('set_count').ValueI:= i1;
+    end
+    else
+    begin
+      aCell.MyText:= '';
+      cls1.FindPropertyByName('set_count').ValueI:= -1;
+    end;
+  end;
+  if aCell.MyTag = 'rep_count' then
+  begin
+    if TryStrToInt(aCell.TextString,i1) then
+    begin
+      cls1.FindPropertyByName('rep_count').ValueI:= i1;
+    end
+    else
+    begin
+      aCell.MyText:= '';
+      cls1.FindPropertyByName('rep_count').ValueI:= -1;
+    end;
+  end;
+  Modified:= True;
 end;
 
 end.

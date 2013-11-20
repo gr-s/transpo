@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-19.11.2013 20:39:00
+20.11.2013 20:56:23
 /end header
 /begin data
 MyClass project_file
@@ -57,6 +57,31 @@ MyClass project_file
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
 											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/82,5/E$&V/
+															float weight_proc = /B$&V/75/E$&V/
+															float weight_max = /B$&V/110/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
 										}
 										MyClass training
 										{
@@ -67,6 +92,16 @@ MyClass project_file
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
 											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+												}
+											/end classes
 										}
 									/end classes
 								}

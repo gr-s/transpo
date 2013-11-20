@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-19.11.2013 20:32:32
+20.11.2013 17:17:13
 /end header
 /begin data
 MyClass TopInstance
@@ -60,6 +60,39 @@ MyClass TopInstance
 			char guid = /B$&V//E$&V/
 			char type = /B$&V//E$&V/
 			char caption = /B$&V//E$&V/
+			/end public
+		}
+		MyClass stuff
+		{
+			/begin private
+			/end private
+			/begin public
+			char guid = /B$&V//E$&V/
+			char group_guid = /B$&V//E$&V/
+			char caption = /B$&V//E$&V/
+			float int_coef = /B$&V/1/E$&V/
+			/end public
+		}
+		MyClass stuff_group
+		{
+			/begin private
+			/end private
+			/begin public
+			char guid = /B$&V//E$&V/
+			char caption = /B$&V//E$&V/
+			/end public
+		}
+		MyClass train_content
+		{
+			/begin private
+			/end private
+			/begin public
+			char stuff_guid = /B$&V//E$&V/
+			float weight = /B$&V/-1/E$&V/
+			float weight_proc = /B$&V/-1/E$&V/
+			float weight_max = /B$&V/-1/E$&V/
+			int set_count = /B$&V/-1/E$&V/
+			int rep_count = /B$&V/-1/E$&V/
 			/end public
 		}
 		MyClass treebook
@@ -146,6 +179,71 @@ MyClass TopInstance
 							char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 							char type = /B$&V/training/E$&V/
 							char caption = /B$&V/Тренировка/E$&V/
+							/end public
+							/begin classes
+								MyClass content
+								{
+									/begin private
+									/end private
+									/begin public
+									/end public
+								}
+							/end classes
+						}
+					/end classes
+				}
+				MyClass stuff
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass stuff
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+							char group_guid = /B$&V/3FAEC547-DE1A-4305-9A45-6A6BA7A6B517/E$&V/
+							char caption = /B$&V/Жим/E$&V/
+							float int_coef = /B$&V/1/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass stuff_group
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass stuff_group
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/3FAEC547-DE1A-4305-9A45-6A6BA7A6B517/E$&V/
+							char caption = /B$&V/Жим/E$&V/
+							/end public
+						}
+						MyClass stuff_group
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/C50895F5-BE75-4605-A436-90CA412938AB/E$&V/
+							char caption = /B$&V/Тяга/E$&V/
+							/end public
+						}
+						MyClass stuff_group
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/31F8A571-C52D-4DC8-A848-EAED09A3479E/E$&V/
+							char caption = /B$&V/Присед/E$&V/
 							/end public
 						}
 					/end classes
