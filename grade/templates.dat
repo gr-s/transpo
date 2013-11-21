@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-20.11.2013 17:17:13
+22.11.2013 0:24:19
 /end header
 /begin data
 MyClass TopInstance
@@ -207,6 +207,17 @@ MyClass TopInstance
 							char guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 							char group_guid = /B$&V/3FAEC547-DE1A-4305-9A45-6A6BA7A6B517/E$&V/
 							char caption = /B$&V/Жим/E$&V/
+							float int_coef = /B$&V/1/E$&V/
+							/end public
+						}
+						MyClass stuff
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+							char group_guid = /B$&V/31F8A571-C52D-4DC8-A848-EAED09A3479E/E$&V/
+							char caption = /B$&V/Присед/E$&V/
 							float int_coef = /B$&V/1/E$&V/
 							/end public
 						}

@@ -7,7 +7,7 @@ uses
   Dialogs, SpTBXControls, TB2Dock, TB2Toolbar, SpTBXItem, TB2Item,
   ActnList, ImgList, rrfile_mod_api, SpTBXSkins, SpTBXDkPanels,
   ExtCtrls, ComCtrls, RRClassInspector, rrAppPanelSaver, SpTBXTabs,
-  GRFormPanel, Menus, rrAdvTable;
+  GRFormPanel, Menus, rrAdvTable, uSelForm;
 
 type
   TMainForm = class(TForm)
@@ -69,6 +69,9 @@ type
     SpTBXSubmenuItem1: TSpTBXSubmenuItem;
     SpTBXItem13: TSpTBXItem;
     tblContent: TRRAdvTable;
+    SpTBXPopupMenu2: TSpTBXPopupMenu;
+    SpTBXItem14: TSpTBXItem;
+    SpTBXItem15: TSpTBXItem;
     procedure actExitApplicationExecute(Sender: TObject);
     procedure SpTBXDockablePanel2Resize(Sender: TObject);
     procedure actShowTreeExecute(Sender: TObject);
@@ -89,6 +92,9 @@ type
     procedure SpTBXItem13Click(Sender: TObject);
     procedure TreeView1Change(Sender: TObject; Node: TTreeNode);
     procedure tblContentAfterCellEdit(aCell: TRRCell);
+    procedure tblContentDblClickCell(Sender: TObject);
+    procedure SpTBXItem15Click(Sender: TObject);
+    procedure SpTBXItem14Click(Sender: TObject);
 
   private
     FModified: Boolean;
@@ -755,24 +761,22 @@ begin
   cls1:= cls_tree_object.FindClassByName('content');
   for i:= 0 to cls1.MyClassCount - 1 do
   begin
+    aTable.CreateRowBlock(0);
+    aTable.Cell[0,aTable.RowCount-1].Data1:= cls1.MyClass[i];
+    aTable.Cell[0,aTable.RowCount-1].TextString:= IntToStr(i+1);
     cls2:= GetStuff(cls1.MyClass[i].FindPropertyByName('stuff_guid').ValueS);
     if Assigned(cls2) then
-    begin
-      aTable.CreateRowBlock(0);
-      aTable.Cell[0,aTable.RowCount-1].Data1:= cls1.MyClass[i]; 
-      aTable.Cell[0,aTable.RowCount-1].TextString:= IntToStr(i+1);
       aTable.Cell[1,aTable.RowCount-1].TextString:= cls2.FindPropertyByName('caption').ValueS;
-      if cls1.MyClass[i].FindPropertyByName('weight').ValueF >= 0 then
-        aTable.Cell[2,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight').ValueF,fffixed,10,1);
-      if cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF >= 0 then
-        aTable.Cell[3,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
-      if cls1.MyClass[i].FindPropertyByName('set_count').ValueI >= 0 then
-        aTable.Cell[4,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('set_count').ValueI);
-      if cls1.MyClass[i].FindPropertyByName('rep_count').ValueI >= 0 then
-        aTable.Cell[5,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('rep_count').ValueI);
-      if cls1.MyClass[i].FindPropertyByName('weight_max').ValueF >= 0 then
-        aTable.Cell[6,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_max').ValueF,fffixed,10,1);
-    end;
+    if cls1.MyClass[i].FindPropertyByName('weight').ValueF >= 0 then
+      aTable.Cell[2,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight').ValueF,fffixed,10,1);
+    if cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF >= 0 then
+      aTable.Cell[3,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
+    if cls1.MyClass[i].FindPropertyByName('set_count').ValueI >= 0 then
+      aTable.Cell[4,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('set_count').ValueI);
+    if cls1.MyClass[i].FindPropertyByName('rep_count').ValueI >= 0 then
+      aTable.Cell[5,aTable.RowCount-1].TextString:= IntToStr(cls1.MyClass[i].FindPropertyByName('rep_count').ValueI);
+    if cls1.MyClass[i].FindPropertyByName('weight_max').ValueF >= 0 then
+      aTable.Cell[6,aTable.RowCount-1].TextString:= FloatToStrF(cls1.MyClass[i].FindPropertyByName('weight_max').ValueF,fffixed,10,1);
   end;
 
   aTable.EndUpdate;
@@ -893,6 +897,56 @@ begin
       cls1.FindPropertyByName('rep_count').ValueI:= -1;
     end;
   end;
+  Modified:= True;
+end;
+
+procedure TMainForm.tblContentDblClickCell(Sender: TObject);
+var aCell: TRRCell;
+    cls1:TFMClass;
+begin
+  aCell:= tblContent.SelectedCell;
+  if Assigned(aCell) then                              
+  begin
+    if aCell.MyTag = 'stuff' then
+    begin
+      if SelForm.Execute(TreeBook.FindClassByName('stuff')) = mrOk then
+      begin
+        cls1:= TFMClass(tblContent.Cell[0,aCell.Row].Data1);
+        cls1.FindPropertyByName('stuff_guid').ValueS:= SelForm.Result.FindPropertyByName('guid').ValueS;
+        tblContent.BeginUpdate;
+        aCell.TextString:= SelForm.Result.FindPropertyByName('caption').ValueS;
+        tblContent.EndUpdate;
+        Modified:= True; 
+      end;
+    end;
+  end;
+end;
+
+procedure TMainForm.SpTBXItem15Click(Sender: TObject);
+var aCell: TRRCell;
+    cls1:TFMClass;
+begin
+  aCell:= tblContent.SelectedCell;
+  if Assigned(aCell) then                              
+  begin
+    if MessageBoxW(Handle, 'Подтвердите действие','Внимание', MB_OKCANCEL	 OR MB_ICONQUESTION) = ID_OK then
+    begin
+      cls1:= TFMClass(tblContent.Cell[0,aCell.Row].Data1);
+      cls1.ParentClass.DeleteClassItem(cls1);
+      tblContent.BeginUpdate;
+      tblContent.DelRow(aCell.Row);
+      tblContent.EndUpdate;
+      Modified:= True;
+    end;
+  end;
+end;
+
+procedure TMainForm.SpTBXItem14Click(Sender: TObject);
+var cls1:TFMClass;
+begin
+  cls1:= ActiveNode.FindClassByName('content').CreateClassItem('','');
+  cls_templates.CopyClass(cls1,cls_templates.FindClassByName('train_content'),True,True);
+  UpdateTreeObjectContent(ActiveNode);
   Modified:= True;
 end;
 

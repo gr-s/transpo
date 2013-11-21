@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 427
-  Top = 107
+  Left = 267
+  Top = 62
   Width = 1063
   Height = 745
   Caption = 'MainForm'
@@ -229,6 +229,7 @@ object MainForm: TMainForm
             Align = alClient
             Color = clWhite
             Constraints.MinWidth = 100
+            PopupMenu = SpTBXPopupMenu2
             TabOrder = 0
             TabStop = True
             Visible = False
@@ -334,8 +335,9 @@ object MainForm: TMainForm
             Options.ScrollBars = ssBoth
             Options.UseDesignerSettingsOpenning = False
             Options.MultiSelecting = False
-            Options.ChessPaintMode = True
+            Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
+            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -353,6 +355,7 @@ object MainForm: TMainForm
             HideSelection = False
             SelectComboAutoDropDown = False
             OnAfterCellEdit = tblContentAfterCellEdit
+            OnDblClickCell = tblContentDblClickCell
           end
         end
       end
@@ -862,6 +865,18 @@ object MainForm: TMainForm
     object SpTBXItem13: TSpTBXItem
       Caption = #1059#1076#1072#1083#1080#1090#1100
       OnClick = SpTBXItem13Click
+    end
+  end
+  object SpTBXPopupMenu2: TSpTBXPopupMenu
+    Left = 418
+    Top = 278
+    object SpTBXItem14: TSpTBXItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      OnClick = SpTBXItem14Click
+    end
+    object SpTBXItem15: TSpTBXItem
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      OnClick = SpTBXItem15Click
     end
   end
 end
