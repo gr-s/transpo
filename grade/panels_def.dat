@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-15.11.2013 17:18:04
+27.11.2013 19:51:55
 /end header
 /begin data
 MyClass app_sett
@@ -32,15 +32,28 @@ MyClass app_sett
 							/begin public
 							/end public
 							/begin classes
+								MyClass SpTBXDockablePanel1
+								{
+									/begin private
+									/end private
+									/begin public
+									int Left = /B$&V/275/E$&V/
+									int Top = /B$&V/383/E$&V/
+									int Width = /B$&V/379/E$&V/
+									int Height = /B$&V/198/E$&V/
+									bool Visible = /B$&V/True/E$&V/
+									char DockName = /B$&V//E$&V/
+									/end public
+								}
 								MyClass SpTBXDockablePanel2
 								{
 									/begin private
 									/end private
 									/begin public
-									int Left = /B$&V/0/E$&V/
-									int Top = /B$&V/0/E$&V/
-									int Width = /B$&V/239/E$&V/
-									int Height = /B$&V/930/E$&V/
+									int Left = /B$&V/-118/E$&V/
+									int Top = /B$&V/59/E$&V/
+									int Width = /B$&V/242/E$&V/
+									int Height = /B$&V/929/E$&V/
 									bool Visible = /B$&V/True/E$&V/
 									char DockName = /B$&V/SpTBXMultiDock3/E$&V/
 									int DockPos = /B$&V/0/E$&V/
@@ -51,10 +64,10 @@ MyClass app_sett
 									/begin private
 									/end private
 									/begin public
-									int Left = /B$&V/0/E$&V/
-									int Top = /B$&V/0/E$&V/
-									int Width = /B$&V/617/E$&V/
-									int Height = /B$&V/361/E$&V/
+									int Left = /B$&V/279/E$&V/
+									int Top = /B$&V/86/E$&V/
+									int Width = /B$&V/531/E$&V/
+									int Height = /B$&V/249/E$&V/
 									bool Visible = /B$&V/True/E$&V/
 									char DockName = /B$&V//E$&V/
 									/end public
@@ -169,7 +182,33 @@ MyClass app_sett
 							int Left = /B$&V/279/E$&V/
 							int Top = /B$&V/86/E$&V/
 							int Width = /B$&V/648/E$&V/
-							int Height = /B$&V/343/E$&V/
+							int Height = /B$&V/200/E$&V/
+							bool Visible = /B$&V/True/E$&V/
+							char DockName = /B$&V//E$&V/
+							/end public
+						}
+						MyClass SpTBXDockablePanel1
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/275/E$&V/
+							int Top = /B$&V/383/E$&V/
+							int Width = /B$&V/379/E$&V/
+							int Height = /B$&V/198/E$&V/
+							bool Visible = /B$&V/True/E$&V/
+							char DockName = /B$&V//E$&V/
+							/end public
+						}
+						MyClass SpTBXDockablePanel3
+						{
+							/begin private
+							/end private
+							/begin public
+							int Left = /B$&V/350/E$&V/
+							int Top = /B$&V/383/E$&V/
+							int Width = /B$&V/379/E$&V/
+							int Height = /B$&V/198/E$&V/
 							bool Visible = /B$&V/True/E$&V/
 							char DockName = /B$&V//E$&V/
 							/end public

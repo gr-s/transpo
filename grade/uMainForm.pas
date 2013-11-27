@@ -7,7 +7,8 @@ uses
   Dialogs, SpTBXControls, TB2Dock, TB2Toolbar, SpTBXItem, TB2Item,
   ActnList, ImgList, rrfile_mod_api, SpTBXSkins, SpTBXDkPanels,
   ExtCtrls, ComCtrls, RRClassInspector, rrAppPanelSaver, SpTBXTabs,
-  GRFormPanel, Menus, rrAdvTable, uSelForm;
+  GRFormPanel, Menus, rrAdvTable, uSelForm, TeEngine, Series, TeeProcs,
+  Chart;
 
 type
   TMainForm = class(TForm)
@@ -51,7 +52,6 @@ type
     SpTBXDockablePanel2: TSpTBXDockablePanel;
     SpTBXPanel3: TSpTBXPanel;
     TreeView1: TTreeView;
-    SpTBXSplitter3: TSpTBXSplitter;
     actShowTree: TAction;
     SpTBXItem10: TSpTBXItem;
     actShowContent: TAction;
@@ -72,6 +72,14 @@ type
     SpTBXPopupMenu2: TSpTBXPopupMenu;
     SpTBXItem14: TSpTBXItem;
     SpTBXItem15: TSpTBXItem;
+    SpTBXDockablePanel1: TSpTBXDockablePanel;
+    SpTBXPanel2: TSpTBXPanel;
+    Chart1: TChart;
+    Series1: TLineSeries;
+    SpTBXDockablePanel3: TSpTBXDockablePanel;
+    SpTBXPanel4: TSpTBXPanel;
+    Chart2: TChart;
+    LineSeries1: TLineSeries;
     procedure actExitApplicationExecute(Sender: TObject);
     procedure SpTBXDockablePanel2Resize(Sender: TObject);
     procedure actShowTreeExecute(Sender: TObject);
@@ -151,6 +159,8 @@ type
     procedure DoOpenProject;
     procedure DoCloseProject;
 
+    function GetCorrectCoef(proc:Single):Single;
+
     function AddTreeViewItem(cls_tree_object:TFMClass; ParentNode:TTreeNode):TTreeNode;
     function AddTreeObject(cls_book_link_tree_object:TFMClass):TFMClass;
     function GetTreeObject(guid:string):TFMClass;
@@ -161,6 +171,8 @@ type
     function GetStuff(guid:string):TFMClass;
 
     procedure UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
+
+    procedure UpdateChart1(cls_tree_object:TFMClass);
   end;
 
 const
@@ -251,7 +263,9 @@ begin
   SpTBXDockablePanel4.Floating:= True;
 
   RRAppPanelSaver:= TRRAppPanelSaver.Create(Self);
+  RRAppPanelSaver.AddPanel(SpTBXDockablePanel1);
   RRAppPanelSaver.AddPanel(SpTBXDockablePanel2);
+  RRAppPanelSaver.AddPanel(SpTBXDockablePanel3);
   RRAppPanelSaver.AddPanel(SpTBXDockablePanel4);
   RRAppPanelSaver.AddDock(SpTBXMultiDock3);
   RRAppPanelSaver.AddToolBar(SpTBXToolbar1);
@@ -591,6 +605,7 @@ begin
   TreeView1.Enabled:= True;
   TreeView1.Color:= clWhite;
   UpdateTree(nil,nil);
+  UpdateChart1(nil);
 end;
 
 function TMainForm.GetActiveNode: TFMClass;
@@ -898,6 +913,7 @@ begin
     end;
   end;
   Modified:= True;
+  UpdateChart1(nil);
 end;
 
 procedure TMainForm.tblContentDblClickCell(Sender: TObject);
@@ -937,6 +953,7 @@ begin
       tblContent.DelRow(aCell.Row);
       tblContent.EndUpdate;
       Modified:= True;
+      UpdateChart1(nil);
     end;
   end;
 end;
@@ -948,6 +965,94 @@ begin
   cls_templates.CopyClass(cls1,cls_templates.FindClassByName('train_content'),True,True);
   UpdateTreeObjectContent(ActiveNode);
   Modified:= True;
+end;
+
+procedure TMainForm.UpdateChart1(cls_tree_object:TFMClass);
+var cls1,cls2,cls3:TFMClass;
+    i,n,i1:Integer;
+    f1,f2,f2_1:Single;
+begin    
+  if not Assigned(cls_tree_object) then
+  begin
+    Chart1.Series[0].Clear;
+    Chart1.Series[0].AddXY(0,0);
+    Chart2.Series[0].Clear;
+    Chart2.Series[0].AddXY(0,0);
+  end;
+    
+  if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) = 0 then Exit;
+
+  if not Assigned(cls_tree_object) then
+    cls_tree_object:= cls_project.FindClassByName('tree');
+
+  for i:= 0 to cls_tree_object.MyClassCount - 1 do
+  begin
+    if Assigned(cls_tree_object.MyClass[i].FindPropertyByName('type')) then
+    begin
+      if cls_tree_object.MyClass[i].FindPropertyByName('type').ValueS = 'training' then
+      begin
+        f1:= 0; f2:= 0;
+        for n:= 0 to cls_tree_object.MyClass[i].FindClassByName('content').MyClassCount - 1 do
+        begin
+          cls1:= cls_tree_object.MyClass[i].FindClassByName('content').MyClass[n];
+          cls2:= GetStuff(cls1.FindPropertyByName('stuff_guid').ValueS);
+          if cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS = cls2.FindPropertyByName('group_guid').ValueS then
+          begin
+            if cls1.FindPropertyByName('weight').ValueF >= 0 then
+              if cls1.FindPropertyByName('set_count').ValueI >= 0 then
+                if cls1.FindPropertyByName('rep_count').ValueI >= 0 then
+                begin
+                  f1:= f1 + ((cls1.FindPropertyByName('set_count').ValueI*cls1.FindPropertyByName('rep_count').ValueI)*cls1.FindPropertyByName('weight').ValueF);
+                  if cls1.FindPropertyByName('weight_max').ValueF >= 0 then
+                    if cls1.FindPropertyByName('weight_proc').ValueF >= 0 then
+                    begin
+                      f2_1:= GetCorrectCoef(cls1.FindPropertyByName('weight_proc').ValueF);
+                      f2:= f2 + (f1*f2_1*cls2.FindPropertyByName('int_coef').ValueF);
+                    end;
+                end;
+          end;
+        end;
+        Chart1.Series[0].AddXY(Chart1.Series[0].XValues.Count,f1);
+        Chart2.Series[0].AddXY(Chart2.Series[0].XValues.Count,f2);
+      end
+      else
+        if cls_tree_object.MyClass[i].FindPropertyByName('type').ValueS = 'cycle' then
+        begin
+          UpdateChart1(cls_tree_object.MyClass[i]);
+        end;
+    end;
+  end;
+end;
+
+function TMainForm.GetCorrectCoef(proc: Single): Single;
+var cls1,cls2,cls3:TFMClass;
+    i:Integer;
+    b:Boolean;
+    f1,f2:Single;
+begin
+  Result:= 0;
+  cls1:= TreeBook.FindClassByName('correct_cf_table');
+  for i:= 0 to cls1.MyClassCount - 1 do
+  begin
+    cls2:= cls1.MyClass[i]; cls3:= nil; b:= False;
+    if i < cls1.MyClassCount - 1 then cls3:= cls1.MyClass[i+1];
+    if Assigned(cls3) then
+      b:= (proc >= cls2.FindPropertyByName('proc').ValueD) and (proc < cls3.FindPropertyByName('proc').ValueD)
+    else
+      b:= (proc >= cls2.FindPropertyByName('proc').ValueD);
+    if b then
+    begin
+      if not Assigned(cls3) then
+        Result:= cls2.FindPropertyByName('f').ValueD
+      else
+      begin
+        f1:= (proc-cls2.FindPropertyByName('proc').ValueD) / (cls3.FindPropertyByName('proc').ValueD - cls2.FindPropertyByName('proc').ValueD);
+        f2:= (cls3.FindPropertyByName('f').ValueD-cls2.FindPropertyByName('f').ValueD)*f1;
+        Result:= cls2.FindPropertyByName('f').ValueD + ();  
+      end;
+      Break; 
+    end;
+  end;
 end;
 
 end.

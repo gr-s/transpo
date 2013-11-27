@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-22.11.2013 0:24:19
+27.11.2013 20:12:20
 /end header
 /begin data
 MyClass TopInstance
@@ -25,6 +25,7 @@ MyClass TopInstance
 					/begin public
 					char Skin = /B$&V/Xito/E$&V/
 					char last_project_file = /B$&V//E$&V/
+					char chart_group_guid = /B$&V//E$&V/
 					/end public
 				}
 				MyClass OpenedHistory
@@ -255,6 +256,132 @@ MyClass TopInstance
 							/begin public
 							char guid = /B$&V/31F8A571-C52D-4DC8-A848-EAED09A3479E/E$&V/
 							char caption = /B$&V/Присед/E$&V/
+							/end public
+						}
+					/end classes
+				}
+				MyClass correct_cf_table
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+					/begin classes
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/0/E$&V/
+							double proc = /B$&V/0/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/0,7/E$&V/
+							double proc = /B$&V/60/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/0,8/E$&V/
+							double proc = /B$&V/65/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/0,9/E$&V/
+							double proc = /B$&V/70/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/1/E$&V/
+							double proc = /B$&V/72/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/1,2/E$&V/
+							double proc = /B$&V/75/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/1,4/E$&V/
+							double proc = /B$&V/78/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/1,6/E$&V/
+							double proc = /B$&V/81/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/1,9/E$&V/
+							double proc = /B$&V/85/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/2,4/E$&V/
+							double proc = /B$&V/88/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/3,2/E$&V/
+							double proc = /B$&V/92/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/4/E$&V/
+							double proc = /B$&V/94/E$&V/
+							/end public
+						}
+						MyClass item
+						{
+							/begin private
+							/end private
+							/begin public
+							double f = /B$&V/5/E$&V/
+							double proc = /B$&V/96/E$&V/
 							/end public
 						}
 					/end classes

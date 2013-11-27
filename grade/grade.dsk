@@ -1,5 +1,5 @@
 [Closed Files]
-File_0=SourceModule,'D:\GR\Development\RR52Development\packs\rrfile_mod_api.pas',0,1,791,35,808,0,0
+File_0=SourceModule,'D:\GR\Development\RR52Development\packs\rrAppPanelSaver.pas',0,1,162,18,192,0,0
 File_1=SourceModule,'D:\GR\Program Files\vcl\TB2K\Source\TB2Item.pas',0,1,1462,1,1483,0,0
 File_2=SourceModule,'D:\GR\Development\RR52Development\Шаблоны\CustomOSProject1\uMainForm.pas',0,1,198,1,201,1,0
 File_3=SourceModule,'D:\GR\Development\Partners\MySoft\BUGELWeb\files\editor\uMainForm.pas',0,1,1,15,18,1,0
@@ -8,13 +8,12 @@ File_5=SourceModule,'D:\GR\Development\RR52Development\Шаблоны\MinProjectCarcas\
 File_6=SourceModule,'D:\GR\Development\RR52Development\Шаблоны\CustomOSProject1\tmp\uMainForm.pas',0,1,173,5,47,1,0
 File_7=SourceModule,'D:\GR\Development\RR52Development\Шаблоны\CustomOSProject1\tmp\uMainForm.dfm',0,1,1,1,1,0,0
 File_8=SourceModule,'D:\RR52 Team\Development\RR52Development\packs\rrAlphaImage.pas',0,1,373,11,376,0,0
-File_9=SourceModule,'D:\RR52 Team\Development\Partners\InTech\MusRelPiter\Kiosk\1\Application\ufrmLeft.pas',0,1,74,53,95,1,0
 
 [Modules]
 Module0=D:\GR\Development\Partners\MySoft\transpo\grade\uMainForm.pas
-Module1=D:\GR\Development\Partners\MySoft\transpo\grade\grade.dpr
+Module1=D:\GR\Development\RR52Development\packs\rrfile_mod_api.pas
 Module2=D:\GR\Development\Partners\MySoft\transpo\application\uMainForm.pas
-Module3=D:\GR\Development\RR52Development\packs\rrAppPanelSaver.pas
+Module3=D:\GR\Development\Partners\MySoft\transpo\grade\grade.dpr
 Count=4
 EditWindowCount=1
 
@@ -23,17 +22,17 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[D:\GR\Development\Partners\MySoft\transpo\grade\grade.dpr]
+[D:\GR\Development\RR52Development\packs\rrfile_mod_api.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
 [D:\GR\Development\Partners\MySoft\transpo\application\uMainForm.pas]
 ModuleType=SourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
-[D:\GR\Development\RR52Development\packs\rrAppPanelSaver.pas]
+[D:\GR\Development\Partners\MySoft\transpo\grade\grade.dpr]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -81,23 +80,23 @@ LeftCol=1
 
 [View1]
 Module=D:\GR\Development\Partners\MySoft\transpo\grade\uMainForm.pas
-CursorX=24
-CursorY=676
-TopLine=648
+CursorX=41
+CursorY=893
+TopLine=866
 LeftCol=1
 
 [View2]
-Module=D:\GR\Development\RR52Development\packs\rrAppPanelSaver.pas
-CursorX=18
-CursorY=192
-TopLine=162
+Module=D:\GR\Development\RR52Development\packs\rrfile_mod_api.pas
+CursorX=1
+CursorY=2005
+TopLine=1984
 LeftCol=1
 
 [View3]
 Module=D:\GR\Development\Partners\MySoft\transpo\application\uMainForm.pas
-CursorX=3
-CursorY=3046
-TopLine=3022
+CursorX=7
+CursorY=1998
+TopLine=1979
 LeftCol=1
 
 [Watches]
@@ -138,23 +137,6 @@ TBDockHeight=313
 LRDockWidth=446
 Dockable=1
 
-[CPUWindow]
-Create=1
-Visible=0
-State=0
-Left=107
-Top=135
-Width=1066
-Height=753
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=1050
-ClientHeight=715
-DumpPane=79
-DisassemblyPane=187
-RegisterPane=231
-FlagPane=64
-
 [AlignmentPalette]
 Create=1
 Visible=0
@@ -183,9 +165,9 @@ ClientHeight=821
 TBDockHeight=535
 LRDockWidth=190
 Dockable=1
-SplitPos=85
+SplitPos=105
 ArrangeBy=Name
-SelectedItem=OnKeyDown
+SelectedItem=OnAfterCellEdit
 ExpandedItems=
 HiddenCategories=
 

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 267
-  Top = 62
+  Left = 122
+  Top = 83
   Width = 1063
   Height = 745
   Caption = 'MainForm'
@@ -193,30 +193,22 @@ object MainForm: TMainForm
           end
         end
       end
-      object SpTBXSplitter3: TSpTBXSplitter
-        Left = 1024
-        Top = 2
-        Height = 598
-        Cursor = crSizeWE
-        Align = alRight
-        Visible = False
-      end
       object SpTBXDockablePanel4: TSpTBXDockablePanel
-        Left = 280
-        Top = 24
-        Width = 617
-        Height = 361
+        Left = 272
+        Top = 8
+        Width = 473
+        Height = 233
         Caption = #1057#1086#1076#1077#1088#1078#1080#1084#1086#1077
         DockableTo = [dpLeft, dpRight]
         DockPos = 0
-        TabOrder = 2
+        TabOrder = 1
         UseLastDock = False
         OnVisibleChanged = SpTBXDockablePanel2VisibleChanged
         object pnlContent: TSpTBXPanel
           Left = 0
           Top = 19
-          Width = 617
-          Height = 342
+          Width = 473
+          Height = 214
           Caption = 'pnlContent'
           Align = alClient
           TabOrder = 1
@@ -224,8 +216,8 @@ object MainForm: TMainForm
           object tblContent: TRRAdvTable
             Left = 2
             Top = 2
-            Width = 613
-            Height = 338
+            Width = 469
+            Height = 210
             Align = alClient
             Color = clWhite
             Constraints.MinWidth = 100
@@ -337,7 +329,6 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
-            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -364,6 +355,124 @@ object MainForm: TMainForm
         Top = 2
         Height = 598
         Cursor = crSizeWE
+      end
+      object SpTBXDockablePanel1: TSpTBXDockablePanel
+        Left = 280
+        Top = 264
+        Width = 377
+        Height = 233
+        Caption = #1058#1086#1085#1085#1072#1078
+        DockableTo = [dpLeft, dpRight]
+        DockPos = 0
+        TabOrder = 3
+        UseLastDock = False
+        OnVisibleChanged = SpTBXDockablePanel2VisibleChanged
+        object SpTBXPanel2: TSpTBXPanel
+          Left = 0
+          Top = 19
+          Width = 377
+          Height = 214
+          Caption = 'pnlContent'
+          Align = alClient
+          TabOrder = 1
+          TBXStyleBackground = True
+          object Chart1: TChart
+            Left = 2
+            Top = 2
+            Width = 373
+            Height = 210
+            BackWall.Brush.Color = clWhite
+            BackWall.Brush.Style = bsClear
+            Title.Text.Strings = (
+              'TChart')
+            Title.Visible = False
+            BottomAxis.Axis.Visible = False
+            BottomAxis.Grid.Visible = False
+            LeftAxis.Axis.Visible = False
+            LeftAxis.Grid.Visible = False
+            Legend.Visible = False
+            View3D = False
+            Align = alClient
+            BevelOuter = bvNone
+            TabOrder = 0
+            object Series1: TLineSeries
+              Marks.ArrowLength = 8
+              Marks.Visible = False
+              SeriesColor = 8404992
+              Pointer.Brush.Color = clWhite
+              Pointer.InflateMargins = True
+              Pointer.Style = psCircle
+              Pointer.Visible = True
+              XValues.DateTime = False
+              XValues.Name = 'X'
+              XValues.Multiplier = 1.000000000000000000
+              XValues.Order = loAscending
+              YValues.DateTime = False
+              YValues.Name = 'Y'
+              YValues.Multiplier = 1.000000000000000000
+              YValues.Order = loNone
+            end
+          end
+        end
+      end
+      object SpTBXDockablePanel3: TSpTBXDockablePanel
+        Left = 672
+        Top = 264
+        Width = 377
+        Height = 233
+        Caption = #1048#1085#1090#1077#1085#1089#1080#1074#1085#1086#1089#1090#1100
+        DockableTo = [dpLeft, dpRight]
+        DockPos = 0
+        TabOrder = 4
+        UseLastDock = False
+        OnVisibleChanged = SpTBXDockablePanel2VisibleChanged
+        object SpTBXPanel4: TSpTBXPanel
+          Left = 0
+          Top = 19
+          Width = 377
+          Height = 214
+          Caption = 'pnlContent'
+          Align = alClient
+          TabOrder = 1
+          TBXStyleBackground = True
+          object Chart2: TChart
+            Left = 2
+            Top = 2
+            Width = 373
+            Height = 210
+            BackWall.Brush.Color = clWhite
+            BackWall.Brush.Style = bsClear
+            Title.Text.Strings = (
+              'TChart')
+            Title.Visible = False
+            BottomAxis.Axis.Visible = False
+            BottomAxis.Grid.Visible = False
+            LeftAxis.Axis.Visible = False
+            LeftAxis.Grid.Visible = False
+            Legend.Visible = False
+            View3D = False
+            Align = alClient
+            BevelOuter = bvNone
+            TabOrder = 0
+            object LineSeries1: TLineSeries
+              Marks.ArrowLength = 8
+              Marks.Visible = False
+              SeriesColor = 8404992
+              Pointer.Brush.Color = clWhite
+              Pointer.InflateMargins = True
+              Pointer.Style = psCircle
+              Pointer.Visible = True
+              XValues.DateTime = False
+              XValues.Name = 'X'
+              XValues.Multiplier = 1.000000000000000000
+              XValues.Order = loAscending
+              YValues.DateTime = False
+              YValues.Name = 'Y'
+              YValues.Multiplier = 1.000000000000000000
+              YValues.Order = loNone
+            end
+          end
+        end
       end
     end
   end
