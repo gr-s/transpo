@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-27.11.2013 19:46:48
+28.11.2013 14:18:17
 /end header
 /begin data
 MyClass project_file
@@ -72,11 +72,212 @@ MyClass project_file
 															/end private
 															/begin public
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/82,5/E$&V/
-															float weight_proc = /B$&V/75/E$&V/
-															float weight_max = /B$&V/110/E$&V/
+															float weight = /B$&V/72,5/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/101/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass cycle
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/2 неделя/E$&V/
+									/end public
+									/begin classes
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/75/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/102/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/6/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass cycle
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/3 неделя/E$&V/
+									/end public
+									/begin classes
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/82,5/E$&V/
+															float weight_proc = /B$&V/79/E$&V/
+															float weight_max = /B$&V/103/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass cycle
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/4 неделя/E$&V/
+									/end public
+									/begin classes
+										MyClass training
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/81/E$&V/
+															float weight_max = /B$&V/104/E$&V/
+															int set_count = /B$&V/6/E$&V/
+															int rep_count = /B$&V/4/E$&V/
 															/end public
 														}
 													/end classes

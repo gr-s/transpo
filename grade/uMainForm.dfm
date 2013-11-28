@@ -329,6 +329,7 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
+            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -395,6 +396,7 @@ object MainForm: TMainForm
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
+            OnDblClick = Chart1DblClick
             object Series1: TLineSeries
               Marks.ArrowLength = 8
               Marks.Visible = False
@@ -454,6 +456,7 @@ object MainForm: TMainForm
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
+            OnDblClick = Chart1DblClick
             object LineSeries1: TLineSeries
               Marks.ArrowLength = 8
               Marks.Visible = False

@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-27.11.2013 20:12:20
+28.11.2013 13:55:40
 /end header
 /begin data
 MyClass TopInstance
@@ -187,6 +187,7 @@ MyClass TopInstance
 									/begin private
 									/end private
 									/begin public
+									bool sys = /B$&V/True/E$&V/
 									/end public
 								}
 							/end classes

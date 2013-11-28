@@ -103,6 +103,7 @@ type
     procedure tblContentDblClickCell(Sender: TObject);
     procedure SpTBXItem15Click(Sender: TObject);
     procedure SpTBXItem14Click(Sender: TObject);
+    procedure Chart1DblClick(Sender: TObject);
 
   private
     FModified: Boolean;
@@ -169,10 +170,12 @@ type
     procedure UpdateTreeObjectContent(cls_tree_object:TFMClass);
 
     function GetStuff(guid:string):TFMClass;
+    function GetStuffGroup(guid:string):TFMClass;
 
     procedure UpdateTree(cls_tree_object:TFMClass; ParentNode:TTreeNode);
 
     procedure UpdateChart1(cls_tree_object:TFMClass);
+    procedure SelGroupForCharts;
   end;
 
 const
@@ -868,17 +871,17 @@ begin
     if TryStrToFloat(aCell.TextString,f1) then
     begin
       cls1.FindPropertyByName('weight_max').ValueF:= f1;
-      if cls1.FindPropertyByName('weight').ValueF >= 0 then
+      if cls1.FindPropertyByName('weight_proc').ValueF >= 0 then
       begin
-        cls1.FindPropertyByName('weight_proc').ValueF:= (cls1.FindPropertyByName('weight').ValueF/cls1.FindPropertyByName('weight_max').ValueF)*100;
-        tblContent.Cell[3,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
+        cls1.FindPropertyByName('weight').ValueF:= Round(((cls1.FindPropertyByName('weight_proc').ValueF/100)*cls1.FindPropertyByName('weight_max').ValueF)/2.5)*2.5;
+        tblContent.Cell[2,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight').ValueF,fffixed,10,1);
       end
       else
       begin
-        if cls1.FindPropertyByName('weight_proc').ValueF >= 0 then
+        if cls1.FindPropertyByName('weight').ValueF >= 0 then
         begin
-          cls1.FindPropertyByName('weight').ValueF:= Round(((cls1.FindPropertyByName('weight_proc').ValueF/100)*cls1.FindPropertyByName('weight_max').ValueF)/2.5)*2.5;
-          tblContent.Cell[2,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight').ValueF,fffixed,10,1);
+          cls1.FindPropertyByName('weight_proc').ValueF:= (cls1.FindPropertyByName('weight').ValueF/cls1.FindPropertyByName('weight_max').ValueF)*100;
+          tblContent.Cell[3,aCell.Row].TextString:= FloatToStrF(cls1.FindPropertyByName('weight_proc').ValueF,fffixed,10,0);
         end;
       end;
     end
@@ -971,6 +974,7 @@ procedure TMainForm.UpdateChart1(cls_tree_object:TFMClass);
 var cls1,cls2,cls3:TFMClass;
     i,n,i1:Integer;
     f1,f2,f2_1:Single;
+    is_yes:Boolean;
 begin    
   if not Assigned(cls_tree_object) then
   begin
@@ -978,6 +982,14 @@ begin
     Chart1.Series[0].AddXY(0,0);
     Chart2.Series[0].Clear;
     Chart2.Series[0].AddXY(0,0);
+    SpTBXDockablePanel1.Caption:= 'Тоннаж';
+    SpTBXDockablePanel3.Caption:= 'Интенсивность';
+    if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) > 0 then
+    begin
+      cls1:= GetStuffGroup(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS);
+      SpTBXDockablePanel1.Caption:= SpTBXDockablePanel1.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
+      SpTBXDockablePanel3.Caption:= SpTBXDockablePanel3.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
+    end;
   end;
     
   if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) = 0 then Exit;
@@ -991,7 +1003,7 @@ begin
     begin
       if cls_tree_object.MyClass[i].FindPropertyByName('type').ValueS = 'training' then
       begin
-        f1:= 0; f2:= 0;
+        f1:= 0; f2:= 0; is_yes:= False;
         for n:= 0 to cls_tree_object.MyClass[i].FindClassByName('content').MyClassCount - 1 do
         begin
           cls1:= cls_tree_object.MyClass[i].FindClassByName('content').MyClass[n];
@@ -1010,10 +1022,14 @@ begin
                       f2:= f2 + (f1*f2_1*cls2.FindPropertyByName('int_coef').ValueF);
                     end;
                 end;
+            is_yes:= True;
           end;
         end;
-        Chart1.Series[0].AddXY(Chart1.Series[0].XValues.Count,f1);
-        Chart2.Series[0].AddXY(Chart2.Series[0].XValues.Count,f2);
+        if is_yes then
+        begin
+          Chart1.Series[0].AddXY(Chart1.Series[0].XValues.Count,f1);
+          Chart2.Series[0].AddXY(Chart2.Series[0].XValues.Count,f2);
+        end;
       end
       else
         if cls_tree_object.MyClass[i].FindPropertyByName('type').ValueS = 'cycle' then
@@ -1048,9 +1064,40 @@ begin
       begin
         f1:= (proc-cls2.FindPropertyByName('proc').ValueD) / (cls3.FindPropertyByName('proc').ValueD - cls2.FindPropertyByName('proc').ValueD);
         f2:= (cls3.FindPropertyByName('f').ValueD-cls2.FindPropertyByName('f').ValueD)*f1;
-        Result:= cls2.FindPropertyByName('f').ValueD + ();  
+        Result:= cls2.FindPropertyByName('f').ValueD + f2;  
       end;
       Break; 
+    end;
+  end;
+end;
+
+procedure TMainForm.Chart1DblClick(Sender: TObject);
+begin
+  SelGroupForCharts;
+end;
+
+procedure TMainForm.SelGroupForCharts;
+begin
+  if SelForm.Execute(TreeBook.FindClassByName('stuff_group')) = mrOk then
+  begin
+    cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS:= SelForm.Result.FindPropertyByName('guid').ValueS;
+    UpdateChart1(nil);
+    cls_sett.Save;
+  end;
+end;
+
+function TMainForm.GetStuffGroup(guid: string): TFMClass;
+var cls1:TFMClass;
+    i:Integer;
+begin
+  Result:= nil;
+  cls1:= TreeBook.FindClassByName('stuff_group');
+  for i:= 0 to cls1.MyClassCount - 1 do
+  begin
+    if cls1.MyClass[i].FindPropertyByName('guid').ValueS = guid then
+    begin
+      Result:= cls1.MyClass[i];
+      Break;
     end;
   end;
 end;
