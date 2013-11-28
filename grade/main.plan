@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-28.11.2013 14:18:17
+28.11.2013 20:48:42
 /end header
 /begin data
 MyClass project_file
@@ -18,7 +18,7 @@ MyClass project_file
 			/begin public
 			/end public
 			/begin classes
-				MyClass cycle
+				MyClass tree_object
 				{
 					/begin private
 					/end private
@@ -26,9 +26,10 @@ MyClass project_file
 					char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 					char type = /B$&V/cycle/E$&V/
 					char caption = /B$&V/2014/E$&V/
+					bool is_selected = /B$&V/False/E$&V/
 					/end public
 					/begin classes
-						MyClass cycle
+						MyClass tree_object
 						{
 							/begin private
 							/end private
@@ -36,9 +37,10 @@ MyClass project_file
 							char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 							char type = /B$&V/cycle/E$&V/
 							char caption = /B$&V/Силовой 01.12/E$&V/
+							bool is_selected = /B$&V/False/E$&V/
 							/end public
 							/begin classes
-								MyClass cycle
+								MyClass tree_object
 								{
 									/begin private
 									/end private
@@ -46,9 +48,10 @@ MyClass project_file
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
 									char caption = /B$&V/1 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
 									/end public
 									/begin classes
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -56,6 +59,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -71,11 +75,26 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/72,5/E$&V/
-															float weight_proc = /B$&V/72/E$&V/
-															float weight_max = /B$&V/101/E$&V/
+															float weight = /B$&V/70/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/100/E$&V/
 															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/120/E$&V/
+															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
@@ -83,7 +102,7 @@ MyClass project_file
 												}
 											/end classes
 										}
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -91,6 +110,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -100,12 +120,56 @@ MyClass project_file
 													/begin public
 													bool sys = /B$&V/True/E$&V/
 													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/80/E$&V/
+															float weight_proc = /B$&V/66,6666641235352/E$&V/
+															float weight_max = /B$&V/120/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/120/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/35/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/50/E$&V/
+															int set_count = /B$&V/3/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
 												}
 											/end classes
 										}
 									/end classes
 								}
-								MyClass cycle
+								MyClass tree_object
 								{
 									/begin private
 									/end private
@@ -113,9 +177,10 @@ MyClass project_file
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
 									char caption = /B$&V/2 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
 									/end public
 									/begin classes
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -123,6 +188,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -141,16 +207,29 @@ MyClass project_file
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/75/E$&V/
 															float weight_proc = /B$&V/74/E$&V/
-															float weight_max = /B$&V/102/E$&V/
+															float weight_max = /B$&V/101/E$&V/
 															int set_count = /B$&V/5/E$&V/
-															int rep_count = /B$&V/6/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/90/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/121/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
 													/end classes
 												}
 											/end classes
 										}
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -158,6 +237,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -167,12 +247,56 @@ MyClass project_file
 													/begin public
 													bool sys = /B$&V/True/E$&V/
 													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/70,539421081543/E$&V/
+															float weight_max = /B$&V/120,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/92,5/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/121/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/37,5/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/50,5/E$&V/
+															int set_count = /B$&V/3/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
 												}
 											/end classes
 										}
 									/end classes
 								}
-								MyClass cycle
+								MyClass tree_object
 								{
 									/begin private
 									/end private
@@ -180,9 +304,10 @@ MyClass project_file
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
 									char caption = /B$&V/3 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
 									/end public
 									/begin classes
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -190,6 +315,648 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/80/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/102/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/122/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/92,5/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/121/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/4/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/122/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/35/E$&V/
+															float weight_proc = /B$&V/68,6274490356445/E$&V/
+															float weight_max = /B$&V/51/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/4 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/82,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/103/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/97,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/123/E$&V/
+															int set_count = /B$&V/6/E$&V/
+															int rep_count = /B$&V/4/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/97,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/121,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/3/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/97,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/123/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/42,5/E$&V/
+															float weight_proc = /B$&V/82/E$&V/
+															float weight_max = /B$&V/51,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/5 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/77,5/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/104/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/6/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/124/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/87,5/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/122/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/92,5/E$&V/
+															float weight_proc = /B$&V/75/E$&V/
+															float weight_max = /B$&V/124/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/35/E$&V/
+															float weight_proc = /B$&V/68,6274490356445/E$&V/
+															float weight_max = /B$&V/52/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/6 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/75/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/105/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/87,5/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/125/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/122,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/90/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/125/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/35/E$&V/
+															float weight_proc = /B$&V/68,6274490356445/E$&V/
+															float weight_max = /B$&V/52,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/7 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/80/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/106/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/126/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/90/E$&V/
+															float weight_proc = /B$&V/73,1707305908203/E$&V/
+															float weight_max = /B$&V/123/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/4/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/126/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/40/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/53/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/8 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -207,8 +974,21 @@ MyClass project_file
 															/begin public
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/82,5/E$&V/
-															float weight_proc = /B$&V/79/E$&V/
-															float weight_max = /B$&V/103/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/107/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/6/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/100/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/127/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -217,7 +997,7 @@ MyClass project_file
 												}
 											/end classes
 										}
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -225,6 +1005,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -234,22 +1015,67 @@ MyClass project_file
 													/begin public
 													bool sys = /B$&V/True/E$&V/
 													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/97,5/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/123,5/E$&V/
+															int set_count = /B$&V/3/E$&V/
+															int rep_count = /B$&V/4/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/100/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/127/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/42,5/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/53,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/6/E$&V/
+															/end public
+														}
+													/end classes
 												}
 											/end classes
 										}
 									/end classes
 								}
-								MyClass cycle
+								MyClass tree_object
 								{
 									/begin private
 									/end private
 									/begin public
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
-									char caption = /B$&V/4 неделя/E$&V/
+									char caption = /B$&V/9 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
 									/end public
 									/begin classes
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -257,6 +1083,136 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/87,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/108/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/102,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/128/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/100/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/124/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/3/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/102,5/E$&V/
+															float weight_proc = /B$&V/80/E$&V/
+															float weight_max = /B$&V/128/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/45/E$&V/
+															float weight_proc = /B$&V/82/E$&V/
+															float weight_max = /B$&V/54/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/10 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -273,18 +1229,31 @@ MyClass project_file
 															/end private
 															/begin public
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/85/E$&V/
-															float weight_proc = /B$&V/81/E$&V/
-															float weight_max = /B$&V/104/E$&V/
+															float weight = /B$&V/82,5/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/109/E$&V/
 															int set_count = /B$&V/6/E$&V/
-															int rep_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/129/E$&V/
+															int set_count = /B$&V/6/E$&V/
+															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
 													/end classes
 												}
 											/end classes
 										}
-										MyClass training
+										MyClass tree_object
 										{
 											/begin private
 											/end private
@@ -292,6 +1261,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -301,6 +1271,177 @@ MyClass project_file
 													/begin public
 													bool sys = /B$&V/True/E$&V/
 													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/124,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/4/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/97,5/E$&V/
+															float weight_proc = /B$&V/76/E$&V/
+															float weight_max = /B$&V/129/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/42,5/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/54,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/6/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass tree_object
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
+									char type = /B$&V/cycle/E$&V/
+									char caption = /B$&V/11 неделя/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
+									/end public
+									/begin classes
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/1/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
+															float weight = /B$&V/80/E$&V/
+															float weight_proc = /B$&V/72,7272720336914/E$&V/
+															float weight_max = /B$&V/110/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
+															float weight = /B$&V/92,5/E$&V/
+															float weight_proc = /B$&V/71,1538467407227/E$&V/
+															float weight_max = /B$&V/130/E$&V/
+															int set_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass tree_object
+										{
+											/begin private
+											/end private
+											/begin public
+											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
+											char type = /B$&V/training/E$&V/
+											char caption = /B$&V/2/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
+											/end public
+											/begin classes
+												MyClass content
+												{
+													/begin private
+													/end private
+													/begin public
+													bool sys = /B$&V/True/E$&V/
+													/end public
+													/begin classes
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+															float weight = /B$&V/90/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/125/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+															float weight = /B$&V/92,5/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/130/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
+															/end public
+														}
+														MyClass train_content
+														{
+															/begin private
+															/end private
+															/begin public
+															char type = /B$&V/train_content/E$&V/
+															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+															float weight = /B$&V/40/E$&V/
+															float weight_proc = /B$&V/75/E$&V/
+															float weight_max = /B$&V/55/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/8/E$&V/
+															/end public
+														}
+													/end classes
 												}
 											/end classes
 										}

@@ -8,7 +8,7 @@ uses
   ActnList, ImgList, rrfile_mod_api, SpTBXSkins, SpTBXDkPanels,
   ExtCtrls, ComCtrls, RRClassInspector, rrAppPanelSaver, SpTBXTabs,
   GRFormPanel, Menus, rrAdvTable, uSelForm, TeEngine, Series, TeeProcs,
-  Chart;
+  Chart, StdCtrls, Buttons;
 
 type
   TMainForm = class(TForm)
@@ -80,6 +80,10 @@ type
     SpTBXPanel4: TSpTBXPanel;
     Chart2: TChart;
     LineSeries1: TLineSeries;
+    SpTBXPopupMenu3: TSpTBXPopupMenu;
+    SpTBXItem16: TSpTBXItem;
+    SpTBXSeparatorItem5: TSpTBXSeparatorItem;
+    SpTBXItem17: TSpTBXItem;
     procedure actExitApplicationExecute(Sender: TObject);
     procedure SpTBXDockablePanel2Resize(Sender: TObject);
     procedure actShowTreeExecute(Sender: TObject);
@@ -104,6 +108,15 @@ type
     procedure SpTBXItem15Click(Sender: TObject);
     procedure SpTBXItem14Click(Sender: TObject);
     procedure Chart1DblClick(Sender: TObject);
+    procedure SpTBXItem17Click(Sender: TObject);
+    procedure TreeView1CustomDrawItem(Sender: TCustomTreeView;
+      Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+    procedure Chart2MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Chart1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure tblContentKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
   private
     FModified: Boolean;
@@ -714,12 +727,16 @@ var cls1:TFMClass;
     tn1:TTreeNode;
 begin
   if not Assigned(cls_tree_object) then
+  begin
     cls_tree_object:= cls_project.FindClassByName('tree');
+    TreeView1.Items.Clear;
+  end;
 
   for i:= 0 to cls_tree_object.MyClassCount - 1 do
   begin
     if not Assigned(cls_tree_object.MyClass[i].FindPropertyByName('sys')) then
     begin
+      cls_templates.CopyClass(cls_tree_object.MyClass[i],cls_templates.FindClassByName('tree_object'),False,True);
       tn1:= AddTreeViewItem(cls_tree_object.MyClass[i],ParentNode);
       UpdateTree(cls_tree_object.MyClass[i],tn1);
     end;
@@ -743,9 +760,37 @@ end;
 
 procedure TMainForm.TreeView1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+var cls1,cls2:TFMClass;
 begin
   if Key = VK_F2 then
     TreeView1.Selected.EditText;
+  if Assigned(TreeView1.Selected) then
+  begin
+    if (Key = 67) and (ssCtrl in Shift) then
+    begin
+      ActiveNode.SaveToCB2;
+    end;
+  end;
+  if (Key = 86) and (ssCtrl in Shift) then
+  begin
+    cls1:= TFMClass.Create(nil);
+    if cls1.OpenFromCB2 then
+    begin
+      if Assigned(cls1.FindPropertyByName('type')) then
+        if cls1.FindPropertyByName('type').ValueS = 'training' then
+        begin
+          if Assigned(ActiveNode) then
+            if ActiveNode.FindPropertyByName('type').ValueS = 'training' then
+            begin
+              cls1.CopyClass(ActiveNode,cls1,False,True);
+              UpdateTreeObjectContent(ActiveNode);
+              UpdateChart1(nil);
+              Modified:= True;
+            end;
+        end;
+    end;
+    FreeAndNil(cls1);
+  end;
 end;
 
 procedure TMainForm.DeleteTreeObject(cls_tree_object: TFMClass);
@@ -780,6 +825,7 @@ begin
   for i:= 0 to cls1.MyClassCount - 1 do
   begin
     aTable.CreateRowBlock(0);
+    cls_templates.CopyClass(cls1.MyClass[i],cls_templates.FindClassByName('train_content'),False,True);
     aTable.Cell[0,aTable.RowCount-1].Data1:= cls1.MyClass[i];
     aTable.Cell[0,aTable.RowCount-1].TextString:= IntToStr(i+1);
     cls2:= GetStuff(cls1.MyClass[i].FindPropertyByName('stuff_guid').ValueS);
@@ -946,7 +992,7 @@ var aCell: TRRCell;
     cls1:TFMClass;
 begin
   aCell:= tblContent.SelectedCell;
-  if Assigned(aCell) then                              
+  if Assigned(aCell) then
   begin
     if MessageBoxW(Handle, 'Подтвердите действие','Внимание', MB_OKCANCEL	 OR MB_ICONQUESTION) = ID_OK then
     begin
@@ -975,6 +1021,7 @@ var cls1,cls2,cls3:TFMClass;
     i,n,i1:Integer;
     f1,f2,f2_1:Single;
     is_yes:Boolean;
+    _weight:Single;
 begin    
   if not Assigned(cls_tree_object) then
   begin
@@ -1007,6 +1054,9 @@ begin
         for n:= 0 to cls_tree_object.MyClass[i].FindClassByName('content').MyClassCount - 1 do
         begin
           cls1:= cls_tree_object.MyClass[i].FindClassByName('content').MyClass[n];
+
+          if Length(cls1.FindPropertyByName('stuff_guid').ValueS) = 0 then Continue;
+
           cls2:= GetStuff(cls1.FindPropertyByName('stuff_guid').ValueS);
           if cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS = cls2.FindPropertyByName('group_guid').ValueS then
           begin
@@ -1014,12 +1064,13 @@ begin
               if cls1.FindPropertyByName('set_count').ValueI >= 0 then
                 if cls1.FindPropertyByName('rep_count').ValueI >= 0 then
                 begin
-                  f1:= f1 + ((cls1.FindPropertyByName('set_count').ValueI*cls1.FindPropertyByName('rep_count').ValueI)*cls1.FindPropertyByName('weight').ValueF);
+                  _weight:= (cls1.FindPropertyByName('set_count').ValueI*cls1.FindPropertyByName('rep_count').ValueI)*cls1.FindPropertyByName('weight').ValueF;
+                  f1:= f1 + _weight;
                   if cls1.FindPropertyByName('weight_max').ValueF >= 0 then
                     if cls1.FindPropertyByName('weight_proc').ValueF >= 0 then
                     begin
-                      f2_1:= GetCorrectCoef(cls1.FindPropertyByName('weight_proc').ValueF);
-                      f2:= f2 + (f1*f2_1*cls2.FindPropertyByName('int_coef').ValueF);
+                      f2_1:= GetCorrectCoef((cls1.FindPropertyByName('weight').ValueF/cls1.FindPropertyByName('weight_max').ValueF)*100);
+                      f2:= f2 + (_weight*f2_1*cls2.FindPropertyByName('int_coef').ValueF);
                     end;
                 end;
             is_yes:= True;
@@ -1100,6 +1151,87 @@ begin
       Break;
     end;
   end;
+end;
+
+procedure TMainForm.SpTBXItem17Click(Sender: TObject);
+begin
+  ActiveNode.FindPropertyByName('is_selected').ValueB:= not ActiveNode.FindPropertyByName('is_selected').ValueB;
+  Modified:= True;
+  TreeView1.Repaint;
+end;
+
+procedure TMainForm.TreeView1CustomDrawItem(Sender: TCustomTreeView;
+  Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+var _color:TColor;
+begin
+  if (TFMClass(Node.Data).FindPropertyByName('is_selected').ValueB) then
+  begin
+    _color:= TreeView1.Canvas.Brush.Color;
+    TreeView1.Canvas.Brush.Color:= clSilver;
+    TreeView1.Canvas.FillRect(Node.DisplayRect(True));
+    TreeView1.Canvas.Brush.Color:= _color;
+  end;
+end;
+
+procedure TMainForm.Chart2MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var i,k:Integer;
+begin
+  Chart2.Repaint;
+  k:= 15;
+  for i:= 0 to Chart2.Series[0].Count - 1 do
+  begin
+    if (X >= Chart2.Series[0].CalcXPos(i)-k) and (X <= Chart2.Series[0].CalcXPos(i)+k) then
+      if (Y >= Chart2.Series[0].CalcYPos(i)-k) and (Y <= Chart2.Series[0].CalcYPos(i)+k) then
+        Chart2.Canvas.TextOut(Chart2.Series[0].CalcXPos(i)-10,Chart2.Series[0].CalcYPos(i)-25,FloatToStrF(Chart2.Series[0].YValue[i],fffixed,10,0));
+  end;
+end;
+
+procedure TMainForm.Chart1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var i,k:Integer;
+begin
+  Chart1.Repaint;
+  k:= 15;
+  for i:= 0 to Chart1.Series[0].Count - 1 do
+  begin
+    if (X >= Chart1.Series[0].CalcXPos(i)-k) and (X <= Chart1.Series[0].CalcXPos(i)+k) then
+      if (Y >= Chart1.Series[0].CalcYPos(i)-k) and (Y <= Chart1.Series[0].CalcYPos(i)+k) then
+        Chart1.Canvas.TextOut(Chart1.Series[0].CalcXPos(i)-10,Chart1.Series[0].CalcYPos(i)-25,FloatToStrF(Chart1.Series[0].YValue[i],fffixed,10,0));
+  end;
+end;
+
+procedure TMainForm.tblContentKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var cls1,cls2:TFMClass;
+begin
+  if Assigned(tblContent.SelectedCell) then
+  begin
+    if (Key = 67) and (ssCtrl in Shift) then
+    begin
+      TFMClass(tblContent.Cell[0,tblContent.SelectedCell.Row].Data1).SaveToCB2;
+    end;
+  end;
+
+  if (Key = 86) and (ssCtrl in Shift) then
+  begin
+    cls1:= TFMClass.Create(nil);
+    if cls1.OpenFromCB2 then
+    begin
+      if Assigned(cls1.FindPropertyByName('type')) then
+        if cls1.FindPropertyByName('type').ValueS = 'train_content' then
+        begin
+          cls2:= ActiveNode.FindClassByName('content').CreateClassItem('','');
+          cls_templates.CopyClass(cls2,cls_templates.FindClassByName('train_content'),True,True);
+          cls1.CopyClass(cls2,cls1,True,True);
+          UpdateTreeObjectContent(ActiveNode);
+          UpdateChart1(nil);
+          Modified:= True;
+        end;
+    end;
+    FreeAndNil(cls1);
+  end;
+  
 end;
 
 end.

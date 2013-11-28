@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-28.11.2013 13:55:40
+28.11.2013 19:29:06
 /end header
 /begin data
 MyClass TopInstance
@@ -61,6 +61,7 @@ MyClass TopInstance
 			char guid = /B$&V//E$&V/
 			char type = /B$&V//E$&V/
 			char caption = /B$&V//E$&V/
+			bool is_selected = /B$&V/False/E$&V/
 			/end public
 		}
 		MyClass stuff
@@ -88,6 +89,7 @@ MyClass TopInstance
 			/begin private
 			/end private
 			/begin public
+			char type = /B$&V/train_content/E$&V/
 			char stuff_guid = /B$&V//E$&V/
 			float weight = /B$&V/-1/E$&V/
 			float weight_proc = /B$&V/-1/E$&V/
@@ -221,6 +223,39 @@ MyClass TopInstance
 							char group_guid = /B$&V/31F8A571-C52D-4DC8-A848-EAED09A3479E/E$&V/
 							char caption = /B$&V/Присед/E$&V/
 							float int_coef = /B$&V/1/E$&V/
+							/end public
+						}
+						MyClass stuff
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
+							char group_guid = /B$&V/C50895F5-BE75-4605-A436-90CA412938AB/E$&V/
+							char caption = /B$&V/Тяга/E$&V/
+							float int_coef = /B$&V/1/E$&V/
+							/end public
+						}
+						MyClass stuff
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
+							char group_guid = /B$&V/C50895F5-BE75-4605-A436-90CA412938AB/E$&V/
+							char caption = /B$&V/Подтягивание/E$&V/
+							float int_coef = /B$&V/0,800000011920929/E$&V/
+							/end public
+						}
+						MyClass stuff
+						{
+							/begin private
+							/end private
+							/begin public
+							char guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
+							char group_guid = /B$&V/C50895F5-BE75-4605-A436-90CA412938AB/E$&V/
+							char caption = /B$&V/Подъем на биц. стоя (прямой. хват)/E$&V/
+							float int_coef = /B$&V/0,400000005960464/E$&V/
 							/end public
 						}
 					/end classes

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 122
-  Top = 83
+  Left = 380
+  Top = 117
   Width = 1063
   Height = 745
   Caption = 'MainForm'
@@ -187,6 +187,7 @@ object MainForm: TMainForm
               PopupMenu = SpTBXPopupMenu1
               TabOrder = 0
               OnChange = TreeView1Change
+              OnCustomDrawItem = TreeView1CustomDrawItem
               OnEdited = TreeView1Edited
               OnKeyDown = TreeView1KeyDown
             end
@@ -329,7 +330,6 @@ object MainForm: TMainForm
             Options.MultiSelecting = False
             Options.ChessPaintMode = False
             Options.ChessPaintModeIncludeImageCell = True
-            Options.ForceNullSelecting = True
             TestDraw = False
             MinCellHeight = 16
             MinCellWidth = 5
@@ -347,6 +347,7 @@ object MainForm: TMainForm
             HideSelection = False
             SelectComboAutoDropDown = False
             OnAfterCellEdit = tblContentAfterCellEdit
+            OnKeyDown = tblContentKeyDown
             OnDblClickCell = tblContentDblClickCell
           end
         end
@@ -395,8 +396,9 @@ object MainForm: TMainForm
             View3D = False
             Align = alClient
             BevelOuter = bvNone
+            PopupMenu = SpTBXPopupMenu3
             TabOrder = 0
-            OnDblClick = Chart1DblClick
+            OnMouseMove = Chart1MouseMove
             object Series1: TLineSeries
               Marks.ArrowLength = 8
               Marks.Visible = False
@@ -418,7 +420,7 @@ object MainForm: TMainForm
         end
       end
       object SpTBXDockablePanel3: TSpTBXDockablePanel
-        Left = 672
+        Left = 552
         Top = 264
         Width = 377
         Height = 233
@@ -451,12 +453,15 @@ object MainForm: TMainForm
             BottomAxis.Grid.Visible = False
             LeftAxis.Axis.Visible = False
             LeftAxis.Grid.Visible = False
+            Legend.LegendStyle = lsValues
+            Legend.ShadowSize = 0
             Legend.Visible = False
             View3D = False
             Align = alClient
             BevelOuter = bvNone
+            PopupMenu = SpTBXPopupMenu3
             TabOrder = 0
-            OnDblClick = Chart1DblClick
+            OnMouseMove = Chart2MouseMove
             object LineSeries1: TLineSeries
               Marks.ArrowLength = 8
               Marks.Visible = False
@@ -978,6 +983,12 @@ object MainForm: TMainForm
       Caption = #1059#1076#1072#1083#1080#1090#1100
       OnClick = SpTBXItem13Click
     end
+    object SpTBXSeparatorItem5: TSpTBXSeparatorItem
+    end
+    object SpTBXItem17: TSpTBXItem
+      Caption = #1054#1090#1084#1077#1090#1080#1090#1100' '#1090#1086#1095#1082#1091
+      OnClick = SpTBXItem17Click
+    end
   end
   object SpTBXPopupMenu2: TSpTBXPopupMenu
     Left = 418
@@ -989,6 +1000,14 @@ object MainForm: TMainForm
     object SpTBXItem15: TSpTBXItem
       Caption = #1059#1076#1072#1083#1080#1090#1100
       OnClick = SpTBXItem15Click
+    end
+  end
+  object SpTBXPopupMenu3: TSpTBXPopupMenu
+    Left = 466
+    Top = 286
+    object SpTBXItem16: TSpTBXItem
+      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1075#1088#1091#1087#1087#1091
+      OnClick = Chart1DblClick
     end
   end
 end
