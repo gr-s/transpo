@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 380
-  Top = 117
+  Left = 238
+  Top = 99
   Width = 1063
   Height = 745
   Caption = 'MainForm'

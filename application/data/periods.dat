@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-23.11.2013 22:37:55
+29.11.2013 20:20:35
 /end header
 /begin data
 MyClass periods_file
@@ -1216,12 +1216,27 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/1990871658-48777-19019/E$&V/
 									char create_date = /B$&V/22.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Рейсовые расходы/E$&V/
 									char caption = /B$&V/нн омск нн/E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/0/E$&V/
+									int value = /B$&V/38000/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1900754443-50132-16411/E$&V/
+									char create_date = /B$&V/29.11.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/70/E$&V/
+									char type_str = /B$&V/Другое/E$&V/
+									char caption = /B$&V/лампочки, ИП/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/2500/E$&V/
 									/end public
 								}
 							/end classes

@@ -234,13 +234,13 @@ begin
       Exit;
     end;
   end;
+  DoCloseProject;
   FreeAndNil(cls_project);
   Modified:= False;
   Empty:= True;
   UpdateCaption;
   UpdateActions;
   UpdateReopenGroup;
-  DoCloseProject;
 end;
 
 constructor TMainForm.Create(AOwner: TComponent);
@@ -404,8 +404,11 @@ begin
 end;
 
 procedure TMainForm.actExitApplicationExecute(Sender: TObject);
+var Action: TCloseAction;
 begin
-  Application.Terminate;
+  FormClose(nil,Action);
+  if Action <> caNone then
+    Application.Terminate;
 end;
 
 procedure TMainForm.SetEmpty(const Value: Boolean);
@@ -614,6 +617,8 @@ procedure TMainForm.DoCloseProject;
 begin
   TreeView1.Enabled:= False;
   TreeView1.Color:= $00EEEDEE;
+  tblContent.Hide;
+  UpdateChart1(nil);
 end;
 
 procedure TMainForm.DoOpenProject;
@@ -764,32 +769,53 @@ var cls1,cls2:TFMClass;
 begin
   if Key = VK_F2 then
     TreeView1.Selected.EditText;
+
   if Assigned(TreeView1.Selected) then
   begin
     if (Key = 67) and (ssCtrl in Shift) then
     begin
       ActiveNode.SaveToCB2;
     end;
-  end;
-  if (Key = 86) and (ssCtrl in Shift) then
-  begin
-    cls1:= TFMClass.Create(nil);
-    if cls1.OpenFromCB2 then
+
+    if (Key = 86) and (ssCtrl in Shift) then
     begin
-      if Assigned(cls1.FindPropertyByName('type')) then
-        if cls1.FindPropertyByName('type').ValueS = 'training' then
+      cls1:= TFMClass.Create(nil);
+      if cls1.OpenFromCB2 then
+      begin
+        if Assigned(cls1.FindPropertyByName('type')) then
         begin
-          if Assigned(ActiveNode) then
-            if ActiveNode.FindPropertyByName('type').ValueS = 'training' then
+          if cls1.FindPropertyByName('type').ValueS = 'training' then
+          begin
+            if Assigned(ActiveNode) then
             begin
-              cls1.CopyClass(ActiveNode,cls1,False,True);
-              UpdateTreeObjectContent(ActiveNode);
+              if ActiveNode.FindPropertyByName('type').ValueS = 'training' then
+              begin
+                if ActiveNode.FindPropertyByName('type').ValueS = 'training' then
+                begin
+                  cls1.CopyClass(ActiveNode,cls1,False,True);
+                  UpdateTreeObjectContent(ActiveNode);
+                  UpdateChart1(nil);
+                  Modified:= True;
+                end;
+              end;
+            end;
+          end;
+          if cls1.FindPropertyByName('type').ValueS = 'cycle' then
+          begin
+            if ActiveNode.FindPropertyByName('type').ValueS = 'cycle' then
+            begin
+              cls2:= ActiveNode.CreateClassItem('','');
+              cls1.CopyClass(cls2,cls1,True,True);
+              UpdateTree(cls2,AddTreeViewItem(cls2,TreeView1.Selected));
               UpdateChart1(nil);
               Modified:= True;
             end;
+          end;
         end;
+      end;
+      FreeAndNil(cls1);
     end;
-    FreeAndNil(cls1);
+    
   end;
 end;
 
@@ -1029,14 +1055,19 @@ begin
     Chart1.Series[0].AddXY(0,0);
     Chart2.Series[0].Clear;
     Chart2.Series[0].AddXY(0,0);
-    SpTBXDockablePanel1.Caption:= 'Тоннаж';
-    SpTBXDockablePanel3.Caption:= 'Интенсивность';
-    if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) > 0 then
+    if not Empty then
     begin
-      cls1:= GetStuffGroup(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS);
-      SpTBXDockablePanel1.Caption:= SpTBXDockablePanel1.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
-      SpTBXDockablePanel3.Caption:= SpTBXDockablePanel3.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
-    end;
+      SpTBXDockablePanel1.Caption:= 'Тоннаж';
+      SpTBXDockablePanel3.Caption:= 'Интенсивность';
+      if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) > 0 then
+      begin
+        cls1:= GetStuffGroup(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS);
+        SpTBXDockablePanel1.Caption:= SpTBXDockablePanel1.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
+        SpTBXDockablePanel3.Caption:= SpTBXDockablePanel3.Caption + ' (' + cls1.FindPropertyByName('caption').ValueS + ')';
+      end;
+    end
+    else
+      Exit;
   end;
     
   if Length(cls_sett.FindClassByName('Common').FindPropertyByName('chart_group_guid').ValueS) = 0 then Exit;
@@ -1219,6 +1250,7 @@ begin
     if cls1.OpenFromCB2 then
     begin
       if Assigned(cls1.FindPropertyByName('type')) then
+      begin
         if cls1.FindPropertyByName('type').ValueS = 'train_content' then
         begin
           cls2:= ActiveNode.FindClassByName('content').CreateClassItem('','');
@@ -1228,6 +1260,7 @@ begin
           UpdateChart1(nil);
           Modified:= True;
         end;
+      end;
     end;
     FreeAndNil(cls1);
   end;
