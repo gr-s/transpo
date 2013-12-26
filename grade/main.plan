@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-29.11.2013 18:41:50
+27.12.2013 0:04:33
 /end header
 /begin data
 MyClass project_file
@@ -48,7 +48,7 @@ MyClass project_file
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
 									char caption = /B$&V/1 неделя/E$&V/
-									bool is_selected = /B$&V/False/E$&V/
+									bool is_selected = /B$&V/True/E$&V/
 									/end public
 									/begin classes
 										MyClass tree_object
@@ -59,7 +59,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -110,7 +110,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -188,7 +188,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -204,6 +204,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/75/E$&V/
 															float weight_proc = /B$&V/74/E$&V/
@@ -217,6 +218,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
 															float weight = /B$&V/90/E$&V/
 															float weight_proc = /B$&V/74/E$&V/
@@ -237,7 +239,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -315,7 +317,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -331,6 +333,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/80/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
@@ -344,6 +347,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
 															float weight = /B$&V/95/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
@@ -364,7 +368,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -460,10 +464,10 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/82,5/E$&V/
-															float weight_proc = /B$&V/80/E$&V/
+															float weight = /B$&V/85/E$&V/
+															float weight_proc = /B$&V/82,5242691040039/E$&V/
 															float weight_max = /B$&V/103/E$&V/
-															int set_count = /B$&V/5/E$&V/
+															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
@@ -512,7 +516,7 @@ MyClass project_file
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
 															float weight = /B$&V/97,5/E$&V/
-															float weight_proc = /B$&V/80/E$&V/
+															float weight_proc = /B$&V/80,2469100952148/E$&V/
 															float weight_max = /B$&V/121,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/3/E$&V/
@@ -539,11 +543,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
-															float weight = /B$&V/42,5/E$&V/
-															float weight_proc = /B$&V/82/E$&V/
+															float weight = /B$&V/40/E$&V/
+															float weight_proc = /B$&V/77,6699066162109/E$&V/
 															float weight_max = /B$&V/51,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/6/E$&V/
 															/end public
 														}
 													/end classes
@@ -845,6 +849,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/80/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
@@ -858,6 +863,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
 															float weight = /B$&V/95/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
@@ -972,6 +978,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/82,5/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
@@ -985,6 +992,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
 															float weight = /B$&V/100/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
@@ -1228,6 +1236,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/82,5/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
@@ -1241,6 +1250,7 @@ MyClass project_file
 															/begin private
 															/end private
 															/begin public
+															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
 															float weight = /B$&V/95/E$&V/
 															float weight_proc = /B$&V/74/E$&V/

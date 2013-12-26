@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-02.12.2013 13:08:22
+27.12.2013 0:02:28
 /end header
 /begin data
 MyClass periods_file
@@ -1117,7 +1117,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2917105197-2383-19038/E$&V/
 									char create_date = /B$&V/15.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/нн омск/E$&V/
@@ -1147,7 +1147,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/3357209690-31886-17347/E$&V/
 									char create_date = /B$&V/20.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/омск уфа/E$&V/
@@ -1177,7 +1177,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/1185767270-42510-17036/E$&V/
 									char create_date = /B$&V/22.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/уфа нн/E$&V/
@@ -1207,7 +1207,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/922158325-57243-20040/E$&V/
 									char create_date = /B$&V/27.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/НН-Самара/E$&V/
@@ -1218,7 +1218,7 @@ MyClass periods_file
 									int card_type = /B$&V/0/E$&V/
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/18000/E$&V/
+									int value = /B$&V/13000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
@@ -1237,7 +1237,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2336295025-20060-17419/E$&V/
 									char create_date = /B$&V/28.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Самара-Нижнекамск/E$&V/
@@ -1267,7 +1267,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/1753084284-62228-18619/E$&V/
 									char create_date = /B$&V/22.11.2013/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Наб. челны - НН/E$&V/
@@ -1279,6 +1279,36 @@ MyClass periods_file
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/1500/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3759796202-29835-20452/E$&V/
+									char create_date = /B$&V/01.12.2013/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/НН-Самара/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/17000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
@@ -1327,6 +1357,51 @@ MyClass periods_file
 									char caption = /B$&V/лампочки, ИП/E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/2500/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4094385680-32257-17146/E$&V/
+									char create_date = /B$&V/04.12.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Рейсовые расходы/E$&V/
+									char caption = /B$&V/НН-Самара-Наб. челны-НН/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/8390/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/685647633-49860-19531/E$&V/
+									char create_date = /B$&V/01.12.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Рейсовые расходы/E$&V/
+									char caption = /B$&V/НН-Самара/E$&V/
+									MemoBlock comments = /B$&V/Рейсовые расходы, ремонт/E$&V/
+									int value = /B$&V/24000/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2105945773-33964-18530/E$&V/
+									char create_date = /B$&V/14.12.2013/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/20/E$&V/
+									char type_str = /B$&V/Ремонт/E$&V/
+									char caption = /B$&V/компрессор, клапан/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/10300/E$&V/
 									/end public
 								}
 							/end classes
