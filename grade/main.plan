@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-07.01.2014 13:51:37
+15.01.2014 19:45:01
 /end header
 /begin data
 MyClass project_file
@@ -704,7 +704,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -755,7 +755,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -833,7 +833,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -884,7 +884,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/False/E$&V/
+											bool is_selected = /B$&V/True/E$&V/
 											/end public
 											/begin classes
 												MyClass content
