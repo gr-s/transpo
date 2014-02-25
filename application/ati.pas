@@ -251,7 +251,8 @@ begin
 
   if params.task = 'login_1' then
   begin
-      elm:= IHTMLElement(GetElementById('main_extLogin_lblUserName_ShortenedLbl'));
+      //elm:= IHTMLElement(GetElementById('main_extLogin_lblUserName_ShortenedLbl'));
+      elm:= IHTMLElement(GetElementById('main_extLogin_ucLoginView_lblUserName'));
       if Assigned(elm) then
       begin
         logined:= True;
