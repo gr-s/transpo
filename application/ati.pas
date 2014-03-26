@@ -648,7 +648,7 @@ begin
             elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblNote_' + IntToStr(i),elm));
             if Assigned(elm2) then
             begin
-              s:= IHTMLElement(elm2).innerText;
+              s:= CleanText(IHTMLElement(elm2).innerText);
               s:= ReplaceSymb(s,' ','Примечание:');
               cls1.FindPropertyByName('Note').ValueS:= s;
             end;
@@ -656,7 +656,7 @@ begin
             elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblFirm_' + IntToStr(i),elm));
             if Assigned(elm2) then
             begin
-              s:= IHTMLElement(elm2).innerText;
+              s:= CleanText(IHTMLElement(elm2).innerText);
               cls1.FindPropertyByName('ControllerInfo').ValueS:= s;
             end;
 
@@ -686,7 +686,8 @@ begin
                   elm3:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts' + IntToStr(k) + 'Data_' + IntToStr(i),elm2));
                 if not Assigned(elm3) then Break;
 
-                s:= IHTMLElement(elm3).innerText;
+                s:= CleanText(IHTMLElement(elm3).innerText);
+
                 cls2:= cls1.FindClassByName('controller_contacts').CreateClassItem('controller_contacts','');
                 cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
                 cls2.FindPropertyByName('Str1').ValueS:= s;
