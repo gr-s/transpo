@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-10.04.2014 15:44:57
+24.04.2014 13:10:26
 /end header
 /begin data
 MyClass periods_file
@@ -2053,6 +2053,96 @@ MyClass periods_file
 										}
 									/end classes
 								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/394845912-42525-17515/E$&V/
+									char create_date = /B$&V/17.04.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/ковров-москва/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/4200/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4024720617-54025-17725/E$&V/
+									char create_date = /B$&V/18.04.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/москва-пермь/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/35000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/4216313330-21279-18718/E$&V/
+									char create_date = /B$&V/24.04.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/пермь-нн/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/11000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
 							/end classes
 						}
 						MyClass credits
@@ -2100,6 +2190,96 @@ MyClass periods_file
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/5000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1224839955-25181-17333/E$&V/
+									char create_date = /B$&V/17.04.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/ковров-москва/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/4200/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2784627566-60527-17169/E$&V/
+									char create_date = /B$&V/24.04.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/нн-мурманск/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/50000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2515052768-23503-20242/E$&V/
+									char create_date = /B$&V/24.04.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/пермь-нн/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/11000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
