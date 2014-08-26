@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-24.07.2014 12:47:18
+26.08.2014 13:31:47
 /end header
 /begin data
 MyClass data_file
@@ -24,50 +24,6 @@ MyClass data_file
 					/end private
 					/begin public
 					/end public
-					/begin classes
-						MyClass data_block
-						{
-							/begin private
-							/end private
-							/begin public
-							char Caption = /B$&V/НИЖН-РОСС/E$&V/
-							char Date = /B$&V/25.07.2014/E$&V/
-							int _sel_col = /B$&V/-1/E$&V/
-							int _sel_row = /B$&V/-1/E$&V/
-							char _sel_session = /B$&V//E$&V/
-							/end public
-							/begin classes
-								MyClass items
-								{
-									/begin private
-									/end private
-									/begin public
-									/end public
-								}
-							/end classes
-						}
-						MyClass data_block
-						{
-							/begin private
-							/end private
-							/begin public
-							char Caption = /B$&V/НИЖН-РОСС/E$&V/
-							char Date = /B$&V/25.07.2014/E$&V/
-							int _sel_col = /B$&V/-1/E$&V/
-							int _sel_row = /B$&V/-1/E$&V/
-							char _sel_session = /B$&V//E$&V/
-							/end public
-							/begin classes
-								MyClass items
-								{
-									/begin private
-									/end private
-									/begin public
-									/end public
-								}
-							/end classes
-						}
-					/end classes
 				}
 				MyClass favor
 				{
@@ -101,29 +57,47 @@ MyClass data_file
 											/end private
 											/begin public
 											int _type = /B$&V/10/E$&V/
-											char ID = /B$&V/20523223023723223332205238226227238240238228194238235227238227240224228324932473249543240206225238240243228238226224237232229322323223122423924722424124223232414954534848/E$&V/
-											char FromGeo = /B$&V/Нижний Новгород/E$&V/
-											char FromGeoDesc1 = /B$&V/Нижний Новгород 
-постоянно по раб.дням/E$&V/
-											char ToGeo = /B$&V/Волгоград /E$&V/
-											char ToGeoDesc1 = /B$&V/Волгоград 
-ближайшие крупные города /E$&V/
-											char Dist = /B$&V/1028 км/E$&V/
-											int DistI = /B$&V/1028/E$&V/
-											char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
-											char CargoDesc = /B$&V/1 / 16 (Оборудование и запчасти )/E$&V/
-											char CargoName = /B$&V/Оборудование и запчасти /E$&V/
-											char CargoNote = /B$&V//E$&V/
-											float Weight = /B$&V/1/E$&V/
-											float Volume = /B$&V/16/E$&V/
-											char PriceDesc = /B$&V/16500 (16,1 р/км) 
-     /E$&V/
-											char Price1 = /B$&V/16500/E$&V/
+											char ID = /B$&V/20423824123422622419423824023823722923032533247324532402102052073241324023122423922423523522924722923732415156484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва
+Новомещерский проезд
+
+
+27 авг /E$&V/
+											char ToGeo = /B$&V/Воронеж /E$&V/
+											char ToGeoDesc1 = /B$&V/Воронеж 
+
+
+ближайшие крупные города7 доп. пунктов разгрузки/E$&V/
+											char Dist = /B$&V/1018 км/E$&V/
+											int DistI = /B$&V/1018/E$&V/
+											char TruckType = /B$&V/фург., цмет. (загр:задн.)/E$&V/
+											char CargoDesc = /B$&V/5 / - (ТНП ) (запаллечен )/E$&V/
+											char CargoName = /B$&V/ТНП /E$&V/
+											char CargoNote = /B$&V/запаллечен /E$&V/
+											float Weight = /B$&V/5/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/
+
+
+
+38000 без НДС (37,3 р/км)
+
+прям.дог.
+
+
+
+
+
+  
+
+   /E$&V/
+											char Price1 = /B$&V/38000/E$&V/
 											char Controller = /B$&V//E$&V/
-											char ControllerInfo = /B$&V/Автоэкспедиция (Автоэкспедиция-НН, ООО) (ID:131191, эксп-перев, Нижний Новгород) (р41)  /E$&V/
-											char DateDesc = /B$&V/постоянно по раб.дням/E$&V/
-											char Note = /B$&V/ только нижегородские/E$&V/
-											char Reliability = /B$&V/Балл надёжности: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
+											char ControllerInfo = /B$&V/СФЕРА (СФЕРА, ООО) (ID:265294, эксп., Москва)    (р189) /E$&V/
+											char DateDesc = /B$&V/27 авг /E$&V/
+											char Note = /B$&V/ Всего 13 точек выгрузки!/E$&V/
+											char Reliability = /B$&V/Балл участника АТИ: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
 											MemoBlock Comments = /B$&V//E$&V/
 											bool _checked = /B$&V/False/E$&V/
 											int _status_id = /B$&V/10/E$&V/
@@ -142,61 +116,15 @@ MyClass data_file
 															/begin private
 															/end private
 															/begin public
-															char Str1 = /B$&V/ICQ#:584706818, +7(831)2701323, +7(920)0175398, Александр/E$&V/
+															char Str1 = /B$&V/ICQ#:681247348, факс: +7(495)2236182 +7(495)2236182, +7(968)7858331, Лисин Олег/E$&V/
 															/end public
 														}
-													/end classes
-												}
-											/end classes
-										}
-										MyClass ticket
-										{
-											/begin private
-											/end private
-											/begin public
-											int _type = /B$&V/10/E$&V/
-											char ID = /B$&V/20523223023723223332205238226227238240238228202240224241237238228224240324844533247324954324021020520732414953484848/E$&V/
-											char FromGeo = /B$&V/Нижний Новгород/E$&V/
-											char FromGeoDesc1 = /B$&V/Нижний Новгород 
-11 фев /E$&V/
-											char ToGeo = /B$&V/Краснодар /E$&V/
-											char ToGeoDesc1 = /B$&V/Краснодар 
-ближайшие крупные города /E$&V/
-											char Dist = /B$&V/1589 км/E$&V/
-											int DistI = /B$&V/1589/E$&V/
-											char TruckType = /B$&V/тент., конт., фург. (загр:задн.)/E$&V/
-											char CargoDesc = /B$&V/0,5 / 16 (ТНП )/E$&V/
-											char CargoName = /B$&V/ТНП /E$&V/
-											char CargoNote = /B$&V//E$&V/
-											float Weight = /B$&V/0,5/E$&V/
-											float Volume = /B$&V/16/E$&V/
-											char PriceDesc = /B$&V/15000 без НДС (9,4 р/км) 
-     /E$&V/
-											char Price1 = /B$&V/15000/E$&V/
-											char Controller = /B$&V//E$&V/
-											char ControllerInfo = /B$&V/ОАО КУТЭП (Краснодарское УТЭП, ОАО) (ID:12407, эксп-перев, Краснодар) (р26)  /E$&V/
-											char DateDesc = /B$&V/11 фев /E$&V/
-											char Note = /B$&V//E$&V/
-											char Reliability = /B$&V/Балл надёжности: 5,00. Субъективных оценок нет или их меньше 3-х./E$&V/
-											MemoBlock Comments = /B$&V//E$&V/
-											bool _checked = /B$&V/False/E$&V/
-											int _status_id = /B$&V/10/E$&V/
-											char _status_str = /B$&V/Просм/E$&V/
-											/end public
-											/begin classes
-												MyClass controller_contacts
-												{
-													/begin private
-													/end private
-													/begin public
-													/end public
-													/begin classes
 														MyClass controller_contact
 														{
 															/begin private
 															/end private
 															/begin public
-															char Str1 = /B$&V/факс: +7(861)2258323 +7(861)2258323, +7(918)0711220, Олег/E$&V/
+															char Str1 = /B$&V/ICQ#:613550541, факс: +7(495)2236182 +7(964)5598831, +7(964)5598831, Кузьмичёв Алексей/E$&V/
 															/end public
 														}
 													/end classes

@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-24.07.2014 0:18:47
+26.08.2014 12:03:05
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/724124551-23376-17688/E$&V/
+	char active_period = /B$&V/1255091974-1649-18219/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -2795,6 +2795,521 @@ MyClass periods_file
 										}
 									/end classes
 								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/153138628-54928-17557/E$&V/
+									char create_date = /B$&V/24.07.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/нн-ульян/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/12000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2503980085-15203-17973/E$&V/
+									char create_date = /B$&V/25.07.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/саранск-нн/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/6500/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/193224235224234238226238196231229240230232237241234325332473249543240200231228229235232255322322313224022923123223725132413240255249442482424654324157484848/E$&V/
+									char create_date = /B$&V/13.08.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Балаково-Дзержинск /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/9000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/193224235224234238226238196231229240230232237241234325332473249543240200231228229235232255322322313224022923123223725132413240255249442482424654324157484848/E$&V/
+													char FromGeo = /B$&V/Балаково/E$&V/
+													char FromGeoDesc1 = /B$&V/БалаковоСаратовская область
+
+176 км от Саратов
+
+4 авг 
+9:00 /E$&V/
+													char ToGeo = /B$&V/Дзержинск /E$&V/
+													char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область 
+
+
+
+35 км от Нижний Новгород/E$&V/
+													char Dist = /B$&V/752 км/E$&V/
+													int DistI = /B$&V/752/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/5 / 16 (Изделия из резины ) (ящ,шт.6 )/E$&V/
+													char CargoName = /B$&V/Изделия из резины /E$&V/
+													char CargoNote = /B$&V/ящ,шт.6 /E$&V/
+													float Weight = /B$&V/5/E$&V/
+													float Volume = /B$&V/16/E$&V/
+													char PriceDesc = /B$&V/9000 на карту (12 р/км)
+
+
+
+9000 без НДС (12 р/км)
+
+
+
+
+
+
+
+  
+
+   /E$&V/
+													char Price1 = /B$&V/9000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Медхим, ЗАО (ID:563733, гр/вл.-пер, Сызрань)  (р17) /E$&V/
+													char DateDesc = /B$&V/4 авг  (9:00)/E$&V/
+													char Note = /B$&V//E$&V/
+													char Reliability = /B$&V/Балл участника АТИ: 3,30. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/+7(929)7142288, Татьяна Евгеньевна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/20523822723223724123420222423622923724123445211240224235252241234232233325332473250553240206225238240243228238226224237232229322323223122423924722424124223232415353484848/E$&V/
+									char create_date = /B$&V/19.08.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Ногинск-Каменск-Уральский /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/55000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/20523822723223724123420222423622923724123445211240224235252241234232233325332473250553240206225238240243228238226224237232229322323223122423924722424124223232415353484848/E$&V/
+													char FromGeo = /B$&V/Ногинск/E$&V/
+													char FromGeoDesc1 = /B$&V/НогинскМосковская область
+
+50 км от Москва
+
+1 доп. пункт загрузки19 авг /E$&V/
+													char ToGeo = /B$&V/Каменск-Уральский /E$&V/
+													char ToGeoDesc1 = /B$&V/Каменск-Уральский 
+
+Свердловская область 
+
+
+ближайшие крупные города/E$&V/
+													char Dist = /B$&V/1996 км/E$&V/
+													int DistI = /B$&V/1996/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/5 / 27 (Оборудование и запчасти )/E$&V/
+													char CargoName = /B$&V/Оборудование и запчасти /E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/5/E$&V/
+													float Volume = /B$&V/27/E$&V/
+													char PriceDesc = /B$&V/55000 (27,6 р/км)
+
+
+
+
+
+
+
+
+
+
+
+  
+
+   /E$&V/
+													char Price1 = /B$&V/55000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Mostransport.com (Контур, ООО) (ID:747786, эксп-перев, Москва)    (р3) /E$&V/
+													char DateDesc = /B$&V/1 доп. пункт загрузки19 авг /E$&V/
+													char Note = /B$&V/ Оплата на карту СБ по факту выгрузки!/E$&V/
+													char Reliability = /B$&V/Балл участника АТИ: 1,90. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:399851955, факс: +7(495)6462391 +7(495)6680844, +7(903)1372848, Юрий /E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3553597124-63570-17500/E$&V/
+									char create_date = /B$&V/22.08.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/нн-саратов/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/37000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/19723422424222924023223722524324022719322423522424823224522432504455324732494832401932432362242272243241324023122423922423523522924722923732414950484848/E$&V/
+									char create_date = /B$&V/25.08.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екатеринбург-Балашиха /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/15000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/19723422424222924023223722524324022719322423522424823224522432504455324732494832401932432362242272243241324023122423922423523522924722923732414950484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург
+
+
+
+25 авг
+12:00 /E$&V/
+													char ToGeo = /B$&V/Балашиха /E$&V/
+													char ToGeoDesc1 = /B$&V/Балашиха 
+
+Московская область 
+
+
+
+20 км от Москва/E$&V/
+													char Dist = /B$&V/1850 км/E$&V/
+													int DistI = /B$&V/1850/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/2,7 / 10 (Бумага ) (запаллечен )/E$&V/
+													char CargoName = /B$&V/Бумага /E$&V/
+													char CargoNote = /B$&V/запаллечен /E$&V/
+													float Weight = /B$&V/2,70000004768372/E$&V/
+													float Volume = /B$&V/10/E$&V/
+													char PriceDesc = /B$&V/12000 (6,5 р/км)
+
+
+
+
+
+
+
+
+
+
+
+  
+
+   /E$&V/
+													char Price1 = /B$&V/12000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/ТЭК "АвтЭкс", ООО (ID:151918, эксп-перев, Екатеринбург)    (р41) /E$&V/
+													char DateDesc = /B$&V/25 авг (12:00)/E$&V/
+													char Note = /B$&V/ на карту/E$&V/
+													char Reliability = /B$&V/Балл участника АТИ: 4,90. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:271015373, факс: +7(343)2983545 +7(343)2983545, +7(922)1045028, Людмила/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1972342242422292402322372252432402272042382412342262243249445032473256324021020520732413240196442365850445232237224226224235238236324155484848/E$&V/
+									char create_date = /B$&V/25.08.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екатеринбург-Москва /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/7000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/1972342242422292402322372252432402272042382412342262243249445032473256324021020520732413240196442365850445232237224226224235238236324155484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург
+Артинская 22
+
+
+готов/E$&V/
+													char ToGeo = /B$&V/Москва /E$&V/
+													char ToGeoDesc1 = /B$&V/Москва 
+
+Цимлянская 3/E$&V/
+													char Dist = /B$&V/1823 км/E$&V/
+													int DistI = /B$&V/1823/E$&V/
+													char TruckType = /B$&V/закр. (загр:задн.)/E$&V/
+													char CargoDesc = /B$&V/1,2 / 8 (ТНП ) (Д,м:2,4 навалом )/E$&V/
+													char CargoName = /B$&V/ТНП /E$&V/
+													char CargoNote = /B$&V/Д,м:2,4 навалом /E$&V/
+													float Weight = /B$&V/1,20000004768372/E$&V/
+													float Volume = /B$&V/8/E$&V/
+													char PriceDesc = /B$&V/
+
+7000 с НДС (3,8 р/км)
+
+7000 без НДС (3,8 р/км)
+
+через 5 б/дпрям.дог.
+
+
+
+
+
+  
+
+   /E$&V/
+													char Price1 = /B$&V/7000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/ПБКо (Почтово Багажная Компания, ООО) (ID:226133, эксп-перев, Екатеринбург)    (р37) /E$&V/
+													char DateDesc = /B$&V/готов/E$&V/
+													char Note = /B$&V/ моментальная погрузка/выгрузка/E$&V/
+													char Reliability = /B$&V/Балл участника АТИ: 4,90. Субъективных оценок нет или их меньше 3-х./E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/True/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:445548518, факс: +7(343)3113102 +7(343)3113100, +7(963)4499451, Бурундукова Юлия Александровна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
 							/end classes
 						}
 						MyClass credits
@@ -2803,6 +3318,53 @@ MyClass periods_file
 							/end private
 							/begin public
 							/end public
+							/begin classes
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1229704543-41245-18446/E$&V/
+									char create_date = /B$&V/24.07.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/0/E$&V/
+									char type_str = /B$&V//E$&V/
+									char caption = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/2800/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3270897174-24811-19715/E$&V/
+									char create_date = /B$&V/24.07.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/0/E$&V/
+									char type_str = /B$&V//E$&V/
+									char caption = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/700/E$&V/
+									/end public
+								}
+								MyClass credit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3925442208-36476-17249/E$&V/
+									char create_date = /B$&V/25.07.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/0/E$&V/
+									char type_str = /B$&V//E$&V/
+									char caption = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/1500/E$&V/
+									/end public
+								}
+							/end classes
 						}
 					/end classes
 				}
@@ -2872,6 +3434,96 @@ MyClass periods_file
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/3000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3601991012-7310-16952/E$&V/
+									char create_date = /B$&V/22.08.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/нн-ульян/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/12000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/3082780682-50707-16889/E$&V/
+									char create_date = /B$&V/22.08.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/саранск-нн/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/6500/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2227020822-14158-20454/E$&V/
+									char create_date = /B$&V/22.08.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Ногинск-Каменск-Уральский /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/55000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
