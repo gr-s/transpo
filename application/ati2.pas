@@ -333,6 +333,14 @@ begin
         Done:= True;
         PopOperStack;
       end;
+      if Cmp(Identifier, 'aut_need_code') then
+      begin
+        Done:= True;
+      end;
+      if Cmp(Identifier, 'aut_ok') then
+      begin
+        Done:= True;
+      end;
     end;
   end
   else

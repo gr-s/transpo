@@ -34,7 +34,7 @@ function __login()
       {
               var need_code = false;
               var ed_code = $("input[id='main_cphMain_txtCode']");
-              need_code = __assigned(ed_code);
+              need_code = (__assigned(ed_code[0]));
 
               if (!need_code)
               {
