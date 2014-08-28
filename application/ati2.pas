@@ -1,4 +1,4 @@
-unit ati;
+unit ati2;
 
 interface
 uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api,
@@ -7,11 +7,12 @@ uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_class
 
 type
 
-  TOperParams = record
+  TOperationObject = record
     id:String;
   end;
 
-  TOperProc = procedure(params:TOperParams) of object;
+  TOperProc = procedure(params:TOperationObject) of object;
+  TEndProcess = procedure();
 
   TOnAutorizCode = procedure(var Code:String) of object;
   TOnCaptcha = procedure(oper_code:Integer) of object;
@@ -44,6 +45,7 @@ type
     OperStack: array of TOperationObject;
 
     function StringToByteString(str:String):String;
+    function CreateGetTickUrl(option: TGetTickOption): String;
 
     procedure _OperProgress(Stage1,Stage2:String);
   public
@@ -61,12 +63,10 @@ type
     property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
     property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
 
-    procedure init(a_login,a_passw:String);
-    procedure login(params:TOperParams);
+    procedure login(a_login,a_passw:String; proc:TEndProcess);
 
     procedure GetTickets;
 
-    procedure ThrowError(code:Integer;text:String);
     procedure PushOperStack(OperationObject:TOperationObject);
     procedure PopOperStack;
     procedure ClearOperStack;
@@ -144,165 +144,17 @@ begin
   inherited;
 end;
 
-function TATI.GetElementById(const Id: string): IDispatch;
-var
-  Document: IHTMLDocument2;     // IHTMLDocument2 interface of Doc
-  Body: IHTMLElement2;          // document body element
-  Tags: IHTMLElementCollection; // all tags in document body
-  Tag: IHTMLElement;            // a tag in document body
-  I,n,n1,n2: Integer;                   // loops thru tags in document body
-begin
-  Result := nil;
-  // Check for valid document: require IHTMLDocument2 interface to it
-  if not Supports(wb.Document, IHTMLDocument2, Document) then
-    raise Exception.Create('Invalid HTML document');
-  // Check for valid body element: require IHTMLElement2 interface to it
-  if not Supports(Document.body, IHTMLElement2, Body) then
-    raise Exception.Create('Can''t find <body> element');
-  // Get all tags in body element ('*' => any tag name)
-  Tags := Body.getElementsByTagName('*');
-  // Scan through all tags in body
-  for n:= 1 to 1 do
-  begin
-    case n of
-      1:
-      begin
-        n1:= DOM_Index;
-        n2:= Pred(Tags.length);
-      end;
-      2:
-      begin
-        n1:= 0;
-        n2:= n1;
-      end;
-    end;
-    for I := n1 to n2 do
-    begin
-      // Get reference to a tag
-      Tag := Tags.item(I, EmptyParam) as IHTMLElement;
-      // Check tag's id and return it if id matches
-      if AnsiSameText(Tag.id, Id) then
-      begin
-        Result := Tag;
-        Break;
-      end;
-    end;
-    if Assigned(Result) then
-      DOM_Index:= I;
-    if Assigned(Result) then Break;
-  end;
-end;
 
 procedure TATI.GetTickets;
-var op:TOperParams;
 begin
-  FreeAndNil(GetTickResult);
-  GetTickResult:= TFMClass.Create(nil);
-  GetTickResult.CreateClassItem('items','');
-  op.task:= 'GetTickets1';
-  _GetTickets(op);
-end;
 
-procedure TATI.Init;
-begin
-  login_s:= a_login;
-  passw_s:= a_passw;
-  wb:= TEmbeddedWB.Create(Self);
-  wb.OnDocumentComplete:= wbDocumentComplete;
 end;
 
 
-procedure TATI.login(params:TOperParams);
-var elm:IHTMLElement;
-    check_code:String;
-    oo:TOperationObject;
+
+procedure TATI.login(a_login,a_passw:String; proc:TEndProcess);
 begin
-  if logined then
-  begin
-    PopOperStack;
-    Exit;
-  end;
 
-  if Length(params.task) = 0 then
-  begin
-    _OperProgress('Авторизация ati.su','Страница авторизации ati.su');
-    oo.operation:= login;
-    oo.task:= 'login_1';
-    PushOperStack(oo);
-    load_document('http://ati.su/Login/Login.aspx');
-  end;
-
-  if params.task = 'login_1' then
-  begin
-      //elm:= IHTMLElement(GetElementById('main_extLogin_lblUserName_ShortenedLbl'));
-      elm:= IHTMLElement(GetElementById('main_extLogin_ucLoginView_lblUserName'));
-      if Assigned(elm) then
-      begin
-        logined:= True;
-        PopOperStack;
-        Exit;
-      end;
-
-      elm:= IHTMLElement(GetElementById('ctl00_ctl00_main_PlaceHolderMain_extLogin_ctlPageLogin_UserName'));
-      if Assigned(elm) then
-      begin
-        elm.setAttribute('value',login_s,-1);
-        elm:= IHTMLElement(GetElementById('ctl00_ctl00_main_PlaceHolderMain_extLogin_ctlPageLogin_Password'));
-        elm.setAttribute('value',passw_s,-1);
-        elm:= IHTMLElement(GetElementById('ctl00_ctl00_main_PlaceHolderMain_extLogin_ctlPageLogin_btnPageLogin'));
-
-        oo.operation:= login;
-        oo.task:= 'login_2';
-        PushOperStack(oo);
-
-        _OperProgress('','Запрос ...');
-
-        elm.click;
-        Exit;
-      end;
-
-      elm:= IHTMLElement(GetElementById('main_cphMain_txtCode'));
-      if Assigned(elm) then
-      begin
-        check_code:= '';
-        elm:= IHTMLElement(GetElementById('main_cphMain_btnTrySendSms'));
-        elm.click;
-        if Assigned(OnAutorizCode) then
-          OnAutorizCode(check_code);
-        if Length(check_code) > 0 then
-        begin
-          elm:= IHTMLElement(GetElementById('main_cphMain_txtCode'));
-          elm.setAttribute('value',check_code,-1);
-          elm:= IHTMLElement(GetElementById('main_cphMain_btnValidateCode'));
-
-          oo.operation:= login;
-          oo.task:= 'login_1';
-          PushOperStack(oo);
-          
-          elm.click;
-          Exit;
-        end;
-      end;
-
-      ThrowError(-1,'<Нет регистрации (ati.su)>');
-      PopOperStack;
-      Exit;
-  end;
-
-  if params.task = 'login_2' then
-  begin
-    elm:= IHTMLElement(GetElementById('main_extLogin_lblUserName_ShortenedLbl'));
-    if Assigned(elm) then
-    begin
-      logined:= True;
-      PopOperStack;
-    end
-    else
-    begin
-      ThrowError(-1,'<Нет регистрации (ati.su)>');
-      PopOperStack;
-    end;
-  end;
 end;
 
 procedure TATI.PopOperStack;
