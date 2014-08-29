@@ -41,12 +41,22 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = Button3Click
   end
+  object Chromium2: TChromium
+    Left = 32
+    Top = 16
+    Width = 809
+    Height = 529
+    TabOrder = 3
+    Options.AcceleratedPaintingDisabled = False
+    Options.AcceleratedFiltersDisabled = False
+    Options.AcceleratedPluginsDisabled = False
+  end
   object Chromium1: TChromiumOSR
     OnLoadEnd = Chromium12LoadEnd
     Options.AcceleratedPaintingDisabled = False
     Options.AcceleratedFiltersDisabled = False
     Options.AcceleratedPluginsDisabled = False
-    Left = 376
-    Top = 112
+    Left = 144
+    Top = 88
   end
 end

@@ -20,42 +20,49 @@ function __assigned(obj)
         return res;
 }
 
-
-function __login()
+function __cmd(script)
 {
-      var logined = false;
-      var span1 = $("span[id='ShortenedLbl']");
-      if (__assigned(span1[1]))
-      {
-        logined = (span1[1].innerText == "(Код: 657126)");
-      }
+	console.log("cmd:" + script);
+}
 
-      if (!logined)
-      {
-              var need_code = false;
-              var ed_code = $("input[id='main_cphMain_txtCode']");
-              need_code = (__assigned(ed_code[0]));
 
-              if (!need_code)
-              {
-                      var ed_login = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$tbLogin']");
-                      var ed_passw = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$tbPassword']");;
-                      if (__assigned(ed_login) && __assigned(ed_passw))
-                      {
-                        ed_login[0].value = "_iveco";
-                        ed_passw[0].value = "hjtu23iovb89";
-                        var btn = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$btnPageLogin']");;
-                        btn[0].click();
-                      }
-              }
-              else
-              {
-                      console.log("cmd:this.aut_need_code();");   
-              }
-      }
-      else
-      {
-              console.log("cmd:this.aut_ok();");
-      }
+function __login(log,passw)
+{
+	var logined = false;
+	var span1 = $("span[id='ShortenedLbl']");
+	if (__assigned(span1[1]))
+	{
+		logined = (span1[1].innerText == "(Код: 657126)");
+	}
+	
+	if (!logined)
+	{
+		  var need_code = false;
+		  var ed_code = $("input[id='main_cphMain_txtCode']");
+		  need_code = (__assigned(ed_code[0]));
+		
+		  if (!need_code)
+		  {
+		      var ed_login = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$tbLogin']");
+		      var ed_passw = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$tbPassword']");
+		      if (__assigned(ed_login) && __assigned(ed_passw))
+		      {
+		        ed_login[0].value = log;//"";
+		        ed_passw[0].value = passw;//"";
+		        var btn = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$btnPageLogin']");
+				var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_login3';oo.selector:= 'http';this.PushOperStack(oo);end;";
+		        __cmd(s);
+				btn[0].click();
+		      }
+		  }
+		  else
+		  {
+		  	__cmd("this.aut_need_code();");
+		  }
+	}
+	else
+	{
+		__cmd("this.aut_ok();");
+	}
 }
 

@@ -12,6 +12,7 @@ type
     Button2: TButton;
     Button3: TButton;
     Chromium1: TChromiumOSR;
+    Chromium2: TChromium;
     procedure Button1Click(Sender: TObject);
     procedure Chromium12LoadEnd(Sender: TObject; const browser: ICefBrowser;
       const frame: ICefFrame; httpStatusCode: Integer;
@@ -28,7 +29,7 @@ type
 var
   Form1: TForm1;
 
-  procedure _process(op:TOperationObject);
+  procedure _process();
   procedure domvisitorcallback(const doc: ICefDomDocument);
 
 implementation
@@ -37,7 +38,8 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  //Chromium1.Load('http://ati.su/Login/Login.aspx');
+  Chromium2.Load('http://ati.su/Login/Login.aspx');
+  Chromium2.Browser.ShowDevTools;
 end;
 
 
@@ -68,8 +70,8 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  ati:= TATI.Create(nil);
-  ati.Chromium:= Chromium1;
+  ati:= TATI.Create(Self);
+  ati.SetChromium({$IFDEF _debug} Chromium2 {$ELSE} Chromium1 {$ENDIF});
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -77,9 +79,9 @@ begin
   ati.login('_iveco','hjtu23iovb89',_process);
 end;
 
-procedure _process(op: TOperationObject);
+procedure _process();
 begin
-  ShowMessage(op.id);
+  ShowMessage('ok');
 end;
 
 end.

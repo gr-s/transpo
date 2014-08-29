@@ -12,6 +12,11 @@ type
     selector:String;
   end;
 
+  TOperationObjectClass = class(TObject)
+    id:String;
+    selector:String;
+  end;
+
   TOperProc = procedure(params:TOperationObject) of object;
   TEndProcess = procedure();
 
@@ -188,6 +193,14 @@ procedure TATI.login(a_login,a_passw:String; proc:TEndProcess);
 var oo:TOperationObject;
 begin
   _proc:= proc;
+
+  login_s:= a_login;
+  passw_s:= a_passw;
+
+  oo.id:= '_test1';
+  oo.selector:= 'task';
+  PushOperStack(oo);
+  
   oo.id:= '_login1';
   oo.selector:= 'http';
   PushOperStack(oo);
@@ -196,13 +209,27 @@ begin
 end;
 
 procedure TATI.PopOperStack;
-var oo:TOperationObject;
+var oo,oo1:TOperationObject;
+    i:Integer;
+    b:Boolean;
 begin
+  if Length(OperStack) = 0 then Exit;
+
   oo:= OperStack[Length(OperStack)-1];
   SetLength(OperStack,Length(OperStack)-1);
   if oo.selector = 'script' then
   begin
-    if Length(OperStack) = 0 then
+    for i:=0 to Length(OperStack) - 1 do
+    begin
+      b:= True;
+      oo1:= OperStack[i];
+      if oo1.selector = 'script' then
+      begin
+        b:= False;
+        Break;
+      end;
+    end;
+    if b then
       _process(oo);
   end
   else
@@ -269,10 +296,34 @@ begin
     _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
     _load('script','http://109.120.140.206/transpo/__ati.js');
   end;
-  
+
   if OperationObject.id = '_login2' then
   begin
-    Chromium.Browser.MainFrame.ExecuteJavaScript('__login();','',1);
+    _frame.ExecuteJavaScript('__login("' + login_s + '","' + passw_s + '");','',1);
+  end;
+
+  if OperationObject.id = '_login3' then
+  begin
+    oo.id:= '_login4';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    oo.id:= '_login4';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_login4' then
+  begin
+    _frame.ExecuteJavaScript('__login();','',1);
+  end;
+
+  if OperationObject.id = '_login_ok' then
+  begin
+    if Assigned(_proc) then
+      _proc();
+    PopOperStack;
   end;
 end;
 
@@ -323,32 +374,76 @@ end;
 procedure TATI.DoipGetValue(Sender: TObject;
                   Identifier: String; var Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
+var ooc:TOperationObjectClass;
+    oo:TOperationObject;
+    code:String;
 begin
+  Done:= True;
   if Args.ObjTyp = varObject then
   begin
     if Args.Obj = Self then
     begin
       if Cmp(Identifier, 'script_loaded') then
       begin
-        Done:= True;
         PopOperStack;
       end;
       if Cmp(Identifier, 'aut_need_code') then
       begin
-        Done:= True;
+        if Assigned(OnAutorizCode) then
+        begin
+          OnAutorizCode(code);
+        end;
       end;
       if Cmp(Identifier, 'aut_ok') then
       begin
-        Done:= True;
+        oo.id:= '_login_ok';
+        _process(oo);
+      end;
+      if Cmp(Identifier, 'PushOperStack') then
+      begin
+        oo.id:= TOperationObjectClass(V2O(Args.Values[0])).id;
+        oo.selector:= TOperationObjectClass(V2O(Args.Values[0])).selector;
+        PushOperStack(oo);
+      end;
+    end
+    else
+    begin
+      if Cmp(Identifier, 'id') then
+      begin
+        if Cmp(Args.Obj.ClassName, 'TOperationObject') then
+        begin
+          Value:= TOperationObjectClass(Args.Obj).id;
+        end;
+      end;
+      if Cmp(Identifier, 'selector') then
+      begin
+        if Cmp(Args.Obj.ClassName, 'TOperationObject') then
+        begin
+          Value:= TOperationObjectClass(Args.Obj).selector;
+        end;
       end;
     end;
   end
   else
   begin
-    if Cmp(Identifier, 'this') then
+    if Args.ObjTyp = varClass then
     begin
-      Done:= True;
-      Value:= O2V(Self);
+      if Cmp(Identifier, 'Create') then
+      begin
+        if TClass(Args.Obj) = TOperationObjectClass then
+          Value:= O2V(TOperationObjectClass.Create());
+      end;
+    end
+    else
+    begin
+      if Cmp(Identifier, 'this') then
+      begin
+        Value:= O2V(Self);
+      end;
+      if Cmp(Identifier, 'TOperationObject') then
+      begin
+        Value:= C2V(TOperationObjectClass);
+      end;
     end;
   end;
 end;
@@ -357,7 +452,21 @@ procedure TATI.DoipSetValue(Sender: TObject;
                   Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
 begin
-  
+  Done:= True;
+  if Args.ObjTyp = varObject then
+  begin
+    if Args.Obj.ClassType = TOperationObjectClass then
+    begin
+      if Cmp(Identifier, 'id') then
+      begin
+        TOperationObjectClass(Args.Obj).id:= Value;
+      end;
+      if Cmp(Identifier, 'selector') then
+      begin
+        TOperationObjectClass(Args.Obj).selector:= Value;
+      end;
+    end;
+  end;
 end;
 
 procedure TATI.SetChromium(aChromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});

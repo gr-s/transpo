@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXItem, ati, transpo_classes, SpTBXControls, StdCtrls,
-  SpTBXEditors;
+  SpTBXEditors, cefvcl;
 
 type
   TBrowser = class(TForm)
@@ -14,6 +14,7 @@ type
     SpTBXButton1: TSpTBXButton;
     SpTBXEdit1: TSpTBXEdit;
     SpTBXButton2: TSpTBXButton;
+    Chromium1: TChromium;
     procedure FormShow(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);
