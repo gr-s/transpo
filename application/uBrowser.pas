@@ -43,24 +43,27 @@ end;
 
 destructor TBrowser.Destroy;
 begin
-
   inherited;
 end;
 
 procedure TBrowser.FormShow(Sender: TObject);
 begin
+  {$IFDEF _IE}
   TMainForm(Application.MainForm).spMainForm.RemoveControl(ati_service.wb);
   spMainForm.InsertControl(ati_service.wb);
   ati_service.wb.Align:= alClient;
+  {$ENDIF}
 end;
 
 procedure TBrowser.FormHide(Sender: TObject);
 begin
+  {$IFDEF _IE}
   spMainForm.RemoveControl(ati_service.wb);
   TMainForm(Application.MainForm).spMainForm.InsertControl(ati_service.wb);
   ati_service.wb.Align:= alNone;
   ati_service.wb.Width:= 0;
   ati_service.wb.Height:= 0;
+  {$ENDIF}
 end;
 
 procedure TBrowser.SpTBXButton1Click(Sender: TObject);
@@ -70,7 +73,9 @@ end;
 
 procedure TBrowser.SpTBXButton2Click(Sender: TObject);
 begin
+  {$IFDEF _IE}
   SpTBXEdit1.Text:= ati_service.wb.LocationURL;
+  {$ENDIF}
 end;
 
 end.

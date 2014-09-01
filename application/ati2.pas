@@ -177,14 +177,18 @@ end;
 
 destructor TATI.Destroy;
 begin
-
   inherited;
 end;
 
 
 procedure TATI.GetTickets;
+var oo:TOperationObject;
 begin
-
+  oo.id:= '_tickets1';
+  oo.selector:= 'task';
+  PushOperStack(oo);
+  curr_page:= 1;
+  login(login_s,passw_s,nil);
 end;
 
 
@@ -197,10 +201,6 @@ begin
   login_s:= a_login;
   passw_s:= a_passw;
 
-  oo.id:= '_test1';
-  oo.selector:= 'task';
-  PushOperStack(oo);
-  
   oo.id:= '_login1';
   oo.selector:= 'http';
   PushOperStack(oo);
@@ -284,6 +284,7 @@ end;
 
 procedure TATI._process(OperationObject: TOperationObject);
 var oo:TOperationObject;
+    s:String;
 begin
   if OperationObject.id = '_login1' then
   begin
@@ -321,9 +322,33 @@ begin
 
   if OperationObject.id = '_login_ok' then
   begin
+    _OperProgress('','');
     if Assigned(_proc) then
       _proc();
     PopOperStack;
+  end;
+
+  if OperationObject.id = '_tickets1' then
+  begin
+    s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
+    if Length(s) > 0 then
+    begin
+      if StopFlag then
+      begin
+        if Assigned(OnEndGetTickets) then
+          OnEndGetTickets(Self);
+        StopFlag:= False;
+        Exit;
+      end;
+      oo.id:= '_tickets1';
+      oo.selector:= 'task';
+      PushOperStack(oo);
+      _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ')');
+      _load('http',s);
+    end
+    else
+      if Assigned(OnEndGetTickets) then
+        OnEndGetTickets(Self);
   end;
 end;
 

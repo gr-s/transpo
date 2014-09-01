@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, ati2, transpo_classes,
+  Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls;
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls, {$IFDEF _IE}ati{$ELSE}ati2{$ENDIF};
 
 type
   
@@ -558,6 +558,7 @@ end;
 
 destructor TMainForm.Destroy;
 begin
+  FreeAndNil(ati_service);
   app_sett.Save;
   cls_params.Save;
   inherited;
@@ -3170,9 +3171,17 @@ begin
 
 
   ati_service:= TATI.Create(Self);
+  {$IFDEF _IE}
+  ati_service.init(app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS,app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS);
+  ati_service.InsertControl(ati_service.wb);
+  ati_service.wb.Align:= alNone;
+  ati_service.wb.Width:= 0;
+  ati_service.wb.Height:= 0;
+  {$ELSE}
   ati_service.SetChromium(Browser.Chromium1);
   ati_service.login_s:= app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS;
   ati_service.passw_s:= app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS;
+  {$ENDIF}
 
   logisticone:= TLogisticOne.Create(Self);
   logisticone.OnOperProgress:= DoOperProgress;

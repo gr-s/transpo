@@ -18,11 +18,11 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
-  MainForm.Init;
   Application.CreateForm(TSelectWizard1, SelectWizard1);
   Application.CreateForm(TBrowser, Browser);
   Application.CreateForm(TCalendarWizard, CalendarWizard);
   Application.CreateForm(TInfoTimerForm, InfoTimerForm);
+  MainForm.Init;
   MainForm.Run;
   Application.Run;
 end.
