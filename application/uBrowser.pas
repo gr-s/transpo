@@ -31,7 +31,7 @@ var
   Browser: TBrowser;
 
 implementation
-uses uMainForm;
+uses uMainForm, ceflib;
 {$R *.dfm}
 
 { TBrowser }
@@ -75,6 +75,8 @@ procedure TBrowser.SpTBXButton2Click(Sender: TObject);
 begin
   {$IFDEF _IE}
   SpTBXEdit1.Text:= ati_service.wb.LocationURL;
+  {$ELSE}
+  SpTBXEdit1.Text:= Chromium1.Browser.MainFrame.Url;
   {$ENDIF}
 end;
 

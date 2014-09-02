@@ -12,6 +12,10 @@ type
     selector:String;
   end;
 
+  TTicket = class(TObject)
+    _class:TFMClass;
+  end;
+
   TOperationObjectClass = class(TObject)
     id:String;
     selector:String;
@@ -52,6 +56,8 @@ type
     _frame:ICefFrame;
 
     curr_page:Integer;
+    page_count:Integer;
+    curr_ticket:TTicket;
     OperStack: array of TOperationObject;
 
     procedure _load(selector,url:String);
@@ -184,10 +190,14 @@ end;
 procedure TATI.GetTickets;
 var oo:TOperationObject;
 begin
+  FreeAndNil(GetTickResult);
+  GetTickResult:= TFMClass.Create(nil);
+  GetTickResult.CreateClassItem('items','');
   oo.id:= '_tickets1';
   oo.selector:= 'task';
   PushOperStack(oo);
   curr_page:= 1;
+  page_count:= 1;
   login(login_s,passw_s,nil);
 end;
 
@@ -340,11 +350,42 @@ begin
         StopFlag:= False;
         Exit;
       end;
-      oo.id:= '_tickets1';
-      oo.selector:= 'task';
+      oo.id:= '_tickets2';
+      oo.selector:= 'http';
       PushOperStack(oo);
       _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ')');
       _load('http',s);
+    end
+    else
+      if Assigned(OnEndGetTickets) then
+        OnEndGetTickets(Self);
+  end;
+
+  if OperationObject.id = '_tickets2' then
+  begin
+    oo.id:= '_tickets3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    oo.id:= '_tickets3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_tickets3' then
+  begin
+    _frame.ExecuteJavaScript('__tickets();','',1);
+  end;
+
+  if OperationObject.id = '_tickets4' then
+  begin
+    Inc(curr_page);
+    if (curr_page <= page_count) then
+    begin
+      OperationObject.id:= '_tickets1';
+      _process(OperationObject);
+      Exit;
     end
     else
       if Assigned(OnEndGetTickets) then
@@ -402,6 +443,7 @@ procedure TATI.DoipGetValue(Sender: TObject;
 var ooc:TOperationObjectClass;
     oo:TOperationObject;
     code:String;
+    obj:TTicket;
 begin
   Done:= True;
   if Args.ObjTyp = varObject then
@@ -430,6 +472,15 @@ begin
         oo.selector:= TOperationObjectClass(V2O(Args.Values[0])).selector;
         PushOperStack(oo);
       end;
+      if Cmp(Identifier, '_process') then
+      begin
+        oo.id:= TOperationObjectClass(V2O(Args.Values[0])).id;
+        _process(oo);
+      end;
+      if Cmp(Identifier, 'ticket') then
+      begin
+        Value:= O2V(curr_ticket);
+      end;
     end
     else
     begin
@@ -457,6 +508,14 @@ begin
       begin
         if TClass(Args.Obj) = TOperationObjectClass then
           Value:= O2V(TOperationObjectClass.Create());
+        if TClass(Args.Obj) = TTicket then
+        begin
+          obj:= TTicket.Create();
+          curr_ticket:= obj;
+          Value:= O2V(obj);
+          obj._class:= GetTickResult.FindClassByName('items').CreateClassItem('','');
+          cls_templates.CopyClass(obj._class,cls_templates.FindClassByName('ticket'),False,True);
+        end;
       end;
     end
     else
@@ -469,6 +528,10 @@ begin
       begin
         Value:= C2V(TOperationObjectClass);
       end;
+      if Cmp(Identifier, 'TTicket') then
+      begin
+        Value:= C2V(TTicket);
+      end;
     end;
   end;
 end;
@@ -476,6 +539,8 @@ end;
 procedure TATI.DoipSetValue(Sender: TObject;
                   Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
+var k,n:Integer;
+    s2:String;
 begin
   Done:= True;
   if Args.ObjTyp = varObject then
@@ -489,6 +554,16 @@ begin
       if Cmp(Identifier, 'selector') then
       begin
         TOperationObjectClass(Args.Obj).selector:= Value;
+      end;
+    end;
+    if Args.Obj.ClassType = TTicket then
+    begin
+      if Cmp(Identifier, 'dist') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('Dist').ValueS:= Value;
+        k:= GetFirstUnDigitalChar(Value,1,s2);
+        if TryStrToInt(s2,n) then
+          TTicket(Args.Obj)._class.FindPropertyByName('DistI').ValueI:= n;
       end;
     end;
   end;

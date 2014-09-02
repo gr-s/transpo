@@ -66,3 +66,31 @@ function __login(log,passw)
 	}
 }
 
+function __tickets()
+{
+	var items = $("tr[id^='item_r']");
+	if (__assigned(items))
+	{
+		items.each(
+						function(index) 
+						{
+			  				var _item = $(this).children("td:eq(1)").find("a[id*='hlkDistance']");
+							if (!__assigned(_item[0]))							
+							{
+								
+							}
+							else
+							{
+								var s = "var t:TTicket;begin t:= TTicket.Create(); end;";
+								__cmd(s);
+								var s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.dist:= '" + _item[0].innerText  + "'; end;";
+								__cmd(s);	
+							}
+						}
+					
+				  );
+	}
+	var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets4';this._process(oo);end;";
+	__cmd(s);
+}
+
