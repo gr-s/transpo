@@ -1,6 +1,6 @@
 object Browser: TBrowser
-  Left = 282
-  Top = 125
+  Left = 308
+  Top = 202
   Width = 880
   Height = 544
   Color = clBtnFace
@@ -56,6 +56,17 @@ object Browser: TBrowser
         TabOrder = 2
         OnClick = SpTBXButton2Click
       end
+    end
+    object Chromium1: TChromium
+      Left = 8
+      Top = 65
+      Width = 848
+      Height = 433
+      Align = alClient
+      TabOrder = 2
+      Options.AcceleratedPaintingDisabled = False
+      Options.AcceleratedFiltersDisabled = False
+      Options.AcceleratedPluginsDisabled = False
     end
   end
 end

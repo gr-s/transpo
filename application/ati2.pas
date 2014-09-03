@@ -3,12 +3,22 @@ unit ati2;
 interface
 uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api,
      OleCtrls, SHDocVw_EWB, EwbCore, EmbeddedWB, IEAddress,  Mshtml_Ewb, ExtCtrls, Controls,
-     GRUtils, GRString;
+     GRUtils, GRString, cefvcl, ceflib, JvInterpreterFm,JvJCLUtils, JvInterpreter;
 
 type
 
   TOperationObject = record
     id:String;
+    selector:String;
+  end;
+
+  TTicket = class(TObject)
+    _class:TFMClass;
+  end;
+
+  TOperationObjectClass = class(TObject)
+    id:String;
+    selector:String;
   end;
 
   TOperProc = procedure(params:TOperationObject) of object;
@@ -41,13 +51,39 @@ type
     procedure SetOnOperProgress(const Value: TOnOperProgress);
 
   protected
+    _proc:TEndProcess;
+    ip:TJvInterpreterFm;
+    _frame:ICefFrame;
+
     curr_page:Integer;
+    page_count:Integer;
+    curr_ticket:TTicket;
     OperStack: array of TOperationObject;
+
+    procedure _load(selector,url:String);
+    procedure _process(OperationObject:TOperationObject);
 
     function StringToByteString(str:String):String;
     function CreateGetTickUrl(option: TGetTickOption): String;
-
     procedure _OperProgress(Stage1,Stage2:String);
+
+    procedure DoChromiumLoadEnd(Sender: TObject; const browser: ICefBrowser;
+                  const frame: ICefFrame; httpStatusCode: Integer;
+                      out Result: Boolean);
+
+    procedure DoChromiumConsoleMessage(Sender: TObject;
+                  const browser: ICefBrowser; message, source: ustring; line: Integer;
+                      out Result: Boolean);
+
+    procedure DoipGetValue(Sender: TObject;
+                  Identifier: String; var Value: Variant; Args: TJvInterpreterArgs;
+                      var Done: Boolean);
+
+    procedure DoipSetValue(Sender: TObject;
+                  Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
+                      var Done: Boolean);
+
+
   public
     login_s:String;
     passw_s:String;
@@ -58,20 +94,23 @@ type
 
     StopFlag: Boolean;
 
+    Chromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF};
+
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
     property OnEndGetTickets:TNotifyEvent read FOnEndGetTickets write SetOnEndGetTickets;
     property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
     property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
 
     procedure login(a_login,a_passw:String; proc:TEndProcess);
-
     procedure GetTickets;
 
     procedure PushOperStack(OperationObject:TOperationObject);
     procedure PopOperStack;
     procedure ClearOperStack;
 
-    constructor Create(AOwner: TComponent);
+    procedure SetChromium(aChromium:{$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
+
+    constructor Create(AOwner: TComponent);override;
     destructor Destroy;override;
   end;
 
@@ -98,7 +137,7 @@ constructor TATI.Create(AOwner: TComponent);
 begin
   inherited;
   logined:= False;
-  
+
   FOnAutorizCode:= nil;
   FOnEndGetTickets:= nil;
   FOnCaptcha:= nil;
@@ -107,6 +146,10 @@ begin
   StopFlag:= False;
 
   Setlength(OperStack,0);
+
+  ip:= TJvInterpreterFm.Create(Self);
+  ip.OnGetValue:= DoipGetValue;
+  ip.OnSetValue:= DoipSetValue;
 end;
 
 function TATI.CreateGetTickUrl(option: TGetTickOption): String;
@@ -140,33 +183,67 @@ end;
 
 destructor TATI.Destroy;
 begin
-
   inherited;
 end;
 
 
 procedure TATI.GetTickets;
+var oo:TOperationObject;
 begin
-
+  FreeAndNil(GetTickResult);
+  GetTickResult:= TFMClass.Create(nil);
+  GetTickResult.CreateClassItem('items','');
+  oo.id:= '_tickets1';
+  oo.selector:= 'task';
+  PushOperStack(oo);
+  curr_page:= 1;
+  page_count:= 1;
+  login(login_s,passw_s,nil);
 end;
 
 
 
 procedure TATI.login(a_login,a_passw:String; proc:TEndProcess);
+var oo:TOperationObject;
 begin
+  _proc:= proc;
 
+  login_s:= a_login;
+  passw_s:= a_passw;
+
+  oo.id:= '_login1';
+  oo.selector:= 'http';
+  PushOperStack(oo);
+  _OperProgress('ati.su','авторизация');
+  _load('http','http://ati.su/Login/Login.aspx');
 end;
 
 procedure TATI.PopOperStack;
-var OperationObject:TOperationObject;
-    params:TOperParams;
-    proc:TOperProc;
+var oo,oo1:TOperationObject;
+    i:Integer;
+    b:Boolean;
 begin
-  OperationObject:= OperStack[Length(OperStack)-1];
-  params.task:= OperationObject.task;
-  proc:= OperationObject.operation;
+  if Length(OperStack) = 0 then Exit;
+
+  oo:= OperStack[Length(OperStack)-1];
   SetLength(OperStack,Length(OperStack)-1);
-  proc(params);
+  if oo.selector = 'script' then
+  begin
+    for i:=0 to Length(OperStack) - 1 do
+    begin
+      b:= True;
+      oo1:= OperStack[i];
+      if oo1.selector = 'script' then
+      begin
+        b:= False;
+        Break;
+      end;
+    end;
+    if b then
+      _process(oo);
+  end
+  else
+    _process(oo);
 end;
 
 procedure TATI.PushOperStack(OperationObject: TOperationObject);
@@ -185,415 +262,6 @@ begin
   FOnEndGetTickets := Value;
 end;
 
-procedure TATI.ThrowError(code: Integer; text: String);
-begin
-
-end;
-
-procedure TATI.wbDocumentComplete(ASender: TObject; const pDisp: IDispatch;
-  var URL: OleVariant);
-var load_result:Integer;
-begin
-  load_result:= 0;
-  Application.ProcessMessages;
-  if Assigned(wb.Document) then
-    load_result:= 1;
-  //ShowMessage(wb.LocationURL);
-  DOM_Index:= 0;
-  PopOperStack;
-end;
-
-procedure TATI.load_document(url: String);
-begin
-  wb.Go(url);
-end;
-
-procedure TATI._GetTickets(params:TOperParams);
-var s,s1,s2,s3:String;
-    oo:TOperationObject;
-    op:TOperParams;
-    elm,elm1,elm2,elm3,elm4,elm5:IHTMLElement2;
-    elm_,elm_2,elm_3,elm_4,elm_5:IHTMLElement;
-    i,k,n:Integer;
-    cls1,cls2:TFMClass;
-    Tags: IHTMLElementCollection;
-    f1:Single;
-    page_count:Integer;
-    ov:OleVariant;
-begin
-  if params.task = 'GetTickets1' then
-  begin
-    oo.operation:= _GetTickets;
-    oo.task:= 'GetTickets2';
-    PushOperStack(oo);
-    op.task:= '';
-    login(op);
-    Exit;
-  end;
-  if logined then
-  begin
-    if params.task = 'GetTickets2' then
-    begin
-      _OperProgress('Сканирование ati.su','Страница костыль ati.su');
-      oo.operation:= _GetTickets;
-      oo.task:= 'GetTickets3';
-      PushOperStack(oo);
-      curr_page:= 1;
-      wb.WaitWhileBusy;
-      Application.ProcessMessages;
-      params.task:= 'GetTickets3';
-      //load_document('http://google.ru');
-    end;
-    if params.task = 'GetTickets3' then
-    begin
-      s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
-      if Length(s) > 0 then
-      begin
-        if StopFlag then
-        begin
-          if Assigned(OnEndGetTickets) then
-            OnEndGetTickets(Self);
-          StopFlag:= False;
-          Exit;
-        end;
-        oo.operation:= _GetTickets;
-        oo.task:= 'GetTickets4';
-        PushOperStack(oo);
-        _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ')');
-        load_document(s);
-      end
-      else
-        if Assigned(OnEndGetTickets) then
-          OnEndGetTickets(Self);
-    end;
-
-    if params.task = 'GetTickets4' then
-    begin
-      elm:= IHTMLElement2(GetElementById('lblSearchPrompt'));
-      if Assigned(elm) then
-      begin
-        if AnsiUpperCase(IHTMLElement(elm).innerText) = AnsiUpperCase('Для продолжения поиска введите символы, изображенные на картинке слева') then
-        begin
-          _OperProgress('','');
-          ClearOperStack;
-          if Assigned(OnCaptcha) then
-            OnCaptcha(10);
-        end
-        else
-          params.task:= 'GetTickets5';
-      end
-      else
-        params.task:= 'GetTickets5';
-    end;
-
-    if params.task = 'GetTickets5' then
-    begin
-      page_count:= 1;
-
-      if StopFlag then
-      begin
-        if Assigned(OnEndGetTickets) then
-          OnEndGetTickets(Self);
-        StopFlag:= False;
-        Exit;
-      end;
-      
-      elm:= IHTMLElement2(GetElementById('cphMain_hlpTop_pnlPager'));
-      if Assigned(elm) then
-      begin
-        page_count:= IHTMLElementCollection(IHTMLElement(elm).children).length-2;
-      end;
-
-      elm:= IHTMLElement2(GetElementById('pnlTable'));
-      if Assigned(elm) then
-      begin
-        i:= 0;
-        while True do
-        begin
-          if StopFlag then
-          begin
-            if Assigned(OnEndGetTickets) then
-              OnEndGetTickets(Self);
-            StopFlag:= False;
-            Exit;
-          end;
-
-          _OperProgress('Страница ' + IntToStr(curr_page) + ' из ' + IntToStr(page_count),'Обработка таблицы, заявка № ' + IntToStr(i));
-
-          elm:= IHTMLElement2(GetElementById('item_r1_'+IntToStr(i)));
-          if not Assigned(elm) then break;
-
-
-          cls1:= GetTickResult.FindClassByName('items').CreateClassItem('','');
-          cls_templates.CopyClass(cls1,cls_templates.FindClassByName('ticket'),False,True);
-
-          elm2:= IHTMLElement2(GetElementById2('item_itGeoDir_' + IntToStr(i) + '_hlkDistance_'+IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            s:= IHTMLElement(elm2).innerText;
-            cls1.FindPropertyByName('Dist').ValueS:= s;
-            k:= GetFirstUnDigitalChar(s,1,s2);
-            if TryStrToInt(s2,n) then
-              cls1.FindPropertyByName('DistI').ValueI:= n;
-          end;
-
-          s:= '';
-          elm2:= IHTMLElement2(GetElementById2('item_itTruckDetails_' + IntToStr(i) + '_lblLoadCarTypes_'+IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            s:= IHTMLElement(elm2).innerText;
-          end;
-          elm2:= IHTMLElement2(GetElementById2('item_itTruckDetails_' + IntToStr(i) + '_lblLoadingTypes_'+IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            s:= s + ' (' + IHTMLElement(elm2).innerText + ')';
-          end;
-          cls1.FindPropertyByName('TruckType').ValueS:= s;
-
-          elm2:= IHTMLElement2(GetElementById2('item_pWeight_' + IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            s:= '';
-            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(0,EmptyParam), IHTMLElement, elm1);
-
-            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(0,EmptyParam), IHTMLElement, elm2);
-            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(0,EmptyParam), IHTMLElement, elm2);
-
-            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(1,EmptyParam), IHTMLElement, elm3);
-            if AnsiUpperCase(IHTMLElement(elm3).tagName) = 'B' then
-            begin
-              s:= s + IHTMLElement(elm3).innerText;
-              s2:= DelAllSpace(IHTMLElement(elm3).innerText);
-              if TryStrToFloat(s2,f1) then
-                cls1.FindPropertyByName('Weight').ValueF:= f1;
-            end;
-
-            Supports(IHTMLElementCollection(IHTMLElement(elm2).children).item(2,EmptyParam), IHTMLElement, elm3);
-            if AnsiUpperCase(IHTMLElement(elm3).tagName) = 'B' then
-            begin
-              s:= s + ' / ' + IHTMLElement(elm3).innerText;
-              s2:= DelAllSpace(IHTMLElement(elm3).innerText);
-              if TryStrToFloat(s2,f1) then
-                cls1.FindPropertyByName('Volume').ValueF:= f1;
-            end;
-
-            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(2,EmptyParam), IHTMLElement, elm3);
-            if Length(IHTMLElement(elm3).innerText) > 0 then
-              s:= s + ' (' + IHTMLElement(elm3).innerText + ')';
-            cls1.FindPropertyByName('CargoName').ValueS:= IHTMLElement(elm3).innerText;
-
-            Supports(IHTMLElementCollection(IHTMLElement(elm1).children).item(5,EmptyParam), IHTMLElement, elm3);
-            if Assigned(elm3) then
-            begin
-              if Length(IHTMLElement(elm3).innerText) > 0 then
-                s:= s + ' (' + IHTMLElement(elm3).innerText + ')';
-              cls1.FindPropertyByName('CargoNote').ValueS:= IHTMLElement(elm3).innerText;
-            end;
-
-            cls1.FindPropertyByName('CargoDesc').ValueS:= s;
-          end;
-
-          elm2:= IHTMLElement2(GetElementById2('item_itLoading_' + IntToStr(i) + '_pnlLoad_' + IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            elm3:= IHTMLElement2(GetElementById2('item_itLoading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_lblFrom_0',elm2));
-            if Assigned(elm3) then
-            begin
-              cls1.FindPropertyByName('FromGeo').ValueS:= IHTMLElement(elm3).innerText;
-            end;
-
-            s:= IHTMLElement(elm2).innerText;
-
-            cls1.FindPropertyByName('FromGeoDesc1').ValueS:= s;
-
-            k:= GetFirstChar(s,#$A,Length(s),True,s2);
-            s1:= s2;
-            n:= GetFirstChar(s2,':',1,False,s3);
-            if n > 0 then
-            begin
-              s1:= DelAllSpace(s1);
-              k:= GetFirstChar(s,#$A,k-2,True,s2);
-              s1:= s2 + ' (' + s1 + ')';
-            end;
-            cls1.FindPropertyByName('DateDesc').ValueS:= s1;
-          end;
-
-          elm2:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_pnlLoad_' + IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            elm3:= IHTMLElement2(GetElementById2('item_itUnloading_' + IntToStr(i) + '_rptLoadGeoData_' + IntToStr(i) + '_divTo_0',elm2));
-            if Assigned(elm3) then
-            begin
-              cls1.FindPropertyByName('ToGeo').ValueS:= IHTMLElement(elm3).innerText;
-            end;
-
-            s:= IHTMLElement(elm2).innerText;
-            cls1.FindPropertyByName('ToGeoDesc1').ValueS:= s;
-          end;
-
-          elm2:= IHTMLElement2(GetElementById2('item_pRate_' + IntToStr(i),elm));
-          if Assigned(elm2) then
-          begin
-            elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPrice_' + IntToStr(i),elm2));
-            if Assigned(elm3) then
-            begin
-              s:= IHTMLElement(elm3).innerText;
-
-              k:= GetFirstChar(s,' ',1,False,s2);
-              if k > 0 then
-              begin
-                s:= Copy(s,1,k-1);
-                s:= DelAllSpace(s);
-              end;
-
-              if Length(s) = 0 then
-              begin
-                elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPriceWithNDS_' + IntToStr(i),elm2));
-                if Assigned(elm3) then
-                begin
-                  s:= IHTMLElement(elm3).innerText;
-                  k:= GetFirstChar(s,' ',1,False,s2);
-                  s:= Copy(s,1,k-1);
-                  s:= DelAllSpace(s);
-                end;
-              end;
-              if Length(s) = 0 then
-              begin
-                elm3:= IHTMLElement2(GetElementById2('item_itRate_' + IntToStr(i) + '_divLoadPriceWithoutNDS_' + IntToStr(i),elm2));
-                if Assigned(elm3) then
-                begin
-                  s:= IHTMLElement(elm3).innerText;
-                  k:= GetFirstChar(s,' ',1,False,s2);
-                  s:= Copy(s,1,k-1);
-                  s:= DelAllSpace(s);
-                end;
-              end;
-
-              cls1.FindPropertyByName('Price1').ValueS:= s;
-            end;
-
-            s:= IHTMLElement(elm2).innerText;
-            s:= ReplaceSymb(s,' ','озвуч.ставка');
-            cls1.FindPropertyByName('PriceDesc').ValueS:= s;
-          end;
-
-          elm:= IHTMLElement2(GetElementById('item_r2_'+IntToStr(i)));
-          if Assigned(elm) then
-          begin
-            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblNote_' + IntToStr(i),elm));
-            if Assigned(elm2) then
-            begin
-              s:= CleanText(IHTMLElement(elm2).innerText);
-              s:= ReplaceSymb(s,' ','Примечание:');
-              cls1.FindPropertyByName('Note').ValueS:= s;
-            end;
-
-            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblFirm_' + IntToStr(i),elm));
-            if Assigned(elm2) then
-            begin
-              s:= CleanText(IHTMLElement(elm2).innerText);
-              cls1.FindPropertyByName('ControllerInfo').ValueS:= s;
-            end;
-
-            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_starReliabilityName_' + IntToStr(i)
-                                  + '_ctlStarControl_' + IntToStr(i),elm));
-            if Assigned(elm2) then
-            begin
-              s:= IHTMLElement(elm2).outerHTML;
-              ov:= IHTMLElement(elm2).getAttribute('RateDescription',-1);
-              //Tags:= IHTMLElementCollection(elm2.getElementsByTagName('*'));
-              //elm2:= IHTMLElement2(Tags.item(0, EmptyParam));
-              //s:= IHTMLElement(elm2).innerHTML;
-              //s:= IHTMLElement(elm2).getAttribute('title',-1);
-              if TVarData(ov).VDispatch <> nil then
-                cls1.FindPropertyByName('Reliability').ValueS:= String(ov);
-            end;
-
-            elm2:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts_' + IntToStr(i),elm));
-            if Assigned(elm2) then
-            begin
-              k:= 1;
-              while True do
-              begin
-                if k = 1 then
-                  elm3:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContactsData_' + IntToStr(i),elm2))
-                else
-                  elm3:= IHTMLElement2(GetElementById2('item_itFirmInfo_' + IntToStr(i) + '_tblContacts' + IntToStr(k) + 'Data_' + IntToStr(i),elm2));
-                if not Assigned(elm3) then Break;
-
-                s:= CleanText(IHTMLElement(elm3).innerText);
-
-                cls2:= cls1.FindClassByName('controller_contacts').CreateClassItem('controller_contacts','');
-                cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
-                cls2.FindPropertyByName('Str1').ValueS:= s;
-
-                Inc(k);
-              end;
-            end;
-          end;
-
-          s:= StringToByteString(cls1.FindPropertyByName('FromGeo').ValueS + cls1.FindPropertyByName('ToGeo').ValueS
-                + cls1.FindPropertyByName('CargoDesc').ValueS + cls1.FindPropertyByName('Price1').ValueS);
-          cls1.FindPropertyByName('ID').ValueS:= s;
-
-          Inc(i);
-        end;
-      end;
-
-      Inc(curr_page);
-      if curr_page <= page_count then
-      begin
-        op.task:= 'GetTickets3';
-        _GetTickets(op);
-      end
-      else
-      begin
-        params.task:= 'GetTickets6';
-      end;
-    end;
-
-    if params.task = 'GetTickets6' then
-    begin
-      if Assigned(OnEndGetTickets) then
-        OnEndGetTickets(Self);
-    end;
-
-  end
-  else
-    if Assigned(OnEndGetTickets) then
-      OnEndGetTickets(Self);
-end;
-
-function TATI.GetElementById2(const Id: string;
-  elm: IHTMLElement2): IDispatch;
-var
-  Document: IHTMLDocument2;     // IHTMLDocument2 interface of Doc
-  Body: IHTMLElement2;          // document body element
-  Tags: IHTMLElementCollection; // all tags in document body
-  Tag: IHTMLElement;            // a tag in document body
-  I: Integer;                   // loops thru tags in document body
-begin
-  Result:= GetElementById(Id);
-  Exit;
-  Result := nil;
-  if not Supports(elm, IHTMLElement2, Body) then
-    raise Exception.Create('Can''t find <body> element');
-  Tags := Body.getElementsByTagName('*');
-  // Scan through all tags in body
-  for I := 0 to Pred(Tags.length) do
-  begin
-    // Get reference to a tag
-    Tag := Tags.item(I, EmptyParam) as IHTMLElement;
-    // Check tag's id and return it if id matches
-    if AnsiSameText(Tag.id, Id) then
-    begin
-      Result := Tag;
-      Break;
-    end;
-    Result:= GetElementById2(Id,IHTMLElement2(Tag));
-    if Assigned(Result) then Break;
-  end;
-end;
 
 procedure TATI.SetOnCaptcha(const Value: TOnCaptcha);
 begin
@@ -622,6 +290,290 @@ begin
   Result:= '';
   for i:= 1 to Length(str) do
     Result:= Result + IntToStr(Ord(str[i]));
+end;
+
+procedure TATI._process(OperationObject: TOperationObject);
+var oo:TOperationObject;
+    s:String;
+begin
+  if OperationObject.id = '_login1' then
+  begin
+    oo.id:= '_login2';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    oo.id:= '_login2';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_login2' then
+  begin
+    _frame.ExecuteJavaScript('__login("' + login_s + '","' + passw_s + '");','',1);
+  end;
+
+  if OperationObject.id = '_login3' then
+  begin
+    oo.id:= '_login4';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    oo.id:= '_login4';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_login4' then
+  begin
+    _frame.ExecuteJavaScript('__login();','',1);
+  end;
+
+  if OperationObject.id = '_login_ok' then
+  begin
+    _OperProgress('','');
+    if Assigned(_proc) then
+      _proc();
+    PopOperStack;
+  end;
+
+  if OperationObject.id = '_tickets1' then
+  begin
+    s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
+    if Length(s) > 0 then
+    begin
+      if StopFlag then
+      begin
+        if Assigned(OnEndGetTickets) then
+          OnEndGetTickets(Self);
+        StopFlag:= False;
+        Exit;
+      end;
+      oo.id:= '_tickets2';
+      oo.selector:= 'http';
+      PushOperStack(oo);
+      _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ')');
+      _load('http',s);
+    end
+    else
+      if Assigned(OnEndGetTickets) then
+        OnEndGetTickets(Self);
+  end;
+
+  if OperationObject.id = '_tickets2' then
+  begin
+    oo.id:= '_tickets3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    oo.id:= '_tickets3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_tickets3' then
+  begin
+    _frame.ExecuteJavaScript('__tickets();','',1);
+  end;
+
+  if OperationObject.id = '_tickets4' then
+  begin
+    Inc(curr_page);
+    if (curr_page <= page_count) then
+    begin
+      OperationObject.id:= '_tickets1';
+      _process(OperationObject);
+      Exit;
+    end
+    else
+      if Assigned(OnEndGetTickets) then
+        OnEndGetTickets(Self);
+  end;
+end;
+
+procedure TATI._load(selector, url: String);
+var sl:TStringList;
+    s:String;
+begin
+  if selector = 'http' then
+  begin
+    Chromium.Load(url);
+  end;
+
+  if selector = 'script' then
+  begin
+    url:= '"' + url + '"';
+    sl:= TStringList.Create;
+    sl.LoadFromFile(ExtractFilePath(Application.ExeName) + '/js/loadscript.js');
+    s:= sl.Text;
+    s:= ReplaceSymb(s,url,'//script//');
+    _frame.ExecuteJavaScript(s,'',0);
+    FreeAndNil(sl);
+  end;
+end;
+
+procedure TATI.DoChromiumLoadEnd(Sender: TObject;
+  const browser: ICefBrowser; const frame: ICefFrame;
+  httpStatusCode: Integer; out Result: Boolean);
+begin
+  _frame:= frame;
+  PopOperStack;
+end;
+
+procedure TATI.DoChromiumConsoleMessage(Sender: TObject;
+                  const browser: ICefBrowser; message, source: ustring; line: Integer;
+                      out Result: Boolean);
+var s:String;
+begin
+  s:= message;
+  if Copy(s,1,4) = 'cmd:' then
+  begin
+    Delete(s,1,4);
+    ip.Pas.Text:= s;
+    ip.Run;
+  end;
+end;
+
+
+procedure TATI.DoipGetValue(Sender: TObject;
+                  Identifier: String; var Value: Variant; Args: TJvInterpreterArgs;
+                      var Done: Boolean);
+var ooc:TOperationObjectClass;
+    oo:TOperationObject;
+    code:String;
+    obj:TTicket;
+begin
+  Done:= True;
+  if Args.ObjTyp = varObject then
+  begin
+    if Args.Obj = Self then
+    begin
+      if Cmp(Identifier, 'script_loaded') then
+      begin
+        PopOperStack;
+      end;
+      if Cmp(Identifier, 'aut_need_code') then
+      begin
+        if Assigned(OnAutorizCode) then
+        begin
+          OnAutorizCode(code);
+        end;
+      end;
+      if Cmp(Identifier, 'aut_ok') then
+      begin
+        oo.id:= '_login_ok';
+        _process(oo);
+      end;
+      if Cmp(Identifier, 'PushOperStack') then
+      begin
+        oo.id:= TOperationObjectClass(V2O(Args.Values[0])).id;
+        oo.selector:= TOperationObjectClass(V2O(Args.Values[0])).selector;
+        PushOperStack(oo);
+      end;
+      if Cmp(Identifier, '_process') then
+      begin
+        oo.id:= TOperationObjectClass(V2O(Args.Values[0])).id;
+        _process(oo);
+      end;
+      if Cmp(Identifier, 'ticket') then
+      begin
+        Value:= O2V(curr_ticket);
+      end;
+    end
+    else
+    begin
+      if Cmp(Identifier, 'id') then
+      begin
+        if Cmp(Args.Obj.ClassName, 'TOperationObject') then
+        begin
+          Value:= TOperationObjectClass(Args.Obj).id;
+        end;
+      end;
+      if Cmp(Identifier, 'selector') then
+      begin
+        if Cmp(Args.Obj.ClassName, 'TOperationObject') then
+        begin
+          Value:= TOperationObjectClass(Args.Obj).selector;
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+    if Args.ObjTyp = varClass then
+    begin
+      if Cmp(Identifier, 'Create') then
+      begin
+        if TClass(Args.Obj) = TOperationObjectClass then
+          Value:= O2V(TOperationObjectClass.Create());
+        if TClass(Args.Obj) = TTicket then
+        begin
+          obj:= TTicket.Create();
+          curr_ticket:= obj;
+          Value:= O2V(obj);
+          obj._class:= GetTickResult.FindClassByName('items').CreateClassItem('','');
+          cls_templates.CopyClass(obj._class,cls_templates.FindClassByName('ticket'),False,True);
+        end;
+      end;
+    end
+    else
+    begin
+      if Cmp(Identifier, 'this') then
+      begin
+        Value:= O2V(Self);
+      end;
+      if Cmp(Identifier, 'TOperationObject') then
+      begin
+        Value:= C2V(TOperationObjectClass);
+      end;
+      if Cmp(Identifier, 'TTicket') then
+      begin
+        Value:= C2V(TTicket);
+      end;
+    end;
+  end;
+end;
+
+procedure TATI.DoipSetValue(Sender: TObject;
+                  Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
+                      var Done: Boolean);
+var k,n:Integer;
+    s2:String;
+begin
+  Done:= True;
+  if Args.ObjTyp = varObject then
+  begin
+    if Args.Obj.ClassType = TOperationObjectClass then
+    begin
+      if Cmp(Identifier, 'id') then
+      begin
+        TOperationObjectClass(Args.Obj).id:= Value;
+      end;
+      if Cmp(Identifier, 'selector') then
+      begin
+        TOperationObjectClass(Args.Obj).selector:= Value;
+      end;
+    end;
+    if Args.Obj.ClassType = TTicket then
+    begin
+      if Cmp(Identifier, 'dist') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('Dist').ValueS:= Value;
+        k:= GetFirstUnDigitalChar(Value,1,s2);
+        if TryStrToInt(s2,n) then
+          TTicket(Args.Obj)._class.FindPropertyByName('DistI').ValueI:= n;
+      end;
+    end;
+  end;
+end;
+
+procedure TATI.SetChromium(aChromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
+begin
+  Chromium:= aChromium;
+  Chromium.OnLoadEnd:= DoChromiumLoadEnd;
+  Chromium.OnConsoleMessage:= DoChromiumConsoleMessage;
 end;
 
 end.

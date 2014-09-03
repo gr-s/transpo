@@ -96,7 +96,7 @@ PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=D:\GR\Development\Partners\MySoft\transpo\test\DCEF\bin\Win32\;D:\GR\Development\Partners\MySoft\transpo\application\;c:\entry\Development\Partners\MySoft\transpo\application\
 Packages=vcl;rtl;vclx;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOfficeXP;Jcl;JclVcl;JvCoreD7R;JvSystemD7R;JvStdCtrlsD7R;JvAppFrmD7R;JvBandsD7R;JvDBD7R;JvDlgsD7R;JvBDED7R;JvCmpD7R;JvCryptD7R;JvCtrlsD7R;JvCustomD7R;JvDockingD7R;JvDotNetCtrlsD7R;JvEDID7R;JvGlobusD7R;JvHMID7R;JvInterpreterD7R;JvJansD7R;JvManagedThreadsD7R;JvMMD7R;JvNetD7R;JvPageCompsD7R;JvPluginD7R;JvPrintPreviewD7R;JvRuntimeDesignD7R;JvTimeFrameworkD7R;JvUIBD7R;JvValidatorsD7R;JvWizardD7R;JvXPCtrlsD7R;Pack;fs7;frx7;fsDB7;frxDB7;fsBDE7;frxBDE7;fsADO7;frxADO7;fsIBX7;frxIBX7;frxDBX7;frxe7;fsTee7;frxTee7;TntUnicodeVcl_R70;tb2k_d7;IndyCore70;IndySystem70;PNG_D7;PngComponentsD7;PackExt
-Conditionals=
+Conditionals=_debug
 DebugSourceDirs=
 UsePackages=0
 [Parameters]
@@ -134,6 +134,9 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_debug
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;

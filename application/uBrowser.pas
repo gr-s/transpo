@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXItem, ati, transpo_classes, SpTBXControls, StdCtrls,
-  SpTBXEditors;
+  SpTBXEditors, cefvcl;
 
 type
   TBrowser = class(TForm)
@@ -14,6 +14,7 @@ type
     SpTBXButton1: TSpTBXButton;
     SpTBXEdit1: TSpTBXEdit;
     SpTBXButton2: TSpTBXButton;
+    Chromium1: TChromium;
     procedure FormShow(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);
@@ -30,7 +31,7 @@ var
   Browser: TBrowser;
 
 implementation
-uses uMainForm;
+uses uMainForm, ceflib;
 {$R *.dfm}
 
 { TBrowser }
@@ -42,24 +43,27 @@ end;
 
 destructor TBrowser.Destroy;
 begin
-
   inherited;
 end;
 
 procedure TBrowser.FormShow(Sender: TObject);
 begin
+  {$IFDEF _IE}
   TMainForm(Application.MainForm).spMainForm.RemoveControl(ati_service.wb);
   spMainForm.InsertControl(ati_service.wb);
   ati_service.wb.Align:= alClient;
+  {$ENDIF}
 end;
 
 procedure TBrowser.FormHide(Sender: TObject);
 begin
+  {$IFDEF _IE}
   spMainForm.RemoveControl(ati_service.wb);
   TMainForm(Application.MainForm).spMainForm.InsertControl(ati_service.wb);
   ati_service.wb.Align:= alNone;
   ati_service.wb.Width:= 0;
   ati_service.wb.Height:= 0;
+  {$ENDIF}
 end;
 
 procedure TBrowser.SpTBXButton1Click(Sender: TObject);
@@ -69,7 +73,11 @@ end;
 
 procedure TBrowser.SpTBXButton2Click(Sender: TObject);
 begin
+  {$IFDEF _IE}
   SpTBXEdit1.Text:= ati_service.wb.LocationURL;
+  {$ELSE}
+  SpTBXEdit1.Text:= Chromium1.Browser.MainFrame.Url;
+  {$ENDIF}
 end;
 
 end.
