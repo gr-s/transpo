@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.10.2013 18:20:29
+04.09.2014 20:21:31
 /end header
 /begin data
 MyClass TopInstance
@@ -38,6 +38,7 @@ MyClass TopInstance
 					int VolumeEnd = /B$&V/-1/E$&V/
 					char DateBegin = /B$&V//E$&V/
 					char DateEnd = /B$&V//E$&V/
+					char MinPrice = /B$&V//E$&V/
 					/end public
 					/begin classes
 						MyClass from_geos
@@ -134,9 +135,17 @@ MyClass TopInstance
 			bool _checked = /B$&V/False/E$&V/
 			int _status_id = /B$&V/0/E$&V/
 			char _status_str = /B$&V/Новая/E$&V/
+			char ControllerLink = /B$&V//E$&V/
 			/end public
 			/begin classes
 				MyClass controller_contacts
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+				MyClass controller_mails
 				{
 					/begin private
 					/end private

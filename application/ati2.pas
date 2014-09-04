@@ -57,6 +57,8 @@ type
 
     curr_page:Integer;
     page_count:Integer;
+    contact_count:Integer;
+    contact_curr:Integer;
     curr_ticket:TTicket;
     OperStack: array of TOperationObject;
 
@@ -89,6 +91,8 @@ type
     passw_s:String;
     logined:Boolean;
 
+    sel_ticket:TFMClass;
+
     GetTickOption:TGetTickOption;
     GetTickResult:TFMClass;
 
@@ -101,14 +105,15 @@ type
     property OnCaptcha:TOnCaptcha read FOnCaptcha write SetOnCaptcha;
     property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
 
+    procedure SetChromium(aChromium:{$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
+
     procedure login(a_login,a_passw:String; proc:TEndProcess);
     procedure GetTickets;
+    procedure GetContacts(aTicket:TFMClass);
 
     procedure PushOperStack(OperationObject:TOperationObject);
     procedure PopOperStack;
     procedure ClearOperStack;
-
-    procedure SetChromium(aChromium:{$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
 
     constructor Create(AOwner: TComponent);override;
     destructor Destroy;override;
@@ -198,6 +203,21 @@ begin
   PushOperStack(oo);
   curr_page:= 1;
   page_count:= 1;
+  login(login_s,passw_s,nil);
+end;
+
+
+procedure TATI.GetContacts(aTicket:TFMClass);
+var oo:TOperationObject;
+begin
+  contact_count:= 0;
+  contact_curr:= 0;
+  curr_ticket:= TTicket.Create();
+  curr_ticket._class:= aTicket;
+  oo.id:= '_contacts1';
+  oo.selector:= 'http';
+  PushOperStack(oo);
+  sel_ticket:= aTicket;
   login(login_s,passw_s,nil);
 end;
 
@@ -353,7 +373,7 @@ begin
       oo.id:= '_tickets2';
       oo.selector:= 'http';
       PushOperStack(oo);
-      _OperProgress('','ѕолучение таблицы (страница '+ IntToStr(curr_page) + ')');
+      _OperProgress('','ѕолучение таблицы (страница '+ IntToStr(curr_page) + ' из ' + IntToStr(page_count) + ')');
       _load('http',s);
     end
     else
@@ -390,6 +410,34 @@ begin
     else
       if Assigned(OnEndGetTickets) then
         OnEndGetTickets(Self);
+  end;
+
+  if OperationObject.id = '_contacts1' then
+  begin
+    oo.id:= '_contacts2';
+    oo.selector:= 'http';
+    PushOperStack(oo);
+    _OperProgress('ati.su','получение контактов');
+    _load('http','http://ati.su' + sel_ticket.FindPropertyByName('ControllerLink').ValueS);
+  end;
+
+  if OperationObject.id = '_contacts2' then
+  begin
+    oo.id:= '_contacts3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_contacts3' then
+  begin
+    _frame.ExecuteJavaScript('__contacts();','',1);
+  end;
+
+  if OperationObject.id = '_contacts4' then
+  begin
+    if Assigned(OnEndGetTickets) then
+      OnEndGetTickets(Self);
   end;
 end;
 
@@ -462,6 +510,13 @@ begin
         if Assigned(OnAutorizCode) then
         begin
           OnAutorizCode(code);
+        end;
+      end;
+      if Cmp(Identifier, 'need_captcha') then
+      begin
+        if Assigned(OnCaptcha) then
+        begin
+          OnCaptcha(0);
         end;
       end;
       if Cmp(Identifier, 'aut_ok') then
@@ -545,10 +600,25 @@ procedure TATI.DoipSetValue(Sender: TObject;
 var k,n:Integer;
     s,s2:String;
     f1:Single;
+    cls2:TFMClass;
+    oo:TOperationObject;
 begin
   Done:= True;
+
   if Args.ObjTyp = varObject then
   begin
+    if Args.Obj = Self then
+    begin
+      if Cmp(Identifier, 'page_count') then
+      begin
+        page_count:= Value;
+      end;
+      if Cmp(Identifier, 'contact_count') then
+      begin
+        contact_count:= Value;
+      end;
+    end;
+
     if Args.Obj.ClassType = TOperationObjectClass then
     begin
       if Cmp(Identifier, 'id') then
@@ -560,6 +630,7 @@ begin
         TOperationObjectClass(Args.Obj).selector:= Value;
       end;
     end;
+    
     if Args.Obj.ClassType = TTicket then
     begin
       if Cmp(Identifier, 'dist') then
@@ -631,6 +702,42 @@ begin
         s:= DelAllSpace(s);
         TTicket(Args.Obj)._class.FindPropertyByName('Price1').ValueS:= s;
         TTicket(Args.Obj)._class.FindPropertyByName('PriceDesc').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'Note') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('Note').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'ControllerInfo') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('ControllerInfo').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'ControllerLink') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('ControllerLink').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'controller_contacts') then
+      begin
+        cls2:= TTicket(Args.Obj)._class.FindClassByName('controller_contacts').CreateClassItem('controller_contacts','');
+        cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
+        cls2.FindPropertyByName('Str1').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'id') then
+      begin
+        s:= StringToByteString(TTicket(Args.Obj)._class.FindPropertyByName('FromGeo').ValueS + TTicket(Args.Obj)._class.FindPropertyByName('ToGeo').ValueS
+                + TTicket(Args.Obj)._class.FindPropertyByName('CargoDesc').ValueS + TTicket(Args.Obj)._class.FindPropertyByName('Price1').ValueS);
+        TTicket(Args.Obj)._class.FindPropertyByName('ID').ValueS:= s;
+      end;
+      if Cmp(Identifier, 'Contact') then
+      begin
+        cls2:= TTicket(Args.Obj)._class.FindClassByName('controller_mails').CreateClassItem('controller_mails','');
+        cls_templates.CopyClass(cls2,cls_templates.FindClassByName('controller_contact'),False,True);
+        cls2.FindPropertyByName('Str1').ValueS:= Value;
+        Inc(contact_curr);
+        if contact_curr >= contact_count then
+        begin
+          oo.id:= '_contacts4';
+          _process(oo);
+        end;
       end;
     end;
   end;

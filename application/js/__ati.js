@@ -27,7 +27,7 @@ function __cmd(script)
 
 
 function __login(log,passw)
-{
+{	
 	var logined = false;
 	var span1 = $("span[id='ShortenedLbl']");
 	if (__assigned(span1[1]))
@@ -66,8 +66,57 @@ function __login(log,passw)
 	}
 }
 
+
+function __contacts()
+{
+	var _items = $("a[id*='hlShowMail']");
+	var s = "begin this.contact_count:= " + _items.length  + "; end;";
+	__cmd(s);
+	for(var i=0; i<_items.length; i++) 
+	{
+		var _item = $(_items[i]);
+		                   
+		var _firmId = _item.attr('fid');
+        var _contactId = _item.attr('cid');
+		if (_firmId != null && _contactId != null) 
+		{
+            var sUrl = "/WebServices/Mail/EmailService.asmx/TryGetEmailAddress";
+            var o = $.toJSON({ firmId: _firmId, contactId: _contactId });
+            $.ajax({
+                type: 'post',
+                url: sUrl,
+                data: o,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function(data) {
+                    var response = $.parseJSON(data.d);
+					var _s = response.Message;
+					s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.Contact:= '" + _s  + "'; end;";
+					__cmd(s);                    
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    
+                }
+            });
+        }
+		else
+		{
+			var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_contacts4';this._process(oo);end;";
+			__cmd(s);
+		}
+	}
+}
+
 function __tickets()
 {
+	var page_count = 1;
+	var pager = $("div[id='cphMain_hlpTop_pnlPager']").children("a");
+	if (pager.length > 0)
+		page_count = pager.length;
+	var s = "begin this.page_count:= " + page_count  + "; end;";
+	__cmd(s);
+	
 	var items = $("tr[id^='item_r']");
 	if (__assigned(items))
 	{
@@ -77,7 +126,41 @@ function __tickets()
 			  				var _item = $(this).children("td:eq(1)").find("a[id*='hlkDistance']");
 							if (!__assigned(_item[0]))							
 							{
+								var _item0 = $(this).children("td:eq(0)");
+								var _item1 = _item0.find("td[class*='noteText']");
+								if (_item1.length > 0)
+								{
+									_s = _item1[0].innerText;
+									s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.Note:= '" + _s  + "'; end;";
+									__cmd(s);
+								}
 								
+								var _item1 = _item0.find("table[id*='tblFirmData']");
+								if (_item1.length > 0)
+								{
+									_s = _item1[0].innerText;
+									s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.ControllerInfo:= '" + _s  + "'; end;";
+									__cmd(s);
+									
+									var _item2 = _item1.find("a[id*='FirmLink']");
+									if (_item2.length > 0)
+									{
+										_s = $(_item2).attr("href");
+										s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.ControllerLink:= '" + _s  + "'; end;";
+										__cmd(s);
+									}
+								}
+								
+								var _item1 = _item0.find("table[id*='tblContacts']");
+								if (_item1.length > 0)
+								{
+									_s = _item1[0].innerText;
+									s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.controller_contacts:= '" + _s  + "'; end;";
+									__cmd(s);
+								}
+								
+								s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.id:= ''; end;";
+								__cmd(s);
 							}
 							else
 							{

@@ -29,40 +29,6 @@ type
     tcClient: TSpTBXTabControl;
     SpTBXTabItem3: TSpTBXTabItem;
     SpTBXTabSheet3: TSpTBXTabSheet;
-    SpTBXPanel4: TSpTBXPanel;
-    SpTBXButton4: TSpTBXButton;
-    SpTBXButton5: TSpTBXButton;
-    SpTBXPanel5: TSpTBXPanel;
-    SpTBXPanel6: TSpTBXPanel;
-    tblATIFromGeo: TRRAdvTable;
-    SpTBXButton6: TSpTBXButton;
-    SpTBXButton8: TSpTBXButton;
-    SpTBXLabel5: TSpTBXLabel;
-    SpTBXEdit1: TSpTBXEdit;
-    SpTBXButton9: TSpTBXButton;
-    SpTBXButton10: TSpTBXButton;
-    tblATIToGeo: TRRAdvTable;
-    SpTBXButton11: TSpTBXButton;
-    SpTBXButton13: TSpTBXButton;
-    SpTBXLabel6: TSpTBXLabel;
-    SpTBXEdit2: TSpTBXEdit;
-    SpTBXButton14: TSpTBXButton;
-    SpTBXButton15: TSpTBXButton;
-    SpTBXButton16: TSpTBXButton;
-    SpTBXButton17: TSpTBXButton;
-    SpTBXButton18: TSpTBXButton;
-    SpTBXEdit3: TSpTBXEdit;
-    SpTBXButton19: TSpTBXButton;
-    SpTBXLabel7: TSpTBXLabel;
-    SpTBXEdit4: TSpTBXEdit;
-    SpTBXLabel8: TSpTBXLabel;
-    SpTBXEdit5: TSpTBXEdit;
-    SpTBXLabel9: TSpTBXLabel;
-    SpTBXEdit6: TSpTBXEdit;
-    SpTBXButton23: TSpTBXButton;
-    SpTBXLabel10: TSpTBXLabel;
-    SpTBXEdit7: TSpTBXEdit;
-    SpTBXButton25: TSpTBXButton;
     SpTBXPanel7: TSpTBXPanel;
     SpTBXButton26: TSpTBXButton;
     SpTBXTabItem1: TSpTBXTabItem;
@@ -74,7 +40,6 @@ type
     SpTBXLabel12: TSpTBXLabel;
     SpTBXLabel13: TSpTBXLabel;
     SpTBXLabel14: TSpTBXLabel;
-    tblATIGeos: TRRAdvTable;
     SpTBXTabItem4: TSpTBXTabItem;
     SpTBXTabSheet4: TSpTBXTabSheet;
     SpTBXButton7: TSpTBXButton;
@@ -140,7 +105,6 @@ type
     Memo4: TMemo;
     SpTBXLabel40: TSpTBXLabel;
     Memo5: TMemo;
-    Memo6: TMemo;
     Memo7: TMemo;
     tblTicketStatuses: TRRAdvTable;
     SpTBXLabel41: TSpTBXLabel;
@@ -282,16 +246,6 @@ type
     Memo12: TMemo;
     SpTBXButton63: TSpTBXButton;
     SpTBXButton66: TSpTBXButton;
-    SpTBXButton20: TSpTBXButton;
-    SpTBXButton21: TSpTBXButton;
-    SpTBXButton22: TSpTBXButton;
-    SpTBXButton24: TSpTBXButton;
-    SpTBXButton67: TSpTBXButton;
-    SpTBXButton68: TSpTBXButton;
-    SpTBXButton69: TSpTBXButton;
-    SpTBXButton70: TSpTBXButton;
-    SpTBXButton71: TSpTBXButton;
-    SpTBXButton72: TSpTBXButton;
     SpTBXTabItem20: TSpTBXTabItem;
     SpTBXTabSheet21: TSpTBXTabSheet;
     SpTBXButton73: TSpTBXButton;
@@ -325,6 +279,71 @@ type
     SpTBXButton78: TSpTBXButton;
     Memo13: TMemo;
     SpTBXCheckBox5: TSpTBXCheckBox;
+    SpTBXButton79: TSpTBXButton;
+    SpTBXTabControl3: TSpTBXTabControl;
+    SpTBXTabItem21: TSpTBXTabItem;
+    SpTBXTabSheet22: TSpTBXTabSheet;
+    SpTBXTabItem22: TSpTBXTabItem;
+    SpTBXTabSheet23: TSpTBXTabSheet;
+    Memo6: TMemo;
+    Memo14: TMemo;
+    SpTBXTabControl4: TSpTBXTabControl;
+    SpTBXTabItem24: TSpTBXTabItem;
+    SpTBXTabItem23: TSpTBXTabItem;
+    SpTBXTabSheet24: TSpTBXTabSheet;
+    SpTBXTabSheet25: TSpTBXTabSheet;
+    SpTBXPanel6: TSpTBXPanel;
+    SpTBXButton16: TSpTBXButton;
+    SpTBXButton17: TSpTBXButton;
+    SpTBXButton18: TSpTBXButton;
+    SpTBXEdit3: TSpTBXEdit;
+    SpTBXButton19: TSpTBXButton;
+    SpTBXLabel7: TSpTBXLabel;
+    SpTBXEdit4: TSpTBXEdit;
+    SpTBXLabel8: TSpTBXLabel;
+    SpTBXEdit5: TSpTBXEdit;
+    SpTBXLabel9: TSpTBXLabel;
+    SpTBXEdit6: TSpTBXEdit;
+    SpTBXButton23: TSpTBXButton;
+    SpTBXLabel10: TSpTBXLabel;
+    SpTBXEdit7: TSpTBXEdit;
+    SpTBXButton25: TSpTBXButton;
+    tblATIGeos: TRRAdvTable;
+    SpTBXLabel36: TSpTBXLabel;
+    SpTBXEdit31: TSpTBXEdit;
+    SpTBXButton80: TSpTBXButton;
+    SpTBXPanel4: TSpTBXPanel;
+    SpTBXButton4: TSpTBXButton;
+    SpTBXButton5: TSpTBXButton;
+    SpTBXPanel5: TSpTBXPanel;
+    tblATIFromGeo: TRRAdvTable;
+    SpTBXButton6: TSpTBXButton;
+    SpTBXButton8: TSpTBXButton;
+    SpTBXLabel5: TSpTBXLabel;
+    SpTBXEdit1: TSpTBXEdit;
+    SpTBXButton9: TSpTBXButton;
+    SpTBXButton10: TSpTBXButton;
+    tblATIToGeo: TRRAdvTable;
+    SpTBXButton11: TSpTBXButton;
+    SpTBXButton13: TSpTBXButton;
+    SpTBXLabel6: TSpTBXLabel;
+    SpTBXEdit2: TSpTBXEdit;
+    SpTBXButton14: TSpTBXButton;
+    SpTBXButton15: TSpTBXButton;
+    SpTBXButton20: TSpTBXButton;
+    SpTBXButton21: TSpTBXButton;
+    SpTBXButton22: TSpTBXButton;
+    SpTBXButton24: TSpTBXButton;
+    SpTBXButton67: TSpTBXButton;
+    SpTBXButton68: TSpTBXButton;
+    SpTBXButton69: TSpTBXButton;
+    SpTBXButton70: TSpTBXButton;
+    SpTBXButton71: TSpTBXButton;
+    SpTBXButton72: TSpTBXButton;
+    SpTBXButton81: TSpTBXButton;
+    SpTBXButton82: TSpTBXButton;
+    SpTBXLabel90: TSpTBXLabel;
+    SpTBXEdit32: TSpTBXEdit;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -452,6 +471,8 @@ type
     procedure SpTBXButton77Click(Sender: TObject);
     procedure SpTBXButton78Click(Sender: TObject);
     procedure Memo13Change(Sender: TObject);
+    procedure SpTBXButton79Click(Sender: TObject);
+    procedure SpTBXButton80Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -482,6 +503,7 @@ type
     procedure DoATIAutorizCode(var Code:String);
     procedure DoATICaptcha(oper_code:Integer);
     procedure DoEndGetTickets(Sender: TObject);
+    procedure DoEndGetContacts(Sender: TObject);
     procedure DoOperProgress(Stage1,Stage2:String);
     procedure DoOperSub1Progress(Stage1,Stage2:String);
 
@@ -574,7 +596,7 @@ end;
 
 procedure TMainForm.DoATICaptcha(oper_code: Integer);
 begin
-  Browser.Show;
+  
 end;
 
 procedure TMainForm.SpTBXButton1Click(Sender: TObject);
@@ -589,16 +611,36 @@ begin
 end;
 
 procedure TMainForm.DoEndGetTickets(Sender: TObject);
-var cls1,cls2:TFMClass;
+var cls1,cls2,cls3:TFMClass;
     s:String;
+    i,sum,price:Integer;
 begin
   cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
   cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
   cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
   s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
   cls1.FindPropertyByName('Caption').ValueS:= s;
-  cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin); 
+  cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin);
   cls1.AddClass(cls2);
+
+  if (Length(SpTBXEdit31.Text) > 0) and (TryStrToInt(SpTBXEdit31.Text,sum)) then
+  begin
+    i:= 0;
+    while i <= cls2.MyClassCount - 1 do
+    begin
+      cls3:= cls2.MyClass[i];
+      if TryStrToInt(cls3.FindPropertyByName('Price1').ValueS,price) then
+      begin
+        if price < sum then
+          cls2.DeleteClassItem(cls3)
+        else
+          Inc(i);
+      end
+      else
+        cls2.DeleteClassItem(cls3);
+    end;
+  end;
+
   cls_data.Save;
   TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
   Application.ProcessMessages;
@@ -778,7 +820,8 @@ end;
 
 procedure TMainForm.SpTBXButton27Click(Sender: TObject);
 begin
-  ToggleOperation(op_ati_get_ticks);  
+  SpTBXTabControl4.ActiveTabIndex:= 0;
+  ToggleOperation(op_ati_get_ticks);
 end;
 
 procedure TMainForm.TblUpdateGeos(aTable: TRRAdvTable; aClass:TFMClass);
@@ -914,6 +957,7 @@ begin
     SpTBXEdit5.Text:= IntToStr(app_sett.FindClassByName('ati_f_params').FindPropertyByName('VolumeEnd').ValueI);
   SpTBXEdit6.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateBegin').ValueS;
   SpTBXEdit7.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS;
+  SpTBXEdit31.Text:= app_sett.FindClassByName('ati_f_params').FindPropertyByName('MinPrice').ValueS;
 end;
 
 procedure TMainForm.SpTBXButton26Click(Sender: TObject);
@@ -957,6 +1001,11 @@ begin
   begin
     ati_service.GetTickOption.DateEnd:= dt;
     app_sett.FindClassByName('ati_f_params').FindPropertyByName('DateEnd').ValueS:= SpTBXEdit7.Text;
+  end;
+
+  if TryStrToInt(SpTBXEdit31.Text,i) then
+  begin
+    app_sett.FindClassByName('ati_f_params').FindPropertyByName('MinPrice').ValueS:= SpTBXEdit31.Text;
   end;
 
   app_sett.Save;
@@ -1777,6 +1826,8 @@ begin
   DecimalSeparator:= '.';
 
   SpTBXTabControl2.ActiveTabIndex:= 0;
+  SpTBXTabControl3.ActiveTabIndex:= 0;
+  SpTBXTabControl4.ActiveTabIndex:= 0;
 
   cls_templates.CopyClass(aClass,cls_templates.FindClassByName('ticket'),False,True);
 
@@ -1855,6 +1906,12 @@ begin
   for i:= 0 to aClass.FindClassByName('controller_contacts').MyClassCount - 1 do
   begin
     Memo6.Lines.Add(aClass.FindClassByName('controller_contacts').MyClass[i].FindPropertyByName('Str1').ValueS);
+  end;
+
+  Memo14.Lines.Clear;
+  for i:= 0 to cls_active_ticket.FindClassByName('controller_mails').MyClassCount - 1 do
+  begin
+    Memo14.Lines.Add(cls_active_ticket.FindClassByName('controller_mails').MyClass[i].FindPropertyByName('Str1').ValueS);
   end;
 
   if aClass.FindPropertyByName('_status_id').ValueI = 0 then
@@ -3408,6 +3465,33 @@ begin
   if TryStrToInt(Memo13.Text,i) then
     cls_active_ticket.FindPropertyByName('DistI').ValueI:= i;
   cls_data.Save;
+end;
+
+procedure TMainForm.DoEndGetContacts(Sender: TObject);
+var i:Integer;
+begin
+  cls_data.Save;
+  DoOperSub1Progress('','');
+  Memo14.Clear;
+  for i:= 0 to cls_active_ticket.FindClassByName('controller_mails').MyClassCount - 1 do
+  begin
+    Memo14.Lines.Add(cls_active_ticket.FindClassByName('controller_mails').MyClass[i].FindPropertyByName('Str1').ValueS);
+  end;
+end;
+
+procedure TMainForm.SpTBXButton79Click(Sender: TObject);
+begin
+  ati_service.OnAutorizCode:= DoATIAutorizCode;
+  ati_service.OnCaptcha:= DoATICaptcha;
+  ati_service.OnOperProgress:= DoOperProgress;
+  ati_service.OnEndGetTickets:= DoEndGetContacts;
+  cls_active_ticket.FindClassByName('controller_mails').Close;
+  ati_service.GetContacts(cls_active_ticket);
+end;
+
+procedure TMainForm.SpTBXButton80Click(Sender: TObject);
+begin
+  SpTBXEdit31.Text:= '';
 end;
 
 end.
