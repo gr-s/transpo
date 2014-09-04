@@ -3,6 +3,7 @@ program transpo;
 uses
   Forms,
   SysUtils,
+  ceflib,
   uMainForm in 'uMainForm.pas' {MainForm},
   ati in 'ati.pas',
   transpo_classes in 'transpo_classes.pas',
@@ -17,6 +18,7 @@ uses
 
 begin
   Application.Initialize;
+  CefLibrary:= ExtractFilePath(Application.ExeName) + 'chromium\libcef.dll';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TSelectWizard1, SelectWizard1);
   Application.CreateForm(TBrowser, Browser);

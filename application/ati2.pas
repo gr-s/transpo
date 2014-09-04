@@ -431,6 +431,9 @@ begin
   if Copy(s,1,4) = 'cmd:' then
   begin
     Delete(s,1,4);
+    s:= Trim(s);
+    s:= DelSymb(s,#$A);
+    s:= DelSymb(s,#9);
     ip.Pas.Text:= s;
     ip.Run;
   end;
@@ -540,7 +543,8 @@ procedure TATI.DoipSetValue(Sender: TObject;
                   Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
 var k,n:Integer;
-    s2:String;
+    s,s2:String;
+    f1:Single;
 begin
   Done:= True;
   if Args.ObjTyp = varObject then
@@ -564,6 +568,60 @@ begin
         k:= GetFirstUnDigitalChar(Value,1,s2);
         if TryStrToInt(s2,n) then
           TTicket(Args.Obj)._class.FindPropertyByName('DistI').ValueI:= n;
+      end;
+      if Cmp(Identifier, 'TruckType') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('TruckType').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'Weight') then
+      begin
+        s:= Value;
+        s2:= DelAllSpace(s);
+        if TryStrToFloat(s2,f1) then
+          TTicket(Args.Obj)._class.FindPropertyByName('Weight').ValueF:= f1;
+      end;
+      if Cmp(Identifier, 'Volume') then
+      begin
+        s:= Value;
+        s2:= DelAllSpace(s);
+        if TryStrToFloat(s2,f1) then
+          TTicket(Args.Obj)._class.FindPropertyByName('Volume').ValueF:= f1;
+      end;
+      if Cmp(Identifier, 'CargoName') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('CargoName').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'CargoNote') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('CargoNote').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'CargoDesc') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('CargoDesc').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'FromGeo') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('FromGeo').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'FromGeoDesc1') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('FromGeoDesc1').ValueS:= TTicket(Args.Obj)._class.FindPropertyByName('FromGeo').ValueS + ' ' + #$A + #$D + Value;
+      end;
+      if Cmp(Identifier, 'DateDesc') then
+      begin
+        s:= Value;
+        k:= GetFirstChar(s,'постоянно по раб',1,False,s2);
+        if k > 0 then
+          s:= 'постоянно по раб. дням';
+        TTicket(Args.Obj)._class.FindPropertyByName('DateDesc').ValueS:= s;
+      end;
+      if Cmp(Identifier, 'ToGeo') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('ToGeo').ValueS:= Value;
+      end;
+      if Cmp(Identifier, 'ToGeoDesc1') then
+      begin
+        TTicket(Args.Obj)._class.FindPropertyByName('ToGeoDesc1').ValueS:= TTicket(Args.Obj)._class.FindPropertyByName('ToGeo').ValueS + ' ' + #$A + #$D + Value;
       end;
     end;
   end;
