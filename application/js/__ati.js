@@ -225,7 +225,33 @@ function __tickets()
 								__cmd(s);
 								
 								
+								_item0 = $(this).children("td:eq(6)").children("div:eq(0)");
 								
+								var _price = '';
+								
+								_item1 = _item0.find("div[id*='divLoadPrice']");
+								if (_item1.length > 0)
+								{
+									if (_price.length > 0) _price += ' ';
+									_price += _item1[0].innerText;
+								}
+								
+								_item1 = _item0.find("div[id*='divLoadPriceWithNDS']");
+								if (_item1.length > 0)
+								{
+									if (_price.length > 0) _price += ' ';
+									_price += _item1[0].innerText;
+								}
+								
+								_item1 = _item0.find("div[id*='divLoadPriceWithoutNDS']");
+								if (_item1.length > 0)
+								{
+									if (_price.length > 0) _price += ' ';
+									_price += _item1[0].innerText;
+								}
+								
+								s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.Price1:= '" + _price  + "'; end;";
+								__cmd(s);
 							}
 						}
 					

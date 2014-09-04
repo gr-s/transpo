@@ -623,6 +623,15 @@ begin
       begin
         TTicket(Args.Obj)._class.FindPropertyByName('ToGeoDesc1').ValueS:= TTicket(Args.Obj)._class.FindPropertyByName('ToGeo').ValueS + ' ' + #$A + #$D + Value;
       end;
+      if Cmp(Identifier, 'Price1') then
+      begin
+        s:= Value;
+        k:= GetFirstChar(s,' ',1,False,s2);
+        s:= Copy(s,1,k-1);
+        s:= DelAllSpace(s);
+        TTicket(Args.Obj)._class.FindPropertyByName('Price1').ValueS:= s;
+        TTicket(Args.Obj)._class.FindPropertyByName('PriceDesc').ValueS:= Value;
+      end;
     end;
   end;
 end;
