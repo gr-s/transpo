@@ -10,7 +10,7 @@ uses
   GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdExplicitTLSClientServerBase, IdMessageClient, IdPOP3,
-  cefgui, cefvcl, ceflib;
+  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts;
 
 type
 
@@ -353,6 +353,7 @@ type
     Chromium1: TChromium;
     Button2: TButton;
     SpTBXEdit33: TSpTBXEdit;
+    PaintBox: TPaintBox32;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -3712,13 +3713,23 @@ end;
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
   Chromium1.Load('http://ati.su' + ati_service._capcha_img);
+  //ChromiumOSR1.Load('http://ati.su' + ati_service._capcha_img);
 end;
 
 procedure TMainForm.ChromiumOSR1LoadEnd(Sender: TObject;
   const browser: ICefBrowser; const frame: ICefFrame;
   httpStatusCode: Integer; out Result: Boolean);
+var buffer: Pointer;
 begin
-  //
+  PaintBox.Canvas.Lock;
+  PaintBox.Buffer.Lock;
+  PaintBox.Buffer.Width:= PaintBox.Width;
+  PaintBox.Buffer.Height:= PaintBox.Height;
+  Chromium1.Browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
+  PaintBox.Invalidate;
+  PaintBox.Buffer.Unlock;
+  PaintBox.Canvas.Unlock;
+  PaintBox.Buffer.SaveToFile(AppDir + 'tmp/test.bmp');
 end;
 
 procedure TMainForm.Button2Click(Sender: TObject);

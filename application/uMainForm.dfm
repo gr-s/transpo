@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 181
-  Top = 0
+  Left = 249
+  Top = 100
   Width = 1166
   Height = 768
   Caption = 'MainForm'
@@ -5734,10 +5734,10 @@ object MainForm: TMainForm
               OnClick = Button1Click
             end
             object Chromium1: TChromium
-              Left = 168
-              Top = 256
-              Width = 561
-              Height = 193
+              Left = 240
+              Top = 272
+              Width = 257
+              Height = 169
               TabOrder = 2
               OnLoadEnd = ChromiumOSR1LoadEnd
               Options.AcceleratedPaintingDisabled = False
@@ -5765,6 +5765,13 @@ object MainForm: TMainForm
               Font.Style = []
               ParentFont = False
               TabOrder = 4
+            end
+            object PaintBox: TPaintBox32
+              Left = 24
+              Top = 272
+              Width = 209
+              Height = 169
+              TabOrder = 5
             end
           end
         end
