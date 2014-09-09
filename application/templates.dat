@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.09.2014 20:21:31
+06.09.2014 19:46:04
 /end header
 /begin data
 MyClass TopInstance
@@ -70,9 +70,12 @@ MyClass TopInstance
 							/end private
 							/begin public
 							char smtp_host = /B$&V/smtp.mail.ru/E$&V/
-							char user = /B$&V/transpo@inbox.ru/E$&V/
+							char user = /B$&V/gr-s@mail.ru/E$&V/
 							char passw = /B$&V/r9hab6/E$&V/
-							char from = /B$&V/transpo@inbox.ru/E$&V/
+							char from = /B$&V/transpo/E$&V/
+							char pop_host = /B$&V/pop.mail.ru/E$&V/
+							char pop_user = /B$&V/gr-s-transpo@mail.ru/E$&V/
+							char pop_passw = /B$&V/r9hab6/E$&V/
 							/end public
 						}
 					/end classes
@@ -584,6 +587,30 @@ MyClass TopInstance
 					/end public
 				}
 			/end classes
+		}
+		MyClass bp_service_file
+		{
+			/begin private
+			/end private
+			/begin public
+			/end public
+			/begin classes
+				MyClass sending_items
+				{
+					/begin private
+					/end private
+					/begin public
+					/end public
+				}
+			/end classes
+		}
+		MyClass bp_service_send_item
+		{
+			/begin private
+			/end private
+			/begin public
+			char id = /B$&V//E$&V/
+			/end public
 		}
 	/end classes
 }

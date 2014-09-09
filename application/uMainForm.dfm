@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 99
-  Top = 87
+  Left = 181
+  Top = 0
   Width = 1166
   Height = 768
   Caption = 'MainForm'
@@ -458,6 +458,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -644,6 +645,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -869,6 +871,7 @@ object MainForm: TMainForm
               Options.MultiSelecting = False
               Options.ChessPaintMode = True
               Options.ChessPaintModeIncludeImageCell = True
+              Options.ForceNullSelecting = True
               TestDraw = False
               MinCellHeight = 16
               MinCellWidth = 5
@@ -1011,6 +1014,7 @@ object MainForm: TMainForm
               Options.MultiSelecting = False
               Options.ChessPaintMode = True
               Options.ChessPaintModeIncludeImageCell = True
+              Options.ForceNullSelecting = True
               TestDraw = False
               MinCellHeight = 16
               MinCellWidth = 5
@@ -1334,6 +1338,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -1586,6 +1591,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -1826,6 +1832,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2011,6 +2018,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2274,6 +2282,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -2459,6 +2468,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -3047,6 +3057,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -3353,6 +3364,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -3538,6 +3550,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -4115,6 +4128,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = True
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -4483,6 +4497,7 @@ object MainForm: TMainForm
           Options.MultiSelecting = False
           Options.ChessPaintMode = False
           Options.ChessPaintModeIncludeImageCell = True
+          Options.ForceNullSelecting = True
           TestDraw = False
           MinCellHeight = 16
           MinCellWidth = 5
@@ -5091,6 +5106,7 @@ object MainForm: TMainForm
                 Options.MultiSelecting = False
                 Options.ChessPaintMode = True
                 Options.ChessPaintModeIncludeImageCell = True
+                Options.ForceNullSelecting = True
                 TestDraw = False
                 MinCellHeight = 16
                 MinCellWidth = 5
@@ -5296,6 +5312,7 @@ object MainForm: TMainForm
                 Options.MultiSelecting = False
                 Options.ChessPaintMode = False
                 Options.ChessPaintModeIncludeImageCell = True
+                Options.ForceNullSelecting = True
                 TestDraw = False
                 MinCellHeight = 16
                 MinCellWidth = 5
@@ -5484,6 +5501,7 @@ object MainForm: TMainForm
                 Options.MultiSelecting = False
                 Options.ChessPaintMode = False
                 Options.ChessPaintModeIncludeImageCell = True
+                Options.ForceNullSelecting = True
                 TestDraw = False
                 MinCellHeight = 16
                 MinCellWidth = 5
@@ -5658,43 +5676,95 @@ object MainForm: TMainForm
             Caption = #1044#1077#1078#1091#1088#1080#1090#1100
             ImageIndex = -1
             TabItem = 'SpTBXTabItem23'
-            object SpTBXButton81: TSpTBXButton
-              Left = 16
-              Top = 16
-              Width = 201
-              Height = 33
-              Caption = #1057#1090#1072#1088#1090
-              TabOrder = 0
-              Checked = True
-            end
-            object SpTBXButton82: TSpTBXButton
-              Left = 16
-              Top = 64
-              Width = 201
-              Height = 33
-              Caption = #1057#1090#1086#1087
-              TabOrder = 1
-              Checked = True
-            end
-            object SpTBXLabel90: TSpTBXLabel
-              Left = 267
+            object SpTBXGroupBox1: TSpTBXGroupBox
+              Left = 24
               Top = 24
-              Width = 71
-              Height = 13
-              Caption = #1063#1072#1089#1090#1086#1090#1072' ('#1084#1080#1085')'
+              Width = 273
+              Height = 169
+              Caption = 'BPService'
+              TabOrder = 0
+              object SpTBXButton81: TSpTBXButton
+                Left = 32
+                Top = 72
+                Width = 201
+                Height = 33
+                Caption = #1057#1090#1072#1088#1090
+                TabOrder = 0
+                OnClick = SpTBXButton81Click
+                Checked = True
+              end
+              object SpTBXButton82: TSpTBXButton
+                Left = 32
+                Top = 120
+                Width = 201
+                Height = 33
+                Caption = #1057#1090#1086#1087
+                TabOrder = 1
+                OnClick = SpTBXButton82Click
+                Checked = True
+              end
+              object SpTBXLabel90: TSpTBXLabel
+                Left = 19
+                Top = 32
+                Width = 71
+                Height = 13
+                Caption = #1063#1072#1089#1090#1086#1090#1072' ('#1084#1080#1085')'
+              end
+              object SpTBXEdit32: TSpTBXEdit
+                Left = 101
+                Top = 24
+                Width = 100
+                Height = 28
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 3
+              end
             end
-            object SpTBXEdit32: TSpTBXEdit
-              Left = 349
-              Top = 16
-              Width = 100
+            object Button1: TButton
+              Left = 392
+              Top = 56
+              Width = 75
               Height = 25
+              Caption = 'Button1'
+              TabOrder = 1
+              OnClick = Button1Click
+            end
+            object Chromium1: TChromium
+              Left = 168
+              Top = 256
+              Width = 561
+              Height = 193
+              TabOrder = 2
+              OnLoadEnd = ChromiumOSR1LoadEnd
+              Options.AcceleratedPaintingDisabled = False
+              Options.AcceleratedFiltersDisabled = False
+              Options.AcceleratedPluginsDisabled = False
+            end
+            object Button2: TButton
+              Left = 488
+              Top = 64
+              Width = 75
+              Height = 25
+              Caption = 'Button1'
+              TabOrder = 3
+              OnClick = Button2Click
+            end
+            object SpTBXEdit33: TSpTBXEdit
+              Left = 141
+              Top = 208
+              Width = 452
+              Height = 28
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -16
               Font.Name = 'MS Sans Serif'
               Font.Style = []
               ParentFont = False
-              TabOrder = 3
+              TabOrder = 4
             end
           end
         end
@@ -5707,5 +5777,11 @@ object MainForm: TMainForm
     OnTimer = Timer1Timer
     Left = 216
     Top = 152
+  end
+  object tmBPService: TTimer
+    Enabled = False
+    OnTimer = tmBPServiceTimer
+    Left = 187
+    Top = 217
   end
 end

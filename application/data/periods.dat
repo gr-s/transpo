@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-27.08.2014 17:44:48
+09.09.2014 14:05:52
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/1255091974-1649-18219/E$&V/
+	char active_period = /B$&V/4247213060-34389-18031/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -3625,6 +3625,66 @@ MyClass periods_file
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/55000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1123166796-51469-18865/E$&V/
+									char create_date = /B$&V/09.09.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Балаково-Дзержинск /E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/9000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/870534831-60539-19541/E$&V/
+									char create_date = /B$&V/09.09.2014/E$&V/
+									bool enabled = /B$&V/True/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/нн-саратов/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/37000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket

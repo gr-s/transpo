@@ -7,10 +7,13 @@ uses
   Dialogs, SpTBXSkins, GRUtils, GRString, rrfile_mod_api, SpTBXItem, transpo_classes,
   StdCtrls, ExtCtrls, uSelectWizard1, uBrowser, SpTBXControls, SpTBXTabs,
   SpTBXDkPanels, TB2Item, rrAdvTable, SpTBXEditors, uCalendarWizard,
-  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls, {$IFDEF _IE}ati{$ELSE}ati2{$ENDIF};
+  GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls,
+  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
+  IdExplicitTLSClientServerBase, IdMessageClient, IdPOP3,
+  cefgui, cefvcl, ceflib;
 
 type
-  
+
   TMainForm = class(TForm)
     spMainForm: TSpTBXTitleBar;
     SpTBXPanel1: TSpTBXPanel;
@@ -340,10 +343,16 @@ type
     SpTBXButton70: TSpTBXButton;
     SpTBXButton71: TSpTBXButton;
     SpTBXButton72: TSpTBXButton;
+    SpTBXGroupBox1: TSpTBXGroupBox;
     SpTBXButton81: TSpTBXButton;
     SpTBXButton82: TSpTBXButton;
     SpTBXLabel90: TSpTBXLabel;
     SpTBXEdit32: TSpTBXEdit;
+    tmBPService: TTimer;
+    Button1: TButton;
+    Chromium1: TChromium;
+    Button2: TButton;
+    SpTBXEdit33: TSpTBXEdit;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -473,6 +482,14 @@ type
     procedure Memo13Change(Sender: TObject);
     procedure SpTBXButton79Click(Sender: TObject);
     procedure SpTBXButton80Click(Sender: TObject);
+    procedure SpTBXButton81Click(Sender: TObject);
+    procedure SpTBXButton82Click(Sender: TObject);
+    procedure tmBPServiceTimer(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure ChromiumOSR1LoadEnd(Sender: TObject;
+      const browser: ICefBrowser; const frame: ICefFrame;
+      httpStatusCode: Integer; out Result: Boolean);
+    procedure Button2Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -481,6 +498,7 @@ type
     SplashForm:TSplashForm;
 
     IdSMTP1:TIdSMTP;
+    IdPOP1:TIdPOP3;
 
     curr_sel_cell_value:String;
     old_ticket_info_oper_id:Integer;
@@ -489,10 +507,16 @@ type
     _FromGeoIndex:Integer;
     _ToGeoIndex:Integer;
 
+    bp_service_enabled:Boolean;
+    last_capcha:TDateTime;
+
     cls_active_ticket:TFMClass;
     cls_active_period:TFMClass;
     cls_active_debit:TFMClass;
     cls_active_credit:TFMClass;
+
+    cls_bp_service_file:TFMClass;
+    bp_service_last_update:String;
 
     LockAllEventChangeSelCell:Boolean;
 
@@ -546,10 +570,16 @@ type
     function  GetFMClassFromTable(aTable:TRRAdvTable):TFMClass;
 
     function  GetTicketMailText(aTicket:TFMClass;ShortView:Boolean):String;
+    procedure SendMail(aSubject,aText:String);
+    procedure GetMail();
 
     procedure ToggleOperation(op_code:Integer);
 
     procedure DoMessageInitializeISO(var VHeaderEncoding: Char; var VCharSet: string);
+
+    procedure DoEndBPServiceUpdate(Sender: TObject);
+    procedure StartBPService;
+    procedure StopBPService;
 
     constructor Create(AOwner: TComponent);override;
     procedure   Init;
@@ -563,7 +593,7 @@ implementation
 // _iveco
 // hjtu23iovb89
 
-uses Math;
+uses Math, DateUtils, {$IFDEF _IE}ati{$ELSE}ati2{$ENDIF};
 
 {$R *.dfm}
 
@@ -576,6 +606,7 @@ begin
   SplashForm.Show;
   Application.ProcessMessages;
   IdSMTP1:= TIdSMTP.Create(nil);
+  IdPOP1:= TIdPOP3.Create(nil);
 end;
 
 destructor TMainForm.Destroy;
@@ -596,7 +627,15 @@ end;
 
 procedure TMainForm.DoATICaptcha(oper_code: Integer);
 begin
-  
+  if bp_service_enabled then
+  begin
+    StopBPService;
+    if MinutesBetween(Now,last_capcha) > 10 then
+    begin
+      last_capcha:= Now;
+      SendMail('capcha','Нужна капча!' + #$A + #$D + 'http://ati.su' + ati_service._capcha_img);
+    end;
+  end;
 end;
 
 procedure TMainForm.SpTBXButton1Click(Sender: TObject);
@@ -615,34 +654,44 @@ var cls1,cls2,cls3:TFMClass;
     s:String;
     i,sum,price:Integer;
 begin
-  cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
-  cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
-  cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
-  s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
-  cls1.FindPropertyByName('Caption').ValueS:= s;
-  cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin);
-  cls1.AddClass(cls2);
-
-  if (Length(SpTBXEdit31.Text) > 0) and (TryStrToInt(SpTBXEdit31.Text,sum)) then
+  if not ati_service.capcha then
   begin
-    i:= 0;
-    while i <= cls2.MyClassCount - 1 do
+    if (Length(SpTBXEdit31.Text) > 0) and (TryStrToInt(SpTBXEdit31.Text,sum)) then
     begin
-      cls3:= cls2.MyClass[i];
-      if TryStrToInt(cls3.FindPropertyByName('Price1').ValueS,price) then
+      cls2:= ati_service.GetTickResult.FindClassByName('items');
+      i:= 0;
+      while i <= cls2.MyClassCount - 1 do
       begin
-        if price < sum then
-          cls2.DeleteClassItem(cls3)
+        cls3:= cls2.MyClass[i];
+        if TryStrToInt(cls3.FindPropertyByName('Price1').ValueS,price) then
+        begin
+          if price < sum then
+            cls2.DeleteClassItem(cls3)
+          else
+            Inc(i);
+        end
         else
-          Inc(i);
-      end
-      else
-        cls2.DeleteClassItem(cls3);
+          cls2.DeleteClassItem(cls3);
+      end;
+    end;
+
+    if not bp_service_enabled then
+    begin
+      cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
+      cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
+      cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+      s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
+      cls1.FindPropertyByName('Caption').ValueS:= s;
+      cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin);
+      cls1.AddClass(cls2);
+    end;
+
+    if not bp_service_enabled then
+    begin
+      cls_data.Save;
+      TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
     end;
   end;
-
-  cls_data.Save;
-  TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
   Application.ProcessMessages;
   ATIGetTickets(-1,-1);
 end;
@@ -656,7 +705,7 @@ end;
 
 procedure TMainForm.Run;
 begin
-  Timer1.Enabled:= True;
+  //Timer1.Enabled:= True;
 end;
 
 procedure TMainForm.DoOperProgress(Stage1, Stage2: String);
@@ -964,9 +1013,12 @@ procedure TMainForm.SpTBXButton26Click(Sender: TObject);
 var i:Integer;
     dt:TDateTime;
 begin
+  ati_service.capcha:= False;
+  
   ati_service.OnAutorizCode:= DoATIAutorizCode;
   ati_service.OnCaptcha:= DoATICaptcha;
-  ati_service.OnEndGetTickets:= DoEndGetTickets;
+  if not bp_service_enabled then
+    ati_service.OnEndGetTickets:= DoEndGetTickets;
   ati_service.OnOperProgress:= DoOperProgress;
 
   ati_service.GetTickOption:= GetTickOptionDefault;
@@ -1155,10 +1207,18 @@ begin
     Exit;
   end;
 
-  ati_service.GetTickOption.FromGeo:= tblATIFromGeo.Cell[1,_FromGeoIndex].TextString;
-  ati_service.GetTickOption.ToGeo:= tblATIToGeo.Cell[1,_ToGeoIndex].TextString;
-  DoOperSub1Progress(ati_service.GetTickOption.FromGeo + ' - ' + ati_service.GetTickOption.ToGeo,'');
-  ati_service.GetTickets;
+  if not ati_service.capcha then
+  begin
+    ati_service.GetTickOption.FromGeo:= tblATIFromGeo.Cell[1,_FromGeoIndex].TextString;
+    ati_service.GetTickOption.ToGeo:= tblATIToGeo.Cell[1,_ToGeoIndex].TextString;
+    DoOperSub1Progress(ati_service.GetTickOption.FromGeo + ' - ' + ati_service.GetTickOption.ToGeo,'');
+    ati_service.GetTickets;
+  end
+  else
+  begin
+    SpTBXButton26.Enabled:= True;
+    DoOperSub1Progress('','');
+  end;
 end;
 
 procedure TMainForm.SpTBXButton23Click(Sender: TObject);
@@ -3244,9 +3304,15 @@ begin
   logisticone.OnOperProgress:= DoOperProgress;
   logisticone.OnEndOperProgress:= DoEndOperProgress;
 
+  bp_service_enabled:= False;
+
   IdSMTP1.Host:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('smtp_host').ValueS;
   IdSMTP1.Username:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('user').ValueS;
   IdSMTP1.Password:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('passw').ValueS;
+
+  IdPOP1.Host:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('pop_host').ValueS;
+  IdPOP1.Username:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('pop_user').ValueS;
+  IdPOP1.Password:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('pop_passw').ValueS;
 
   FreeAndNil(SplashForm);
 end;
@@ -3269,63 +3335,78 @@ begin
 end;
 
 procedure TMainForm.SpTBXButton74Click(Sender: TObject);
-var aMessage:TIdMessage;
 begin
-  aMessage:= TIdMessage.Create(nil);
-  aMessage.OnInitializeISO:= DoMessageInitializeISO;
-  aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
-  aMessage.Subject:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
-  aMessage.Recipients.EMailAddresses:= 'gr-s@mail.ru';
-  aMessage.Body.Text:= GetTicketMailText(cls_active_ticket,SpTBXCheckBox4.Checked);
-  aMessage.CharSet:= 'windows-1251';
-  aMessage.IsEncoded:= True;
-  IdSMTP1.Connect;
-  IdSMTP1.Send(aMessage);
-  IdSMTP1.Disconnect;
+  SendMail(cls_active_ticket.FindPropertyByName('FromGeo').ValueS + '-' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS,
+            GetTicketMailText(cls_active_ticket,SpTBXCheckBox4.Checked));
 end;
 
 function TMainForm.GetTicketMailText(aTicket: TFMClass;ShortView:Boolean): String;
-var s1,s:String;
+var s1,s,s2:String;
     ds:Char;
     k:Integer;
+    f1:Single;
 begin
   ds:= DecimalSeparator;
   DecimalSeparator:= '.';
 
   if not ShortView then
   begin
-    Result:= cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
-             ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS + ' (' + cls_active_ticket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
-             '  ' + cls_active_ticket.FindPropertyByName('CargoDesc').ValueS + '  ' + cls_active_ticket.FindPropertyByName('PriceDesc').ValueS +
-             '  (' + cls_active_ticket.FindPropertyByName('ControllerInfo').ValueS + ')';
-    if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
-      Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
+    s:= '';
+
+    if TryStrToFloat(aTicket.FindPropertyByName('Price1').ValueS,f1) then
+        if aTicket.FindPropertyByName('DistI').ValueI > 0 then
+          s:= '(' + FloatToStrF(f1/aTicket.FindPropertyByName('DistI').ValueI,fffixed,10,1) + ' р/км)';
+
+    s2:= '';
+    if aTicket.FindPropertyByName('Weight').ValueF > 0 then
+    begin
+      s1:= FloatToStrF(aTicket.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+      s1:= DelSymb(s1,'.0');
+      s2:= s2 + ' ' + s1;
+    end
+    else
+      s2:= s2 + ' --';
+
+    if aTicket.FindPropertyByName('Volume').ValueF > 0 then
+    begin
+      s1:= FloatToStrF(aTicket.FindPropertyByName('Volume').ValueF,fffixed,10,1);
+      s1:= DelSymb(s1,'.0');
+      s2:= s2 + '/' + s1;
+    end
+    else
+      s2:= s2 + '/--';
+
+    Result:= aTicket.FindPropertyByName('DateDesc').ValueS + '  ' + aTicket.FindPropertyByName('Price1').ValueS + '  ' + s + '  ' + aTicket.FindPropertyByName('FromGeo').ValueS + ' (' + aTicket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
+             ' - ' + aTicket.FindPropertyByName('ToGeo').ValueS + ' (' + aTicket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
+             '  ' + aTicket.FindPropertyByName('Dist').ValueS + '  ' + s2 + '  ' + aTicket.FindPropertyByName('CargoDesc').ValueS  + '  (' + aTicket.FindPropertyByName('ControllerInfo').ValueS + ')';
+    if aTicket.FindClassByName('controller_contacts').MyClassCount > 0 then
+      Result:= Result + '  (' + aTicket.FindClassByName('controller_contacts').MyClass[aTicket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
   end
   else
   begin
-    Result:= cls_active_ticket.FindPropertyByName('DateDesc').ValueS + ' ' + cls_active_ticket.FindPropertyByName('FromGeo').ValueS + ' - ' + cls_active_ticket.FindPropertyByName('ToGeo').ValueS;
+    Result:= aTicket.FindPropertyByName('DateDesc').ValueS + ' ' + aTicket.FindPropertyByName('FromGeo').ValueS + ' - ' + aTicket.FindPropertyByName('ToGeo').ValueS;
 
-    if cls_active_ticket.FindPropertyByName('Weight').ValueF > 0 then
+    if aTicket.FindPropertyByName('Weight').ValueF > 0 then
     begin
-      s1:= FloatToStrF(cls_active_ticket.FindPropertyByName('Weight').ValueF,fffixed,10,1);
+      s1:= FloatToStrF(aTicket.FindPropertyByName('Weight').ValueF,fffixed,10,1);
       s1:= DelSymb(s1,'.0');
       Result:= Result + ' ' + s1;
     end
     else
       Result:= Result + ' --';
-    if cls_active_ticket.FindPropertyByName('Volume').ValueF > 0 then
+    if aTicket.FindPropertyByName('Volume').ValueF > 0 then
     begin
-      s1:= FloatToStrF(cls_active_ticket.FindPropertyByName('Volume').ValueF,fffixed,10,1);
+      s1:= FloatToStrF(aTicket.FindPropertyByName('Volume').ValueF,fffixed,10,1);
       s1:= DelSymb(s1,'.0');
       Result:= Result + '/' + s1;
     end
     else
       Result:= Result + '/--';
 
-    Result:= Result + ' ' + cls_active_ticket.FindPropertyByName('CargoName').ValueS;
-    Result:= Result + ' ' + cls_active_ticket.FindPropertyByName('Price1').ValueS + ' р.';
+    Result:= Result + ' ' + aTicket.FindPropertyByName('CargoName').ValueS;
+    Result:= Result + ' ' + aTicket.FindPropertyByName('Price1').ValueS + ' р.';
 
-    s:= AnsiUpperCase(cls_active_ticket.FindPropertyByName('ControllerInfo').ValueS);
+    s:= AnsiUpperCase(aTicket.FindPropertyByName('ControllerInfo').ValueS);
     k:= GetFirstChar(s,'ID:',1,False,s1);
     if k > 0 then
     begin
@@ -3334,8 +3415,8 @@ begin
     end
     else
       Result:= Result + ' ID: ---';
-    if cls_active_ticket.FindClassByName('controller_contacts').MyClassCount > 0 then
-      Result:= Result + '  (' + cls_active_ticket.FindClassByName('controller_contacts').MyClass[cls_active_ticket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
+    if aTicket.FindClassByName('controller_contacts').MyClassCount > 0 then
+      Result:= Result + '  (' + aTicket.FindClassByName('controller_contacts').MyClass[aTicket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
   end;
 
   DecimalSeparator:= ds;
@@ -3492,6 +3573,159 @@ end;
 procedure TMainForm.SpTBXButton80Click(Sender: TObject);
 begin
   SpTBXEdit31.Text:= '';
+end;
+
+procedure TMainForm.StartBPService;
+begin
+  last_capcha:= 0;
+  ati_service.OnEndGetTickets:= DoEndBPServiceUpdate;
+  cls_bp_service_file:= TFMClass.Create(Self);
+  cls_bp_service_file.FileName:= AppDir + 'bp_service.dat';
+  cls_bp_service_file.Open;
+  cls_templates.CopyClass(cls_bp_service_file,cls_templates.FindClassByName('bp_service_file'),False,True);
+  bp_service_enabled:= True;
+  SpTBXButton26Click(nil);
+end;
+
+procedure TMainForm.StopBPService;
+begin
+  tmBPService.Enabled:= False;
+  bp_service_enabled:= False;
+  FreeAndNil(cls_bp_service_file);
+end;
+
+procedure TMainForm.SpTBXButton81Click(Sender: TObject);
+begin
+  if not bp_service_enabled then
+    StartBPService;
+end;
+
+procedure TMainForm.SpTBXButton82Click(Sender: TObject);
+begin
+  if bp_service_enabled then
+    StopBPService;
+end;
+
+procedure TMainForm.DoEndBPServiceUpdate(Sender: TObject);
+  function CheckBPServItem(aID:String):Boolean;
+  var cls1,cls2:TFMClass;
+      i:Integer;
+  begin
+    Result:= False;
+    cls1:= cls_bp_service_file.FindClassByName('sending_items');
+    for i:= 0 to cls1.MyClassCount - 1 do
+    begin
+      cls2:= cls1.MyClass[i];
+      if cls2.FindPropertyByName('id').ValueS = aID then
+      begin
+        Result:= True;
+        Break;
+      end;
+    end;
+  end;
+var i,_count:Integer;
+    cls1,cls2,cls3:TFMClass;
+    _text:String;
+begin
+  DoEndGetTickets(nil);
+
+  bp_service_last_update:= DateTimeToStr(Now);
+
+  if ati_service.capcha then Exit;
+
+  _text:= '';
+  cls1:= ati_service.GetTickResult.FindClassByName('items');
+  _count:= 0;
+  for i:= 0 to cls1.MyClassCount - 1 do
+  begin
+    cls2:= cls1.MyClass[i];
+    if not CheckBPServItem(cls2.FindPropertyByName('ID').ValueS) then
+    begin
+      cls3:= cls_bp_service_file.FindClassByName('sending_items').CreateClassItem('','');
+      cls_templates.CopyClass(cls3,cls_templates.FindClassByName('bp_service_send_item'),False,True);
+      cls3.FindPropertyByName('id').ValueS:= cls2.FindPropertyByName('ID').ValueS;
+      if Length(_text) > 0 then
+        _text:= _text + #$A + #$D + #$A + #$D;
+      _text:= _text + GetTicketMailText(cls2,False);
+      Inc(_count);
+    end;
+  end;
+  
+  if _count > 0 then
+    SendMail(TimeToStr(Now) + ' ' + IntToStr(_count) + ' items',_text);
+    
+  cls_bp_service_file.Save;
+
+  if TryStrToInt(SpTBXEdit32.Text,i) then
+    tmBPService.Interval:= i*60*1000
+  else
+    tmBPService.Interval:= 10*60*1000;
+
+  SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
+  tmBPService.Enabled:= True;
+end;
+
+procedure TMainForm.tmBPServiceTimer(Sender: TObject);
+begin
+  tmBPService.Enabled:= False;
+  SpTBXButton26Click(nil);
+end;
+
+procedure TMainForm.SendMail(aSubject, aText: String);
+var aMessage:TIdMessage;
+begin
+  aMessage:= TIdMessage.Create(nil);
+  aMessage.OnInitializeISO:= DoMessageInitializeISO;
+  aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
+  aMessage.Subject:= aSubject;
+  aMessage.Recipients.EMailAddresses:= 'gr-s@mail.ru';
+  aMessage.Body.Text:= aText;
+  aMessage.CharSet:= 'windows-1251';
+  aMessage.IsEncoded:= True;
+  IdSMTP1.Connect;
+  IdSMTP1.Send(aMessage);
+  IdSMTP1.Disconnect;
+end;
+
+procedure TMainForm.GetMail;
+var sl:TStringList;
+    i,n:Integer;
+    s,s1:String;
+    aMessage:TIdMessage;
+begin
+  sl:= TStringList.Create;
+  IdPOP1.Connect;
+  n:= IdPOP1.CheckMessages;
+  if i > 0 then
+  begin
+    aMessage:= TIdMessage.Create(nil);
+    for i:=1 to n do
+    begin
+      aMessage.Clear;
+      IdPOP1.Retrieve(1,aMessage);
+      s:= aMessage.Body.Text;
+    end;
+  end;
+  IdPOP1.Disconnect;
+end;
+
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+  Chromium1.Load('http://ati.su' + ati_service._capcha_img);
+end;
+
+procedure TMainForm.ChromiumOSR1LoadEnd(Sender: TObject;
+  const browser: ICefBrowser; const frame: ICefFrame;
+  httpStatusCode: Integer; out Result: Boolean);
+begin
+  //
+end;
+
+procedure TMainForm.Button2Click(Sender: TObject);
+begin
+//  ati_service.capcha_code:= SpTBXEdit32.Text;
+//  StartBPService;
+  Chromium1.Load(SpTBXEdit33.Text);
 end;
 
 end.

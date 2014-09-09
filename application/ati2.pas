@@ -98,6 +98,10 @@ type
 
     StopFlag: Boolean;
 
+    _capcha_img:String;
+    capcha:Boolean;
+    capcha_code:String;
+
     Chromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF};
 
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
@@ -155,6 +159,8 @@ begin
   ip:= TJvInterpreterFm.Create(Self);
   ip.OnGetValue:= DoipGetValue;
   ip.OnSetValue:= DoipSetValue;
+
+  capcha_code:= '';
 end;
 
 function TATI.CreateGetTickUrl(option: TGetTickOption): String;
@@ -184,6 +190,9 @@ begin
   end;
 
   Result:= Result + '&ExactFromGeos=true&ExactToGeos=true&qdsv=-1&SortingType=2&PageSize=100';
+
+  if Length(capcha_code) > 0 then
+    Result:= Result + '&txt=' + capcha_code;
 end;
 
 destructor TATI.Destroy;
@@ -203,7 +212,10 @@ begin
   PushOperStack(oo);
   curr_page:= 1;
   page_count:= 1;
-  login(login_s,passw_s,nil);
+  if Length(capcha_code) = 0 then
+    login(login_s,passw_s,nil)
+  else
+    PopOperStack;
 end;
 
 
@@ -473,17 +485,27 @@ end;
 procedure TATI.DoChromiumConsoleMessage(Sender: TObject;
                   const browser: ICefBrowser; message, source: ustring; line: Integer;
                       out Result: Boolean);
-var s:String;
+var s,s2:String;
 begin
   s:= message;
   if Copy(s,1,4) = 'cmd:' then
   begin
     Delete(s,1,4);
     s:= Trim(s);
-    s:= DelSymb(s,#$A);
-    s:= DelSymb(s,#9);
+    if GetFirstChar(s,'DateDesc',1,False,s2) > 0 then
+    begin
+      s:= ReplaceSymb(s,'/\',#$A);
+    end
+    else
+    begin
+      s:= DelSymb(s,#$A);
+      s:= DelSymb(s,#9);
+    end;
     ip.Pas.Text:= s;
-    ip.Run;
+    try
+      ip.Run;
+    except
+    end;
   end;
 end;
 
@@ -514,6 +536,8 @@ begin
       end;
       if Cmp(Identifier, 'need_captcha') then
       begin
+        _capcha_img:= Args.Values[0];
+        capcha:= True;
         if Assigned(OnCaptcha) then
         begin
           OnCaptcha(0);
@@ -598,7 +622,7 @@ procedure TATI.DoipSetValue(Sender: TObject;
                   Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
 var k,n:Integer;
-    s,s2:String;
+    s,s1,s2,s3:String;
     f1:Single;
     cls2:TFMClass;
     oo:TOperationObject;
@@ -681,10 +705,24 @@ begin
       if Cmp(Identifier, 'DateDesc') then
       begin
         s:= Value;
+        k:= GetFirstChar(s,'/\',Length(s)-1,True,s2);
+        s1:= s2;
+        n:= GetFirstChar(s2,':',1,False,s3);
+        s1:= DelAllSpace(s1);
+        if n > 0 then
+        begin
+          k:= GetFirstChar(s,'/\',k-2,True,s2);
+          s1:= s2 + ' (' + s1 + ')';
+        end;
+        s:= DelSymb(s1,'\');
+        s:= DelSymb(s,'/');
+        TTicket(Args.Obj)._class.FindPropertyByName('DateDesc').ValueS:= s;
+
+        (*s:= Value;
         k:= GetFirstChar(s,'постоянно по раб',1,False,s2);
         if k > 0 then
           s:= 'постоянно по раб. дням';
-        TTicket(Args.Obj)._class.FindPropertyByName('DateDesc').ValueS:= s;
+        TTicket(Args.Obj)._class.FindPropertyByName('DateDesc').ValueS:= s;*)
       end;
       if Cmp(Identifier, 'ToGeo') then
       begin
