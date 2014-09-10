@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SpTBXItem, ati, transpo_classes, SpTBXControls, StdCtrls,
-  SpTBXEditors, cefvcl;
+  SpTBXEditors, cefvcl, GR32_Image, IdBaseComponent, IdComponent,
+  IdTCPConnection, IdTCPClient, IdHTTP;
 
 type
   TBrowser = class(TForm)
@@ -15,6 +16,9 @@ type
     SpTBXEdit1: TSpTBXEdit;
     SpTBXButton2: TSpTBXButton;
     Chromium1: TChromium;
+    PaintBox: TPaintBox32;
+    Chromium2: TChromium;
+    IdHTTP1: TIdHTTP;
     procedure FormShow(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure SpTBXButton1Click(Sender: TObject);

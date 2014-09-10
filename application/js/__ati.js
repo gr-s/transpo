@@ -50,9 +50,9 @@ function __login(log,passw)
 		        ed_login[0].value = log;//"";
 		        ed_passw[0].value = passw;//"";
 		        var btn = $("input[name='ctl00$ctl00$main$PlaceHolderMain$extLogin$ucLoginFormPage$btnPageLogin']");
-				var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_login3';oo.selector:= 'http';this.PushOperStack(oo);end;";
+                        var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_login3';oo.selector:= 'http';this.PushOperStack(oo);end;";
 		        __cmd(s);
-				btn[0].click();
+                        btn[0].click();
 		      }
 		  }
 		  else
@@ -128,6 +128,14 @@ function __tickets_capcha()
                 var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets_capcha_error';this._process(oo);end;";
 		__cmd(s);
         }
+}
+
+function __tickets_enter_capcha(_capcha)
+{
+        var _capcha_edit = $("input[id='cphLeft_ctlSearch_ctlCaptcha_txtInput']");
+        _capcha_edit[0].value = _capcha;
+        var btn = $("input[name='ctl00$ctl00$main$cphLeft$ctlSearch$btnTopSearch']");
+        btn[0].click();
 }
 
 function __tickets()

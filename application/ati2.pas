@@ -3,7 +3,8 @@ unit ati2;
 interface
 uses Classes, Contnrs, TypInfo, SysUtils, Forms, Dialogs, Windows, transpo_classes, rrfile_mod_api,
      OleCtrls, SHDocVw_EWB, EwbCore, EmbeddedWB, IEAddress,  Mshtml_Ewb, ExtCtrls, Controls,
-     GRUtils, GRString, cefvcl, ceflib, JvInterpreterFm,JvJCLUtils, JvInterpreter;
+     GRUtils, GRString, cefvcl, ceflib, JvInterpreterFm,JvJCLUtils, JvInterpreter, GR32_Image, uBrowser,
+     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, IdMultipartFormData, JPEG;
 
 type
 
@@ -73,6 +74,10 @@ type
                   const frame: ICefFrame; httpStatusCode: Integer;
                       out Result: Boolean);
 
+    procedure Do_ChromiumLoadEnd(Sender: TObject; const browser: ICefBrowser;
+                  const frame: ICefFrame; httpStatusCode: Integer;
+                      out Result: Boolean);
+
     procedure DoChromiumConsoleMessage(Sender: TObject;
                   const browser: ICefBrowser; message, source: ustring; line: Integer;
                       out Result: Boolean);
@@ -84,6 +89,8 @@ type
     procedure DoipSetValue(Sender: TObject;
                   Identifier: String; const Value: Variant; Args: TJvInterpreterArgs;
                       var Done: Boolean);
+
+    procedure tmCapchaServiceTimer(Sender: TObject);
 
 
   public
@@ -102,7 +109,15 @@ type
     capcha:Boolean;
     capcha_code:String;
 
+    _Chromium:TChromium;
+    _idHTTP:TidHTTP;
+
+    _tmCapchaService:TTimer;
+
+    _capcha_id:String;
+
     Chromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF};
+    PaintBox: TPaintBox32;
 
     property OnAutorizCode:TOnAutorizCode read FOnAutorizCode write SetOnAutorizCode;
     property OnEndGetTickets:TNotifyEvent read FOnEndGetTickets write SetOnEndGetTickets;
@@ -110,6 +125,7 @@ type
     property OnOperProgress:TOnOperProgress read FOnOperProgress write SetOnOperProgress;
 
     procedure SetChromium(aChromium:{$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
+    procedure Set_Chromium(aChromium:TChromium);
 
     procedure login(a_login,a_passw:String; proc:TEndProcess);
     procedure GetTickets;
@@ -159,6 +175,16 @@ begin
   ip:= TJvInterpreterFm.Create(Self);
   ip.OnGetValue:= DoipGetValue;
   ip.OnSetValue:= DoipSetValue;
+
+  PaintBox:= nil;
+
+  _Chromium:= nil;
+  _idHTTP:= nil;
+
+  _tmCapchaService:= TTimer.Create(Self);
+  _tmCapchaService.Enabled:= False;
+  _tmCapchaService.Interval:= 1000*10;
+  _tmCapchaService.OnTimer:= tmCapchaServiceTimer;
 
   capcha_code:= '';
 end;
@@ -321,6 +347,9 @@ end;
 procedure TATI._process(OperationObject: TOperationObject);
 var oo:TOperationObject;
     s:String;
+    k:Integer;
+    capfile:TIdMultiPartFormDataStream;
+    response:String;
 begin
   if OperationObject.id = '_login1' then
   begin
@@ -389,10 +418,51 @@ begin
 
   if OperationObject.id = '_tickets_capcha4' then
   begin
-    if Assigned(OnCaptcha) then
+    _Chromium.Load('http://ati.su' + _capcha_img);
+  end;
+
+  if OperationObject.id = '_tickets_capcha5' then
+  begin
+    capfile:= TIdMultiPartFormDataStream.Create;
+    capfile.AddFormField('method','post');
+    capfile.AddFile('file',AppDir + 'tmp_files\capcha.jpg','application/octet-stream');
+    capfile.AddFormField('key','c3b21928935b7e9df52f8c77939b068c');
+    while True do
     begin
-      OnCaptcha(0);
-    end;  
+      response:= _idHTTP.Post('http://antigate.com/in.php',capfile);
+      if response <> 'ERROR_NO_SLOT_AVAILABLE' then
+        Break;
+    end;
+    if GetFirstChar(response,'OK|',1,False,s) > 0 then
+    begin
+      k:= GetFirstChar(response,'|',1,False,s);
+      GetFirstChar(response,'|',k+1,False,_capcha_id);
+      _OperProgress('','∆дем капчу... ');
+      _tmCapchaService.Enabled:= True;
+    end
+    else
+    begin
+      capcha:= True;
+      if Assigned(OnCaptcha) then
+      begin
+        OnCaptcha(0);
+      end;
+    end;
+  end;
+
+  if OperationObject.id = '_tickets_capcha6' then
+  begin
+    _OperProgress('','¬водим капчу: ' + capcha_code);
+    oo.id:= '_tickets_capcha7';
+    oo.selector:= 'http';
+    PushOperStack(oo);
+    _frame.ExecuteJavaScript('__tickets_enter_capcha("' + capcha_code + '");','',1);
+  end;
+
+  if OperationObject.id = '_tickets_capcha7' then
+  begin
+    GetTickets;
+    Exit;
   end;
 
   if OperationObject.id = '_login4' then
@@ -512,6 +582,47 @@ begin
   end;
 end;
 
+
+procedure TATI.Do_ChromiumLoadEnd(Sender: TObject; const browser: ICefBrowser;
+                  const frame: ICefFrame; httpStatusCode: Integer;
+                      out Result: Boolean);
+var oo:TOperationObject;
+    JPEGImage:TJPEGImage;
+    AData:TMemoryStream;
+    image:TImage;
+begin
+  uBrowser.Browser.Show;
+  _Chromium.Show;
+  PaintBox.Show;
+  _Chromium.Repaint;
+  Application.ProcessMessages;
+  PaintBox.Buffer.Width:= PaintBox.Width;
+  PaintBox.Buffer.Height:= PaintBox.Height;
+  PaintBox.Buffer.BeginUpdate;
+  _Chromium.Browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
+  PaintBox.Invalidate;
+  PaintBox.Buffer.EndUpdate;
+  if FileExists(AppDir + 'tmp_files\capcha.jpg') then
+    DeleteFile(PChar(AppDir + 'tmp_files\capcha.jpg'));
+  image:= TImage.Create(nil);
+  AData:= TMemoryStream.Create;
+  PaintBox.Buffer.SaveToStream(AData);
+  AData.Position := 0;
+  image.Picture.Bitmap.LoadFromStream(AData);
+  JPEGImage:= TJPEGImage.Create;
+  JPEGImage.Assign(image.Picture.Graphic);
+  JPEGImage.SaveToFile(AppDir + 'tmp_files\capcha.jpg');
+  FreeAndNil(AData);
+  FreeAndNil(JPEGImage);
+  FreeAndNil(image);
+  _Chromium.Hide;
+  PaintBox.Hide;
+  uBrowser.Browser.Hide;
+  oo.id:= '_tickets_capcha5';
+  _process(oo);
+end;
+
+
 procedure TATI.DoChromiumLoadEnd(Sender: TObject;
   const browser: ICefBrowser; const frame: ICefFrame;
   httpStatusCode: Integer; out Result: Boolean);
@@ -577,10 +688,6 @@ begin
         _capcha_img:= Args.Values[0];
         capcha:= True;
         capcha_code:= '';
-        {if Assigned(OnCaptcha) then
-        begin
-          OnCaptcha(0);
-        end;}
       end;
       if Cmp(Identifier, 'aut_ok') then
       begin
@@ -825,6 +932,43 @@ begin
   Chromium:= aChromium;
   Chromium.OnLoadEnd:= DoChromiumLoadEnd;
   Chromium.OnConsoleMessage:= DoChromiumConsoleMessage;
+end;
+
+procedure TATI.Set_Chromium(aChromium:TChromium);
+begin
+  _Chromium:= aChromium;
+  _Chromium.OnLoadEnd:= Do_ChromiumLoadEnd;
+end;
+
+procedure TATI.tmCapchaServiceTimer(Sender: TObject);
+var result,s:String;
+    k:Integer;
+    oo:TOperationObject;
+begin
+  _tmCapchaService.Enabled:= False;
+  result:= _idHTTP.Get('http://antigate.com/res.php?key=c3b21928935b7e9df52f8c77939b068c&action=get&id=' + _capcha_id);
+  if GetFirstChar(result,'OK|',1,False,s) > 0 then
+  begin
+    k:= GetFirstChar(result,'|',1,False,s);
+    GetFirstChar(result,'|',k+1,False,capcha_code);
+    oo.id:= '_tickets_capcha6';
+    _process(oo);
+  end
+  else
+  begin
+    if result = 'CAPCHA_NOT_READY' then
+    begin
+      _tmCapchaService.Enabled:= True;
+    end
+    else
+    begin
+      capcha:= True;
+      if Assigned(OnCaptcha) then
+      begin
+        OnCaptcha(0);
+      end;
+    end;
+  end;
 end;
 
 end.

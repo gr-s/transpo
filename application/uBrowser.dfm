@@ -1,6 +1,6 @@
 object Browser: TBrowser
-  Left = 308
-  Top = 202
+  Left = 252
+  Top = 222
   Width = 880
   Height = 544
   Color = clBtnFace
@@ -68,5 +68,36 @@ object Browser: TBrowser
       Options.AcceleratedFiltersDisabled = False
       Options.AcceleratedPluginsDisabled = False
     end
+    object PaintBox: TPaintBox32
+      Left = 16
+      Top = 72
+      Width = 97
+      Height = 41
+      TabOrder = 3
+      Visible = False
+    end
+    object Chromium2: TChromium
+      Left = 232
+      Top = 72
+      Width = 233
+      Height = 169
+      TabOrder = 4
+      Visible = False
+      Options.AcceleratedPaintingDisabled = False
+      Options.AcceleratedFiltersDisabled = False
+      Options.AcceleratedPluginsDisabled = False
+    end
+  end
+  object IdHTTP1: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.Accept = 'text/html, */*'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 396
+    Top = 90
   end
 end

@@ -10,7 +10,7 @@ uses
   GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdExplicitTLSClientServerBase, IdMessageClient, IdPOP3,
-  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts;
+  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts, IdHTTP;
 
 type
 
@@ -594,6 +594,12 @@ implementation
 // _iveco
 // hjtu23iovb89
 
+//grstranspo
+// hj45623cvvb89
+
+//gr-s
+//yVjubrPg
+
 uses Math, DateUtils, {$IFDEF _IE}ati{$ELSE}ati2{$ENDIF};
 
 {$R *.dfm}
@@ -608,6 +614,8 @@ begin
   Application.ProcessMessages;
   IdSMTP1:= TIdSMTP.Create(nil);
   IdPOP1:= TIdPOP3.Create(nil);
+  if not DirectoryExists(AppDir + 'tmp_files') then
+    ForceDirectories(AppDir + 'tmp_files');
 end;
 
 destructor TMainForm.Destroy;
@@ -633,6 +641,8 @@ begin
     StopBPService;
     last_capcha:= Now;
     SendMail('capcha','Нужна капча!' + #$A + #$D + 'http://ati.su' + ati_service._capcha_img);
+    SpTBXButton26.Enabled:= True;
+    DoOperSub1Progress('','');
   end;
 end;
 
@@ -689,9 +699,10 @@ begin
       cls_data.Save;
       TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
     end;
+
+    Application.ProcessMessages;
+    ATIGetTickets(-1,-1);
   end;
-  Application.ProcessMessages;
-  ATIGetTickets(-1,-1);
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
@@ -1188,6 +1199,8 @@ begin
   if (_ToGeoIndex > tblATIToGeo.RowCount - 1) then
   begin
     SpTBXButton26.Enabled:= True;
+    _FromGeoIndex:= -1;
+    _ToGeoIndex:= -1;
     DoOperSub1Progress('','');
     Exit;
   end;
@@ -1215,6 +1228,8 @@ begin
   else
   begin
     SpTBXButton26.Enabled:= True;
+    _FromGeoIndex:= -1;
+    _ToGeoIndex:= -1;
     DoOperSub1Progress('','');
   end;
 end;
@@ -3294,6 +3309,9 @@ begin
   ati_service.wb.Height:= 0;
   {$ELSE}
   ati_service.SetChromium(Browser.Chromium1);
+  ati_service.Set_Chromium(Browser.Chromium2);
+  ati_service.PaintBox:= Browser.PaintBox;
+  ati_service._idHTTP:= Browser.IdHTTP1;
   ati_service.login_s:= app_sett.FindClassByName('ati').FindPropertyByName('login').ValueS;
   ati_service.passw_s:= app_sett.FindClassByName('ati').FindPropertyByName('passw').ValueS;
   {$ENDIF}
@@ -3376,7 +3394,8 @@ begin
 
     Result:= aTicket.FindPropertyByName('DateDesc').ValueS + '  ' + aTicket.FindPropertyByName('Price1').ValueS + '  ' + s + '  ' + aTicket.FindPropertyByName('FromGeo').ValueS + ' (' + aTicket.FindPropertyByName('FromGeoDesc1').ValueS + ')' +
              ' - ' + aTicket.FindPropertyByName('ToGeo').ValueS + ' (' + aTicket.FindPropertyByName('ToGeoDesc1').ValueS + ')' +
-             '  ' + aTicket.FindPropertyByName('Dist').ValueS + '  ' + s2 + '  ' + aTicket.FindPropertyByName('CargoDesc').ValueS  + '  (' + aTicket.FindPropertyByName('ControllerInfo').ValueS + ')';
+             '  ' + aTicket.FindPropertyByName('Dist').ValueS + '  ' + s2 + '  ' + aTicket.FindPropertyByName('CargoDesc').ValueS  + '  (' + aTicket.FindPropertyByName('ControllerInfo').ValueS + ')   ' +
+              '(Прим.: ' + aTicket.FindPropertyByName('Note').ValueS + ')';
     if aTicket.FindClassByName('controller_contacts').MyClassCount > 0 then
       Result:= Result + '  (' + aTicket.FindClassByName('controller_contacts').MyClass[aTicket.FindClassByName('controller_contacts').MyClassCount-1].FindPropertyByName('Str1').ValueS + ')';
   end
@@ -3659,8 +3678,14 @@ begin
   else
     tmBPService.Interval:= 10*60*1000;
 
-  SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
-  tmBPService.Enabled:= True;
+  Application.ProcessMessages;
+  ATIGetTickets(-1,-1);
+
+  if (_FromGeoIndex < 0) and (_ToGeoIndex < 0) then
+  begin
+    SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
+    tmBPService.Enabled:= True;
+  end;
 end;
 
 procedure TMainForm.tmBPServiceTimer(Sender: TObject);
@@ -3718,14 +3743,17 @@ procedure TMainForm.ChromiumOSR1LoadEnd(Sender: TObject;
   httpStatusCode: Integer; out Result: Boolean);
 var buffer: Pointer;
 begin
-  PaintBox.Canvas.Lock;
-  PaintBox.Buffer.Lock;
+  //PaintBox.Canvas.Lock;
+  //PaintBox.Buffer.Lock;
+  Chromium1.Repaint;
+  Application.ProcessMessages;
   PaintBox.Buffer.Width:= PaintBox.Width;
   PaintBox.Buffer.Height:= PaintBox.Height;
-  Chromium1.Browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
+  browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
   PaintBox.Invalidate;
-  PaintBox.Buffer.Unlock;
-  PaintBox.Canvas.Unlock;
+  //PaintBox.Buffer.Unlock;
+  //PaintBox.Canvas.Unlock;
+  //PaintBox.Buffer.Changed;
   PaintBox.Buffer.SaveToFile(AppDir + 'tmp/test.bmp');
 end;
 
