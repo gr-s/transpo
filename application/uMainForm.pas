@@ -631,11 +631,8 @@ begin
   if bp_service_enabled then
   begin
     StopBPService;
-    if MinutesBetween(Now,last_capcha) > 10 then
-    begin
-      last_capcha:= Now;
-      SendMail('capcha','Нужна капча!' + #$A + #$D + 'http://ati.su' + ati_service._capcha_img);
-    end;
+    last_capcha:= Now;
+    SendMail('capcha','Нужна капча!' + #$A + #$D + 'http://ati.su' + ati_service._capcha_img);
   end;
 end;
 

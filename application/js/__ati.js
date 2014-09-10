@@ -108,6 +108,28 @@ function __contacts()
 	}
 }
 
+function __tickets_capcha()
+{
+	var _capcha = false;
+	var _capcha_item1 = $("img[id*='imgCaptcha']");
+	if (_capcha_item1.length > 0)
+                _capcha = true;
+
+	if (_capcha)
+	{
+                var _cph = $(_capcha_item1[0]).attr("src");
+		var s = "this.need_captcha('" + _cph + "');";
+		__cmd(s);
+		var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets_capcha4';this._process(oo);end;";
+		__cmd(s);
+        }
+        else
+        {
+                var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets_capcha_error';this._process(oo);end;";
+		__cmd(s);
+        }
+}
+
 function __tickets()
 {
 	var _capcha = false;
@@ -146,9 +168,10 @@ function __tickets()
 									if (_item1.length > 0)
 									{
 										_s = _item1[0].innerText;
+                                                                                _s = _s.replace(/\'/g,"`");
 										s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.ControllerInfo:= '" + _s  + "'; end;";
 										__cmd(s);
-										
+
 										var _item2 = _item1.find("a[id*='FirmLink']");
 										if (_item2.length > 0)
 										{
@@ -157,11 +180,12 @@ function __tickets()
 											__cmd(s);
 										}
 									}
-									
+
 									var _item1 = _item0.find("table[id*='tblContacts']");
 									if (_item1.length > 0)
 									{
 										_s = _item1[0].innerText;
+                                                                                _s = _s.replace(/\'/g,"`");
 										s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.controller_contacts:= '" + _s  + "'; end;";
 										__cmd(s);
 									}
@@ -358,7 +382,7 @@ function __tickets()
 		var _cph = $(_capcha_item1[0]).attr("src");
 		var s = "this.need_captcha('" + _cph + "');";
 		__cmd(s);
-		var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets4';this._process(oo);end;";
+		var s = "var oo:TOperationObject;begin oo:= TOperationObject.Create();oo.id:= '_tickets_capcha1';this._process(oo);end;";
 		__cmd(s);
 	}
 }

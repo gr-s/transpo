@@ -190,9 +190,6 @@ begin
   end;
 
   Result:= Result + '&ExactFromGeos=true&ExactToGeos=true&qdsv=-1&SortingType=2&PageSize=100';
-
-  if Length(capcha_code) > 0 then
-    Result:= Result + '&txt=' + capcha_code;
 end;
 
 destructor TATI.Destroy;
@@ -212,10 +209,7 @@ begin
   PushOperStack(oo);
   curr_page:= 1;
   page_count:= 1;
-  if Length(capcha_code) = 0 then
-    login(login_s,passw_s,nil)
-  else
-    PopOperStack;
+  login(login_s,passw_s,nil);
 end;
 
 
@@ -355,6 +349,50 @@ begin
     PushOperStack(oo);
     _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
     _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_tickets_capcha_error' then
+  begin
+    if Assigned(OnCaptcha) then
+    begin
+      OnCaptcha(0);
+    end;
+  end;
+
+  if OperationObject.id = '_tickets_capcha1' then
+  begin
+    ClearOperStack;
+    curr_page:= 1;
+    s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
+    oo.id:= '_tickets_capcha2';
+    oo.selector:= 'http';
+    PushOperStack(oo);
+    _OperProgress('','Капча, обновляем страницу ...');
+    _load('http',s);
+  end;
+
+  if OperationObject.id = '_tickets_capcha2' then
+  begin
+    oo.id:= '_tickets_capcha3';
+    oo.selector:= 'script';
+    PushOperStack(oo);
+    _load('script','http://109.120.140.206/transpo/__ati.js');
+  end;
+
+  if OperationObject.id = '_tickets_capcha3' then
+  begin
+    _capcha_img:= '';
+    capcha:= False;
+    capcha_code:= '';
+    _frame.ExecuteJavaScript('__tickets_capcha();','',1);
+  end;
+
+  if OperationObject.id = '_tickets_capcha4' then
+  begin
+    if Assigned(OnCaptcha) then
+    begin
+      OnCaptcha(0);
+    end;  
   end;
 
   if OperationObject.id = '_login4' then
@@ -538,10 +576,11 @@ begin
       begin
         _capcha_img:= Args.Values[0];
         capcha:= True;
-        if Assigned(OnCaptcha) then
+        capcha_code:= '';
+        {if Assigned(OnCaptcha) then
         begin
           OnCaptcha(0);
-        end;
+        end;}
       end;
       if Cmp(Identifier, 'aut_ok') then
       begin
