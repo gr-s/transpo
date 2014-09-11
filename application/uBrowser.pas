@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, SpTBXItem, ati, transpo_classes, SpTBXControls, StdCtrls,
+  Dialogs, SpTBXItem, SpTBXControls, StdCtrls,
   SpTBXEditors, cefvcl, GR32_Image, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdHTTP;
 
@@ -35,7 +35,7 @@ var
   Browser: TBrowser;
 
 implementation
-uses uMainForm, ceflib;
+uses uMainForm,ati2,ceflib;
 {$R *.dfm}
 
 { TBrowser }
@@ -80,7 +80,7 @@ begin
   {$IFDEF _IE}
   SpTBXEdit1.Text:= ati_service.wb.LocationURL;
   {$ELSE}
-  SpTBXEdit1.Text:= Chromium1.Browser.MainFrame.Url;
+  SpTBXEdit1.Text:= ati_service._last_url;
   {$ENDIF}
 end;
 

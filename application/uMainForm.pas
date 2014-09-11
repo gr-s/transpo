@@ -662,47 +662,44 @@ var cls1,cls2,cls3:TFMClass;
     s:String;
     i,sum,price:Integer;
 begin
-  if not ati_service.capcha then
+  if (Length(SpTBXEdit31.Text) > 0) and (TryStrToInt(SpTBXEdit31.Text,sum)) then
   begin
-    if (Length(SpTBXEdit31.Text) > 0) and (TryStrToInt(SpTBXEdit31.Text,sum)) then
+    cls2:= ati_service.GetTickResult.FindClassByName('items');
+    i:= 0;
+    while i <= cls2.MyClassCount - 1 do
     begin
-      cls2:= ati_service.GetTickResult.FindClassByName('items');
-      i:= 0;
-      while i <= cls2.MyClassCount - 1 do
+      cls3:= cls2.MyClass[i];
+      if TryStrToInt(cls3.FindPropertyByName('Price1').ValueS,price) then
       begin
-        cls3:= cls2.MyClass[i];
-        if TryStrToInt(cls3.FindPropertyByName('Price1').ValueS,price) then
-        begin
-          if price < sum then
-            cls2.DeleteClassItem(cls3)
-          else
-            Inc(i);
-        end
+        if price < sum then
+          cls2.DeleteClassItem(cls3)
         else
-          cls2.DeleteClassItem(cls3);
-      end;
+          Inc(i);
+      end
+      else
+        cls2.DeleteClassItem(cls3);
     end;
-
-    if not bp_service_enabled then
-    begin
-      cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
-      cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
-      cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
-      s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
-      cls1.FindPropertyByName('Caption').ValueS:= s;
-      cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin);
-      cls1.AddClass(cls2);
-    end;
-
-    if not bp_service_enabled then
-    begin
-      cls_data.Save;
-      TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
-    end;
-
-    Application.ProcessMessages;
-    ATIGetTickets(-1,-1);
   end;
+
+  if not bp_service_enabled then
+  begin
+    cls2:= ati_service.GetTickResult.CutClassItem(ati_service.GetTickResult.FindClassByName('items'));
+    cls1:= cls_data.FindClassByName('blocks').FindClassByName('finded').CreateClassItem('','');
+    cls_templates.CopyClass(cls1,cls_templates.FindClassByName('data_block'),False,True);
+    s:= Copy(ati_service.GetTickOption.FromGeo,1,4) + '-' + Copy(ati_service.GetTickOption.ToGeo,1,4);
+    cls1.FindPropertyByName('Caption').ValueS:= s;
+    cls1.FindPropertyByName('Date').ValueS:= DateToStr(ati_service.GetTickOption.DateBegin);
+    cls1.AddClass(cls2);
+  end;
+
+  if not bp_service_enabled then
+  begin
+    cls_data.Save;
+    TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+  end;
+
+  Application.ProcessMessages;
+  ATIGetTickets(-1,-1);
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
@@ -1199,8 +1196,6 @@ begin
   if (_ToGeoIndex > tblATIToGeo.RowCount - 1) then
   begin
     SpTBXButton26.Enabled:= True;
-    _FromGeoIndex:= -1;
-    _ToGeoIndex:= -1;
     DoOperSub1Progress('','');
     Exit;
   end;
@@ -3647,9 +3642,7 @@ begin
   DoEndGetTickets(nil);
 
   bp_service_last_update:= DateTimeToStr(Now);
-
-  if ati_service.capcha then Exit;
-
+  
   _text:= '';
   cls1:= ati_service.GetTickResult.FindClassByName('items');
   _count:= 0;
@@ -3669,7 +3662,9 @@ begin
   end;
   
   if _count > 0 then
-    SendMail(TimeToStr(Now) + ' ' + IntToStr(_count) + ' items',_text);
+    SendMail(TimeToStr(Now) + ' ' + IntToStr(_count) + ' items',_text)
+  else
+    SendMail(TimeToStr(Now) + ' update','');
     
   cls_bp_service_file.Save;
 
@@ -3678,14 +3673,11 @@ begin
   else
     tmBPService.Interval:= 10*60*1000;
 
-  Application.ProcessMessages;
-  ATIGetTickets(-1,-1);
+  SpTBXButton26.Enabled:= True;
+  DoOperSub1Progress('','');
 
-  if (_FromGeoIndex < 0) and (_ToGeoIndex < 0) then
-  begin
-    SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
-    tmBPService.Enabled:= True;
-  end;
+  SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
+  tmBPService.Enabled:= True;
 end;
 
 procedure TMainForm.tmBPServiceTimer(Sender: TObject);

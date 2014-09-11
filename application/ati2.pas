@@ -64,7 +64,6 @@ type
     OperStack: array of TOperationObject;
 
     procedure _load(selector,url:String);
-    procedure _process(OperationObject:TOperationObject);
 
     function StringToByteString(str:String):String;
     function CreateGetTickUrl(option: TGetTickOption): String;
@@ -92,6 +91,7 @@ type
 
     procedure tmCapchaServiceTimer(Sender: TObject);
 
+    procedure tmLoadTimer(Sender: TObject);
 
   public
     login_s:String;
@@ -113,8 +113,14 @@ type
     _idHTTP:TidHTTP;
 
     _tmCapchaService:TTimer;
+    _tmLoadService:TTimer;
 
     _capcha_id:String;
+    _capcha_fn:String;
+
+    _last_url:String;
+
+    _loading_url:String;
 
     Chromium: {$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF};
     PaintBox: TPaintBox32;
@@ -126,6 +132,8 @@ type
 
     procedure SetChromium(aChromium:{$IFDEF _debug} TChromium {$ELSE} TChromiumOSR {$ENDIF});
     procedure Set_Chromium(aChromium:TChromium);
+
+    procedure _process(OperationObject:TOperationObject);
 
     procedure login(a_login,a_passw:String; proc:TEndProcess);
     procedure GetTickets;
@@ -185,6 +193,11 @@ begin
   _tmCapchaService.Enabled:= False;
   _tmCapchaService.Interval:= 1000*10;
   _tmCapchaService.OnTimer:= tmCapchaServiceTimer;
+
+  _tmLoadService:= TTimer.Create(Self);
+  _tmLoadService.Enabled:= False;
+  _tmLoadService.Interval:= 1000*60;
+  _tmLoadService.OnTimer:= tmLoadTimer;
 
   capcha_code:= '';
 end;
@@ -380,6 +393,19 @@ begin
     _load('script','http://109.120.140.206/transpo/__ati.js');
   end;
 
+  if OperationObject.id = '_login4' then
+  begin
+    _frame.ExecuteJavaScript('__login();','',1);
+  end;
+
+  if OperationObject.id = '_login_ok' then
+  begin
+    _OperProgress('','');
+    if Assigned(_proc) then
+      _proc();
+    PopOperStack;
+  end;
+
   if OperationObject.id = '_tickets_capcha_error' then
   begin
     if Assigned(OnCaptcha) then
@@ -390,8 +416,6 @@ begin
 
   if OperationObject.id = '_tickets_capcha1' then
   begin
-    ClearOperStack;
-    curr_page:= 1;
     s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
     oo.id:= '_tickets_capcha2';
     oo.selector:= 'http';
@@ -425,7 +449,7 @@ begin
   begin
     capfile:= TIdMultiPartFormDataStream.Create;
     capfile.AddFormField('method','post');
-    capfile.AddFile('file',AppDir + 'tmp_files\capcha.jpg','application/octet-stream');
+    capfile.AddFile('file',AppDir + 'tmp_files\' + _capcha_fn,'application/octet-stream');
     capfile.AddFormField('key','c3b21928935b7e9df52f8c77939b068c');
     while True do
     begin
@@ -461,26 +485,15 @@ begin
 
   if OperationObject.id = '_tickets_capcha7' then
   begin
-    GetTickets;
+    OperationObject.id:= '_tickets1';
+    _process(OperationObject);
     Exit;
-  end;
-
-  if OperationObject.id = '_login4' then
-  begin
-    _frame.ExecuteJavaScript('__login();','',1);
-  end;
-
-  if OperationObject.id = '_login_ok' then
-  begin
-    _OperProgress('','');
-    if Assigned(_proc) then
-      _proc();
-    PopOperStack;
   end;
 
   if OperationObject.id = '_tickets1' then
   begin
     s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
+    _last_url:= s;
     if Length(s) > 0 then
     begin
       if StopFlag then
@@ -515,21 +528,21 @@ begin
 
   if OperationObject.id = '_tickets3' then
   begin
-    _frame.ExecuteJavaScript('__tickets();','',1);
+    _frame.ExecuteJavaScript('__tickets(' + IntToStr(curr_page) + ');','',1);
   end;
 
   if OperationObject.id = '_tickets4' then
   begin
     Inc(curr_page);
-    if (curr_page <= page_count) then
-    begin
-      OperationObject.id:= '_tickets1';
-      _process(OperationObject);
-      Exit;
-    end
-    else
-      if Assigned(OnEndGetTickets) then
-        OnEndGetTickets(Self);
+    OperationObject.id:= '_tickets1';
+    _process(OperationObject);
+    Exit;
+  end;
+
+  if OperationObject.id = '_tickets_end' then
+  begin
+    if Assigned(OnEndGetTickets) then
+      OnEndGetTickets(Self);
   end;
 
   if OperationObject.id = '_contacts1' then
@@ -567,6 +580,8 @@ var sl:TStringList;
 begin
   if selector = 'http' then
   begin
+    _loading_url:= url;
+    _tmLoadService.Enabled:= True;
     Chromium.Load(url);
   end;
 
@@ -602,8 +617,6 @@ begin
   _Chromium.Browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
   PaintBox.Invalidate;
   PaintBox.Buffer.EndUpdate;
-  if FileExists(AppDir + 'tmp_files\capcha.jpg') then
-    DeleteFile(PChar(AppDir + 'tmp_files\capcha.jpg'));
   image:= TImage.Create(nil);
   AData:= TMemoryStream.Create;
   PaintBox.Buffer.SaveToStream(AData);
@@ -611,7 +624,8 @@ begin
   image.Picture.Bitmap.LoadFromStream(AData);
   JPEGImage:= TJPEGImage.Create;
   JPEGImage.Assign(image.Picture.Graphic);
-  JPEGImage.SaveToFile(AppDir + 'tmp_files\capcha.jpg');
+  _capcha_fn:= GenerateGUID2 + '.jpg';
+  JPEGImage.SaveToFile(AppDir + 'tmp_files\' + _capcha_fn);
   FreeAndNil(AData);
   FreeAndNil(JPEGImage);
   FreeAndNil(image);
@@ -627,6 +641,7 @@ procedure TATI.DoChromiumLoadEnd(Sender: TObject;
   const browser: ICefBrowser; const frame: ICefFrame;
   httpStatusCode: Integer; out Result: Boolean);
 begin
+  _tmLoadService.Enabled:= False;
   _frame:= frame;
   PopOperStack;
 end;
@@ -938,6 +953,12 @@ procedure TATI.Set_Chromium(aChromium:TChromium);
 begin
   _Chromium:= aChromium;
   _Chromium.OnLoadEnd:= Do_ChromiumLoadEnd;
+end;
+
+procedure TATI.tmLoadTimer(Sender: TObject);
+begin
+  _tmLoadService.Enabled:= False;
+  _load('http',_loading_url);
 end;
 
 procedure TATI.tmCapchaServiceTimer(Sender: TObject);
