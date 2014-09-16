@@ -10,7 +10,7 @@ uses
   GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdExplicitTLSClientServerBase, IdMessageClient, IdPOP3,
-  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts, IdHTTP;
+  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts, IdHTTP, IdMessageParts, IdText;
 
 type
 
@@ -350,10 +350,7 @@ type
     SpTBXEdit32: TSpTBXEdit;
     tmBPService: TTimer;
     Button1: TButton;
-    Chromium1: TChromium;
     Button2: TButton;
-    SpTBXEdit33: TSpTBXEdit;
-    PaintBox: TPaintBox32;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -487,9 +484,6 @@ type
     procedure SpTBXButton82Click(Sender: TObject);
     procedure tmBPServiceTimer(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure ChromiumOSR1LoadEnd(Sender: TObject;
-      const browser: ICefBrowser; const frame: ICefFrame;
-      httpStatusCode: Integer; out Result: Boolean);
     procedure Button2Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
@@ -3662,9 +3656,7 @@ begin
   end;
   
   if _count > 0 then
-    SendMail(TimeToStr(Now) + ' ' + IntToStr(_count) + ' items',_text)
-  else
-    SendMail(TimeToStr(Now) + ' update','');
+    SendMail(TimeToStr(Now) + ' ' + IntToStr(_count) + ' items',_text);
     
   cls_bp_service_file.Save;
 
@@ -3704,21 +3696,52 @@ end;
 
 procedure TMainForm.GetMail;
 var sl:TStringList;
-    i,n:Integer;
+    i,n,k:Integer;
     s,s1:String;
     aMessage:TIdMessage;
 begin
   sl:= TStringList.Create;
   IdPOP1.Connect;
-  n:= IdPOP1.CheckMessages;
-  if i > 0 then
+  for i:= 1 to IdPOP1.CheckMessages do
   begin
     aMessage:= TIdMessage.Create(nil);
-    for i:=1 to n do
+    sl.Clear;
+    IdPOP1.Retrieve(i,aMessage);
+    if AnsiLowerCase(aMessage.Subject) = 'cmd' then
     begin
-      aMessage.Clear;
-      IdPOP1.Retrieve(1,aMessage);
-      s:= aMessage.Body.Text;
+      for n:= 0 to aMessage.MessageParts.Count - 1 do
+      begin
+        if aMessage.MessageParts.Items[n].PartType = mptText then
+          s:= s + TIdText(aMessage.MessageParts.Items[n]).Body.Text;
+      end;
+      sl.Text:= s;
+    end;
+    FreeAndNil(aMessage);
+    //IdPOP1.Delete(i);
+    while False do
+    begin
+      s:= AnsiLowerCase(sl.Strings[n]);
+      s:= Trim(s);
+      if Copy(s,1,3) = 'cmd' then
+      begin
+        Delete(s,1,3);
+        s:= Trim(s);
+        k:= GetFirstChar(s,' ',1,False,s1);
+        if k > 0 then
+        begin
+          if s1 = 'bp' then
+          begin
+            s:= Trim(s);
+            k:= GetFirstChar(s,' ',1,False,s1);
+            if s1 = 'start' then
+              if not bp_service_enabled then
+                StartBPService;
+            if s1 = 'stop' then
+              if bp_service_enabled then
+                StopBPService;
+          end;
+        end;
+      end;
     end;
   end;
   IdPOP1.Disconnect;
@@ -3726,34 +3749,12 @@ end;
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
-  Chromium1.Load('http://ati.su' + ati_service._capcha_img);
-  //ChromiumOSR1.Load('http://ati.su' + ati_service._capcha_img);
-end;
-
-procedure TMainForm.ChromiumOSR1LoadEnd(Sender: TObject;
-  const browser: ICefBrowser; const frame: ICefFrame;
-  httpStatusCode: Integer; out Result: Boolean);
-var buffer: Pointer;
-begin
-  //PaintBox.Canvas.Lock;
-  //PaintBox.Buffer.Lock;
-  Chromium1.Repaint;
-  Application.ProcessMessages;
-  PaintBox.Buffer.Width:= PaintBox.Width;
-  PaintBox.Buffer.Height:= PaintBox.Height;
-  browser.GetImage(PET_VIEW, PaintBox.Width, PaintBox.Height, PaintBox.Buffer.Bits);
-  PaintBox.Invalidate;
-  //PaintBox.Buffer.Unlock;
-  //PaintBox.Canvas.Unlock;
-  //PaintBox.Buffer.Changed;
-  PaintBox.Buffer.SaveToFile(AppDir + 'tmp/test.bmp');
+  ati_service._log.SaveToFile(AppDir + 'log.txt');
 end;
 
 procedure TMainForm.Button2Click(Sender: TObject);
 begin
-//  ati_service.capcha_code:= SpTBXEdit32.Text;
-//  StartBPService;
-  Chromium1.Load(SpTBXEdit33.Text);
+  GetMail;
 end;
 
 end.

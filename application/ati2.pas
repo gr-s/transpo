@@ -92,8 +92,11 @@ type
     procedure tmCapchaServiceTimer(Sender: TObject);
 
     procedure tmLoadTimer(Sender: TObject);
+    procedure timer1Timer(Sender: TObject);
 
   public
+    _log:TStringList;
+
     login_s:String;
     passw_s:String;
     logined:Boolean;
@@ -114,6 +117,9 @@ type
 
     _tmCapchaService:TTimer;
     _tmLoadService:TTimer;
+    _timer1:TTimer;
+
+    _ro:TOperationObject;
 
     _capcha_id:String;
     _capcha_fn:String;
@@ -199,6 +205,13 @@ begin
   _tmLoadService.Interval:= 1000*60;
   _tmLoadService.OnTimer:= tmLoadTimer;
 
+  _timer1:= TTimer.Create(Self);
+  _timer1.Enabled:= False;
+  _timer1.Interval:= 1000*30;
+  _timer1.OnTimer:= timer1Timer;
+
+  _log:= TStringList.Create;
+
   capcha_code:= '';
 end;
 
@@ -241,6 +254,7 @@ procedure TATI.GetTickets;
 var oo:TOperationObject;
 begin
   FreeAndNil(GetTickResult);
+  ati_service._log.Clear;
   GetTickResult:= TFMClass.Create(nil);
   GetTickResult.CreateClassItem('items','');
   oo.id:= '_tickets1';
@@ -280,6 +294,7 @@ begin
   oo.selector:= 'http';
   PushOperStack(oo);
   _OperProgress('ati.su','авторизация');
+  _log.Add('http://ati.su/Login/Login.aspx');
   _load('http','http://ati.su/Login/Login.aspx');
 end;
 
@@ -364,6 +379,8 @@ var oo:TOperationObject;
     capfile:TIdMultiPartFormDataStream;
     response:String;
 begin
+  _timer1.Enabled:= False;
+  
   if OperationObject.id = '_login1' then
   begin
     oo.id:= '_login2';
@@ -372,12 +389,17 @@ begin
     oo.id:= '_login2';
     oo.selector:= 'script';
     PushOperStack(oo);
+    _ro.id:= '_login1';
+    _timer1.Enabled:= True;
+    _log.Add('http://yandex.st/jquery/1.8.2/jquery.min.js');
     _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
-    _load('script','http://109.120.140.206/transpo/__ati.js');
+    _log.Add('http://divan-nn.ru/__ati.js');
+    _load('script','http://divan-nn.ru/__ati.js');
   end;
 
   if OperationObject.id = '_login2' then
   begin
+    _log.Add('__login()');
     _frame.ExecuteJavaScript('__login("' + login_s + '","' + passw_s + '");','',1);
   end;
 
@@ -389,12 +411,17 @@ begin
     oo.id:= '_login4';
     oo.selector:= 'script';
     PushOperStack(oo);
+    _ro.id:= '_login3';
+    _timer1.Enabled:= True;
+    _log.Add('http://yandex.st/jquery/1.8.2/jquery.min.js');
     _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
-    _load('script','http://109.120.140.206/transpo/__ati.js');
+    _log.Add('http://divan-nn.ru/__ati.js');
+    _load('script','http://divan-nn.ru/__ati.js');
   end;
 
   if OperationObject.id = '_login4' then
   begin
+    _log.Add('__login()');
     _frame.ExecuteJavaScript('__login();','',1);
   end;
 
@@ -408,6 +435,7 @@ begin
 
   if OperationObject.id = '_tickets_capcha_error' then
   begin
+    _log.Add('_tickets_capcha_error');
     if Assigned(OnCaptcha) then
     begin
       OnCaptcha(0);
@@ -421,6 +449,7 @@ begin
     oo.selector:= 'http';
     PushOperStack(oo);
     _OperProgress('','Капча, обновляем страницу ...');
+    _log.Add('_tickets_capcha1');
     _load('http',s);
   end;
 
@@ -429,7 +458,10 @@ begin
     oo.id:= '_tickets_capcha3';
     oo.selector:= 'script';
     PushOperStack(oo);
-    _load('script','http://109.120.140.206/transpo/__ati.js');
+    _ro.id:= '_tickets_capcha1';
+    _timer1.Enabled:= True;
+    _log.Add('http://divan-nn.ru/__ati.js');
+    _load('script','http://divan-nn.ru/__ati.js');
   end;
 
   if OperationObject.id = '_tickets_capcha3' then
@@ -437,11 +469,13 @@ begin
     _capcha_img:= '';
     capcha:= False;
     capcha_code:= '';
+    _log.Add('__tickets_capcha();');
     _frame.ExecuteJavaScript('__tickets_capcha();','',1);
   end;
 
   if OperationObject.id = '_tickets_capcha4' then
   begin
+    _log.Add('http://ati.su' + _capcha_img);
     _Chromium.Load('http://ati.su' + _capcha_img);
   end;
 
@@ -461,6 +495,7 @@ begin
     begin
       k:= GetFirstChar(response,'|',1,False,s);
       GetFirstChar(response,'|',k+1,False,_capcha_id);
+      _log.Add('http://antigate.com/in.php');
       _OperProgress('','Ждем капчу... ');
       _tmCapchaService.Enabled:= True;
     end
@@ -480,11 +515,13 @@ begin
     oo.id:= '_tickets_capcha7';
     oo.selector:= 'http';
     PushOperStack(oo);
+    _log.Add('__tickets_enter_capcha("' + capcha_code + '");');
     _frame.ExecuteJavaScript('__tickets_enter_capcha("' + capcha_code + '");','',1);
   end;
 
   if OperationObject.id = '_tickets_capcha7' then
   begin
+    capcha:= False;
     OperationObject.id:= '_tickets1';
     _process(OperationObject);
     Exit;
@@ -507,6 +544,7 @@ begin
       oo.selector:= 'http';
       PushOperStack(oo);
       _OperProgress('','Получение таблицы (страница '+ IntToStr(curr_page) + ' из ' + IntToStr(page_count) + ')');
+      _log.Add('load ' + s);
       _load('http',s);
     end
     else
@@ -522,17 +560,25 @@ begin
     oo.id:= '_tickets3';
     oo.selector:= 'script';
     PushOperStack(oo);
+    _ro.id:= '_tickets1';
+    _timer1.Enabled:= True;
+    _log.Add('http://yandex.st/jquery/1.8.2/jquery.min.js');
     _load('script','http://yandex.st/jquery/1.8.2/jquery.min.js');
-    _load('script','http://109.120.140.206/transpo/__ati.js');
+    _log.Add('http://divan-nn.ru/__ati.js');
+    _load('script','http://divan-nn.ru/__ati.js');
   end;
 
   if OperationObject.id = '_tickets3' then
   begin
+    _ro.id:= '_tickets1';
+    _timer1.Enabled:= True;
+    _log.Add('__tickets(' + IntToStr(curr_page) + ');');
     _frame.ExecuteJavaScript('__tickets(' + IntToStr(curr_page) + ');','',1);
   end;
 
   if OperationObject.id = '_tickets4' then
   begin
+    _log.Add('_tickets4');
     Inc(curr_page);
     OperationObject.id:= '_tickets1';
     _process(OperationObject);
@@ -541,6 +587,8 @@ begin
 
   if OperationObject.id = '_tickets_end' then
   begin
+    _log.Add('_tickets_end');
+    _timer1.Enabled:= False;
     if Assigned(OnEndGetTickets) then
       OnEndGetTickets(Self);
   end;
@@ -559,7 +607,7 @@ begin
     oo.id:= '_contacts3';
     oo.selector:= 'script';
     PushOperStack(oo);
-    _load('script','http://109.120.140.206/transpo/__ati.js');
+    _load('script','http://divan-nn.ru/__ati.js');
   end;
 
   if OperationObject.id = '_contacts3' then
@@ -687,7 +735,7 @@ begin
   begin
     if Args.Obj = Self then
     begin
-      if Cmp(Identifier, 'script_loaded') then
+      if (Cmp(Identifier, 'script_loaded')) or (Cmp(Identifier, 'PopOperStack')) then
       begin
         PopOperStack;
       end;
@@ -958,7 +1006,16 @@ end;
 procedure TATI.tmLoadTimer(Sender: TObject);
 begin
   _tmLoadService.Enabled:= False;
+  _log.Add('tmLoadTimer');
   _load('http',_loading_url);
+end;
+
+procedure TATI.timer1Timer(Sender: TObject);
+var oo:TOperationObject;
+begin
+  _timer1.Enabled:= False;
+  _log.Add('timer1Timer');
+  _process(_ro);
 end;
 
 procedure TATI.tmCapchaServiceTimer(Sender: TObject);
@@ -966,6 +1023,10 @@ var result,s:String;
     k:Integer;
     oo:TOperationObject;
 begin
+  {capcha_code:= 'sdf';
+  oo.id:= '_tickets_capcha6';
+  _process(oo);
+  exit;}
   _tmCapchaService.Enabled:= False;
   result:= _idHTTP.Get('http://antigate.com/res.php?key=c3b21928935b7e9df52f8c77939b068c&action=get&id=' + _capcha_id);
   if GetFirstChar(result,'OK|',1,False,s) > 0 then

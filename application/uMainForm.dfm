@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 74
-  Top = 143
+  Left = 300
+  Top = 25
   Width = 1166
   Height = 768
   Caption = 'MainForm'
@@ -5733,45 +5733,14 @@ object MainForm: TMainForm
               TabOrder = 1
               OnClick = Button1Click
             end
-            object Chromium1: TChromium
-              Left = 240
-              Top = 272
-              Width = 257
-              Height = 169
-              TabOrder = 2
-              OnLoadEnd = ChromiumOSR1LoadEnd
-              Options.AcceleratedPaintingDisabled = False
-              Options.AcceleratedFiltersDisabled = False
-              Options.AcceleratedPluginsDisabled = False
-            end
             object Button2: TButton
               Left = 488
               Top = 64
               Width = 75
               Height = 25
               Caption = 'Button1'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = Button2Click
-            end
-            object SpTBXEdit33: TSpTBXEdit
-              Left = 141
-              Top = 208
-              Width = 452
-              Height = 28
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 4
-            end
-            object PaintBox: TPaintBox32
-              Left = 24
-              Top = 272
-              Width = 209
-              Height = 169
-              TabOrder = 5
             end
           end
         end
