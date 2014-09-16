@@ -10,7 +10,7 @@ uses
   GRFormPanel, uInfoTimerForm, logistic_one, uSplashForm, IdSMTP, IdMessage, TntStdCtrls,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdExplicitTLSClientServerBase, IdMessageClient, IdPOP3,
-  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts, IdHTTP, IdMessageParts, IdText;
+  cefgui, cefvcl, ceflib, Clipbrd, GR32_Image, GR32, AppEvnts, IdMessageParts, IdText;
 
 type
 
@@ -3681,6 +3681,7 @@ end;
 procedure TMainForm.SendMail(aSubject, aText: String);
 var aMessage:TIdMessage;
 begin
+  try
   aMessage:= TIdMessage.Create(nil);
   aMessage.OnInitializeISO:= DoMessageInitializeISO;
   aMessage.From.Text:= app_sett.FindClassByName('email').FindClassByName('mail_center').FindPropertyByName('from').ValueS;
@@ -3692,6 +3693,8 @@ begin
   IdSMTP1.Connect;
   IdSMTP1.Send(aMessage);
   IdSMTP1.Disconnect;
+  except
+  end;
 end;
 
 procedure TMainForm.GetMail;

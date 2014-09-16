@@ -1,6 +1,6 @@
 object Browser: TBrowser
-  Left = 252
-  Top = 222
+  Left = 253
+  Top = 223
   Width = 880
   Height = 544
   Color = clBtnFace
@@ -99,8 +99,6 @@ object Browser: TBrowser
     Request.Accept = 'text/html, */*'
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
-    Request.Ranges.Units = 'bytes'
-    Request.Ranges = <>
     HTTPOptions = [hoForceEncodeParams]
     Left = 396
     Top = 90
