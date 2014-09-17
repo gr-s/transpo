@@ -349,8 +349,6 @@ type
     SpTBXLabel90: TSpTBXLabel;
     SpTBXEdit32: TSpTBXEdit;
     tmBPService: TTimer;
-    Button1: TButton;
-    Button2: TButton;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -483,8 +481,6 @@ type
     procedure SpTBXButton81Click(Sender: TObject);
     procedure SpTBXButton82Click(Sender: TObject);
     procedure tmBPServiceTimer(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
   private
     Fact_cls_block_favor: TFMClass;
     procedure Setact_cls_block_favor(const Value: TFMClass);
@@ -690,10 +686,9 @@ begin
   begin
     cls_data.Save;
     TblUpdateBlocks(tblFinded,cls_data.FindClassByName('blocks').FindClassByName('finded'));
+    Application.ProcessMessages;
+    ATIGetTickets(-1,-1);
   end;
-
-  Application.ProcessMessages;
-  ATIGetTickets(-1,-1);
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
@@ -1191,6 +1186,11 @@ begin
   begin
     SpTBXButton26.Enabled:= True;
     DoOperSub1Progress('','');
+    if bp_service_enabled then
+    begin
+      SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
+      tmBPService.Enabled:= True;
+    end;
     Exit;
   end;
 
@@ -3665,11 +3665,8 @@ begin
   else
     tmBPService.Interval:= 10*60*1000;
 
-  SpTBXButton26.Enabled:= True;
-  DoOperSub1Progress('','');
-
-  SpTBXGroupBox1.Caption:= 'BPService ' + bp_service_last_update;
-  tmBPService.Enabled:= True;
+  Application.ProcessMessages;
+  ATIGetTickets(-1,-1);
 end;
 
 procedure TMainForm.tmBPServiceTimer(Sender: TObject);
@@ -3680,7 +3677,7 @@ end;
 
 procedure TMainForm.SendMail(aSubject, aText: String);
 var aMessage:TIdMessage;
-begin
+begin                         
   try
   aMessage:= TIdMessage.Create(nil);
   aMessage.OnInitializeISO:= DoMessageInitializeISO;
@@ -3748,16 +3745,6 @@ begin
     end;
   end;
   IdPOP1.Disconnect;
-end;
-
-procedure TMainForm.Button1Click(Sender: TObject);
-begin
-  ati_service._log.SaveToFile(AppDir + 'log.txt');
-end;
-
-procedure TMainForm.Button2Click(Sender: TObject);
-begin
-  GetMail;
 end;
 
 end.

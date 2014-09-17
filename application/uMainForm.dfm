@@ -1,6 +1,6 @@
 object MainForm: TMainForm
   Left = 114
-  Top = 182
+  Top = 0
   Width = 1166
   Height = 768
   Caption = 'MainForm'
@@ -5723,24 +5723,6 @@ object MainForm: TMainForm
                 ParentFont = False
                 TabOrder = 3
               end
-            end
-            object Button1: TButton
-              Left = 392
-              Top = 56
-              Width = 75
-              Height = 25
-              Caption = 'Button1'
-              TabOrder = 1
-              OnClick = Button1Click
-            end
-            object Button2: TButton
-              Left = 488
-              Top = 64
-              Width = 75
-              Height = 25
-              Caption = 'Button1'
-              TabOrder = 2
-              OnClick = Button2Click
             end
           end
         end
