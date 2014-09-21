@@ -1,7 +1,11 @@
 fmod
 /begin header
 1.1
+<<<<<<< HEAD
 18.09.2014 7:08:32
+=======
+17.09.2014 18:40:22
+>>>>>>> d08ebe0b5163c558a4a86844bbd9ec7c7053a4a1
 /end header
 /begin data
 MyClass periods_file
@@ -3958,6 +3962,7 @@ MyClass periods_file
 										}
 									/end classes
 								}
+<<<<<<< HEAD
 								MyClass debit
 								{
 									/begin private
@@ -4079,6 +4084,8 @@ MyClass periods_file
 										}
 									/end classes
 								}
+=======
+>>>>>>> d08ebe0b5163c558a4a86844bbd9ec7c7053a4a1
 							/end classes
 						}
 						MyClass credits
