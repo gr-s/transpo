@@ -148,7 +148,7 @@ function __tickets_enter_capcha(_capcha)
 												clearTimeout(timeout_capcha_id);	
 											}		   
 									   }, 
-									   1000);
+									   5000);
 }
 
 function __tickets(__curr_page)

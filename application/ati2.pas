@@ -22,6 +22,13 @@ type
     selector:String;
   end;
 
+  TLog = class(TObject)
+    sl:TStringList;
+    constructor Create;
+    procedure Add(s:String);
+    procedure Save;
+  end;
+
   TOperProc = procedure(params:TOperationObject) of object;
   TEndProcess = procedure();
 
@@ -95,7 +102,7 @@ type
     procedure timer1Timer(Sender: TObject);
 
   public
-    _log:TStringList;
+    _log:TLog;
 
     login_s:String;
     passw_s:String;
@@ -123,6 +130,8 @@ type
 
     _capcha_id:String;
     _capcha_fn:String;
+    _capcha_count:Integer;
+    _capcha_re_count:Integer;
 
     _last_url:String;
 
@@ -210,9 +219,11 @@ begin
   _timer1.Interval:= 1000*30;
   _timer1.OnTimer:= timer1Timer;
 
-  _log:= TStringList.Create;
+  _log:= TLog.Create;
 
   capcha_code:= '';
+  _capcha_count:= 0;
+  _capcha_re_count:= 0;
 end;
 
 function TATI.CreateGetTickUrl(option: TGetTickOption): String;
@@ -254,7 +265,8 @@ procedure TATI.GetTickets;
 var oo:TOperationObject;
 begin
   FreeAndNil(GetTickResult);
-  ati_service._log.Clear;
+  _capcha_count:= 0;
+  _capcha_re_count:= 0;
   GetTickResult:= TFMClass.Create(nil);
   GetTickResult.CreateClassItem('items','');
   oo.id:= '_tickets1';
@@ -444,13 +456,32 @@ begin
 
   if OperationObject.id = '_tickets_capcha1' then
   begin
-    s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
-    oo.id:= '_tickets_capcha2';
-    oo.selector:= 'http';
-    PushOperStack(oo);
-    _OperProgress('','Капча, обновляем страницу ...');
-    _log.Add('_tickets_capcha1');
-    _load('http',s);
+    Inc(_capcha_count);
+    if _capcha_count <= 3 then
+    begin
+      s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
+      oo.id:= '_tickets_capcha2';
+      oo.selector:= 'http';
+      PushOperStack(oo);
+      _OperProgress('','Капча, обновляем страницу ...');
+      _log.Add('_tickets_capcha1');
+      _load('http',s);
+    end
+    else
+    begin
+      Inc(_capcha_re_count);
+      if _capcha_re_count <= 3 then
+      begin
+        _capcha_count:= 0;
+        _ro.id:= '_tickets_capcha1';
+        _timer1.Enabled:= True;
+      end
+      else
+      begin
+        OperationObject.id:= '_tickets_capcha_error';
+        _process(OperationObject);
+      end;
+    end;
   end;
 
   if OperationObject.id = '_tickets_capcha2' then
@@ -527,6 +558,7 @@ begin
     Exit;
   end;
 
+
   if OperationObject.id = '_tickets1' then
   begin
     s:= CreateGetTickUrl(GetTickOption) + '&PageNumber=' + IntToStr(curr_page);
@@ -578,6 +610,7 @@ begin
 
   if OperationObject.id = '_tickets4' then
   begin
+    _capcha_count:= 0;
     _log.Add('_tickets4');
     Inc(curr_page);
     OperationObject.id:= '_tickets1';
@@ -589,6 +622,7 @@ begin
   begin
     _log.Add('_tickets_end');
     _timer1.Enabled:= False;
+    _log.Save;
     if Assigned(OnEndGetTickets) then
       OnEndGetTickets(Self);
   end;
@@ -617,6 +651,7 @@ begin
 
   if OperationObject.id = '_contacts4' then
   begin
+    _log.Save;
     if Assigned(OnEndGetTickets) then
       OnEndGetTickets(Self);
   end;
@@ -1051,6 +1086,24 @@ begin
       end;
     end;
   end;
+end;
+
+constructor TLog.Create();
+begin
+  inherited;
+  sl:= TStringList.Create;
+  if FileExists(AppDir + 'log.txt') then
+    sl.LoadFromFile(AppDir + 'log.txt');
+end;
+
+procedure TLog.Add(s:String);
+begin
+  sl.Add(DateTimeToStr(Now) + ' ' +  s);
+end;
+
+procedure TLog.Save;
+begin
+  sl.SaveToFile(AppDir + 'log.txt');
 end;
 
 end.
