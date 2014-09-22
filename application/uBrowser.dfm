@@ -1,6 +1,6 @@
 object Browser: TBrowser
-  Left = 270
-  Top = 224
+  Left = 288
+  Top = 169
   Width = 880
   Height = 544
   Color = clBtnFace
