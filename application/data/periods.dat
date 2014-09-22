@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-22.09.2014 8:43:16
+22.09.2014 13:54:57
 /end header
 /begin data
 MyClass periods_file
@@ -4076,6 +4076,111 @@ MyClass periods_file
 															/end private
 															/begin public
 															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/19723422424222924023223722524324022720423824123422622420924224023823323622424222924023222423525155484848/E$&V/
+									char create_date = /B$&V/22.09.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екатеринбург-Москва/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/7000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/19723422424222924023223722524324022720423824123422622420924224023823323622424222924023222423525155484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург 
+
+/E$&V/
+													char ToGeo = /B$&V/Москва/E$&V/
+													char ToGeoDesc1 = /B$&V/Москва 
+
+Ленина 42/E$&V/
+													char Dist = /B$&V/1823 км/E$&V/
+													int DistI = /B$&V/1823/E$&V/
+													char TruckType = /B$&V/закр. загр:бок. задн. выгр:бок. задн./E$&V/
+													char CargoDesc = /B$&V/Стройматериалы/E$&V/
+													char CargoName = /B$&V/Стройматериалы/E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/2,5/E$&V/
+													float Volume = /B$&V/4/E$&V/
+													char PriceDesc = /B$&V/7000 нал (3,8 р/км)  /E$&V/
+													char Price1 = /B$&V/7000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/ТРАНСГАЗРЕМОНТ, ООО(ID:267631, гр/вл.-пер, Екатеринбург)   (р7, п1)/E$&V/
+													char DateDesc = /B$&V/2223се/E$&V/
+													char Note = /B$&V/факс: +7(343)3271116/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=267631&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ факс: +7(343)3271116 +7(343)2683344,  +7(950)6377924, Алексей/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/transgazremont@yandex.ru/E$&V/
+																	/end public
+																}
+															/end classes
 														}
 													/end classes
 												}
