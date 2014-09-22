@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-22.09.2014 8:26:29
+22.09.2014 8:43:16
 /end header
 /begin data
 MyClass periods_file
@@ -3993,15 +3993,15 @@ MyClass periods_file
 									/begin private
 									/end private
 									/begin public
-									char guid = /B$&V/2643253961-13188-20012/E$&V/
+									char guid = /B$&V/19723422424222924023223722524324022720425124223224923220023122822923523225532232231322402292312322372513240228238227240243231160324157484848/E$&V/
 									char create_date = /B$&V/22.09.2014/E$&V/
 									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
-									char caption = /B$&V/Екат-Москва (мытищи)/E$&V/
+									char caption = /B$&V/Екатеринбург-Мытищи/E$&V/
 									char ttn_date = /B$&V//E$&V/
-									int settlem_type = /B$&V/0/E$&V/
-									char settlem_str = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
 									int settlem_days = /B$&V/-1/E$&V/
 									int card_type = /B$&V/0/E$&V/
 									char card_str = /B$&V//E$&V/
@@ -4015,6 +4015,71 @@ MyClass periods_file
 											/end private
 											/begin public
 											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/19723422424222924023223722524324022720425124223224923220023122822923523225532232231322402292312322372513240228238227240243231160324157484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург 
+
+ул.Монтерская д.3+д.7/E$&V/
+													char ToGeo = /B$&V/Мытищи/E$&V/
+													char ToGeoDesc1 = /B$&V/Мытищи 
+
+Московская область  22 км от Москва/E$&V/
+													char Dist = /B$&V/1799 км/E$&V/
+													int DistI = /B$&V/1799/E$&V/
+													char TruckType = /B$&V/закр. загр:задн. /E$&V/
+													char CargoDesc = /B$&V/Изделия из резины (догруз  )/E$&V/
+													char CargoName = /B$&V/Изделия из резины/E$&V/
+													char CargoNote = /B$&V/догруз  /E$&V/
+													float Weight = /B$&V/1,60000002384186/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/9000 на карту (5 р/км)  /E$&V/
+													char Price1 = /B$&V/10000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Московия Транс, ООО(ID:29620, эксп-перев, Москва)   (р32)/E$&V/
+													char DateDesc = /B$&V/22сен/E$&V/
+													char Note = /B$&V/срочно!!!!/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=29620&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:603196566,+7(495)6470866,  +7(906)3506020, Гафурова Дания Реашитовна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+														}
+													/end classes
+												}
+											/end classes
 										}
 									/end classes
 								}
