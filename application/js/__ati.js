@@ -342,6 +342,13 @@ function __tickets(__curr_page)
 												FromGeoDesc += _item1[0].innerText;
 											}
 											
+											_item1 = _item0.find("a[id*='lblExtraLoadings']");
+											if (_item1.length > 0)
+											{
+												if (FromGeoDesc.length > 0) FromGeoDesc += ' ';
+												FromGeoDesc += _item1[0].innerText;
+											}
+											
 											s = "var _ticket:TTicket; begin _ticket:= this.ticket; _ticket.FromGeoDesc1:= '" + FromGeoDesc  + "'; end;";
 											__cmd(s);
 											
@@ -386,6 +393,13 @@ function __tickets(__curr_page)
 											}
 											
 											_item1 = _item0.find("div[id*='divDistance']");
+											if (_item1.length > 0)
+											{
+												if (ToGeoDesc.length > 0) ToGeoDesc += ' ';
+												ToGeoDesc += _item1[0].innerText;
+											}
+											
+											_item1 = _item0.find("a[id*='lblLoadExtraUnloadings']");
 											if (_item1.length > 0)
 											{
 												if (ToGeoDesc.length > 0) ToGeoDesc += ' ';

