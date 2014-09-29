@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-29.09.2014 12:37:24
+29.09.2014 14:10:56
 /end header
 /begin data
 MyClass data_file
@@ -4013,9 +4013,9 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/МОСК-РОСС/E$&V/
 							char Date = /B$&V/29.09.2014/E$&V/
-							int _sel_col = /B$&V/2/E$&V/
-							int _sel_row = /B$&V/0/E$&V/
-							char _sel_session = /B$&V/2719628147-30654-19979/E$&V/
+							int _sel_col = /B$&V/7/E$&V/
+							int _sel_row = /B$&V/2/E$&V/
+							char _sel_session = /B$&V/2029757393-39917-18163/E$&V/
 							/end public
 							/begin classes
 								MyClass items
@@ -4301,7 +4301,7 @@ MyClass data_file
 											float Weight = /B$&V/5/E$&V/
 											float Volume = /B$&V/30/E$&V/
 											char PriceDesc = /B$&V/118000 (21,8 р/км)  /E$&V/
-											char Price1 = /B$&V/118000/E$&V/
+											char Price1 = /B$&V/140000/E$&V/
 											char Controller = /B$&V//E$&V/
 											char ControllerInfo = /B$&V/Компания Верста, ООО(ID:218527, эксп-перев, Самара)   (р57, нп3)/E$&V/
 											char DateDesc = /B$&V/29се/E$&V/
