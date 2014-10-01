@@ -45,6 +45,7 @@ type
     VolumeEnd:Integer;
     DateBegin:TDate;
     DateEnd:TDate;
+    LoadType:Integer;
   end;
 
   TATI = class(TComponent)
@@ -228,13 +229,19 @@ end;
 
 function TATI.CreateGetTickUrl(option: TGetTickOption): String;
 var Year,Month,Day,DOW:Word;
+    _lt:String;
 begin
   Result:= 'http://ati.su/Tables/Default.aspx?EntityType=Load';
   Result:= Result + '&FromGeo=' + ReplaceSymb(option.FromGeo,'%20',' ');
   Result:= Result + '&ToGeo=' + ReplaceSymb(option.ToGeo,'%20',' ');
   Result:= Result + '&FromGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&ToGeoRadius=' + IntToStr(option.ToRadius);
-  Result:= Result + '&CarType=115&LoadType=4';
+  _lt:= '4';
+  if option.LoadType = 0 then
+    _lt:= '4';
+  if option.LoadType = 1 then
+    _lt:= '7';
+  Result:= Result + '&CarType=115&LoadType=' + _lt;
   if option.WeightEnd > 0 then 
     Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
   if option.VolumeEnd > 0 then

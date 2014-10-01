@@ -102,7 +102,6 @@ type
     Memo2: TMemo;
     Memo3: TMemo;
     Shape1: TShape;
-    SpTBXLabel37: TSpTBXLabel;
     SpTBXLabel38: TSpTBXLabel;
     Shape2: TShape;
     Memo4: TMemo;
@@ -349,6 +348,9 @@ type
     SpTBXLabel90: TSpTBXLabel;
     SpTBXEdit32: TSpTBXEdit;
     tmBPService: TTimer;
+    SpTBXLabel91: TSpTBXLabel;
+    SpTBXComboBox2: TSpTBXComboBox;
+    Memo15: TMemo;
     procedure SpTBXButton1Click(Sender: TObject);
     procedure SpTBXButton3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -1054,6 +1056,9 @@ begin
   begin
     app_sett.FindClassByName('ati_f_params').FindPropertyByName('MinPrice').ValueS:= SpTBXEdit31.Text;
   end;
+
+  ati_service.GetTickOption.LoadType:= SpTBXComboBox2.ItemIndex;
+  
 
   app_sett.Save;
 
@@ -1935,7 +1940,7 @@ begin
   Memo12.Text:= aClass.FindPropertyByName('Price1').ValueS;
   Memo3.Text:= aClass.FindPropertyByName('PriceDesc').ValueS;
   Memo7.Text:= 'Прим.: ' + aClass.FindPropertyByName('Note').ValueS;
-  SpTBXLabel37.Caption:= aClass.FindPropertyByName('TruckType').ValueS;
+  Memo15.Text:= aClass.FindPropertyByName('TruckType').ValueS;
 
   SpTBXLabel38.Caption:= '';
 
