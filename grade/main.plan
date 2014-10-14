@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-11.02.2014 13:29:08
+10.10.2014 15:55:05
 /end header
 /begin data
 MyClass project_file
@@ -48,7 +48,7 @@ MyClass project_file
 									char guid = /B$&V/4195A587-F115-4234-9A68-0E695CA7AAEC/E$&V/
 									char type = /B$&V/cycle/E$&V/
 									char caption = /B$&V/1 неделя/E$&V/
-									bool is_selected = /B$&V/True/E$&V/
+									bool is_selected = /B$&V/False/E$&V/
 									/end public
 									/begin classes
 										MyClass tree_object
@@ -59,7 +59,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -91,9 +91,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/85/E$&V/
+															float weight = /B$&V/102,5/E$&V/
 															float weight_proc = /B$&V/70/E$&V/
-															float weight_max = /B$&V/120/E$&V/
+															float weight_max = /B$&V/147/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -110,7 +110,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -142,11 +142,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/85/E$&V/
+															float weight = /B$&V/90/E$&V/
 															float weight_proc = /B$&V/70/E$&V/
-															float weight_max = /B$&V/120/E$&V/
+															float weight_max = /B$&V/127/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -188,7 +188,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -220,9 +220,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/90/E$&V/
+															float weight = /B$&V/110/E$&V/
 															float weight_proc = /B$&V/74/E$&V/
-															float weight_max = /B$&V/121/E$&V/
+															float weight_max = /B$&V/148/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -239,7 +239,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -271,11 +271,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/92,5/E$&V/
+															float weight = /B$&V/97,5/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/121/E$&V/
+															float weight_max = /B$&V/128/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -317,7 +317,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -349,9 +349,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/95/E$&V/
+															float weight = /B$&V/115/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
-															float weight_max = /B$&V/122/E$&V/
+															float weight_max = /B$&V/149/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -368,7 +368,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -400,11 +400,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/95/E$&V/
+															float weight = /B$&V/100/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
-															float weight_max = /B$&V/122/E$&V/
+															float weight_max = /B$&V/129/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -446,7 +446,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -478,9 +478,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/97,5/E$&V/
+															float weight = /B$&V/120/E$&V/
 															float weight_proc = /B$&V/80/E$&V/
-															float weight_max = /B$&V/123/E$&V/
+															float weight_max = /B$&V/150/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -497,7 +497,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -529,11 +529,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/97,5/E$&V/
+															float weight = /B$&V/105/E$&V/
 															float weight_proc = /B$&V/80/E$&V/
-															float weight_max = /B$&V/123/E$&V/
+															float weight_max = /B$&V/130/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -575,7 +575,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -607,9 +607,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/95/E$&V/
+															float weight = /B$&V/115/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/124/E$&V/
+															float weight_max = /B$&V/151/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -626,7 +626,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -658,11 +658,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/92,5/E$&V/
+															float weight = /B$&V/97,5/E$&V/
 															float weight_proc = /B$&V/75/E$&V/
-															float weight_max = /B$&V/124/E$&V/
+															float weight_max = /B$&V/131/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -704,7 +704,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -736,9 +736,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/87,5/E$&V/
+															float weight = /B$&V/107,5/E$&V/
 															float weight_proc = /B$&V/70/E$&V/
-															float weight_max = /B$&V/125/E$&V/
+															float weight_max = /B$&V/152/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -755,7 +755,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -787,11 +787,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/90/E$&V/
+															float weight = /B$&V/95/E$&V/
 															float weight_proc = /B$&V/72/E$&V/
-															float weight_max = /B$&V/125/E$&V/
+															float weight_max = /B$&V/132/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -833,7 +833,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -884,7 +884,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -1013,7 +1013,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -1091,7 +1091,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -1142,7 +1142,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -1220,7 +1220,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/1/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
@@ -1271,7 +1271,7 @@ MyClass project_file
 											char guid = /B$&V/D07AD3E3-5883-4545-A3B4-A340FDE7AA04/E$&V/
 											char type = /B$&V/training/E$&V/
 											char caption = /B$&V/2/E$&V/
-											bool is_selected = /B$&V/True/E$&V/
+											bool is_selected = /B$&V/False/E$&V/
 											/end public
 											/begin classes
 												MyClass content
