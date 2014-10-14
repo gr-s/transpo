@@ -236,12 +236,12 @@ begin
   Result:= Result + '&ToGeo=' + ReplaceSymb(option.ToGeo,'%20',' ');
   Result:= Result + '&FromGeoRadius=' + IntToStr(option.FromRadius);
   Result:= Result + '&ToGeoRadius=' + IntToStr(option.ToRadius);
-  _lt:= '4';
+  _lt:= '65540';
   if option.LoadType = 0 then
-    _lt:= '4';
+    _lt:= '65540';
   if option.LoadType = 1 then
-    _lt:= '7';
-  Result:= Result + '&CarType=115&LoadType=' + _lt;
+    _lt:= '65543';
+  Result:= Result + '&CarType=91&LoadType=' + _lt;
   if option.WeightEnd > 0 then 
     Result:= Result + '&Weight2=' + IntToStr(option.WeightEnd);
   if option.VolumeEnd > 0 then
