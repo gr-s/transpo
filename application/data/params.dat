@@ -1,11 +1,7 @@
 fmod
 /begin header
 1.1
-<<<<<<< HEAD
-14.10.2014 9:05:41
-=======
-07.10.2014 16:22:56
->>>>>>> 8ab4ee705c4cd54687b11903806e0633a31c29ee
+10.10.2014 18:19:00
 /end header
 /begin data
 MyClass app_params
