@@ -620,9 +620,13 @@ end;
 
 procedure TMainForm.DoATIAutorizCode(var Code: String);
 begin
-  if SelectWizard1.Execute('Код проверки') = mrOk then
+  if bp_service_enabled then
   begin
-    Code:= SelectWizard1.SpTBXEdit1.Text;
+    StopBPService;
+    last_capcha:= Now;
+    SendMail('capcha','Нужен код проверки!');
+    SpTBXButton26.Enabled:= True;
+    DoOperSub1Progress('','');
   end;
 end;
 

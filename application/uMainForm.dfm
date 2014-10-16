@@ -4036,9 +4036,9 @@ object MainForm: TMainForm
         ImageIndex = -1
         TabItem = 'SpTBXTabItem3'
         object SpTBXPanel7: TSpTBXPanel
-          Left = 2
-          Top = 523
-          Width = 863
+          Left = 0
+          Top = 527
+          Width = 869
           Height = 41
           Caption = 'SpTBXPanel7'
           Align = alBottom
@@ -4047,7 +4047,7 @@ object MainForm: TMainForm
           object SpTBXButton26: TSpTBXButton
             Left = 2
             Top = 2
-            Width = 859
+            Width = 865
             Height = 37
             Caption = #1057' '#1058' '#1040' '#1056' '#1058
             Align = alClient
@@ -4056,10 +4056,10 @@ object MainForm: TMainForm
           end
         end
         object SpTBXTabControl4: TSpTBXTabControl
-          Left = 2
+          Left = 0
           Top = 0
-          Width = 863
-          Height = 523
+          Width = 869
+          Height = 527
           Align = alClient
           ActiveTabIndex = 0
           HiddenItems = <>
@@ -4073,8 +4073,8 @@ object MainForm: TMainForm
           object SpTBXTabSheet24: TSpTBXTabSheet
             Left = 0
             Top = 25
-            Width = 863
-            Height = 498
+            Width = 869
+            Height = 502
             Caption = #1044#1077#1078#1091#1088#1080#1090#1100
             ImageIndex = -1
             TabItem = 'SpTBXTabItem23'
@@ -4130,16 +4130,16 @@ object MainForm: TMainForm
           object SpTBXTabSheet25: TSpTBXTabSheet
             Left = 0
             Top = 25
-            Width = 863
-            Height = 498
+            Width = 869
+            Height = 502
             Caption = #1056#1091#1095#1085#1086#1077
             ImageIndex = -1
             TabItem = 'SpTBXTabItem24'
             object SpTBXPanel6: TSpTBXPanel
               Left = 409
               Top = 0
-              Width = 450
-              Height = 494
+              Width = 456
+              Height = 498
               Caption = 'SpTBXPanel4'
               Align = alClient
               TabOrder = 0
@@ -4479,7 +4479,7 @@ object MainForm: TMainForm
               Left = 2
               Top = 0
               Width = 119
-              Height = 494
+              Height = 498
               Caption = 'SpTBXPanel4'
               Align = alLeft
               TabOrder = 1
@@ -4508,14 +4508,14 @@ object MainForm: TMainForm
               Left = 121
               Top = 0
               Width = 288
-              Height = 494
+              Height = 498
               Caption = 'SpTBXPanel4'
               Align = alLeft
               TabOrder = 2
               Borders = False
               DesignSize = (
                 288
-                494)
+                498)
               object tblATIFromGeo: TRRAdvTable
                 Left = 1
                 Top = 45
