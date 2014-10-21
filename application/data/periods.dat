@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-17.10.2014 16:30:03
+21.10.2014 0:43:51
 /end header
 /begin data
 MyClass periods_file
@@ -4589,7 +4589,7 @@ MyClass periods_file
 									int card_type = /B$&V/0/E$&V/
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/12500/E$&V/
+									int value = /B$&V/13500/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
@@ -4623,7 +4623,7 @@ MyClass periods_file
 													float Weight = /B$&V/3,30999994277954/E$&V/
 													float Volume = /B$&V/16/E$&V/
 													char PriceDesc = /B$&V/12000 на карту (5 р/км) 14000 с НДС (5,9 р/км) 13000 без НДС (5,4 р/км)/E$&V/
-													char Price1 = /B$&V/12500/E$&V/
+													char Price1 = /B$&V/13500/E$&V/
 													char Controller = /B$&V//E$&V/
 													char ControllerInfo = /B$&V/Автоспутник, ООО(ID:151250, эксп-перев, Новосибирск)   (р105)/E$&V/
 													char DateDesc = /B$&V/1718ок/E$&V/
