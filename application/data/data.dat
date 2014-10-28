@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-28.10.2014 10:45:35
+28.10.2014 13:35:54
 /end header
 /begin data
 MyClass data_file
@@ -10095,7 +10095,7 @@ MyClass data_file
 							/begin public
 							char Caption = /B$&V/МОСК-НИЖН/E$&V/
 							char Date = /B$&V/28.10.2014/E$&V/
-							int _sel_col = /B$&V/4/E$&V/
+							int _sel_col = /B$&V/3/E$&V/
 							int _sel_row = /B$&V/10/E$&V/
 							char _sel_session = /B$&V/2420025201-27203-18009/E$&V/
 							/end public
@@ -14585,6 +14585,4386 @@ MyClass data_file
 															/end private
 															/begin public
 															char Str1 = /B$&V/ICQ#:697138967, +7(906)6479797,  +7(900)9096141, Тангаев Денис Юрьевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/196236232242240238226205232230237232233322052382262272382402382282002312282292352322553223223132236229242224235235224324022623823123646228238227240243231160321961202161201944423658521205044521205044504156534848/E$&V/
+											char FromGeo = /B$&V/Дмитров/E$&V/
+											char FromGeoDesc1 = /B$&V/Дмитров 
+
+Московская область 76 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/462 км/E$&V/
+											int DistI = /B$&V/462/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Изделия из металла (возм.догруз  ДxШxВ,м:4x2,4x2,2)/E$&V/
+											char CargoName = /B$&V/Изделия из металла/E$&V/
+											char CargoNote = /B$&V/возм.догруз  ДxШxВ,м:4x2,4x2,2/E$&V/
+											float Weight = /B$&V/5/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/8500 нал (18,4 р/км)  /E$&V/
+											char Price1 = /B$&V/8500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Локтев А.С. ИП(ID:698249, перев., Нижний Новгород)   (р1)/E$&V/
+											char DateDesc = /B$&V/2729ок/E$&V/
+											char Note = /B$&V/ +7(831)4149854,  +7(904)0557931, Соболева Ирина/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=698249&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(831)4149854,  +7(904)0557931, Соболева Ирина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19423522422823223623224020523223023723223332205238226227238240238228207235229237234224322072212103240226238231236462282382272402432311603223122423922423523522924722923744504150534848/E$&V/
+											char FromGeo = /B$&V/Владимир/E$&V/
+											char FromGeoDesc1 = /B$&V/Владимир 
+
+178 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/245 км/E$&V/
+											int DistI = /B$&V/245/E$&V/
+											char TruckType = /B$&V/тент., фург., цмет. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Пленка ПЭТ (возм.догруз  запаллечен,2)/E$&V/
+											char CargoName = /B$&V/Пленка ПЭТ/E$&V/
+											char CargoNote = /B$&V/возм.догруз  запаллечен,2/E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/6/E$&V/
+											char PriceDesc = /B$&V/2500 без НДС (10,2 р/км)/E$&V/
+											char Price1 = /B$&V/2500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Гришаева Марина Евгеньевна, ИП(ID:540361, перев., Людиново)   (р7)/E$&V/
+											char DateDesc = /B$&V/постоянно по раб.дня (8:00-0:0)/E$&V/
+											char Note = /B$&V/Загрузка 1 или 2 раз/нед/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=540361&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:648430937, факс: +7(910)9107744 +7(910)9107744,  +7(910)9107744, Гришаева Марина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822820622523824024322823822622423723222932232322312242392472242412422323240196120216442365854120504452534157484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+ул.Илимская/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (ДxШ,м:6x2,45)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/ДxШ,м:6x2,45/E$&V/
+											float Weight = /B$&V/5/E$&V/
+											float Volume = /B$&V/30/E$&V/
+											char PriceDesc = /B$&V/9000 на карту (21 р/км) 10000 с НДС (23,4 р/км) /E$&V/
+											char Price1 = /B$&V/9000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Автоэкспедиция (Логистик-Профи, ООО)(ID:733207, эксп., Нижний Новгород)   (р52)/E$&V/
+											char DateDesc = /B$&V/постояннопораб.дням/E$&V/
+											char Note = /B$&V/Длина от 6 метров/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=733207&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:604689186, факс: +7(831)2708180 +7(831)4136542,  +7(930)8197217, Лукичев Юрий/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+									/end classes
+								}
+							/end classes
+						}
+						MyClass data_block
+						{
+							/begin private
+							/end private
+							/begin public
+							char Caption = /B$&V/МОСК-НИЖН/E$&V/
+							char Date = /B$&V/28.10.2014/E$&V/
+							int _sel_col = /B$&V/4/E$&V/
+							int _sel_row = /B$&V/34/E$&V/
+							char _sel_session = /B$&V/2420025201-27203-18009/E$&V/
+							/end public
+							/begin classes
+								MyClass items
+								{
+									/begin private
+									/end private
+									/begin public
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/202240224241237224255322072242452402242052322302372322333220523822622723824023822820924224023823323622424222924023222423525152534848/E$&V/
+											char FromGeo = /B$&V/Красная Пахра/E$&V/
+											char FromGeoDesc1 = /B$&V/Красная Пахра 
+
+Московская область 44 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/482 км/E$&V/
+											int DistI = /B$&V/482/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Стройматериалы/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1,79999995231628/E$&V/
+											float Volume = /B$&V/10/E$&V/
+											char PriceDesc = /B$&V/4500 нал (9,3 р/км)  /E$&V/
+											char Price1 = /B$&V/4500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/       Автолайн-НН (Тарасова О.Е. ИП)                                     (ID:229602, эксп., Нижний Новгород)     (р17)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:391202007,                                                             факс: +7(831)2210739                                                        /E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=229602&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:391202007,                                                             факс: +7(831)2210739                                                         +7(831)2210739,  +7(910)1274001, Андрей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224205232230237232233322052382262272382402382282102052073240226238231236462282382272402432311603224122523824023746227240243231324156484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Красная Сосна/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+бурнаковский/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  сборн.груз )/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  сборн.груз /E$&V/
+											float Weight = /B$&V/1,5/E$&V/
+											float Volume = /B$&V/20/E$&V/
+											char PriceDesc = /B$&V/8000 с НДС (18,7 р/км) 8000 без НДС (18,7 р/км)/E$&V/
+											char Price1 = /B$&V/8000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ВЕЗУНЧИК, ТК ЗВЕНО,АСД (ТК "Звено", ООО)(ID:231379, эксп-перев, Санкт-Петербург)   (р176, нп4)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/Москва ,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=231379&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/Москва ,+7(499)9061602,  +7(967)0679361, Настя/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2122402552312322372382052322302372322333220523822622723824023822820224022424123422450484848/E$&V/
+											char FromGeo = /B$&V/Фрязино/E$&V/
+											char FromGeoDesc1 = /B$&V/Фрязино 
+
+Московская область 40 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/412 км/E$&V/
+											int DistI = /B$&V/412/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Краска/E$&V/
+											char CargoName = /B$&V/Краска/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,00999999977648258/E$&V/
+											float Volume = /B$&V/0,00999999977648258/E$&V/
+											char PriceDesc = /B$&V/2000 с НДС (4,9 р/км) 2000 без НДС (4,9 р/км)/E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Транс-Полимер (Бурухин И.Н. ИП)(ID:45908, эксп-перев, Нижний Новгород)   (р88, нп2)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/можно забрать на охране ночью!!! в НН главное быть в 6 утра/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=45908&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:589389861, факс: +7(831)2704634 +7(831)2704634,  +7(960)1648210, Максим/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2062252432452382262381932382272382402382282412341942382352382342372383222632234232239224245324022623823123646228238227240243231160324157484848/E$&V/
+											char FromGeo = /B$&V/Обухово/E$&V/
+											char FromGeoDesc1 = /B$&V/Обухово 
+
+Московская областьДо 18час. 40 км от Москва/E$&V/
+											char ToGeo = /B$&V/Богородск/E$&V/
+											char ToGeoDesc1 = /B$&V/Богородск 
+
+Нижегородская область  49 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/394 км/E$&V/
+											int DistI = /B$&V/394/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Волокно в кипах (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/Волокно в кипах/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/5/E$&V/
+											float Volume = /B$&V/25/E$&V/
+											char PriceDesc = /B$&V/9000 нал (22,8 р/км)  /E$&V/
+											char Price1 = /B$&V/9000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИП Капустина Ирина Александровна (Каир-Логистика, ООО)(ID:182497, эксп-перев, Нижний Новгород)   (р99)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:624009092, факс: +7(831)4290531 (доб.100)/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=182497&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:624009092, факс: +7(831)4290531 (доб.100)+7(831)4290531,101,  +7(920)0539197, Елена/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2132322362342322052322302372322333220523822622723824023822821020520749534848/E$&V/
+											char FromGeo = /B$&V/Химки/E$&V/
+											char FromGeoDesc1 = /B$&V/Химки 
+
+Московская область 21 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/451 км/E$&V/
+											int DistI = /B$&V/451/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,00999999977648258/E$&V/
+											float Volume = /B$&V/0,0500000007450581/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Главная дорога, ООО(ID:236403, эксп., Павлово)   (р63, нп2)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/Одна коробка!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=236403&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:689554165,+7(831)2282911,15,  +7(920)0382024, Кузнецов Никита/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822821020520753484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Лешково/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/8/E$&V/
+											char PriceDesc = /B$&V/5000 без НДС (11,7 р/км)/E$&V/
+											char Price1 = /B$&V/5000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Континент Транс-НН, ООО(ID:126964, эксп-перев, Нижний Новгород)   (р66)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:594773909, факс: +7(831)2202125/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=126964&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:594773909, факс: +7(831)2202125 +7(831)2204200,  +7(950)3540003, Александр/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/21022622924025220523223023723223332205238226227238240238228210205207324022623823123646228238227240243231160322161201944423658494449501204944564156484848/E$&V/
+											char FromGeo = /B$&V/Тверь/E$&V/
+											char FromGeoDesc1 = /B$&V/Тверь 
+
+173 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/609 км/E$&V/
+											int DistI = /B$&V/609/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  ШxВ,м:1,12x1,8)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  ШxВ,м:1,12x1,8/E$&V/
+											float Weight = /B$&V/3,59999990463257/E$&V/
+											float Volume = /B$&V/2/E$&V/
+											char PriceDesc = /B$&V/8000 нал (13,1 р/км)  /E$&V/
+											char Price1 = /B$&V/8000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/МУДРОВА ОЛЬГА ВИТАЛЬЕВНА, ИП(ID:251467, дисп., Брянск)   (р13)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/ICQ#:587052198, факс: +7(4832)366063/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=251467&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:587052198, факс: +7(4832)366063 +7(900)3734244,  +7(915)8058056, Ольга/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20922924022723222922632207238241224228205232230237232233322052382262272382402382281932512422382262242553224523223623225532402282382272402432311603222523824723423244494150534848/E$&V/
+											char FromGeo = /B$&V/Сергиев Посад/E$&V/
+											char FromGeoDesc1 = /B$&V/Сергиев Посад 
+
+Московская область 80 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/423 км/E$&V/
+											int DistI = /B$&V/423/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Бытовая химия (догруз  бочки,1)/E$&V/
+											char CargoName = /B$&V/Бытовая химия/E$&V/
+											char CargoNote = /B$&V/догруз  бочки,1/E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/1/E$&V/
+											char PriceDesc = /B$&V/2500 на карту (5,9 р/км)  3000 без НДС (7,1 р/км)/E$&V/
+											char Price1 = /B$&V/2500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Я-Логистик, ООО(ID:363485, эксп-перев, Нижний Новгород)   (р175)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/Быстрая оплата!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=363485&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:223689958, факс: +7(831)2022033 +7(831)2022032,  +7(909)2861103, Марат/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/1932242352242342322402292262382022412422382262382102242402243223232243239224234238226234224324019444236585132234224237232241242240224445048484841231224239240238241/E$&V/
+											char FromGeo = /B$&V/Балакирево/E$&V/
+											char FromGeoDesc1 = /B$&V/Балакирево 
+
+Владимирская область 146 км от Москва/E$&V/
+											char ToGeo = /B$&V/Кстово/E$&V/
+											char ToGeoDesc1 = /B$&V/Кстово 
+
+Нижегородская область  32 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/407 км/E$&V/
+											int DistI = /B$&V/407/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Тара и упаковка (В,м:3 канистра,2000)/E$&V/
+											char CargoName = /B$&V/Тара и упаковка/E$&V/
+											char CargoNote = /B$&V/В,м:3 канистра,2000/E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/20/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ХимИндустрия, ООО(ID:157795, гр/вл.-пер, Кстово)   (р29, нп2)/E$&V/
+											char DateDesc = /B$&V/2831ок/E$&V/
+											char Note = /B$&V/Кузов не выше 3,6м/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=157795&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:634799597, +7(930)8153940, Антон Андреевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822820924224023823323622424222924023222423525156484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+6-я Радиальная/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Стройматериалы/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/4,5/E$&V/
+											float Volume = /B$&V/23/E$&V/
+											char PriceDesc = /B$&V/8000 на карту (18,7 р/км)  /E$&V/
+											char Price1 = /B$&V/8000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Покрофф НН, ООО(ID:370581, гр/вл.-пер, Нижний Новгород)   (р39)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/факс: +7(831)2950517/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=370581&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ факс: +7(831)2950517+7(831)2160604,  +7(904)0464641, Юля/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822820622523824024322823822622423723222932232322312242392472242412422323240196120216120194442365849445612048445612049445232248242465241231224239240238241/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Дорожная ул./E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Кстовский район, д.Митино/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (ДxШxВ,м:1,8x0,8x1,4 шт.4)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/ДxШxВ,м:1,8x0,8x1,4 шт.4/E$&V/
+											float Weight = /B$&V/2,59999990463257/E$&V/
+											float Volume = /B$&V/10/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/"ДЛС-Руссия", ООО(ID:120265, эксп., Москва)   (р35)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/ОПЛАТА ТОЛЬКО Б/ НАЛ с НДС./E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=120265&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:358388837, факс: +7(495)5938410+7(495)7925422,  +7(916)5259695, Елена/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/209229240227232229226322072382412242282052322302372322333220523822622723824023822821323223646322392402382282432342422513223722923823922424123725122932402282382272402432311603222523824723423244494151534848/E$&V/
+											char FromGeo = /B$&V/Сергиев Посад/E$&V/
+											char FromGeoDesc1 = /B$&V/Сергиев Посад 
+
+Московская областьпос. Скоропусковский 80 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/423 км/E$&V/
+											int DistI = /B$&V/423/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Хим. продукты неопасные (догруз  бочки,1)/E$&V/
+											char CargoName = /B$&V/Хим. продукты неопасные/E$&V/
+											char CargoNote = /B$&V/догруз  бочки,1/E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/1,5/E$&V/
+											char PriceDesc = /B$&V/3500 с НДС (8,3 р/км) 3500 без НДС (8,3 р/км)/E$&V/
+											char Price1 = /B$&V/3500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/НИКА-НН, ООО(ID:396897, грузовл., Нижний Новгород)   (р5)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(920)1111220, Александр/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=396897&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(920)1111220, Александр/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19322423522424823224522420523223023723223332205238226227238240238228210205207324019612021612019444236585112049120494150534848/E$&V/
+											char FromGeo = /B$&V/Балашиха/E$&V/
+											char FromGeoDesc1 = /B$&V/Балашиха 
+
+Московская область 20 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/405 км/E$&V/
+											int DistI = /B$&V/405/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (ДxШxВ,м:3x1x1)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/ДxШxВ,м:3x1x1/E$&V/
+											float Weight = /B$&V/0,740000009536743/E$&V/
+											float Volume = /B$&V/4/E$&V/
+											char PriceDesc = /B$&V/2500 нал (6,2 р/км)  /E$&V/
+											char Price1 = /B$&V/2500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Лебедев Владимир Александрович, ИП(ID:610409, эксп., Урень)   (р30)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:640650360,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=610409&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:640650360,Нижний Новгород , +7(910)8859676, Софья Юрьевна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/194238241234240229241229237241234205232230237232233322052382262272382402382282092422402382332362242422292402322242352513240226238231236462282382272402432311603241231224239240238241/E$&V/
+											char FromGeo = /B$&V/Воскресенск/E$&V/
+											char FromGeoDesc1 = /B$&V/Воскресенск 
+
+Московская область 89 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/417 км/E$&V/
+											int DistI = /B$&V/417/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/3,5/E$&V/
+											float Volume = /B$&V/10/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Стройкомплект, ООО(ID:9540, эксп-перев, Киров)   (р373, нп2)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:654140793,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=9540&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:654140793,Ярославль ,+7(4852)989233,  +7(930)1219895, Татьяна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/21722924022523223723422419323822723824023822824123423924023822623823523823422432402552492322342324153484848/E$&V/
+											char FromGeo = /B$&V/Щербинка/E$&V/
+											char FromGeoDesc1 = /B$&V/Щербинка 
+
+Московская область 28 км от Москва/E$&V/
+											char ToGeo = /B$&V/Богородск/E$&V/
+											char ToGeoDesc1 = /B$&V/Богородск 
+
+Нижегородская область  49 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/462 км/E$&V/
+											int DistI = /B$&V/462/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/проволока (ящики)/E$&V/
+											char CargoName = /B$&V/проволока/E$&V/
+											char CargoNote = /B$&V/ящики/E$&V/
+											float Weight = /B$&V/2/E$&V/
+											float Volume = /B$&V/2/E$&V/
+											char PriceDesc = /B$&V/5000 (10,8 р/км)  /E$&V/
+											char Price1 = /B$&V/5000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ДАИРНА, ООО(ID:624720, грузовл., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:630702112,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/10/E$&V/
+											char _status_str = /B$&V/Просм/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=624720&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:630702112,+7(83170)30936,  +7(952)4660979, Наталья/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/4660979@mail.ru/E$&V/
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/1932242352242252242372382262382052322302372322333220523822622723824023822821020520752484848/E$&V/
+											char FromGeo = /B$&V/Балабаново/E$&V/
+											char FromGeoDesc1 = /B$&V/Балабаново 
+
+Калужская область 98 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/538 км/E$&V/
+											int DistI = /B$&V/538/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/5,5/E$&V/
+											char PriceDesc = /B$&V/4000 на карту (7,4 р/км)  /E$&V/
+											char Price1 = /B$&V/4000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Авангард, ООО(ID:265069, эксп-перев, Нижний Новгород)   (р24)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(930)7082128,  +7(930)7082128, Елена/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=265069&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(930)7082128,  +7(930)7082128, Елена +7(910)1085808,  +7(910)1085808, Юля/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/202232240230224247196231229240230232237241234236229248234232324022623823123646228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Киржач/E$&V/
+											char FromGeoDesc1 = /B$&V/Киржач 
+
+Владимирская область 113 км от Москва/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/327 км/E$&V/
+											int DistI = /B$&V/327/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/мешки (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/мешки/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/0,5/E$&V/
+											float Volume = /B$&V/2,5/E$&V/
+											char PriceDesc = /B$&V/1500 нал (4,6 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Родионов М.А. ИП(ID:284768, грузовл., Дзержинск)   (р8, нп1)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:616096652,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=284768&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:616096652,+7(8313)367070,  +7(910)8807079, Сергей Пищаев/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/199229235229237238227240224228205232230237232233322052382262272382402382282092422402382332362242422292402322242352513240228238227240243231160322342382402382252342324449484150484848/E$&V/
+											char FromGeo = /B$&V/Зеленоград/E$&V/
+											char FromGeoDesc1 = /B$&V/Зеленоград 
+
+Московская область 37 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/467 км/E$&V/
+											int DistI = /B$&V/467/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (догруз  коробки,10)/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/догруз  коробки,10/E$&V/
+											float Weight = /B$&V/0,100000001490116/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/2000 на карту (4,3 р/км)  /E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Понюхов С.А. физ.лицо(ID:83136, эксп-перев, Нижний Новгород)   (р22)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/вес 100кг.10 маленьких коробок.уберутся в легковую/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=83136&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:603700221, +7(920)0141222,  +7(920)0141222, Максим/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/207238228238235252241234205232230237232233322052382262272382402382282102052073240228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Подольск/E$&V/
+											char FromGeoDesc1 = /B$&V/Подольск 
+
+Московская область 38 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/463 км/E$&V/
+											int DistI = /B$&V/463/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (догруз  )/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/0,0799999982118607/E$&V/
+											float Volume = /B$&V/0,300000011920929/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,2 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Фролова Светлана Александровна, ИП(ID:552992, грузовл., Нижний Новгород)   (р155)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/НАЛИЧНАЯ ОПЛАТА НА ВЫГУЗКЕ ! ! !/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=552992&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:600349653, +7(831)2797179,  +7(920)0179393, Алексей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228209242240238233236224242229240232224235251324023122423922423523522924722923744494149534848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Проектируемый проезд №4294/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Бекетова/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/тент., фург. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (запаллечен,1)/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/запаллечен,1/E$&V/
+											float Weight = /B$&V/0,100000001490116/E$&V/
+											float Volume = /B$&V/1,5/E$&V/
+											char PriceDesc = /B$&V/1500 нал (3,5 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Чкалов В.И. ИП(ID:86365, дисп., Арзамас)   (р18)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/факс: +7(8312)417705/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=86365&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ факс: +7(8312)417705Нижний Новгород ,+7(8314)164116,  +7(905)6664116, Наталия/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/213232236234232205232230237232233322052382262272382402382282102052073240228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Химки/E$&V/
+											char FromGeoDesc1 = /B$&V/Химки 
+
+Московская область 21 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/451 км/E$&V/
+											int DistI = /B$&V/451/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (догруз  )/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/0,0599999986588955/E$&V/
+											float Volume = /B$&V/0,00999999977648258/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Фролова Светлана Александровна, ИП(ID:552992, грузовл., Нижний Новгород)   (р155)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/НАЛИЧНАЯ ОПЛАТА НА ВЫГУЗКЕ ! ! !/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=552992&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:600349653, +7(831)2797179,  +7(920)0179393, Алексей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19623823623822822922823822623820523223023723223332205238226227238240238228210205207324022623823123646228238227240243231160324151484848/E$&V/
+											char FromGeo = /B$&V/Домодедово/E$&V/
+											char FromGeoDesc1 = /B$&V/Домодедово 
+
+Московская областьул. Промышленная 40 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+ул. Кузбасская/E$&V/
+											char Dist = /B$&V/459 км/E$&V/
+											int DistI = /B$&V/459/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/1,10000002384186/E$&V/
+											float Volume = /B$&V/4/E$&V/
+											char PriceDesc = /B$&V/3000 нал (6,5 р/км)  /E$&V/
+											char Price1 = /B$&V/3000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Фролова Светлана Александровна, ИП(ID:552992, грузовл., Нижний Новгород)   (р155)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/НАЛИЧНАЯ ОПЛАТА НА ВЫГРУЗКИ!!!!!!!!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=552992&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:638304804, +7(831)2797179,  +7(930)7013262, Андрей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19822923522923123723822823824023823023725123320523223023723223332205238226227238240238228210205207324022623823123646228238227240243231160324153484848/E$&V/
+											char FromGeo = /B$&V/Железнодорожный/E$&V/
+											char FromGeoDesc1 = /B$&V/Железнодорожный 
+
+Москва (регион) 24 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/424 км/E$&V/
+											int DistI = /B$&V/424/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/0,600000023841858/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/5000 нал (11,8 р/км) 6000 с НДС (14,2 р/км) 5500 без НДС (13 р/км)/E$&V/
+											char Price1 = /B$&V/5000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/РОСТОВСКАЯ ТРАНСПОРТНАЯ КОМПАНИЯ, ООО(ID:43744, эксп-перев, Ростов)   (р205)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/выгрyзкa в Княгинино, Bнутренняя шиpина авто нe менeе 1,9 - погрузка карой/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=43744&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:633971672,+7(48536)67568,  +7(910)8130003, Марина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622419623122924023023223724123421020520732402282382272402432311603219612021644236584944501204844563223122423922423523522924722923744494150484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+............./E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область ............ 35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/399 км/E$&V/
+											int DistI = /B$&V/399/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (догруз  ДxШ,м:1,2x0,8 запаллечен,1)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/догруз  ДxШ,м:1,2x0,8 запаллечен,1/E$&V/
+											float Weight = /B$&V/0,150000005960464/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/2000 без НДС (5 р/км)/E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Альянс-Логистика, ООО(ID:76650, эксп., Казань)   (р39)/E$&V/
+											char DateDesc = /B$&V/2830ок/E$&V/
+											char Note = /B$&V/выгрузка в пятницу. Загрузка круглосуточно.Груз готов/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=76650&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:344174460, факс: +7(843)5556197+7(843)5556197,  +7(905)0260466, ДмитрийICQ#:225969684,+7(843)5556204,  +7(905)3147470, Елена/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2132382422522342382262382052322302372322333220523822622723824023822821024024322525132401964423658534155484848/E$&V/
+											char FromGeo = /B$&V/Хотьково/E$&V/
+											char FromGeoDesc1 = /B$&V/Хотьково 
+
+Московская область 73 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/435 км/E$&V/
+											int DistI = /B$&V/435/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Трубы (Д,м:5)/E$&V/
+											char CargoName = /B$&V/Трубы/E$&V/
+											char CargoNote = /B$&V/Д,м:5/E$&V/
+											float Weight = /B$&V/3,5/E$&V/
+											float Volume = /B$&V/15/E$&V/
+											char PriceDesc = /B$&V/7000 на карту (16,1 р/км)  /E$&V/
+											char Price1 = /B$&V/7000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИСК Регионстрой, ООО(ID:335034, гр/вл.-пер, Москва)   (р79)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:460255105, факс: +7(831)2563802/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=335034&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:460255105, факс: +7(831)2563802Нижний Новгород , +7(831)2563802,  +7(920)0490300, Екатерина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19324023823723723224625120523223023723223332205238226227238240238228206225238240243228238226224237232229322323223122423924722424124223251534848/E$&V/
+											char FromGeo = /B$&V/Бронницы/E$&V/
+											char FromGeoDesc1 = /B$&V/Бронницы 
+
+Московская область 52 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Дьяконова и пр. Октября/E$&V/
+											char Dist = /B$&V/425 км/E$&V/
+											int DistI = /B$&V/425/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,899999976158142/E$&V/
+											float Volume = /B$&V/10/E$&V/
+											char PriceDesc = /B$&V/3500 (8,2 р/км)  /E$&V/
+											char Price1 = /B$&V/3500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИСК Регионстрой, ООО(ID:335034, гр/вл.-пер, Москва)   (р79)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:460255105, факс: +7(831)2563802/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=335034&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:460255105, факс: +7(831)2563802Нижний Новгород , +7(831)2563802,  +7(920)0490300, Екатерина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/1992292352292372382272402242282052322302372322333220523822622723824023822821020520732402312242392242352352292472292374154484848/E$&V/
+											char FromGeo = /B$&V/Зеленоград/E$&V/
+											char FromGeoDesc1 = /B$&V/Зеленоград 
+
+Московская область 37 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/467 км/E$&V/
+											int DistI = /B$&V/467/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП (запаллечен)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/запаллечен/E$&V/
+											float Weight = /B$&V/3,09999990463257/E$&V/
+											float Volume = /B$&V/7/E$&V/
+											char PriceDesc = /B$&V/6000 нал (12,8 р/км)  /E$&V/
+											char Price1 = /B$&V/6000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Муравчик Е.Л. ИП(ID:199172, эксп., Белгород)   (р80)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/КРУГЛОСУТOЧHО!НAЛИЧКА НA ВЫГРУЗКE! деp.Соколово! 4 паллета/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=199172&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:412185794, +7(910)2279003,  +7(903)8850952, Алексей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822820622523824024322823822622423723222932232322312242392472242412422323240194442365850445741231224239240238241/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+рязанский пр/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (В,м:2,9)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/В,м:2,9/E$&V/
+											float Weight = /B$&V/0,5/E$&V/
+											float Volume = /B$&V/6/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Доборович В.В. ИП(ID:429619, перев., Москва)   (р31)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ГОТОВ!!!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=429619&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(985)1309202,  +7(985)1309202, Марина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2152292452382262052322302372322333220523822622723824023822820924224023823323622424222924023222423525132402282382272402432311603219644236585241231224239240238241/E$&V/
+											char FromGeo = /B$&V/Чехов/E$&V/
+											char FromGeoDesc1 = /B$&V/Чехов 
+
+Московская область 71 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/497 км/E$&V/
+											int DistI = /B$&V/497/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (догруз  Д,м:4)/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/догруз  Д,м:4/E$&V/
+											float Weight = /B$&V/0,699999988079071/E$&V/
+											float Volume = /B$&V/3,5/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/АЮТЕКС, ООО(ID:189630, гр/вл.-пер, Нижний Новгород)   (р14)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:617365131,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=189630&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:617365131,+7(8312)654056,  +7(915)9491277, Светлана/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822821020520732402312242392242352352292472292374154484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Пятницкое шоссе/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП (запаллечен)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/запаллечен/E$&V/
+											float Weight = /B$&V/3,09999990463257/E$&V/
+											float Volume = /B$&V/7/E$&V/
+											char PriceDesc = /B$&V/6000 нал (14 р/км)  /E$&V/
+											char Price1 = /B$&V/6000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Муравчик Е.Л. ИП(ID:199172, эксп., Белгород)   (р80)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/КРУГЛOCУТОЧHО!НАЛИЧKА НА BЫГРУЗKЕ! дер.Соколово!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=199172&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:412185794, +7(910)2279003,  +7(903)8850952, Алексей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20922924023924324523822620523223023723223332205238226227238240238228204229225229235252324022823822724024323116032234238240238225234232445041231224239240238241/E$&V/
+											char FromGeo = /B$&V/Серпухов/E$&V/
+											char FromGeoDesc1 = /B$&V/Серпухов 
+
+Московская областьдеревня Арнеево 98 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+ул. Бекетова д. 3"Б"/E$&V/
+											char Dist = /B$&V/529 км/E$&V/
+											int DistI = /B$&V/529/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Мебель (догруз  коробки,2)/E$&V/
+											char CargoName = /B$&V/Мебель/E$&V/
+											char CargoNote = /B$&V/догруз  коробки,2/E$&V/
+											float Weight = /B$&V/0,0299999993294477/E$&V/
+											float Volume = /B$&V/0,100000001490116/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Коннов Александр Александрович, физ.лицо(ID:636145, грузовл., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(831)4615701,  +7(908)2366646, Коннов Александр Александрович/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=636145&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(831)4615701,  +7(908)2366646, Коннов Александр Александрович/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20722924022924123522422623525245199224235229241241234232233202241242238226238210229234241242232235252324019612021644236584944541204844563224024323523823725144494149534848/E$&V/
+											char FromGeo = /B$&V/Переславль-Залесский/E$&V/
+											char FromGeoDesc1 = /B$&V/Переславль-Залесский 
+
+Ярославская область 146 км от Москва/E$&V/
+											char ToGeo = /B$&V/Кстово/E$&V/
+											char ToGeoDesc1 = /B$&V/Кстово 
+
+Нижегородская область  32 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/408 км/E$&V/
+											int DistI = /B$&V/408/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Текстиль (ДxШ,м:1,6x0,8 рулоны,1)/E$&V/
+											char CargoName = /B$&V/Текстиль/E$&V/
+											char CargoNote = /B$&V/ДxШ,м:1,6x0,8 рулоны,1/E$&V/
+											float Weight = /B$&V/0,200000002980232/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/1500 (3,7 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИСК Регионстрой, ООО(ID:335034, гр/вл.-пер, Москва)   (р79)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:460255105, факс: +7(831)2563802/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=335034&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:460255105, факс: +7(831)2563802Нижний Новгород , +7(831)2563802,  +7(920)0490300, Екатерина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228204229225229235252324024122523824023746227240243231322342382402382252342324149484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Обручева, 34/63, строение 2, 2 заезд после пересечения с ул.Профсоюзная/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Фруктовая,3/4/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Мебель (сборн.груз коробки)/E$&V/
+											char CargoName = /B$&V/Мебель/E$&V/
+											char CargoNote = /B$&V/сборн.груз коробки/E$&V/
+											float Weight = /B$&V/0,100000001490116/E$&V/
+											float Volume = /B$&V/1,20000004768372/E$&V/
+											char PriceDesc = /B$&V/1000 (2,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Регион поставка, ООО(ID:259070, грузовл., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(903)6026712, Сидорова Екатерина Сергеевна/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=259070&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(903)6026712, Сидорова Екатерина Сергеевна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/213232236234232205232230237232233322052382262272382402382282132322364632239240238228243234242251322372292382392242412372512293240228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Химки/E$&V/
+											char FromGeoDesc1 = /B$&V/Химки 
+
+Московская область 21 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/451 км/E$&V/
+											int DistI = /B$&V/451/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Хим. продукты неопасные (догруз  )/E$&V/
+											char CargoName = /B$&V/Хим. продукты неопасные/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/0,0599999986588955/E$&V/
+											float Volume = /B$&V/1/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ТК УрАл (УРАЛ НН, ООО)(ID:311139, эксп-перев, Нижний Новгород)   (р28)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/оплата по ФТТН и квитанции/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=311139&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:607702299, факс: +7(831)2725246 +7(910)7922184, Светлана/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/207238228238235252241234205232230237232233322052382262272382402382282132322364632239240238228243234242251322372292382392242412372512293240228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Подольск/E$&V/
+											char FromGeoDesc1 = /B$&V/Подольск 
+
+Московская область 38 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/463 км/E$&V/
+											int DistI = /B$&V/463/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Хим. продукты неопасные (догруз  )/E$&V/
+											char CargoName = /B$&V/Хим. продукты неопасные/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/0,0399999991059303/E$&V/
+											float Volume = /B$&V/1/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,2 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ТК УрАл (УРАЛ НН, ООО)(ID:311139, эксп-перев, Нижний Новгород)   (р28)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/оплата по ФТТН и квитанции/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=311139&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:607702299, факс: +7(831)2725246 +7(910)7922184, Светлана/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/207238228238235252241234205232230237232233322052382262272382402382282042292422242352352382392402382342242423240228238227240243231160324149534848/E$&V/
+											char FromGeo = /B$&V/Подольск/E$&V/
+											char FromGeoDesc1 = /B$&V/Подольск 
+
+Московская область 38 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/463 км/E$&V/
+											int DistI = /B$&V/463/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Металлопрокат (догруз  )/E$&V/
+											char CargoName = /B$&V/Металлопрокат/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/0,300000011920929/E$&V/
+											float Volume = /B$&V/1/E$&V/
+											char PriceDesc = /B$&V/1500 на карту (3,2 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ПрофСтандарт, ООО(ID:623113, эксп., Нижний Новгород)   (р96)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/ICQ#:643761180,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=623113&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:643761180,+7(831)2333550,307,  +7(929)0409006, Екатерина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224193238240210205207324022823822724024323116032196120216120194442365848445612049445012049445332231224239224235235229247229237444941227240243231224/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Иртышский пр./E$&V/
+											char ToGeo = /B$&V/Бор/E$&V/
+											char ToGeoDesc1 = /B$&V/Бор 
+
+Нижегородская область  26 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/445 км/E$&V/
+											int DistI = /B$&V/445/E$&V/
+											char TruckType = /B$&V/терм. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП (догруз  ДxШxВ,м:0,8x1,2x1,5 запаллечен,1)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/догруз  ДxШxВ,м:0,8x1,2x1,5 запаллечен,1/E$&V/
+											float Weight = /B$&V/0,5/E$&V/
+											float Volume = /B$&V/1,5/E$&V/
+											char PriceDesc = /B$&V/груза нет, запрос ставки  /E$&V/
+											char Price1 = /B$&V/груза/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Альфатрейд, ООО(ID:239572, гр/вл.-пер, Ярославль)   (р90)/E$&V/
+											char DateDesc = /B$&V//E$&V/
+											char Note = /B$&V/ICQ#:614614546,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=239572&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:614614546,Москва , +7(929)6080308, Сергей/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/22224025222922645207238235252241234232233205232230237232233322052382262272382402382282422342242372523240228238227240243231160324152484848/E$&V/
+											char FromGeo = /B$&V/Юрьев-Польский/E$&V/
+											char FromGeoDesc1 = /B$&V/Юрьев-Польский 
+
+Владимирская область 182 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/314 км/E$&V/
+											int DistI = /B$&V/314/E$&V/
+											char TruckType = /B$&V/тент., фург. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ткань (догруз  )/E$&V/
+											char CargoName = /B$&V/ткань/E$&V/
+											char CargoNote = /B$&V/догруз  /E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/9/E$&V/
+											char PriceDesc = /B$&V/4000 (12,7 р/км)  /E$&V/
+											char Price1 = /B$&V/4000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Петров В.М. ИП(ID:25304, перев., Нижний Новгород)   (р67)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:577380780, факс: +7(831)2954113/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=25304&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:577380780, факс: +7(831)2954113 +7(831)2954113,  +7(920)2534313, Виктория/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20222423524322722420523223023723223332205238226227238240238228210205207324022623823123646228238227240243231160322342382402382252342324150534848/E$&V/
+											char FromGeo = /B$&V/Калуга/E$&V/
+											char FromGeoDesc1 = /B$&V/Калуга 
+
+ул. Московская, д. 326 171 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/611 км/E$&V/
+											int DistI = /B$&V/611/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  коробки)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  коробки/E$&V/
+											float Weight = /B$&V/0,600000023841858/E$&V/
+											float Volume = /B$&V/3/E$&V/
+											char PriceDesc = /B$&V/2500 (4,1 р/км)  /E$&V/
+											char Price1 = /B$&V/2500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/"Империя Логистики", ООО(ID:638494, эксп-перев, Нижний Новгород)   (р12)/E$&V/
+											char DateDesc = /B$&V/28окт1но/E$&V/
+											char Note = /B$&V/ICQ#:645221112,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=638494&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:645221112, +7(920)0230207,  +7(950)6003056, Мария/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2052382272322372412342052322302372322333220523822622723824023822824123922924623223250484848/E$&V/
+											char FromGeo = /B$&V/Ногинск/E$&V/
+											char FromGeoDesc1 = /B$&V/Ногинск 
+
+Московская областьКлимова,50 50 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/373 км/E$&V/
+											int DistI = /B$&V/373/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/специи/E$&V/
+											char CargoName = /B$&V/специи/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/3/E$&V/
+											char PriceDesc = /B$&V/2000 нал (5,4 р/км)  /E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Верис (ТК "Верис", ООО)(ID:137328, гр/вл.-пер, Нижний Новгород)   (р6)/E$&V/
+											char DateDesc = /B$&V/2831ок/E$&V/
+											char Note = /B$&V/ICQ#:573843797, факс: +7(000)0000000/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=137328&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:573843797, факс: +7(000)0000000+7(831)000000,  +7(906)3567827, Ирина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224205232230237232233322052382262272382402382282282292422412342322293224223822622424025149484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Чермянский проезд/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+правдинская 27т/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/детские товары/E$&V/
+											char CargoName = /B$&V/детские товары/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,100000001490116/E$&V/
+											float Volume = /B$&V/0,300000011920929/E$&V/
+											char PriceDesc = /B$&V/1000 нал (2,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИП(ID:531460, грузовл., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(915)9463910,  +7(915)9463910, Башев Павел Константинович/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=531460&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(915)9463910,  +7(915)9463910, Башев Павел Константинович/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2212352292342422402382432272352322052322302372322333220523822622723824023822824123922924623223250484848/E$&V/
+											char FromGeo = /B$&V/Электроугли/E$&V/
+											char FromGeoDesc1 = /B$&V/Электроугли 
+
+Московская область 38 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/410 км/E$&V/
+											int DistI = /B$&V/410/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/специи/E$&V/
+											char CargoName = /B$&V/специи/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1/E$&V/
+											float Volume = /B$&V/2,5/E$&V/
+											char PriceDesc = /B$&V/2000 нал (4,9 р/км)  /E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Верис (ТК "Верис", ООО)(ID:137328, гр/вл.-пер, Нижний Новгород)   (р6)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:573843797, факс: +7(000)0000000/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=137328&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:573843797, факс: +7(000)0000000+7(831)000000,  +7(906)3567827, Ирина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/1962382362382282292282382262382052322302372322333220523822622723824023822824123922924623223251484848/E$&V/
+											char FromGeo = /B$&V/Домодедово/E$&V/
+											char FromGeoDesc1 = /B$&V/Домодедово 
+
+Московская область 40 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/459 км/E$&V/
+											int DistI = /B$&V/459/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/специи/E$&V/
+											char CargoName = /B$&V/специи/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1,02999997138977/E$&V/
+											float Volume = /B$&V/3,5/E$&V/
+											char PriceDesc = /B$&V/3000 нал (6,5 р/км)  /E$&V/
+											char Price1 = /B$&V/3000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Верис (ТК "Верис", ООО)(ID:137328, гр/вл.-пер, Нижний Новгород)   (р6)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:573843797, факс: +7(000)0000000/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=137328&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:573843797, факс: +7(000)0000000+7(831)000000,  +7(906)3567827, Ирина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/202240229234248232237238196231229240230232237241234210205207324022623823123646228238227240243231160322312242392242352352292472292374449494156484848/E$&V/
+											char FromGeo = /B$&V/Крекшино/E$&V/
+											char FromGeoDesc1 = /B$&V/Крекшино 
+
+Московская область 42 км от Москва/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/467 км/E$&V/
+											int DistI = /B$&V/467/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП (возм.догруз  запаллечен,11)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/возм.догруз  запаллечен,11/E$&V/
+											float Weight = /B$&V/4,5/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/8000 без НДС (17,1 р/км)/E$&V/
+											char Price1 = /B$&V/8000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Ни Александр Константинович, ИП(ID:727615, гр/вл.-пер, Рязань)   (р20)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:697138967,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=727615&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:697138967, +7(906)6479797,  +7(900)9096141, Тангаев Денис Юрьевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/1982432342382262052322302372322333220523822622723824023822820622523824024322823822622423723222932232322312242392472242412422323240226238231236462282382272402432311603223122423922423523522924722923744524157484848/E$&V/
+											char FromGeo = /B$&V/Жуков/E$&V/
+											char FromGeoDesc1 = /B$&V/Жуков 
+
+Калужская область 108 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/547 км/E$&V/
+											int DistI = /B$&V/547/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (возм.догруз  запаллечен,4)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/возм.догруз  запаллечен,4/E$&V/
+											float Weight = /B$&V/3/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/9000 без НДС (16,5 р/км)/E$&V/
+											char Price1 = /B$&V/9000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Никма Транс, ООО(ID:679621, эксп-перев, Нижний Новгород)   (р4, нп4)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(920)2523680, Аня/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=679621&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(920)2523680, Аня/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224196231229240230232237241234200231228229235232255322322313223622924222423523522449484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Новослободская/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/399 км/E$&V/
+											int DistI = /B$&V/399/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Изделия из металла/E$&V/
+											char CargoName = /B$&V/Изделия из металла/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,00999999977648258/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/1000 (2,5 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ЗАО, ЗАО(ID:335056, грузовл., Дзержинск)   /E$&V/
+											char DateDesc = /B$&V/2831ок/E$&V/
+											char Note = /B$&V/Груз находится на ст. Метро Савеловская/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=335056&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:438131508, +7(910)1352384,  +7(910)1352384, Алина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/19423522422823223623224019623122924023023223724123420924224023823323622424222924023222423525132402342242372322412422402244149484848/E$&V/
+											char FromGeo = /B$&V/Владимир/E$&V/
+											char FromGeoDesc1 = /B$&V/Владимир 
+
+178 км от Москва/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/216 км/E$&V/
+											int DistI = /B$&V/216/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (канистра)/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/канистра/E$&V/
+											float Weight = /B$&V/0,0500000007450581/E$&V/
+											float Volume = /B$&V/0,200000002980232/E$&V/
+											char PriceDesc = /B$&V/1000 (4,6 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Полихимпласт, ООО(ID:704096, гр/вл.-пер, Дзержинск)   (р1)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/факс: +7(8313)310278/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=704096&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ факс: +7(8313)310278 +7(950)6162678, Маргарита/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228209242240238233236224242229240232224235251324024122523824023746227240243231322342242372322412422402244449484149534848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Скотопрогонная, 35, склад № 5/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+ул Генкиной 42/15, ЕвроПаркет/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Стройматериалы (сборн.груз канистра,10)/E$&V/
+											char CargoName = /B$&V/Стройматериалы/E$&V/
+											char CargoNote = /B$&V/сборн.груз канистра,10/E$&V/
+											float Weight = /B$&V/0,100000001490116/E$&V/
+											float Volume = /B$&V/0,100000001490116/E$&V/
+											char PriceDesc = /B$&V/1500 нал (3,5 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ЕвроПаркет (Евростиль, ООО)(ID:665439, юр.фирма, Нижний Новгород)   (р1)/E$&V/
+											char DateDesc = /B$&V/2831ок/E$&V/
+											char Note = /B$&V/+7(8312)137733,  +7(962)5188855, Шалыгин Евгений Рудольфович/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=665439&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/+7(8312)137733,  +7(962)5188855, Шалыгин Евгений Рудольфович/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/192239240229235229226234224193238240206225238240243228238226224237232229322323223122423924722424124223232402282382272402432311603219612021612019444236585012049120494151484848/E$&V/
+											char FromGeo = /B$&V/Апрелевка/E$&V/
+											char FromGeoDesc1 = /B$&V/Апрелевка 
+
+Московская область 46 км от Москва/E$&V/
+											char ToGeo = /B$&V/Бор/E$&V/
+											char ToGeoDesc1 = /B$&V/Бор 
+
+Нижегородская область  26 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/504 км/E$&V/
+											int DistI = /B$&V/504/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (догруз  ДxШxВ,м:2x1x1)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/догруз  ДxШxВ,м:2x1x1/E$&V/
+											float Weight = /B$&V/0,349999994039536/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/3000 на карту (6 р/км) 3500 с НДС (6,9 р/км) /E$&V/
+											char Price1 = /B$&V/3000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/IT-LOGIST ("АЙТИ ЛОГИСТ", ООО)(ID:712639, эксп-перев, Нижний Новгород)   (р17)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/Выгрузка возможна вечером!!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=712639&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:659049496, факс: +7(904)3915900 +7(920)0061633, ЕленаICQ#:559001743, +7(920)0048878, Ирина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224199224226238235230252229193251242238226224255322422292452372322342243240226238231236462282382272402432311603219612021612019444236584912049120494149534848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+олимпийский пр т/E$&V/
+											char ToGeo = /B$&V/Заволжье/E$&V/
+											char ToGeoDesc1 = /B$&V/Заволжье 
+
+Нижегородская область  60 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/453 км/E$&V/
+											int DistI = /B$&V/453/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Бытовая техника (возм.догруз  ДxШxВ,м:1x1x1)/E$&V/
+											char CargoName = /B$&V/Бытовая техника/E$&V/
+											char CargoNote = /B$&V/возм.догруз  ДxШxВ,м:1x1x1/E$&V/
+											float Weight = /B$&V/0,200000002980232/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/1500 нал (3,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/БЕЛИФ, ООО(ID:710289, эксп., Заволжье)   (р2)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:551558604,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=710289&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:551558604,+7(83161)59946,  +7(920)2525900, Екатерина/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/209229240227232229226322072382412242282052322302372322333220523822622723824023822821020520750484848/E$&V/
+											char FromGeo = /B$&V/Сергиев Посад/E$&V/
+											char FromGeoDesc1 = /B$&V/Сергиев Посад 
+
+Московская областьСкорупусковский 80 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Интернациональная/E$&V/
+											char Dist = /B$&V/423 км/E$&V/
+											int DistI = /B$&V/423/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,550000011920929/E$&V/
+											float Volume = /B$&V/2/E$&V/
+											char PriceDesc = /B$&V/2000 (4,7 р/км)  /E$&V/
+											char Price1 = /B$&V/2000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Технопарк, ООО(ID:11784, перев., Нижний Новгород)   (р41)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:616027336,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=11784&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:616027336,+7(831)2171727,  +7(920)2991231, Лена/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/21323223623423220523223023723223332205238226227238240238228206225238240243228238226224237232229322323223122423924722424124223232401961202161201944423658494453120494450120493223122423922423523522924722923744524152534848/E$&V/
+											char FromGeo = /B$&V/Химки/E$&V/
+											char FromGeoDesc1 = /B$&V/Химки 
+
+Московская область 21 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/451 км/E$&V/
+											int DistI = /B$&V/451/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (ДxШxВ,м:1,5x1,2x1 запаллечен,4)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/ДxШxВ,м:1,5x1,2x1 запаллечен,4/E$&V/
+											float Weight = /B$&V/0,600000023841858/E$&V/
+											float Volume = /B$&V/4/E$&V/
+											char PriceDesc = /B$&V/4500 (10 р/км)  /E$&V/
+											char Price1 = /B$&V/4500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Закирова Е.Г. ИП(ID:261919, гр/вл.-пер, Казань)   (р1, п1)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/четыре палеты.по борту займет 3,5м. быстрая загрузка. звоните Дмитрий./E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=261919&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ факс: +7(843)2043225+7(843)2043225,  +7(905)3105977, Кузьменко Дмитрий Анатольевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/208255231224237252205232230237232233322052382262272382402382282102052073240196442365855414948484848/E$&V/
+											char FromGeo = /B$&V/Рязань/E$&V/
+											char FromGeoDesc1 = /B$&V/Рязань 
+
+179 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/425 км/E$&V/
+											int DistI = /B$&V/425/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП (Д,м:7)/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V/Д,м:7/E$&V/
+											float Weight = /B$&V/2/E$&V/
+											float Volume = /B$&V/25/E$&V/
+											char PriceDesc = /B$&V/10000 (23,5 р/км)  /E$&V/
+											char Price1 = /B$&V/10000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Поемшин Александр Викторович, ИП(ID:93548, эксп-перев, Кулебаки)   (р22)/E$&V/
+											char DateDesc = /B$&V/28окт1но/E$&V/
+											char Note = /B$&V/ICQ#:397475398, факс: +7(831)4174445/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=93548&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:397475398, факс: +7(831)4174445 +7(831)4174445,  +7(910)3889972, Ольга/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204224235232237238205232230237232233322052382262272382402382282102402242372412392382402422372512293224124022922824124222622432402282382272402432311603219612021612019444236585044505412048445354120494449564151484848/E$&V/
+											char FromGeo = /B$&V/Малино/E$&V/
+											char FromGeoDesc1 = /B$&V/Малино 
+
+Московская областьул. Горького 37 96 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Казанское шоссе 12к1/E$&V/
+											char Dist = /B$&V/472 км/E$&V/
+											int DistI = /B$&V/472/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Транспортные средства (догруз  ДxШxВ,м:2,26x0,56x1,18)/E$&V/
+											char CargoName = /B$&V/Транспортные средства/E$&V/
+											char CargoNote = /B$&V/догруз  ДxШxВ,м:2,26x0,56x1,18/E$&V/
+											float Weight = /B$&V/0,200000002980232/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/3000 (6,4 р/км)  /E$&V/
+											char Price1 = /B$&V/3000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Мотосалон, ООО(ID:856484, дисп., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ +7(910)1084100, Аня Филиппова/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=856484&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(910)1084100, Аня Филиппова/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224205232230237232233322052382262272382402382282102402242372412392382402422372512293224124022922824124222622432402262382312364622823822724024323116032196120216120194442365853120501205044514157484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+ул.Свободы д.35 стр.23/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+ул.Коновалова д.6/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Транспортные средства (возм.догруз  ДxШxВ,м:5x2x2,3)/E$&V/
+											char CargoName = /B$&V/Транспортные средства/E$&V/
+											char CargoNote = /B$&V/возм.догруз  ДxШxВ,м:5x2x2,3/E$&V/
+											float Weight = /B$&V/5/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/9000 нал (21 р/км)  /E$&V/
+											char Price1 = /B$&V/9000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ТехКарРесурс, ООО(ID:475446, грузовл., Нижний Новгород)   (р1)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ +7(920)0548208,  +7(909)2981301, Горбунова Юлия Валерьевна/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=475446&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(920)0548208,  +7(909)2981301, Горбунова Юлия Валерьевна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/208224236229237241234238229205232230237232233322052382262272382402382281932432362242272243240226238231236462282382272402432311603224122523824023746227240243231322402432352382372514152484848/E$&V/
+											char FromGeo = /B$&V/Раменское/E$&V/
+											char FromGeoDesc1 = /B$&V/Раменское 
+
+Московская областьул.100-й Свирской Дивизии, д.24 43 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+ул. Кузбасская 1 г./E$&V/
+											char Dist = /B$&V/414 км/E$&V/
+											int DistI = /B$&V/414/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Бумага (возм.догруз  сборн.груз рулоны)/E$&V/
+											char CargoName = /B$&V/Бумага/E$&V/
+											char CargoNote = /B$&V/возм.догруз  сборн.груз рулоны/E$&V/
+											float Weight = /B$&V/3,5/E$&V/
+											float Volume = /B$&V/30/E$&V/
+											char PriceDesc = /B$&V/4000 (9,7 р/км)  /E$&V/
+											char Price1 = /B$&V/4000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Авантаж, ООО(ID:618754, грузовл., Нижний Новгород)   (р1)/E$&V/
+											char DateDesc = /B$&V/2831ок/E$&V/
+											char Note = /B$&V/ +7(903)6094401, Зураб Суликоевич/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=618754&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ +7(903)6094401, Зураб Суликоевич +7(920)2938090,  +7(910)8906070, Сергей Николаевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224195238240238228229246206225238240243228238226224237232229322323223122423924722424124223232402262382312364622823822724024323116032196442365850445341231224239240238241/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Новомещерский проезд/E$&V/
+											char ToGeo = /B$&V/Городец/E$&V/
+											char ToGeoDesc1 = /B$&V/Городец 
+
+Нижегородская область  53 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/488 км/E$&V/
+											int DistI = /B$&V/488/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (возм.догруз  Д,м:2,5)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/возм.догруз  Д,м:2,5/E$&V/
+											float Weight = /B$&V/2/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Романов Сергей Михайлович, ИП(ID:167823, перев., Казань)   (р20)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:662134915,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=167823&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:662134915, +7(843)5260530,  +7(967)4606988, Алсу/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224205232230237232233322052382262272382402382284932209210206203324022623823123646228238227240243231160324149484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Гончарова/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/1 СТОЛ (возм.догруз  )/E$&V/
+											char CargoName = /B$&V/1 СТОЛ/E$&V/
+											char CargoNote = /B$&V/возм.догруз  /E$&V/
+											float Weight = /B$&V/0,0500000007450581/E$&V/
+											float Volume = /B$&V/0,0299999993294477/E$&V/
+											char PriceDesc = /B$&V/1000 нал (2,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/грузоперевозки, ЧП(ID:683071, дисп., Нижний Новгород)   /E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/Нужна перевозка стола 120*75 из Москвы в Нижний Новгород 28.11./E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=683071&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ , +7(953)5677264, Дмитрий/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/2042382412342262242052322302372322333220523822622723824023822821020520752534848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+по заявке/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/1,20000004768372/E$&V/
+											float Volume = /B$&V/4/E$&V/
+											char PriceDesc = /B$&V/4500 с НДС (10,5 р/км) 4000 без НДС (9,3 р/км)/E$&V/
+											char Price1 = /B$&V/4500/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/АльянсТрансАвто, ООО(ID:660760, эксп-перев, Йошкар-Ола)   (р46)/E$&V/
+											char DateDesc = /B$&V/2829ок/E$&V/
+											char Note = /B$&V/ICQ#:693953422,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=660760&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:693953422, +7(967)7579730, ЛюдмилаICQ#:472457415, +7(967)7579830, Жанна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/206228232237246238226238196231229240230232237241234213232236463223924023822824323424225132237229238239224241237251229324022623823123646228238227240243231160322312242392242352352292472292374152484848/E$&V/
+											char FromGeo = /B$&V/Одинцово/E$&V/
+											char FromGeoDesc1 = /B$&V/Одинцово 
+
+Московская область 25 км от Москва/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/446 км/E$&V/
+											int DistI = /B$&V/446/E$&V/
+											char TruckType = /B$&V/закр., терм. загр:бок. задн. выгр:бок. задн./E$&V/
+											char CargoDesc = /B$&V/Хим. продукты неопасные (возм.догруз  запаллечен)/E$&V/
+											char CargoName = /B$&V/Хим. продукты неопасные/E$&V/
+											char CargoNote = /B$&V/возм.догруз  запаллечен/E$&V/
+											float Weight = /B$&V/2/E$&V/
+											float Volume = /B$&V/3/E$&V/
+											char PriceDesc = /B$&V/4000 с НДС (9 р/км) /E$&V/
+											char Price1 = /B$&V/4000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ИнтерХимия(ID:256903, грузовл., Дзержинск)   /E$&V/
+											char DateDesc = /B$&V/27окт5но/E$&V/
+											char Note = /B$&V/факс: +7(8313)264021/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=256903&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ факс: +7(8313)264021+7(8313)264021,  +7(908)7401044, Арбузов Валерий Никандрович/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228234235229233324019644236585241231224239240238241/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+......................../E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/терм. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/клей (Д,м:4)/E$&V/
+											char CargoName = /B$&V/клей/E$&V/
+											char CargoNote = /B$&V/Д,м:4/E$&V/
+											float Weight = /B$&V/1,5/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/СПБ- Транзит (СПБ-Транзит, ООО)(ID:520749, грузовл., Заволжье)   (р27)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/погрузка в Дзержинском, выгрузка на Бору/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=520749&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:680509804, +7(953)5517445,  +7(920)0323704, Ксения/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228206225238240243228238226224237232229322323223122423924722424124223232402282382272402432311603219612021612019444236585012049445412049444941231224239240238241/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Солнечногорскй рн/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/Оборудование и запчасти (догруз  ДxШxВ,м:2x1,6x1,1)/E$&V/
+											char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+											char CargoNote = /B$&V/догруз  ДxШxВ,м:2x1,6x1,1/E$&V/
+											float Weight = /B$&V/1,70000004768372/E$&V/
+											float Volume = /B$&V/-1/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/ГК "АЛЬФАТРАНСГРУПП", ООО(ID:46778, эксп-перев, Тольятти)   (р136)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/ICQ#:576392820, факс: +7(8482)759888 (доб.320)/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=46778&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:576392820, факс: +7(8482)759888 (доб.320)+7(8482)759888,314,  +7(917)9681870, Сорокина Татьяна/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/208243225235229226238205232230237232233322052382262272382402382285032235224235251322282352553223924023224622923922449484848/E$&V/
+											char FromGeo = /B$&V/Рублево/E$&V/
+											char FromGeoDesc1 = /B$&V/Рублево 
+
+Московская область 23 км от Москва/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+/E$&V/
+											char Dist = /B$&V/461 км/E$&V/
+											int DistI = /B$&V/461/E$&V/
+											char TruckType = /B$&V/тент.  /E$&V/
+											char CargoDesc = /B$&V/2 лалы для прицепа/E$&V/
+											char CargoName = /B$&V/2 лалы для прицепа/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/0,0700000002980232/E$&V/
+											float Volume = /B$&V/0,5/E$&V/
+											char PriceDesc = /B$&V/1000 нал (2,2 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Димов Д. Г. ИП(ID:279481, перев., Дзержинск)   (р5)/E$&V/
+											char DateDesc = /B$&V/28окт2но/E$&V/
+											char Note = /B$&V/выгрузка в любое время на м-7 в р-не г. Дзержинск/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=279481&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:679889502, факс: +7(930)8023339+7(313)344267,  +7(930)8023339, Димов Дмитрий Геннадьевич/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20722924022924123522422623525245199224235229241241234232233196231229240230232237241234210205207231224239240238241/E$&V/
+											char FromGeo = /B$&V/Переславль-Залесский/E$&V/
+											char FromGeoDesc1 = /B$&V/Переславль-Залесский 
+
+Ярославская область 146 км от Москва/E$&V/
+											char ToGeo = /B$&V/Дзержинск/E$&V/
+											char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+											char Dist = /B$&V/354 км/E$&V/
+											int DistI = /B$&V/354/E$&V/
+											char TruckType = /B$&V/тент. загр:задн. /E$&V/
+											char CargoDesc = /B$&V/ТНП/E$&V/
+											char CargoName = /B$&V/ТНП/E$&V/
+											char CargoNote = /B$&V//E$&V/
+											float Weight = /B$&V/2,5/E$&V/
+											float Volume = /B$&V/15/E$&V/
+											char PriceDesc = /B$&V/запрос  /E$&V/
+											char Price1 = /B$&V/запрос/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Сунцова О.В. ИП(ID:28656, эксп., Киров)   (р22)/E$&V/
+											char DateDesc = /B$&V/гото/E$&V/
+											char Note = /B$&V/ICQ#:472155014, факс: +7(8332)357448/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=28656&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:472155014, факс: +7(8332)357448+7(8332)357448,  +7(909)1397211, Ольга/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/20423824123422622420523223023723223332205238226227238240238228193251242238226224255322452322362322553240226238231236462282382272402432311603223122423922423523522924722923744564157484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Домодедовский район/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Кстовский район/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+											char CargoDesc = /B$&V/Бытовая химия (возм.догруз  запаллечен,8)/E$&V/
+											char CargoName = /B$&V/Бытовая химия/E$&V/
+											char CargoNote = /B$&V/возм.догруз  запаллечен,8/E$&V/
+											float Weight = /B$&V/4,09999990463257/E$&V/
+											float Volume = /B$&V/12,5/E$&V/
+											char PriceDesc = /B$&V/9000 с НДС (21 р/км) 8500 без НДС (19,9 р/км)/E$&V/
+											char Price1 = /B$&V/9000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/100 Кубов, ООО(ID:735736, гр/вл.-пер, Москва)   (р6)/E$&V/
+											char DateDesc = /B$&V/28ок/E$&V/
+											char Note = /B$&V/Загрузка 28.10 8 европаллет, желательно безнал с НДС!!!/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=735736&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/ICQ#:324886189, факс: +7(495)3748116 +7(916)1020615,  +7(964)6409051, Андрей+7(495)3748116,  +7(967)0196299, Давид/E$&V/
+															/end public
+														}
+													/end classes
+												}
+												MyClass controller_mails
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+												}
+											/end classes
+										}
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											int _type = /B$&V/10/E$&V/
+											char ID = /B$&V/204238241234226224205232230237232233322052382262272382402382282042292252292352523240226238231236462282382272402432311603224122523824023746227240243231321961202164423658494450120484455533224824246494149484848/E$&V/
+											char FromGeo = /B$&V/Москва/E$&V/
+											char FromGeoDesc1 = /B$&V/Москва 
+
+Гончарова/E$&V/
+											char ToGeo = /B$&V/Нижний Новгород/E$&V/
+											char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+Островского/E$&V/
+											char Dist = /B$&V/428 км/E$&V/
+											int DistI = /B$&V/428/E$&V/
+											char TruckType = /B$&V/закр.  /E$&V/
+											char CargoDesc = /B$&V/Мебель (возм.догруз  сборн.груз ДxШ,м:1,2x0,75 шт.1)/E$&V/
+											char CargoName = /B$&V/Мебель/E$&V/
+											char CargoNote = /B$&V/возм.догруз  сборн.груз ДxШ,м:1,2x0,75 шт.1/E$&V/
+											float Weight = /B$&V/0,0500000007450581/E$&V/
+											float Volume = /B$&V/1/E$&V/
+											char PriceDesc = /B$&V/1000 нал (2,3 р/км)  /E$&V/
+											char Price1 = /B$&V/1000/E$&V/
+											char Controller = /B$&V//E$&V/
+											char ControllerInfo = /B$&V/Виктория, физ.лицо(ID:862268, грузовл., Москва)   /E$&V/
+											char DateDesc = /B$&V/2628ок/E$&V/
+											char Note = /B$&V/,/E$&V/
+											char Reliability = /B$&V//E$&V/
+											MemoBlock Comments = /B$&V//E$&V/
+											bool _checked = /B$&V/False/E$&V/
+											int _status_id = /B$&V/0/E$&V/
+											char _status_str = /B$&V/Новая/E$&V/
+											char ControllerLink = /B$&V//Tables/Info.aspx?ID=862268&isdeleted=false/E$&V/
+											/end public
+											/begin classes
+												MyClass controller_contacts
+												{
+													/begin private
+													/end private
+													/begin public
+													/end public
+													/begin classes
+														MyClass controller_contact
+														{
+															/begin private
+															/end private
+															/begin public
+															char Str1 = /B$&V/, +7(929)649960, Виктория/E$&V/
 															/end public
 														}
 													/end classes
