@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-18.11.2014 10:16:16
+25.11.2014 20:43:17
 /end header
 /begin data
 MyClass project_file
@@ -851,9 +851,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/80/E$&V/
-															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/106/E$&V/
+															float weight = /B$&V/77,5/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/105,5/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -865,9 +865,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/95/E$&V/
-															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/126/E$&V/
+															float weight = /B$&V/112,5/E$&V/
+															float weight_proc = /B$&V/74/E$&V/
+															float weight_max = /B$&V/152,5/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -916,11 +916,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/95/E$&V/
+															float weight = /B$&V/100/E$&V/
 															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/126/E$&V/
+															float weight_max = /B$&V/132,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -980,9 +980,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/85/E$&V/
-															float weight_proc = /B$&V/79,4392547607422/E$&V/
-															float weight_max = /B$&V/107/E$&V/
+															float weight = /B$&V/82,5/E$&V/
+															float weight_proc = /B$&V/78/E$&V/
+															float weight_max = /B$&V/106/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -994,9 +994,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/100/E$&V/
+															float weight = /B$&V/120/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
-															float weight_max = /B$&V/127/E$&V/
+															float weight_max = /B$&V/153/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -1034,8 +1034,8 @@ MyClass project_file
 															float weight = /B$&V/97,5/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
 															float weight_max = /B$&V/123,5/E$&V/
-															int set_count = /B$&V/3/E$&V/
-															int rep_count = /B$&V/4/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1045,11 +1045,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/100/E$&V/
+															float weight = /B$&V/102,5/E$&V/
 															float weight_proc = /B$&V/78/E$&V/
-															float weight_max = /B$&V/127/E$&V/
+															float weight_max = /B$&V/133/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1110,10 +1110,10 @@ MyClass project_file
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
 															float weight = /B$&V/87,5/E$&V/
-															float weight_proc = /B$&V/80/E$&V/
-															float weight_max = /B$&V/108/E$&V/
-															int set_count = /B$&V/6/E$&V/
-															int rep_count = /B$&V/4/E$&V/
+															float weight_proc = /B$&V/82/E$&V/
+															float weight_max = /B$&V/106,5/E$&V/
+															int set_count = /B$&V/4/E$&V/
+															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1123,9 +1123,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/102,5/E$&V/
+															float weight = /B$&V/122,5/E$&V/
 															float weight_proc = /B$&V/80/E$&V/
-															float weight_max = /B$&V/128/E$&V/
+															float weight_max = /B$&V/153,5/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -1174,11 +1174,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/102,5/E$&V/
+															float weight = /B$&V/107,5/E$&V/
 															float weight_proc = /B$&V/80/E$&V/
-															float weight_max = /B$&V/128/E$&V/
+															float weight_max = /B$&V/133,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1238,10 +1238,10 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/82,5/E$&V/
-															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/109/E$&V/
-															int set_count = /B$&V/6/E$&V/
+															float weight = /B$&V/77,5/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/107/E$&V/
+															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
@@ -1252,10 +1252,10 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/95/E$&V/
-															float weight_proc = /B$&V/74/E$&V/
-															float weight_max = /B$&V/129/E$&V/
-															int set_count = /B$&V/6/E$&V/
+															float weight = /B$&V/110/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/154/E$&V/
+															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
 														}
@@ -1289,8 +1289,8 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
-															float weight = /B$&V/95/E$&V/
-															float weight_proc = /B$&V/76/E$&V/
+															float weight = /B$&V/90/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
 															float weight_max = /B$&V/124,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/4/E$&V/
@@ -1304,10 +1304,10 @@ MyClass project_file
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
 															float weight = /B$&V/97,5/E$&V/
-															float weight_proc = /B$&V/76/E$&V/
-															float weight_max = /B$&V/129/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
+															float weight_max = /B$&V/134/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/4/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1317,8 +1317,8 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
-															float weight = /B$&V/42,5/E$&V/
-															float weight_proc = /B$&V/78/E$&V/
+															float weight = /B$&V/40/E$&V/
+															float weight_proc = /B$&V/72/E$&V/
 															float weight_max = /B$&V/54,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/6/E$&V/
@@ -1367,9 +1367,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/6B52C3D9-CA5F-4557-9D06-86E9C95BC63D/E$&V/
-															float weight = /B$&V/80/E$&V/
-															float weight_proc = /B$&V/72,7272720336914/E$&V/
-															float weight_max = /B$&V/110/E$&V/
+															float weight = /B$&V/75/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/108/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -1381,9 +1381,9 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/16B7579C-7369-4A11-BD8C-7B6F6BF997BE/E$&V/
-															float weight = /B$&V/92,5/E$&V/
-															float weight_proc = /B$&V/71,1538467407227/E$&V/
-															float weight_max = /B$&V/130/E$&V/
+															float weight = /B$&V/107,5/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/155/E$&V/
 															int set_count = /B$&V/5/E$&V/
 															int rep_count = /B$&V/5/E$&V/
 															/end public
@@ -1418,8 +1418,8 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/1B15BE4B-CF67-4B19-900E-70706CBD10BF/E$&V/
-															float weight = /B$&V/90/E$&V/
-															float weight_proc = /B$&V/72/E$&V/
+															float weight = /B$&V/87,5/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
 															float weight_max = /B$&V/125/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/5/E$&V/
@@ -1432,11 +1432,11 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/0C14726F-2EB9-4114-9A60-D6EDFF192F69/E$&V/
-															float weight = /B$&V/92,5/E$&V/
-															float weight_proc = /B$&V/72/E$&V/
-															float weight_max = /B$&V/130/E$&V/
+															float weight = /B$&V/95/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
+															float weight_max = /B$&V/134,5/E$&V/
 															int set_count = /B$&V/4/E$&V/
-															int rep_count = /B$&V/5/E$&V/
+															int rep_count = /B$&V/3/E$&V/
 															/end public
 														}
 														MyClass train_content
@@ -1446,8 +1446,8 @@ MyClass project_file
 															/begin public
 															char type = /B$&V/train_content/E$&V/
 															char stuff_guid = /B$&V/61CCCB75-0F52-4680-A073-81E3564BB0A6/E$&V/
-															float weight = /B$&V/40/E$&V/
-															float weight_proc = /B$&V/75/E$&V/
+															float weight = /B$&V/37,5/E$&V/
+															float weight_proc = /B$&V/70/E$&V/
 															float weight_max = /B$&V/55/E$&V/
 															int set_count = /B$&V/4/E$&V/
 															int rep_count = /B$&V/8/E$&V/
