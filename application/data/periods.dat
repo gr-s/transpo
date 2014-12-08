@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-01.12.2014 16:15:29
+08.12.2014 14:54:11
 /end header
 /begin data
 MyClass periods_file
@@ -7155,7 +7155,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2298118724-21919-19458/E$&V/
 									char create_date = /B$&V/01.12.2014/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Нахабино - Пермь/E$&V/
@@ -7167,6 +7167,38 @@ MyClass periods_file
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V/гото 17000 (11.5 р/км) Нахабино (Нахабино Московская область 33 км от Москва) - Пермь (Пермь 380 км от Екатеринбург) 1475 км 2.5/-- Оборудование и запчасти (возм.догруз  ) (Груз66, ООО(ID:220649, эксп., Екатеринбург)   (р53)) (Прим.: ICQ#:556717108, факс: +7(343)3110589) (ICQ#:556717108, факс: +7(343)3110589 +7(343)3110589, +7(912)2227841, МаксимICQ#:204333675, факс: +7(343)3110589 +7(343)3110589, +7(922)1013525, Алексей)/E$&V/
 									int value = /B$&V/17000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2659845068-14040-17414/E$&V/
+									char create_date = /B$&V/08.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Москва-Тюмень/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V/гото 30000 (13.8 р/км) Солнечногорск (Солнечногорск 
+ Московская область 62 км от Москва) - Тюмень (Тюмень 
+328 км от Екатеринбург) 2179 км 1/10 Оборудование и запчасти (возм.догруз  ) (РТ СЕРВИС, ООО(ID:256364, эксп-перев, Москва)   (р14)) (Прим.: +7(499)6194179, +7(925)1338717, Равиль) (+7(499)6194179, +7(925)1338717, Равиль)/E$&V/
+									int value = /B$&V/30000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
