@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-08.12.2014 14:54:11
+09.12.2014 8:22:15
 /end header
 /begin data
 MyClass periods_file
@@ -7183,21 +7183,19 @@ MyClass periods_file
 									/begin private
 									/end private
 									/begin public
-									char guid = /B$&V/2659845068-14040-17414/E$&V/
+									char guid = /B$&V/20423824123422622419723422424222924023223722524324022721020520732401944423658504450322312242392242352352292472292374454415148484848/E$&V/
 									char create_date = /B$&V/08.12.2014/E$&V/
 									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
-									char caption = /B$&V/Москва-Тюмень/E$&V/
+									char caption = /B$&V/Москва-Екатеринбург/E$&V/
 									char ttn_date = /B$&V//E$&V/
-									int settlem_type = /B$&V/0/E$&V/
-									char settlem_str = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
 									int settlem_days = /B$&V/-1/E$&V/
 									int card_type = /B$&V/0/E$&V/
 									char card_str = /B$&V//E$&V/
-									MemoBlock comments = /B$&V/гото 30000 (13.8 р/км) Солнечногорск (Солнечногорск 
- Московская область 62 км от Москва) - Тюмень (Тюмень 
-328 км от Екатеринбург) 2179 км 1/10 Оборудование и запчасти (возм.догруз  ) (РТ СЕРВИС, ООО(ID:256364, эксп-перев, Москва)   (р14)) (Прим.: +7(499)6194179, +7(925)1338717, Равиль) (+7(499)6194179, +7(925)1338717, Равиль)/E$&V/
+									MemoBlock comments = /B$&V//E$&V/
 									int value = /B$&V/30000/E$&V/
 									/end public
 									/begin classes
@@ -7207,6 +7205,166 @@ MyClass periods_file
 											/end private
 											/begin public
 											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/20423824123422622419723422424222924023223722524324022721020520732401944423658504450322312242392242352352292472292374454415148484848/E$&V/
+													char FromGeo = /B$&V/Москва/E$&V/
+													char FromGeoDesc1 = /B$&V/Москва 
+
+Юго-Запад 1 доп. пункт загрузки/E$&V/
+													char ToGeo = /B$&V/Екатеринбург/E$&V/
+													char ToGeoDesc1 = /B$&V/Екатеринбург 
+
+/E$&V/
+													char Dist = /B$&V/1830 км/E$&V/
+													int DistI = /B$&V/1830/E$&V/
+													char TruckType = /B$&V/закр.  /E$&V/
+													char CargoDesc = /B$&V/ТНП (В,м:2,2 запаллечен,6)/E$&V/
+													char CargoName = /B$&V/ТНП/E$&V/
+													char CargoNote = /B$&V/В,м:2,2 запаллечен,6/E$&V/
+													float Weight = /B$&V/3/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/30000 (16,4 р/км)  /E$&V/
+													char Price1 = /B$&V/30000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Долженко Владимир Викторович, физ.лицо(ID:367596, перев., Богучар)   (р25)/E$&V/
+													char DateDesc = /B$&V/9дек/E$&V/
+													char Note = /B$&V/догруз/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=367596&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ +7(919)1812686,  +7(919)1812686, Власова Анастасия Андреевна/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2162322482342322373223522924119723422424222924023223722524324022720924224023823323622424222924023222423525132401961202161201944423658494450120494452120494454322312242392242352352292472292374452414957484848/E$&V/
+									char create_date = /B$&V/09.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Шишкин лес-Екатеринбург/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/19000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/2162322482342322373223522924119723422424222924023223722524324022720924224023823323622424222924023222423525132401961202161201944423658494450120494452120494454322312242392242352352292472292374452414957484848/E$&V/
+													char FromGeo = /B$&V/Шишкин лес/E$&V/
+													char FromGeoDesc1 = /B$&V/Шишкин лес 
+
+Москва (регион) 55 км от Москва/E$&V/
+													char ToGeo = /B$&V/Екатеринбург/E$&V/
+													char ToGeoDesc1 = /B$&V/Екатеринбург 
+
+/E$&V/
+													char Dist = /B$&V/1938 км/E$&V/
+													int DistI = /B$&V/1938/E$&V/
+													char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+													char CargoDesc = /B$&V/Стройматериалы (ДxШxВ,м:1,2x1,4x1,6 запаллечен,4)/E$&V/
+													char CargoName = /B$&V/Стройматериалы/E$&V/
+													char CargoNote = /B$&V/ДxШxВ,м:1,2x1,4x1,6 запаллечен,4/E$&V/
+													float Weight = /B$&V/2,20000004768372/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/19000 на карту (9,8 р/км) 20000 с НДС (10,3 р/км) /E$&V/
+													char Price1 = /B$&V/19000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/ООО "Транзит-96" (Транзит-96, ООО)(ID:369886, эксп-перев, Екатеринбург)   (р79, нп1)/E$&V/
+													char DateDesc = /B$&V/9дек/E$&V/
+													char Note = /B$&V/готов, данные заранее./E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=369886&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:693935354, +7(932)1115394,  +7(919)3835430, Алена/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+														}
+													/end classes
+												}
+											/end classes
 										}
 									/end classes
 								}
