@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-15.12.2014 16:11:38
+16.12.2014 0:51:19
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/692597346-57740-18790/E$&V/
+	char active_period = /B$&V/2316170445-46007-17164/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
