@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-11.12.2014 14:14:02
+15.12.2014 16:11:38
 /end header
 /begin data
 MyClass periods_file
@@ -7030,12 +7030,12 @@ MyClass periods_file
 									/begin private
 									/end private
 									/begin public
-									char guid = /B$&V/20423824123422622421124422421323823523822823223525223723822932238225238240243228238226224237232229324022623823123646228238227240243231160321961202161201944423658544456120501205032231224239224235235229247229237415056484848/E$&V/
-									char create_date = /B$&V/11.12.2014/E$&V/
+									char guid = /B$&V/19322423522424823224522419723422424222924023223722524324022720622523824024322823822622423723222932232322312242392472242412422323240196120216120194442365849445012048445612049445732231224239224235235229247229237444953415254484848/E$&V/
+									char create_date = /B$&V/15.12.2014/E$&V/
 									bool enabled = /B$&V/False/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
-									char caption = /B$&V/Москва-Уфа/E$&V/
+									char caption = /B$&V/Балашиха-Пермь/E$&V/
 									char ttn_date = /B$&V//E$&V/
 									int settlem_type = /B$&V/20/E$&V/
 									char settlem_str = /B$&V/На карту/E$&V/
@@ -7043,7 +7043,7 @@ MyClass periods_file
 									int card_type = /B$&V/0/E$&V/
 									char card_str = /B$&V//E$&V/
 									MemoBlock comments = /B$&V//E$&V/
-									int value = /B$&V/28000/E$&V/
+									int value = /B$&V/40000/E$&V/
 									/end public
 									/begin classes
 										MyClass ticket
@@ -7059,35 +7059,35 @@ MyClass periods_file
 													/end private
 													/begin public
 													int _type = /B$&V/10/E$&V/
-													char ID = /B$&V/20423824123422622421124422421323823523822823223525223723822932238225238240243228238226224237232229324022623823123646228238227240243231160321961202161201944423658544456120501205032231224239224235235229247229237415056484848/E$&V/
-													char FromGeo = /B$&V/Москва/E$&V/
-													char FromGeoDesc1 = /B$&V/Москва 
+													char ID = /B$&V/19322423522424823224522419723422424222924023223722524324022720622523824024322823822622423723222932232322312242392472242412422323240196120216120194442365849445012048445612049445732231224239224235235229247229237444953415254484848/E$&V/
+													char FromGeo = /B$&V/Балашиха/E$&V/
+													char FromGeoDesc1 = /B$&V/Балашиха 
 
-Лихоборская/E$&V/
-													char ToGeo = /B$&V/Уфа/E$&V/
-													char ToGeoDesc1 = /B$&V/Уфа 
+Московская область 20 км от Москва/E$&V/
+													char ToGeo = /B$&V/Екатеринбург/E$&V/
+													char ToGeoDesc1 = /B$&V/Екатеринбург 
 
-495 км от Екатеринбург/E$&V/
-													char Dist = /B$&V/1342 км/E$&V/
-													int DistI = /B$&V/1342/E$&V/
+1 доп. пункт разгрузки/E$&V/
+													char Dist = /B$&V/1814 км/E$&V/
+													int DistI = /B$&V/1814/E$&V/
 													char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
-													char CargoDesc = /B$&V/Холодильное оборудование (возм.догруз  ДxШxВ,м:6,8x2x2 запаллечен)/E$&V/
-													char CargoName = /B$&V/Холодильное оборудование/E$&V/
-													char CargoNote = /B$&V/возм.догруз  ДxШxВ,м:6,8x2x2 запаллечен/E$&V/
-													float Weight = /B$&V/3/E$&V/
-													float Volume = /B$&V/19/E$&V/
-													char PriceDesc = /B$&V/28000 с НДС (20,9 р/км) 28000 без НДС (20,9 р/км)/E$&V/
-													char Price1 = /B$&V/28000/E$&V/
+													char CargoDesc = /B$&V/Оборудование и запчасти (ДxШxВ,м:1,2x0,8x1,9 запаллечен,15)/E$&V/
+													char CargoName = /B$&V/Оборудование и запчасти/E$&V/
+													char CargoNote = /B$&V/ДxШxВ,м:1,2x0,8x1,9 запаллечен,15/E$&V/
+													float Weight = /B$&V/5/E$&V/
+													float Volume = /B$&V/27/E$&V/
+													char PriceDesc = /B$&V/46000 без НДС (25,4 р/км)/E$&V/
+													char Price1 = /B$&V/40000/E$&V/
 													char Controller = /B$&V//E$&V/
-													char ControllerInfo = /B$&V/РПХ, ООО(ID:810708, грузовл., Уфа)   (р1)/E$&V/
-													char DateDesc = /B$&V/1112де/E$&V/
-													char Note = /B$&V/Срочно нужно забрать груз. ТОРГ по цене! Цена зависит от размеров Maшины. Размeры грузa разные мoжно pазложить компактней. Звоните с 08-23/E$&V/
+													char ControllerInfo = /B$&V/ТЭК "Логичный Выбор", ООО(ID:453882, эксп-перев, Нижний Новгород)   (р57)/E$&V/
+													char DateDesc = /B$&V/постоянно по раб.дня (2:00-3:0)/E$&V/
+													char Note = /B$&V/***Погрузка 2 раза в неделю***Кoл-вo паллет вcегда рaзное!Отдeльная мaшина! Пломба! Загрузка ночью!/E$&V/
 													char Reliability = /B$&V//E$&V/
 													MemoBlock Comments = /B$&V//E$&V/
 													bool _checked = /B$&V/False/E$&V/
 													int _status_id = /B$&V/10/E$&V/
 													char _status_str = /B$&V/Просм/E$&V/
-													char ControllerLink = /B$&V//Tables/Info.aspx?ID=810708&isdeleted=false/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=453882&isdeleted=false/E$&V/
 													/end public
 													/begin classes
 														MyClass controller_contacts
@@ -7102,7 +7102,7 @@ MyClass periods_file
 																	/begin private
 																	/end private
 																	/begin public
-																	char Str1 = /B$&V/ +7(927)3127010, Андрей/E$&V/
+																	char Str1 = /B$&V/ICQ#:655561912, факс: +7(920)0359148 +7(920)0359148,  +7(920)0359148, Андрей/E$&V/
 																	/end public
 																}
 															/end classes
@@ -7119,7 +7119,23 @@ MyClass periods_file
 																	/begin private
 																	/end private
 																	/begin public
-																	char Str1 = /B$&V/skla777@mail.ru/E$&V/
+																	char Str1 = /B$&V/vo.log.vybor@yandex.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/g.log.vybor@yandex.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/a.log.vybor@yandex.ru/E$&V/
 																	/end public
 																}
 															/end classes
@@ -7165,7 +7181,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/2042382412342262241972342242422292402322372252432402272132322364632239240238228243234242251322372292382392242412372512293240228238227240243231160322412252382402374622724024323132196120216120194442365848445212048445112048445532234224237232241242240224445551415148484848/E$&V/
 									char create_date = /B$&V/29.11.2014/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Москва-Екатеринбург/E$&V/
@@ -7466,6 +7482,264 @@ MyClass periods_file
 															/end private
 															/begin public
 															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/19723422424222924023223722524324022720423824123422622421020520732402312242392242352352292472292374454414948484848/E$&V/
+									char create_date = /B$&V/12.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екатеринбург-Москва/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/10000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/19723422424222924023223722524324022720423824123422622421020520732402312242392242352352292472292374454414948484848/E$&V/
+													char FromGeo = /B$&V/Екатеринбург/E$&V/
+													char FromGeoDesc1 = /B$&V/Екатеринбург 
+
+Берёзовский/E$&V/
+													char ToGeo = /B$&V/Москва/E$&V/
+													char ToGeoDesc1 = /B$&V/Москва 
+
+Внуково/E$&V/
+													char Dist = /B$&V/1830 км/E$&V/
+													int DistI = /B$&V/1830/E$&V/
+													char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+													char CargoDesc = /B$&V/ТНП (запаллечен,6)/E$&V/
+													char CargoName = /B$&V/ТНП/E$&V/
+													char CargoNote = /B$&V/запаллечен,6/E$&V/
+													float Weight = /B$&V/2,5/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/10000 нал (5,5 р/км) 11000 с НДС (6 р/км) 11000 без НДС (6 р/км)/E$&V/
+													char Price1 = /B$&V/10000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Дивэл-Транс, ООО(ID:515507, эксп-перев, Екатеринбург)   (р29)/E$&V/
+													char DateDesc = /B$&V/гото/E$&V/
+													char Note = /B$&V/СРОЧНО!!!!Оплата быстро!!!!!/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=515507&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:601424431, факс: +7(343)2109662 +7(908)9097005, Константин/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/gtg1505@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/shpark83@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/gtga7@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/divel-trans@yandex.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/seregaburg@mail.ru/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2042382412342262241972342242422292402322372252432402272062422382392322422292352522372382293223822523824024322823822622423723222932402262382312364622823822724024323116032415056484848/E$&V/
+									char create_date = /B$&V/15.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Москва-Екатеринбург/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/29000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/2042382412342262241972342242422292402322372252432402272062422382392322422292352522372382293223822523824024322823822622423723222932402262382312364622823822724024323116032415056484848/E$&V/
+													char FromGeo = /B$&V/Москва/E$&V/
+													char FromGeoDesc1 = /B$&V/Москва 
+
+по заявке/E$&V/
+													char ToGeo = /B$&V/Екатеринбург/E$&V/
+													char ToGeoDesc1 = /B$&V/Екатеринбург 
+
+/E$&V/
+													char Dist = /B$&V/1830 км/E$&V/
+													int DistI = /B$&V/1830/E$&V/
+													char TruckType = /B$&V/закр.  /E$&V/
+													char CargoDesc = /B$&V/Отопительное оборудование (возм.догруз  )/E$&V/
+													char CargoName = /B$&V/Отопительное оборудование/E$&V/
+													char CargoNote = /B$&V/возм.догруз  /E$&V/
+													float Weight = /B$&V/2,5/E$&V/
+													float Volume = /B$&V/24/E$&V/
+													char PriceDesc = /B$&V/28000 без НДС (15,3 р/км)/E$&V/
+													char Price1 = /B$&V/28000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Зубарев П.Г. ИП(ID:753304, перев., Набережные Челны)   (р15)/E$&V/
+													char DateDesc = /B$&V/1516де/E$&V/
+													char Note = /B$&V/ +7(937)5855775, Павел Григорьевич/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=753304&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ +7(937)5855775, Павел Григорьевич/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/zubarev.pavel57@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/zubare.pavel57@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/zubarev.pavel57@mail.ru/E$&V/
+																	/end public
+																}
+															/end classes
 														}
 													/end classes
 												}
