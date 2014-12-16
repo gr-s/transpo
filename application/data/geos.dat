@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-13.10.2014 10:08:16
+16.12.2014 11:22:42
 /end header
 /begin data
 MyClass EmptyClass
@@ -323,6 +323,15 @@ MyClass EmptyClass
 			/end private
 			/begin public
 			char Caption = /B$&V/ÑÀĞÀÒÎÂ/E$&V/
+			bool Enabled = /B$&V/True/E$&V/
+			/end public
+		}
+		MyClass ÑÒÀÂĞÎÏÎËÜ
+		{
+			/begin private
+			/end private
+			/begin public
+			char Caption = /B$&V/ÑÒÀÂĞÎÏÎËÜ/E$&V/
 			bool Enabled = /B$&V/True/E$&V/
 			/end public
 		}
