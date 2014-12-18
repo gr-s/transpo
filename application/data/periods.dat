@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-16.12.2014 14:56:59
+18.12.2014 11:35:47
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/2316170445-46007-17164/E$&V/
+	char active_period = /B$&V/692597346-57740-18790/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -7136,6 +7136,119 @@ MyClass periods_file
 																	/end private
 																	/begin public
 																	char Str1 = /B$&V/zubarev.pavel57@mail.ru/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/2042382412342262242072292402362522002312282292352322553223223132236229242224235235224324024023824124125123925225441231224239240238241/E$&V/
+									char create_date = /B$&V/18.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Москва-Пермь/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/14000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/2042382412342262242072292402362522002312282292352322553223223132236229242224235235224324024023824124125123925225441231224239240238241/E$&V/
+													char FromGeo = /B$&V/Москва/E$&V/
+													char FromGeoDesc1 = /B$&V/Москва 
+
+Дубнинская/E$&V/
+													char ToGeo = /B$&V/Пермь/E$&V/
+													char ToGeoDesc1 = /B$&V/Пермь 
+
+/E$&V/
+													char Dist = /B$&V/1450 км/E$&V/
+													int DistI = /B$&V/1450/E$&V/
+													char TruckType = /B$&V/закр. загр:задн. /E$&V/
+													char CargoDesc = /B$&V/Изделия из металла (россыпью)/E$&V/
+													char CargoName = /B$&V/Изделия из металла/E$&V/
+													char CargoNote = /B$&V/россыпью/E$&V/
+													float Weight = /B$&V/1,79999995231628/E$&V/
+													float Volume = /B$&V/3/E$&V/
+													char PriceDesc = /B$&V/запрос  /E$&V/
+													char Price1 = /B$&V/14000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Рахматуллина О.В. ИП(ID:67708, гр/вл.-пер, Пермь)   (р49)/E$&V/
+													char DateDesc = /B$&V/гото/E$&V/
+													char Note = /B$&V/ICQ#:465146560, факс: +7(342)2055776/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=67708&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:465146560, факс: +7(342)2055776+7(342)2055776, +7(908)2713327, Владимир МефодиевичICQ#:646920494, факс: +7(342)2055776+7(342)2055776, +7(902)4725638, Ольга/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/pkfchemi@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/uvm77@yandex.ru/E$&V/
 																	/end public
 																}
 															/end classes
