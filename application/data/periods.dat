@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-18.12.2014 11:35:47
+19.12.2014 11:14:50
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/692597346-57740-18790/E$&V/
+	char active_period = /B$&V/2316170445-46007-17164/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -7857,6 +7857,143 @@ MyClass periods_file
 															/end private
 															/begin public
 															/end public
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/202240224241237238228224240205232230237232233322052382262272382402382282102052075053484848/E$&V/
+									char create_date = /B$&V/19.12.2014/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Краснодар-Нижний Новгород/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/25000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/202240224241237238228224240205232230237232233322052382262272382402382282102052075053484848/E$&V/
+													char FromGeo = /B$&V/Краснодар/E$&V/
+													char FromGeoDesc1 = /B$&V/Краснодар 
+
+/E$&V/
+													char ToGeo = /B$&V/Нижний Новгород/E$&V/
+													char ToGeoDesc1 = /B$&V/Нижний Новгород 
+
+423 км от Москва/E$&V/
+													char Dist = /B$&V/1589 км/E$&V/
+													int DistI = /B$&V/1589/E$&V/
+													char TruckType = /B$&V/тент., конт., фург. загр:задн. /E$&V/
+													char CargoDesc = /B$&V/ТНП/E$&V/
+													char CargoName = /B$&V/ТНП/E$&V/
+													char CargoNote = /B$&V//E$&V/
+													float Weight = /B$&V/4/E$&V/
+													float Volume = /B$&V/30/E$&V/
+													char PriceDesc = /B$&V/25000 с НДС (15,7 р/км) 25000 без НДС (15,7 р/км)/E$&V/
+													char Price1 = /B$&V/25000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/Южная Логистическая Компания, ООО(ID:620264, гр/вл.-пер, Ростов-на-Дону)   (р95)/E$&V/
+													char DateDesc = /B$&V/19де/E$&V/
+													char Note = /B$&V/ICQ#:600498783, факс: +7(863)3005234/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=620264&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:600498783, факс: +7(863)3005234 +7(960)4805776,  +7(906)4531126, Ваграм/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/vg@ulk.su/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/Dariya82@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/kamaev@ulk.su/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/buffon90@bk.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ekaterina_gracheva94@mail.ru/E$&V/
+																	/end public
+																}
+															/end classes
 														}
 													/end classes
 												}
