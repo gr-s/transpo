@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-02.02.2015 13:51:36
+02.02.2015 15:50:52
 /end header
 /begin data
 MyClass periods_file
@@ -9,7 +9,7 @@ MyClass periods_file
 	/begin private
 	/end private
 	/begin public
-	char active_period = /B$&V/2316170445-46007-17164/E$&V/
+	char active_period = /B$&V/1869378571-23784-19922/E$&V/
 	/end public
 	/begin classes
 		MyClass periods
@@ -8141,6 +8141,299 @@ MyClass periods_file
 											/end private
 											/begin public
 											/end public
+										}
+									/end classes
+								}
+							/end classes
+						}
+						MyClass credits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+						}
+					/end classes
+				}
+				MyClass period
+				{
+					/begin private
+					/end private
+					/begin public
+					char guid = /B$&V/1869378571-23784-19922/E$&V/
+					char BeginDate = /B$&V/03.02.2015/E$&V/
+					char EndDate = /B$&V/03.03.2015/E$&V/
+					/end public
+					/begin classes
+						MyClass debits
+						{
+							/begin private
+							/end private
+							/begin public
+							/end public
+							/begin classes
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/208224236229237241234238229197234224242229240232237225243240227210205207324022623823123646228238227240243231160322312242392242352352292472292374457415153484848/E$&V/
+									char create_date = /B$&V/02.02.2015/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Раменское-Екатеринбург/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/20/E$&V/
+									char settlem_str = /B$&V/На карту/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/33000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/208224236229237241234238229197234224242229240232237225243240227210205207324022623823123646228238227240243231160322312242392242352352292472292374457415153484848/E$&V/
+													char FromGeo = /B$&V/Раменское/E$&V/
+													char FromGeoDesc1 = /B$&V/Раменское 
+
+Московская область 43 км от Москва/E$&V/
+													char ToGeo = /B$&V/Екатеринбург/E$&V/
+													char ToGeoDesc1 = /B$&V/Екатеринбург 
+
+по ТТН/E$&V/
+													char Dist = /B$&V/1859 км/E$&V/
+													int DistI = /B$&V/1859/E$&V/
+													char TruckType = /B$&V/терм. загр:задн. выгр:задн./E$&V/
+													char CargoDesc = /B$&V/ТНП (возм.догруз  запаллечен,9)/E$&V/
+													char CargoName = /B$&V/ТНП/E$&V/
+													char CargoNote = /B$&V/возм.догруз  запаллечен,9/E$&V/
+													float Weight = /B$&V/2/E$&V/
+													float Volume = /B$&V/18/E$&V/
+													char PriceDesc = /B$&V/35000 с НДС (18,8 р/км) 32000 без НДС (17,2 р/км)/E$&V/
+													char Price1 = /B$&V/35000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/РосТрансАвто, ООО(ID:532309, гр/вл.-пер, Новочеркасск)   (р364)/E$&V/
+													char DateDesc = /B$&V/гото/E$&V/
+													char Note = /B$&V/ICQ#:444146692, факс: +7(495)2692663/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=532309&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:444146692, факс: +7(495)2692663Москва ,+7(495)2692663,  +7(967)2129507, Алиев Адиль/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/uliya@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ssafronova@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/olugova@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ukarpenko@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/rta@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/n-kuhmistrova2013@yandex.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/n.chernov@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/oserdenova@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/s.horosheva@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/mbuzina@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/a.borodina@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ebychihina@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/anton@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/r.vaganov@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/s.zanina@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/v.zemlyanova@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/a.polyakov@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/v.reshetko@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/v.zelenkova@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/a.aliev@rta-avto.com/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/echukarina@rta-avto.com/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
 										}
 									/end classes
 								}
