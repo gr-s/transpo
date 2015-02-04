@@ -1,7 +1,7 @@
 fmod
 /begin header
 1.1
-04.02.2015 11:38:04
+04.02.2015 18:15:07
 /end header
 /begin data
 MyClass periods_file
@@ -8446,7 +8446,7 @@ MyClass periods_file
 									/begin public
 									char guid = /B$&V/205232230237232233322052382262272382402382282072292402362522102052074949484848/E$&V/
 									char create_date = /B$&V/04.02.2015/E$&V/
-									bool enabled = /B$&V/False/E$&V/
+									bool enabled = /B$&V/True/E$&V/
 									int type = /B$&V/10/E$&V/
 									char type_str = /B$&V/Заявка/E$&V/
 									char caption = /B$&V/Нижний Новгород-Пермь/E$&V/
