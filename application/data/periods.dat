@@ -1,9 +1,7 @@
 fmod
 /begin header
 1.1
-09.02.2015 14:13:19
-=======
-04.02.2015 18:15:07
+16.02.2015 12:49:07
 /end header
 /begin data
 MyClass periods_file
@@ -8752,6 +8750,149 @@ MyClass periods_file
 																	/end private
 																	/begin public
 																	char Str1 = /B$&V/t-msk@list.ru/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+													/end classes
+												}
+											/end classes
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/1938251633-18501-19839/E$&V/
+									char create_date = /B$&V/10.02.2015/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Екат-НН/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/0/E$&V/
+									char settlem_str = /B$&V//E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V/m10@nitek-nn.ru/E$&V/
+									int value = /B$&V/10000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+										}
+									/end classes
+								}
+								MyClass debit
+								{
+									/begin private
+									/end private
+									/begin public
+									char guid = /B$&V/19623623224224023822619623122924023023223724123421022424022432232322432392242342382262342243240196120216120194442365851120504449120504451534156484848/E$&V/
+									char create_date = /B$&V/16.02.2015/E$&V/
+									bool enabled = /B$&V/False/E$&V/
+									int type = /B$&V/10/E$&V/
+									char type_str = /B$&V/Заявка/E$&V/
+									char caption = /B$&V/Дмитров-Дзержинск/E$&V/
+									char ttn_date = /B$&V//E$&V/
+									int settlem_type = /B$&V/10/E$&V/
+									char settlem_str = /B$&V/Нал/E$&V/
+									int settlem_days = /B$&V/-1/E$&V/
+									int card_type = /B$&V/0/E$&V/
+									char card_str = /B$&V//E$&V/
+									MemoBlock comments = /B$&V//E$&V/
+									int value = /B$&V/8000/E$&V/
+									/end public
+									/begin classes
+										MyClass ticket
+										{
+											/begin private
+											/end private
+											/begin public
+											/end public
+											/begin classes
+												MyClass ticket
+												{
+													/begin private
+													/end private
+													/begin public
+													int _type = /B$&V/10/E$&V/
+													char ID = /B$&V/19623623224224023822619623122924023023223724123421022424022432232322432392242342382262342243240196120216120194442365851120504449120504451534156484848/E$&V/
+													char FromGeo = /B$&V/Дмитров/E$&V/
+													char FromGeoDesc1 = /B$&V/Дмитров 
+
+Московская область 76 км от Москва 1 доп. пункт загрузки/E$&V/
+													char ToGeo = /B$&V/Дзержинск/E$&V/
+													char ToGeoDesc1 = /B$&V/Дзержинск 
+
+Нижегородская область  35 км от Нижний Новгород/E$&V/
+													char Dist = /B$&V/476 км/E$&V/
+													int DistI = /B$&V/476/E$&V/
+													char TruckType = /B$&V/закр. загр:задн. выгр:задн./E$&V/
+													char CargoDesc = /B$&V/Тара и упаковка (ДxШxВ,м:3x2,1x2,35)/E$&V/
+													char CargoName = /B$&V/Тара и упаковка/E$&V/
+													char CargoNote = /B$&V/ДxШxВ,м:3x2,1x2,35/E$&V/
+													float Weight = /B$&V/0,600000023841858/E$&V/
+													float Volume = /B$&V/-1/E$&V/
+													char PriceDesc = /B$&V/8000 нал (16,8 р/км)  /E$&V/
+													char Price1 = /B$&V/8000/E$&V/
+													char Controller = /B$&V//E$&V/
+													char ControllerInfo = /B$&V/АВТОХИМПРОМ, ООО(ID:484101, эксп., Дзержинск)   (р12)/E$&V/
+													char DateDesc = /B$&V/17-18фев/E$&V/
+													char Note = /B$&V/ICQ#:375983372, факс: +7(8313)265207/E$&V/
+													char Reliability = /B$&V//E$&V/
+													MemoBlock Comments = /B$&V//E$&V/
+													bool _checked = /B$&V/False/E$&V/
+													int _status_id = /B$&V/10/E$&V/
+													char _status_str = /B$&V/Просм/E$&V/
+													char ControllerLink = /B$&V//Tables/Info.aspx?ID=484101&isdeleted=false/E$&V/
+													/end public
+													/begin classes
+														MyClass controller_contacts
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/ICQ#:375983372, факс: +7(8313)265207+7(8313)265207,  +7(910)1291655, Губанов Андрей/E$&V/
+																	/end public
+																}
+															/end classes
+														}
+														MyClass controller_mails
+														{
+															/begin private
+															/end private
+															/begin public
+															/end public
+															/begin classes
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/mag843@mail.ru/E$&V/
+																	/end public
+																}
+																MyClass controller_contact
+																{
+																	/begin private
+																	/end private
+																	/begin public
+																	char Str1 = /B$&V/avtodzr@mail.ru/E$&V/
 																	/end public
 																}
 															/end classes
